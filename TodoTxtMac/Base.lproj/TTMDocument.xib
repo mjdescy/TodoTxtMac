@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment defaultVersion="1080" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="TTMDocument">
+            <connections>
+                <outlet property="arrayController" destination="z03-iY-Esn" id="WqA-XF-LYw"/>
+                <outlet property="rawTextCell" destination="B31-jc-X0I" id="WRb-Kc-eMO"/>
+                <outlet property="tableView" destination="FD8-v3-r5U" id="pBH-dg-EN3"/>
+                <outlet property="textField" destination="4SD-Qr-9gz" id="SxF-oC-RrR"/>
+                <outlet property="window" destination="5" id="18"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="5" userLabel="Window">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="133" y="235" width="510" height="447"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <value key="minSize" type="size" width="94" height="86"/>
+            <view key="contentView" id="6">
+                <rect key="frame" x="0.0" y="0.0" width="510" height="447"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4SD-Qr-9gz">
+                        <rect key="frame" x="0.0" y="425" width="510" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" placeholderString="New task..." drawsBackground="YES" usesSingleLineMode="YES" id="Zzr-Le-XIh">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <action selector="addNewTask:" target="-2" id="y7y-5H-mBy"/>
+                        </connections>
+                    </textField>
+                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1v-eN-hR0">
+                        <rect key="frame" x="0.0" y="-1" width="511" height="428"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <clipView key="contentView" id="5aa-vY-NrO">
+                            <rect key="frame" x="1" y="1" width="509" height="426"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" emptySelection="NO" autosaveColumns="NO" id="FD8-v3-r5U" customClass="TTMTableView">
+                                    <rect key="frame" x="0.0" y="0.0" width="509" height="426"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <size key="intercellSpacing" width="3" height="2"/>
+                                    <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                    <tableColumns>
+                                        <tableColumn identifier="rawText" width="506" minWidth="100" maxWidth="10000" id="Psh-Gi-D1c">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="rawText">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="B31-jc-X0I">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES"/>
+                                            <connections>
+                                                <binding destination="z03-iY-Esn" name="value" keyPath="arrangedObjects.rawText" id="Lqe-ON-xdz"/>
+                                            </connections>
+                                        </tableColumn>
+                                    </tableColumns>
+                                    <connections>
+                                        <outlet property="arrayController" destination="z03-iY-Esn" id="bhj-9Q-7nI"/>
+                                        <outlet property="delegate" destination="7KH-TF-RVa" id="RKc-xT-RyP"/>
+                                        <outlet property="parentDocument" destination="-2" id="rdR-3Y-03G"/>
+                                    </connections>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="ciJ-RQ-uYU">
+                            <rect key="frame" x="1" y="411" width="509" height="16"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="hIl-mE-RGE">
+                            <rect key="frame" x="-15" y="17" width="16" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="C1v-eN-hR0" secondAttribute="bottom" constant="-1" id="Ef7-Lg-uvt"/>
+                    <constraint firstItem="C1v-eN-hR0" firstAttribute="top" secondItem="6" secondAttribute="top" constant="20" symbolic="YES" id="Qqt-lz-kAM"/>
+                    <constraint firstItem="4SD-Qr-9gz" firstAttribute="top" secondItem="6" secondAttribute="top" id="Xl3-Ac-f80"/>
+                    <constraint firstAttribute="trailing" secondItem="4SD-Qr-9gz" secondAttribute="trailing" id="dtL-W5-fiB"/>
+                    <constraint firstAttribute="trailing" secondItem="C1v-eN-hR0" secondAttribute="trailing" constant="-1" id="fuc-oy-kfe"/>
+                    <constraint firstItem="C1v-eN-hR0" firstAttribute="leading" secondItem="4SD-Qr-9gz" secondAttribute="leading" id="glf-eq-RM7"/>
+                    <constraint firstItem="4SD-Qr-9gz" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="mxC-0t-ncl"/>
+                </constraints>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="EFA160F5-7EE6-497B-A420-285FEC4CA73E" displayMode="iconOnly" sizeMode="small" id="Tbe-3z-Gsw">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="TsP-HY-mda"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="vH0-si-Xug"/>
+                    <toolbarItem implicitItemIdentifier="B4880FAB-0558-4D02-A666-EB071DE8A773" label="Find" paletteLabel="Find" id="a5W-c1-Nr2">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="96" height="22"/>
+                        <size key="maxSize" width="96" height="22"/>
+                        <searchField key="view" verticalHuggingPriority="750" id="MtW-Mu-7ja">
+                            <rect key="frame" x="0.0" y="14" width="96" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="iTq-XW-8IB">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </searchFieldCell>
+                            <connections>
+                                <binding destination="z03-iY-Esn" name="predicate" keyPath="filterPredicate" id="BCD-jx-NVb">
+                                    <dictionary key="options">
+                                        <string key="NSDisplayName">predicate</string>
+                                        <string key="NSPredicateFormat">rawText contains[cd] $value</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </searchField>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="vH0-si-Xug"/>
+                    <toolbarItem reference="a5W-c1-Nr2"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="17"/>
+            </connections>
+        </window>
+        <arrayController objectClassName="TTMTask" automaticallyRearrangesObjects="YES" id="z03-iY-Esn">
+            <connections>
+                <binding destination="-2" name="filterPredicate" keyPath="self.activeFilterPredicate" id="sjF-mO-jcs"/>
+                <binding destination="-2" name="contentArray" keyPath="taskList" id="UcI-X7-aws"/>
+            </connections>
+        </arrayController>
+        <customObject id="-3" userLabel="Application"/>
+        <userDefaultsController representsSharedInstance="YES" id="ZDT-kG-QuA"/>
+        <customObject id="7KH-TF-RVa" customClass="TTMTableViewDelegate">
+            <connections>
+                <outlet property="arrayController" destination="z03-iY-Esn" id="Ubt-Jk-Mir"/>
+            </connections>
+        </customObject>
+    </objects>
+</document>
