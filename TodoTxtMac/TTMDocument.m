@@ -91,6 +91,8 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
         [[self undoManager] disableUndoRegistration];
         _taskList = [[NSMutableArray alloc] init];
         _arrayController = [[NSArrayController alloc] initWithContent:_taskList];
+        _preferredLineEnding = @"\n";
+        _usesWindowsLineEndings = NO;
         [[self undoManager] enableUndoRegistration];
     }
     return self;
