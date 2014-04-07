@@ -1,0 +1,234 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>TodoTxtMac</title>
+  <meta name="description" content="TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X (10.8 Mountain Lion and higher) that conforms to the todo.txt format spec.">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">TodoTxtMac</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X (10.8 Mountain Lion and higher) that conforms to the todo.txt format spec.</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/mjdescy/TodoTxtMac/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/mjdescy/TodoTxtMac/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/mjdescy/TodoTxtMac" class="code">View TodoTxtMac on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h1>
+<a name="todotxtmac" class="anchor" href="#todotxtmac"><span class="octicon octicon-link"></span></a>TodoTxtMac</h1>
+
+<h1>
+<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h1>
+
+<p>TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X (10.8 Mountain Lion and higher) that conforms to the todo.txt format spec.</p>
+
+<h1>
+<a name="goals" class="anchor" href="#goals"><span class="octicon octicon-link"></span></a>Goals</h1>
+
+<p>This application is inspired by the <a href="http://benrhughes.github.io/todotxt.net/">todotxt.net</a> application for Microsoft Windows, with numerous improvements and modifications specific to the Mac OS X platform.</p>
+
+<p>From a design perspective, the goal is to be the fastest, simplest, and cleanest implementation possible.</p>
+
+<h1>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h1>
+
+<h2>
+<a name="general-features" class="anchor" href="#general-features"><span class="octicon octicon-link"></span></a>General features</h2>
+
+<ul>
+<li>Full compliance with the todo.txt format spec.</li>
+<li>Fully keyboard-driven, with one-key bindings for commonly-used commands.</li>
+<li>Multiple selection in the task list.</li>
+<li>Shortcuts to toggle completion, change priority, set due dates, and delete all selected tasks.</li>
+<li>Archive completed tasks (to done.txt), either on command or automatically.</li>
+<li>Preserves Windows or Unix line endings in the todo.txt file for cross-platform compatability.</li>
+</ul><h2>
+<a name="addingremoving-tasks" class="anchor" href="#addingremoving-tasks"><span class="octicon octicon-link"></span></a>Adding/removing tasks</h2>
+
+<ul>
+<li>Paste one or more tasks into the task list from the clipboard.</li>
+<li>Import one or more tasks into the task list via drag-and-drop.</li>
+<li>Optionally prepend the task creation task on newly created tasks (including those pasted in from the clipboard).</li>
+<li>Copy selected tasks to the clipboard.</li>
+<li>Reload file on command.</li>
+</ul><h2>
+<a name="sorting-and-filtering" class="anchor" href="#sorting-and-filtering"><span class="octicon octicon-link"></span></a>Sorting and filtering</h2>
+
+<ul>
+<li>Sort task list by priority, project, context, due date, etc.</li>
+<li>Filter task list.</li>
+<li>Quick filters: preset filters mapped to number keys.</li>
+<li>Search field for quick, ad-hoc filtering of the task list.</li>
+</ul><h2>
+<a name="due-dates" class="anchor" href="#due-dates"><span class="octicon octicon-link"></span></a>Due dates</h2>
+
+<ul>
+<li>Set arbitrary due dates on selected tasks.</li>
+<li>Increment, decrement, or remove due dates.</li>
+<li>Postpone tasks by X (user-entered) days.</li>
+<li>Supports relative due dates, such as "due:tomorrow" and "due:Saturday" for new tasks. These strings can be localized.</li>
+</ul><h2>
+<a name="fonts-and-colors" class="anchor" href="#fonts-and-colors"><span class="octicon octicon-link"></span></a>Fonts and colors</h2>
+
+<ul>
+<li>User-customizable font for the task list.</li>
+<li>Bold priorities in task list.</li>
+<li>Colors completed tasks in light gray and applies strikethrough.</li>
+<li>Colors overdue tasks in purple and tasks due today in red. Both these colors are user customizable.</li>
+<li>Colors projects and contexts in dark gray in task list. Both these colors are user customizable.</li>
+</ul><h2>
+<a name="mac-specific-user-interface-features" class="anchor" href="#mac-specific-user-interface-features"><span class="octicon octicon-link"></span></a>Mac-specific user interface features</h2>
+
+<ul>
+<li>Autosave on change. (Note that the title bar will say "Edited" even after autosaving, because this is the Mac's default behavior.)</li>
+<li>Autocomplete project names.</li>
+<li>Autocomplete context names.</li>
+<li>Multiple document interface.</li>
+<li>Full screen mode.</li>
+<li>Open todo.txt files by dragging and dropping them onto the application icon.</li>
+<li>Application is sandboxed to only read/write to your todo.txt files and your done.txt file.</li>
+</ul><h1>
+<a name="keyboard-shortcuts" class="anchor" href="#keyboard-shortcuts"><span class="octicon octicon-link"></span></a>Keyboard Shortcuts</h1>
+
+<h2>
+<a name="working-with-tasks" class="anchor" href="#working-with-tasks"><span class="octicon octicon-link"></span></a>Working with tasks</h2>
+
+<ul>
+<li>n: new task</li>
+<li>j: move down to next task</li>
+<li>k: move up to previous task</li>
+<li>x: toggle task completion</li>
+<li>d or Backspace: delete task (with confirmation)</li>
+<li>u or Enter: update task</li>
+<li>p: postpone task by X (user-entered) days</li>
+<li>s: set due date</li>
+<li>a: archive completed tasks (archive file done.txt must be set)</li>
+<li>Command+Up: Increase priority</li>
+<li>Command+Down: Decrease priority</li>
+<li>Command+Left or Command+Right: Remove priority</li>
+<li>Command+C: Copy selected tasks to the clipboard</li>
+<li>Command+Shift+V: Paste tasks into the task list from the clipboard</li>
+<li>Command+Option+Up: Increase due date by 1 day</li>
+<li>Command+Option+Down: Decrease due date by 1 day</li>
+<li>Command+Option+Left or Command+Option+Right: Remove due date</li>
+</ul><h2>
+<a name="working-with-files" class="anchor" href="#working-with-files"><span class="octicon octicon-link"></span></a>Working with files</h2>
+
+<ul>
+<li>Command+N: new file</li>
+<li>Command+O: open file</li>
+<li>Command+S: save file (forces the file to save immediately)</li>
+<li>.: reload file</li>
+</ul><h2>
+<a name="sorting-the-task-list" class="anchor" href="#sorting-the-task-list"><span class="octicon octicon-link"></span></a>Sorting the task list</h2>
+
+<ul>
+<li>Command+0: order in file</li>
+<li>Command+1: priority</li>
+<li>Command+2: project</li>
+<li>Command+3: context</li>
+<li>Command+4: due date</li>
+<li>Command+5: creation date</li>
+<li>Command+6: completion date</li>
+<li>Command+7: alphabetical</li>
+</ul><h2>
+<a name="filtering-the-task-list" class="anchor" href="#filtering-the-task-list"><span class="octicon octicon-link"></span></a>Filtering the task list</h2>
+
+<ul>
+<li>f: define quick filters</li>
+<li>1: apply quick filter 1</li>
+<li>2: apply quick filter 2</li>
+<li>3: apply quick filter 3</li>
+<li>4: apply quick filter 4</li>
+<li>5: apply quick filter 5</li>
+<li>6: apply quick filter 6</li>
+<li>7: apply quick filter 7</li>
+<li>8: apply quick filter 8</li>
+<li>9: apply quick filter 9</li>
+<li>0: remove applied filter</li>
+</ul><h2>
+<a name="caveatsfeatures-not-planned" class="anchor" href="#caveatsfeatures-not-planned"><span class="octicon octicon-link"></span></a>Caveats/Features Not Planned</h2>
+
+<ul>
+<li>This application is not meant for direct reordering of tasks in the todo.txt file.</li>
+<li>This application does not retain blank lines in the todo.txt file.</li>
+</ul><h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>This application is dual-licensed under the GNU General Public License and the MIT License. See LICENSE.txt for full license information.</p>
+
+<h1>
+<a name="for-contributors" class="anchor" href="#for-contributors"><span class="octicon octicon-link"></span></a>For Contributors</h1>
+
+<h2>
+<a name="source-code-conventions" class="anchor" href="#source-code-conventions"><span class="octicon octicon-link"></span></a>Source Code Conventions</h2>
+
+<p>I am striving for very clean code. I am following the following general coding conventions:</p>
+
+<ul>
+<li>For clarify, Limit nesting of brackets to two sets per line, as in: <code>[[thisString stringValue] isEqualToString:@"otherStringValue"]</code>
+</li>
+<li>Maximum line length of 100 characters.</li>
+<li>Indent with spaces rather than tabs.</li>
+<li>Always use curly braces for conditionals and loops.</li>
+<li>Use descriptive variable and method names.</li>
+</ul><h2>
+<a name="pull-requests" class="anchor" href="#pull-requests"><span class="octicon octicon-link"></span></a>Pull Requests</h2>
+
+<p>The project uses <a href="https://github.com/nvie/gitflow">git-flow</a> to implement Vincent Driessen's <a href="http://nvie.com/posts/a-successful-git-branching-model/">branching model</a>. All pull requests should be directed at the "develop" branch.</p>
+
+<h1>
+<a name="creditsthanks" class="anchor" href="#creditsthanks"><span class="octicon octicon-link"></span></a>Credits/Thanks</h1>
+
+<p>Thanks to Gina Tripani who created the <a href="http://www.todotxt.com">Todo.txt</a> format and the community of developers who created the command line tools and iOS/Android apps.</p>
+
+<p>Thanks to Ben Hughes whose Windows application <a href="http://benrhughes.github.io/todotxt.net/">todotxt.net</a> formed the basis of this application's design and feature set. Todotxt.net is a fantastic program and did not have an analog on the Mac. After starting my application, I contributed some patches to todotxt.net and am happy to be a contributor on such a great project.</p>
+
+<p>Thanks to Josh Wright &lt;<a href="https://github.com/BendyTree" class="user-mention">@BendyTree</a>&gt; for his <a href="https://github.com/bendytree/Objective-C-RegEx-Categories">RegExCategories</a> library.</p>
+
+<p>Thanks to kuba for the image used as the icon. Image Credit: <a href="http://vector.me/browse/329308/ok_icon">OK Icon</a> from <a href="http://vector.me/">Vector.me</a> (by kuba)</p>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/mjdescy" class="avatar"><img src="https://avatars3.githubusercontent.com/u/6806258?s=60" width="48" height="48"/></a> <a href="https://github.com/mjdescy">mjdescy</a> maintains <a href="https://github.com/mjdescy/TodoTxtMac">TodoTxtMac</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="http://pages.github.com/">GitHub Pages</a><br/>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/mjdescy/TodoTxtMac/tarball/master" class="tar">tar</a><a href="https://github.com/mjdescy/TodoTxtMac/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>
