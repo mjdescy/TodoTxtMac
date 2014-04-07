@@ -91,6 +91,8 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
         [[self undoManager] disableUndoRegistration];
         _taskList = [[NSMutableArray alloc] init];
         _arrayController = [[NSArrayController alloc] initWithContent:_taskList];
+        _preferredLineEnding = @"\n";
+        _usesWindowsLineEndings = NO;
         [[self undoManager] enableUndoRegistration];
     }
     return self;
@@ -169,8 +171,11 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     // Read file contents.
     NSString *fileContents = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     if (!fileContents) {
-        *outError = [NSError errorWithDomain:NSCocoaErrorDomain
-                                        code:NSFileReadUnknownError userInfo:nil];
+        if (outError != nil) {
+            *outError = [NSError errorWithDomain:NSCocoaErrorDomain
+                                            code:NSFileReadUnknownError
+                                        userInfo:nil];
+        }
         return NO;
     }
 

@@ -38,6 +38,8 @@
 		00EC5EA118E3BC920021242B /* TTMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EC5EA018E3BC920021242B /* TTMAppDelegate.m */; };
 		00F3961218C6AC010002EA3F /* TTMTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F3961118C6AC010002EA3F /* TTMTableView.m */; };
 		00F811EF18D53F7300379B99 /* TTMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F811ED18D53F7300379B99 /* TTMPreferencesController.m */; };
+		00FA1D2818F1EF340066A437 /* FontNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FA1D2718F1EF340066A437 /* FontNameTransformer.m */; };
+		00FA1D2A18F1EF4C0066A437 /* RelativeDates.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00FA1D2918F1EF4C0066A437 /* RelativeDates.strings */; };
 		00FCB2F918DB64510070BD4A /* TTMFilters.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FCB2F818DB64510070BD4A /* TTMFilters.xib */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +108,9 @@
 		00F3961118C6AC010002EA3F /* TTMTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTableView.m; sourceTree = "<group>"; };
 		00F811EC18D53F7300379B99 /* TTMPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPreferencesController.h; sourceTree = "<group>"; };
 		00F811ED18D53F7300379B99 /* TTMPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPreferencesController.m; sourceTree = "<group>"; };
+		00FA1D2618F1EF340066A437 /* FontNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontNameTransformer.h; sourceTree = "<group>"; };
+		00FA1D2718F1EF340066A437 /* FontNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontNameTransformer.m; sourceTree = "<group>"; };
+		00FA1D2918F1EF4C0066A437 /* RelativeDates.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = RelativeDates.strings; sourceTree = "<group>"; };
 		00FCB2F818DB64510070BD4A /* TTMFilters.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMFilters.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,8 +166,13 @@
 		0080EAA118D388770014DDD1 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				0026614318F1EC2000A9562A /* FontNameTransformer.h */,
 				0026614418F1EC2000A9562A /* FontNameTransformer.m */,
+=======
+				00FA1D2618F1EF340066A437 /* FontNameTransformer.h */,
+				00FA1D2718F1EF340066A437 /* FontNameTransformer.m */,
+>>>>>>> release/1.0.1
 				00930EAF18B537C10064D41B /* TTMDateUtility.h */,
 				00930EB018B537C10064D41B /* TTMDateUtility.m */,
 				00930EA818B536B00064D41B /* RegExCategories.h */,
@@ -231,6 +241,7 @@
 		00B4CBA218B43E8400313DAA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				00FA1D2918F1EF4C0066A437 /* RelativeDates.strings */,
 				00B4CBA318B43E8400313DAA /* TodoTxtMac-Info.plist */,
 				00B4CBA418B43E8400313DAA /* InfoPlist.strings */,
 				00B4CBA718B43E8400313DAA /* main.m */,
@@ -381,6 +392,7 @@
 			files = (
 				0080EAA518D3E96C0014DDD1 /* TTMPreferences.xib in Resources */,
 				00FCB2F918DB64510070BD4A /* TTMFilters.xib in Resources */,
+				00FA1D2A18F1EF4C0066A437 /* RelativeDates.strings in Resources */,
 				00B4CBB218B43E8400313DAA /* TTMDocument.xib in Resources */,
 				00B4CBB718B43E8500313DAA /* Images.xcassets in Resources */,
 				00B4CBA618B43E8400313DAA /* InfoPlist.strings in Resources */,
@@ -411,7 +423,11 @@
 				00930EAD18B5371B0064D41B /* TTMTask.m in Sources */,
 				00F3961218C6AC010002EA3F /* TTMTableView.m in Sources */,
 				00930EB118B537C10064D41B /* TTMDateUtility.m in Sources */,
+<<<<<<< HEAD
 				0026614518F1EC2000A9562A /* FontNameTransformer.m in Sources */,
+=======
+				00FA1D2818F1EF340066A437 /* FontNameTransformer.m in Sources */,
+>>>>>>> release/1.0.1
 				0086C98518B54F1A00A427AA /* TTMTableViewDelegate.m in Sources */,
 				00B4CBAF18B43E8400313DAA /* TTMDocument.m in Sources */,
 				00930EAA18B536B00064D41B /* RegExCategories.m in Sources */,
