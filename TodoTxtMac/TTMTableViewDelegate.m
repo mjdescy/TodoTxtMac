@@ -114,7 +114,7 @@ static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
         NSColor *contextsColor = ([[NSUserDefaults standardUserDefaults]
                                   boolForKey:@"useCustomColorForContexts"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"contextColor"] :
-            [NSColor purpleColor];
+            [NSColor darkGrayColor];
         
         // Color due texts.
         if (task.dueState == DueToday) {
