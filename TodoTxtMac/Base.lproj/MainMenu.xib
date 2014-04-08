@@ -128,17 +128,6 @@
                                     <action selector="archiveCompletedTasks:" target="-1" id="yya-aD-oKe"/>
                                 </connections>
                             </menuItem>
-                            <menuItem isSeparatorItem="YES" id="q1U-Pp-bHw"/>
-                            <menuItem title="Page Setup…" keyEquivalent="P" id="o77-7V-JYZ">
-                                <connections>
-                                    <action selector="runPageLayout:" target="-1" id="Non-K8-2Y8"/>
-                                </connections>
-                            </menuItem>
-                            <menuItem title="Print…" keyEquivalent="p" id="QHL-qq-Ltq">
-                                <connections>
-                                    <action selector="print:" target="-1" id="cQD-z2-zgp"/>
-                                </connections>
-                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
