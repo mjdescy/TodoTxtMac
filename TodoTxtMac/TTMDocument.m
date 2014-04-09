@@ -306,7 +306,7 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     [NSApp postEvent:newEvent atStart:YES];
 }
 
-- (IBAction)addNewTasksFromClipboard:(id)sender {
+- (void)addNewTasksFromClipboard:(id)sender {
     [self addNewTasksFromPasteBoard:[NSPasteboard generalPasteboard]];
 }
 
@@ -724,6 +724,10 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     NSString *clipboardTextString = [selectedTasksRawText componentsJoinedByString:@"\n"];
     [[NSPasteboard generalPasteboard] clearContents];
     [[NSPasteboard generalPasteboard] setString:clipboardTextString forType:NSStringPboardType];
+}
+
+- (IBAction)paste:(id)sender {
+    [self addNewTasksFromClipboard:self];
 }
 
 #pragma mark - Autocompletion Methods
