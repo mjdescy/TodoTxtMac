@@ -151,8 +151,7 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
  * @abstract Adds tasks on the clipboard (one or more tasks separated by line breaks)
  * to the task list.
  */
-
-- (IBAction)addNewTasksFromClipboard:(id)sender;
+- (void)addNewTasksFromClipboard:(id)sender;
 
 /*!
  * @method addNewTasksFromDragAndDrop:
