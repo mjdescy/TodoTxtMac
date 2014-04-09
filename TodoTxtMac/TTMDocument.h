@@ -63,6 +63,8 @@ typedef enum : NSUInteger {
     TTMSortAlphabetical
 } TTMTaskListSortType;
 
+typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
+
 @interface TTMDocument : NSDocument
 
 #pragma mark - Properties
@@ -100,7 +102,7 @@ typedef enum : NSUInteger {
  */
 - (IBAction)reloadFile:(id)sender;
 
-#pragma mark - Add/remove Task(s) methods
+#pragma mark - Add/Remove Task(s) methods
 
 /*!
  * @method createWorkingTaskWithRawText:createWorkingTaskWithRawText
@@ -115,19 +117,6 @@ typedef enum : NSUInteger {
  * @abstract Moves focus to the new task text field so the user can type in a new task.
  */
 - (IBAction)moveFocusToNewTaskTextField:(id)sender;
-
-/*!
- * @method addNewTask:
- * @abstract Adds a new task to the task list based on the content of the text field.
- */
-- (IBAction)addNewTask:(id)sender;
-
-/*!
- * @method tabFromTextFieldToTaskList:
- * @abstract Simulate a tab keypress to move from the text field to the task list.
- * @discussion This method is optionally called in the addNewTask: method.
- */
-- (void)tabFromTextFieldToTaskList;
 
 /*!
  * @method removeAllTasks:
@@ -145,8 +134,22 @@ typedef enum : NSUInteger {
 - (void)addTasksFromArray:(NSArray*)rawTextStrings removeAllTasksFirst:(BOOL)removeAllRecordsFirst;
 
 /*!
+ * @method addNewTask:
+ * @abstract Adds a new task to the task list based on the content of the text field.
+ */
+- (IBAction)addNewTask:(id)sender;
+
+/*!
+ * @method tabFromTextFieldToTaskList:
+ * @abstract Simulate a tab keypress to move from the text field to the task list.
+ * @discussion This method is optionally called in the addNewTask: method.
+ */
+- (void)tabFromTextFieldToTaskList;
+
+/*!
  * @method addNewTasksFromClipboard:
- * @abstract Add tasks from the clipboard (paste).
+ * @abstract Adds tasks on the clipboard (one or more tasks separated by line breaks)
+ * to the task list.
  */
 
 - (IBAction)addNewTasksFromClipboard:(id)sender;
@@ -158,7 +161,7 @@ typedef enum : NSUInteger {
 - (IBAction)addNewTasksFromDragAndDrop:(id)sender;
 
 /*!
- * @method addNewTasksFromPasteBoard
+ * @method addNewTasksFromPasteBoard:
  * @abstract Adds tasks from a pasteboard to the task list.
  * @param pasteboard The pasteboard, either the general pasteboard or the dragging pasteboard.
  * @discussion This is a convenience method called from both addNewTasksFromClipboard: and
@@ -166,9 +169,13 @@ typedef enum : NSUInteger {
  */
 - (void)addNewTasksFromPasteBoard:(NSPasteboard*)pasteboard;
 
+#pragma mark - Update Task Methods
+
 /*!
  * @method refreshTaskListWithSave:
- * @abstract Refresh the task list by reloading it from the file.
+ * @abstract Refresh the task list array controller and table view, and refresh
+ * the lists of projects and contexts used for autocompletion. Optionally save the
+ * file prior to calling the refresh.
  * @param saveToFile Set to YES to save the file before the refresh.
  */
 - (void)refreshTaskListWithSave:(BOOL)saveToFile;
@@ -180,18 +187,24 @@ typedef enum : NSUInteger {
 - (IBAction)updateSelectedTask:(id)sender;
 
 /*!
- * @method deleteSelectedTasks:
- * @abstract Delete selected tasks in the task list.
+ * @method forEachSelectedTaskExecuteBlock:
+ * @abstract Executes a block for each selected task in the task list.
+ * @param block A TaskChangeBlock that performs an action on a TTMTask object.
+ * @discussion This method is called by various other methods in this class.
  */
-- (IBAction)deleteSelectedTasks:(id)sender;
-
-#pragma mark - Toggle Completion Method
+- (void)forEachSelectedTaskExecuteBlock:(TaskChangeBlock)block;
 
 /*!
  * @method toggleTaskCompletion:
  * @abstract Marks incomplete tasks completed. Marks complete tasks incomplete.
  */
 - (IBAction)toggleTaskCompletion:(id)sender;
+
+/*!
+ * @method deleteSelectedTasks:
+ * @abstract Delete selected tasks in the task list.
+ */
+- (IBAction)deleteSelectedTasks:(id)sender;
 
 #pragma mark - Priority Methods
 
@@ -332,17 +345,78 @@ typedef enum : NSUInteger {
 
 #pragma mark - Filter Methods
 
+/*!
+ * @method removeTaskListFilter:
+ * @abstract Removes the filter on the task list.
+ */
 - (IBAction)removeTaskListFilter:(id)sender;
+
+/*!
+ * @method applyTaskListFilter1:
+ * @abstract Applies user-defined filter 1 to the task list.
+ */
 - (IBAction)applyTaskListFilter1:(id)sender;
+
+/*!
+ * @method applyTaskListFilter2:
+ * @abstract Applies user-defined filter 2 to the task list.
+ */
 - (IBAction)applyTaskListFilter2:(id)sender;
+
+/*!
+ * @method applyTaskListFilter3:
+ * @abstract Applies user-defined filter 3 to the task list.
+ */
 - (IBAction)applyTaskListFilter3:(id)sender;
+
+/*!
+ * @method applyTaskListFilter4:
+ * @abstract Applies user-defined filter 4 to the task list.
+ */
+
 - (IBAction)applyTaskListFilter4:(id)sender;
+
+/*!
+ * @method applyTaskListFilter5:
+ * @abstract Applies user-defined filter 5 to the task list.
+ */
 - (IBAction)applyTaskListFilter5:(id)sender;
+
+/*!
+ * @method applyTaskListFilter1:
+ * @abstract Applies user-defined filter 6 to the task list.
+ */
 - (IBAction)applyTaskListFilter6:(id)sender;
+
+/*!
+ * @method applyTaskListFilter7:
+ * @abstract Applies user-defined filter 7 to the task list.
+ */
 - (IBAction)applyTaskListFilter7:(id)sender;
+
+/*!
+ * @method applyTaskListFilter8:
+ * @abstract Applies user-defined filter 8 to the task list.
+ */
 - (IBAction)applyTaskListFilter8:(id)sender;
+
+/*!
+ * @method applyTaskListFilter9:
+ * @abstract Applies user-defined filter 9 to the task list.
+ */
 - (IBAction)applyTaskListFilter9:(id)sender;
+
+/*!
+ * @method reapplyActiveFilterPredicate:
+ * @abstract Applies the active filter to the task list.
+ */
 - (void)reapplyActiveFilterPredicate;
+
+/*!
+ * @method changeActiveFilterPredicateToPreset:
+ * @abstract Changes the active filter preset to the one the user selected.
+ * @param presetNumber The preset number the user selected.
+ */
 - (void)changeActiveFilterPredicateToPreset:(NSUInteger)presetNumber;
 
 #pragma mark - Archive Methods

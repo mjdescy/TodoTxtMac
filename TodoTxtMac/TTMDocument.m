@@ -51,8 +51,6 @@
 #import "TTMFieldEditor.h"
 #import "RegExCategories.h"
 
-typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
-
 @implementation TTMDocument
 
 #pragma mark - Instance Variables and Blocks
@@ -308,23 +306,14 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     [NSApp postEvent:newEvent atStart:YES];
 }
 
-/*!
- * @abstract Adds tasks on the clipboard (multiple tasks separated by line breaks) to the task list
- */
 - (IBAction)addNewTasksFromClipboard:(id)sender {
     [self addNewTasksFromPasteBoard:[NSPasteboard generalPasteboard]];
 }
 
-/*!
- * @abstract Adds tasks on the clipboard (multiple tasks separated by line breaks) to the task list
- */
 - (void)addNewTasksFromDragAndDrop:(id)sender {
     [self addNewTasksFromPasteBoard:[sender draggingPasteboard]];
 }
 
-/*!
- * @abstract Adds tasks from a pasteboard (copy/paste or drag and drop)
- */
 - (void)addNewTasksFromPasteBoard:(NSPasteboard*)pasteboard {
     NSString *pasteboardText = [pasteboard stringForType:NSPasteboardTypeString];
     if ([pasteboardText length] == 0) {
@@ -362,7 +351,7 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     [self.tableView editColumn:0 row:[self.tableView selectedRow] withEvent:nil select:YES];
 }
 
-- (void)forEachSelectedTaskExecuteBlock:(TaskChangeBlock)block;{
+- (void)forEachSelectedTaskExecuteBlock:(TaskChangeBlock)block {
     [[self.arrayController arrangedObjects]
      enumerateObjectsAtIndexes:[self.arrayController selectionIndexes]
                        options:0
@@ -377,6 +366,25 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     }
 }
 
+- (IBAction)deleteSelectedTasks:(id)sender {
+    NSAlert *deletePrompt =
+    [NSAlert alertWithMessageText:@"Delete"
+                    defaultButton:@"OK"
+                  alternateButton:@"Cancel"
+                      otherButton:nil
+        informativeTextWithFormat:@"Are you sure you want to delete all selected tasks?"];
+    [deletePrompt beginSheetModalForWindow:self.windowForSheet
+                         completionHandler:^(NSModalResponse returnCode) {
+                             if (returnCode == NSAlertDefaultReturn) {
+                                 [self.arrayController removeObjectsAtArrangedObjectIndexes:[self.tableView
+                                                                                             selectedRowIndexes]];
+                                 [self refreshTaskListWithSave:YES];
+                             }
+                         }];
+}
+
+#pragma mark - Priority Methods
+
 - (IBAction)increasePriority:(id)sender {
     [self forEachSelectedTaskExecuteBlock:_increaseTaskPriority];
 }
@@ -387,44 +395,6 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
 
 - (IBAction)removePriority:(id)sender {
     [self forEachSelectedTaskExecuteBlock:_removeTaskPriority];
-}
-
-- (IBAction)deleteSelectedTasks:(id)sender {
-    NSAlert *deletePrompt =
-        [NSAlert alertWithMessageText:@"Delete"
-                        defaultButton:@"OK"
-                      alternateButton:@"Cancel"
-                          otherButton:nil
-            informativeTextWithFormat:@"Are you sure you want to delete all selected tasks?"];
-    [deletePrompt beginSheetModalForWindow:self.windowForSheet
-                         completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode == NSAlertDefaultReturn) {
-            [self.arrayController removeObjectsAtArrangedObjectIndexes:[self.tableView
-                                                                        selectedRowIndexes]];
-            [self refreshTaskListWithSave:YES];
-        }
-    }];
-}
-
-#pragma mark - NSDocument Method Overrides
-
-// Override normal copy handler to copy selected tasks from the task list.
-// This does not get called when the field editor is active.
-- (IBAction)copy:(id)sender {
-    NSMutableArray *selectedTasksRawText = [[NSMutableArray alloc] init];
-    NSIndexSet *selectedRowIndexes = [self.arrayController selectionIndexes];
-    
-    for (NSUInteger i = [selectedRowIndexes firstIndex];
-         i != NSNotFound;
-         i = [selectedRowIndexes indexGreaterThanIndex:i]) {
-        NSString *rawText = [(TTMTask*)[[self.arrayController arrangedObjects]
-                                        objectAtIndex:i] rawText];
-        [selectedTasksRawText addObject:rawText];
-    }
-
-    NSString *clipboardTextString = [selectedTasksRawText componentsJoinedByString:@"\n"];
-    [[NSPasteboard generalPasteboard] clearContents];
-    [[NSPasteboard generalPasteboard] setString:clipboardTextString forType:NSStringPboardType];
 }
 
 # pragma mark - Postpone/Due Date Methods
@@ -733,6 +703,27 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
                     encoding:NSUTF8StringEncoding
                        error:nil];
     }
+}
+
+#pragma mark - NSDocument Method Overrides
+
+// Override normal copy handler to copy selected tasks from the task list.
+// This does not get called when the field editor is active.
+- (IBAction)copy:(id)sender {
+    NSMutableArray *selectedTasksRawText = [[NSMutableArray alloc] init];
+    NSIndexSet *selectedRowIndexes = [self.arrayController selectionIndexes];
+    
+    for (NSUInteger i = [selectedRowIndexes firstIndex];
+         i != NSNotFound;
+         i = [selectedRowIndexes indexGreaterThanIndex:i]) {
+        NSString *rawText = [(TTMTask*)[[self.arrayController arrangedObjects]
+                                        objectAtIndex:i] rawText];
+        [selectedTasksRawText addObject:rawText];
+    }
+    
+    NSString *clipboardTextString = [selectedTasksRawText componentsJoinedByString:@"\n"];
+    [[NSPasteboard generalPasteboard] clearContents];
+    [[NSPasteboard generalPasteboard] setString:clipboardTextString forType:NSStringPboardType];
 }
 
 #pragma mark - Autocompletion Methods
