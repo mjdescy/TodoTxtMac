@@ -233,6 +233,10 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     return workingTask;
 }
 
+- (IBAction)moveFocusToNewTaskTextField:(id)sender {
+    [self.textField becomeFirstResponder];
+}
+
 - (void)removeAllTasks {
     if ([[self.arrayController arrangedObjects] count] > 0) {
         NSRange range = NSMakeRange(0, [[self.arrayController arrangedObjects] count]);

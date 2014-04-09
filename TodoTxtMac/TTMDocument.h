@@ -111,6 +111,12 @@ typedef enum : NSUInteger {
 - (TTMTask*)createWorkingTaskWithRawText:(NSString*)rawText withTaskId:(NSUInteger)newTaskId;
 
 /*!
+ * @method moveFocusToNewTaskTextField:
+ * @abstract Moves focus to the new task text field so the user can type in a new task.
+ */
+- (IBAction)moveFocusToNewTaskTextField:(id)sender;
+
+/*!
  * @method addNewTask:
  * @abstract Adds a new task to the task list based on the content of the text field.
  */
