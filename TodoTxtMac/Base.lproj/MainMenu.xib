@@ -186,11 +186,6 @@
                                     <action selector="moveFocusToNewTaskTextField:" target="-1" id="897-Hc-KbJ"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Paste Tasks from Clipboard" keyEquivalent="V" id="ZHI-ut-qg7">
-                                <connections>
-                                    <action selector="addNewTasksFromClipboard:" target="-1" id="gtA-eC-cv0"/>
-                                </connections>
-                            </menuItem>
                             <menuItem title="Update" keyEquivalent="u" id="HxV-pn-JsT">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
