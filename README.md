@@ -63,7 +63,6 @@ From a design perspective, the goal is to be the fastest, simplest, and cleanest
 - Multiple document interface.
 - Full screen mode.
 - Open todo.txt files by dragging and dropping them onto the application icon.
-- Application is sandboxed to only read/write to your todo.txt files and your done.txt file.
 
 
 # Keyboard Shortcuts
