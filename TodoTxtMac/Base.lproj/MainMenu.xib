@@ -457,6 +457,12 @@ CA
                                     <action selector="showHelp:" target="-1" id="494"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="TodoTxtMac Web Site" id="II1-IX-RtO">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openWebSite:" target="7QU-ZR-XSK" id="9Ag-Y1-CGm"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
