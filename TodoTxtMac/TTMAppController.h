@@ -55,5 +55,6 @@
 
 - (IBAction)openPreferencesWindow:(id)sender;
 - (IBAction)openFiltersWindow:(id)sender;
+- (IBAction)openWebSite:(id)sender;
 
 @end

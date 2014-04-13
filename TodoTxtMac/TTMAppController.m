@@ -74,4 +74,9 @@
     [self.filtersController showWindow:self];
 }
 
+- (IBAction)openWebSite:(id)sender {
+    NSURL *helpURL = [NSURL URLWithString:@"http://mjdescy.github.io/TodoTxtMac/"];
+    [[NSWorkspace sharedWorkspace] openURL:helpURL];
+}
+
 @end
