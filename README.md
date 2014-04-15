@@ -77,6 +77,7 @@ From a design perspective, the goal is to be the fastest, simplest, and cleanest
 - u or Enter: update task
 - p: postpone task by X (user-entered) days
 - s: set due date
+- y: set priority to user-entered value (A-Z)
 - a: archive completed tasks (archive file done.txt must be set)
 - Command+Up: Increase priority
 - Command+Down: Decrease priority
