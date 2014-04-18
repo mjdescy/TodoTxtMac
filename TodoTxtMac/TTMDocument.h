@@ -208,6 +208,12 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 #pragma mark - Priority Methods
 
 /*!
+ * @method setPriority:
+ * @abstract Sets the priority for selected tasks via a modal sheet.
+ */
+- (IBAction)setPriority:(id)sender;
+
+/*!
  * @method increasePriority:
  * @abstract Increases the priority of selected tasks by 1, e.g. from B to A.
  */

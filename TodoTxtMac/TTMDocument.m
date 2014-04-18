@@ -385,6 +385,39 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
 
 #pragma mark - Priority Methods
 
+- (IBAction)setPriority:(id)sender {
+    NSAlert *alert = [NSAlert alertWithMessageText:@"Set Priority"
+                                     defaultButton:@"OK"
+                                   alternateButton:@"Cancel"
+                                       otherButton:nil
+                         informativeTextWithFormat:@"Priority:"];
+    NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 50, 24)];
+    [input setStringValue:@""];
+    [alert setAccessoryView:input];
+
+    // Define the completion handler for the modal sheet.
+    void (^priorityHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
+        if (returnCode != NSAlertDefaultReturn || [[input stringValue] length] == 0) {
+            return;
+        }
+        
+        NSString *uppercaseInputString = [[input stringValue] uppercaseString];
+        unichar priority = [uppercaseInputString characterAtIndex:0];
+        NSCharacterSet *validPriorityCharacters = [NSCharacterSet uppercaseLetterCharacterSet];
+        if (![validPriorityCharacters characterIsMember:priority]) {
+            return;
+        }
+
+        TaskChangeBlock setPriorityTaskBlock = ^(id task, NSUInteger idx, BOOL *stop) {
+            [(TTMTask*)task setPriority:priority];
+        };
+        [self forEachSelectedTaskExecuteBlock:setPriorityTaskBlock];
+        
+    };
+
+    [alert beginSheetModalForWindow:self.windowForSheet completionHandler:priorityHandler];
+}
+
 - (IBAction)increasePriority:(id)sender {
     [self forEachSelectedTaskExecuteBlock:_increaseTaskPriority];
 }

@@ -142,7 +142,7 @@
     // to different key presses) by passing them to the parent window.
     // The key equivalents are defined for the menu items in MainMenu.xib
     NSMutableCharacterSet *singleKeyCommands = [[NSMutableCharacterSet alloc] init];
-    [singleKeyCommands addCharactersInString:@"nxdfprcsa.0123456789"];
+    [singleKeyCommands addCharactersInString:@"nxdfprcsai.0123456789"];
     if ([singleKeyCommands characterIsMember:keyChar]) {
         [self translateKeyDownEvent:theEvent toKeyDown:keyChar sendToControl:[self window]];
         return;
