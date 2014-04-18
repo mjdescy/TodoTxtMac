@@ -224,7 +224,7 @@ CA
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="teR-zl-kPy"/>
-                            <menuItem title="Set Priority" keyEquivalent="y" id="xfO-3k-ZLi">
+                            <menuItem title="Set Priority" keyEquivalent="i" id="xfO-3k-ZLi">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="setPriority:" target="-1" id="akj-aP-Kcg"/>
