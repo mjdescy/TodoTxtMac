@@ -78,6 +78,7 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 
 // Window controls
 @property (nonatomic, retain) IBOutlet NSTextField *textField;
+@property (nonatomic, retain) IBOutlet NSSearchField *searchField;
 @property (nonatomic, retain) IBOutlet NSTableView *tableView;
 @property (nonatomic, retain) IBOutlet NSArrayController *arrayController;
 @property (nonatomic, retain) IBOutlet NSCell *rawTextCell;
@@ -453,5 +454,13 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
  * custom field editor to allow for autocompletion of projects and contexts.
  */
 - (void)updateProjectsAndContextsArrays;
+
+#pragma mark - Find Methods
+
+/*!
+ * @method moveFocusToSearchBox:
+ * @abstract Moves focus to the search box to find text.
+ */
+- (IBAction)moveFocusToSearchBox:(id)sender;
 
 @end

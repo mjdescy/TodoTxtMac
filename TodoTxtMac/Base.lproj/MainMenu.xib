@@ -173,6 +173,12 @@
                                     <action selector="selectAll:" target="-1" id="232"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="doJ-np-pVi"/>
+                            <menuItem title="Find" keyEquivalent="f" id="p6f-pv-EES">
+                                <connections>
+                                    <action selector="moveFocusToSearchBox:" target="-1" id="O41-7n-bnw"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
