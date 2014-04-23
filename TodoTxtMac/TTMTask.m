@@ -239,6 +239,14 @@ static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
                    value:[NSColor darkGrayColor]
                    range:match.range];
     }
+
+    // Highlight due dates.
+    matches = [self.rawText matchesWithDetails:RX(FullDueDatePattern)];
+    for (RxMatch *match in matches) {
+        [as addAttribute:NSForegroundColorAttributeName
+                   value:[NSColor darkGrayColor]
+                   range:match.range];
+    }
     
     return as;
 }

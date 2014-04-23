@@ -53,6 +53,7 @@
 
 static NSString * const ProjectPattern = @"(?<=^|\\s)(\\+[^\\s]+)";
 static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
+static NSString * const FullDueDatePattern = @"(\\sdue:)((\\d{4})-(\\d{2})-(\\d{2}))";
 
 #pragma mark - TableView Delegate Methods
 
@@ -115,6 +116,10 @@ static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
                                   boolForKey:@"useCustomColorForContexts"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"contextColor"] :
             [NSColor darkGrayColor];
+        NSColor *dueDateColor = ([[NSUserDefaults standardUserDefaults]
+                                   boolForKey:@"useCustomColorForDueDates"]) ?
+            [[NSUserDefaults standardUserDefaults] colorForKey:@"dueDateColor"] :
+            [NSColor darkGrayColor];
         
         // Color due texts.
         if (task.dueState == DueToday) {
@@ -143,6 +148,14 @@ static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
         for (RxMatch *match in matches) {
             [as addAttribute:NSForegroundColorAttributeName
                        value:contextsColor
+                       range:match.range];
+        }
+        
+        // Color due dates.
+        matches = [task.rawText matchesWithDetails:RX(FullDueDatePattern)];
+        for (RxMatch *match in matches) {
+            [as addAttribute:NSForegroundColorAttributeName
+                       value:dueDateColor
                        range:match.range];
         }
     }
