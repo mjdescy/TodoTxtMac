@@ -79,10 +79,12 @@ static NSDictionary *defaultValues() {
                 @NO, @"useCustomColorForDueTodayTasks",
                 @NO, @"useCustomColorForProjects",
                 @NO, @"useCustomColorForContexts",
+                @NO, @"useCustomColorForDueDates",
                 [NSArchiver archivedDataWithRootObject:[NSColor redColor]], @"dueTodayColor",
                 [NSArchiver archivedDataWithRootObject:[NSColor purpleColor]], @"overdueColor",
                 [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"projectColor",
                 [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"contextColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"dueDateColor",
                 nil];
     }
     return dict;
