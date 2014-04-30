@@ -16,14 +16,14 @@
         <window title="TodoTxtMac Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="481" height="371"/>
+            <rect key="contentRect" x="196" y="240" width="481" height="423"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="481" height="371"/>
+                <rect key="frame" x="0.0" y="0.0" width="481" height="423"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jj2-Ob-EWZ">
-                        <rect key="frame" x="18" y="335" width="252" height="18"/>
+                        <rect key="frame" x="18" y="387" width="252" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Prepend date on newly created tasks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Io7-mh-1Cc">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -34,7 +34,7 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EbF-No-8Sl">
-                        <rect key="frame" x="18" y="281" width="79" height="17"/>
+                        <rect key="frame" x="18" y="307" width="79" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Archive file:" id="dO7-fz-ew6">
                             <font key="font" metaFont="system"/>
@@ -43,7 +43,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kLG-5x-TgF">
-                        <rect key="frame" x="103" y="261" width="257" height="37"/>
+                        <rect key="frame" x="103" y="287" width="257" height="37"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Archive file" placeholderString="Archive file (done.txt)" drawsBackground="YES" id="ER5-Fw-tUr">
                             <font key="font" metaFont="smallSystem"/>
@@ -55,7 +55,7 @@
                         </connections>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Xb-Wn-oSq">
-                        <rect key="frame" x="362" y="270" width="107" height="32"/>
+                        <rect key="frame" x="362" y="296" width="107" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Browse..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hif-CU-wHj">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -66,7 +66,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gob-0a-fcd">
-                        <rect key="frame" x="18" y="237" width="216" height="18"/>
+                        <rect key="frame" x="18" y="263" width="216" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Archive tasks upon completion" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yjz-ct-IkY">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -77,7 +77,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aUb-St-NdM">
-                        <rect key="frame" x="217" y="191" width="60" height="32"/>
+                        <rect key="frame" x="217" y="217" width="60" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Set..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7nh-a8-lLC">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -88,7 +88,7 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d9b-fx-36a">
-                        <rect key="frame" x="279" y="197" width="184" height="22"/>
+                        <rect key="frame" x="279" y="223" width="184" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2lK-GJ-lfT">
                             <font key="font" metaFont="system"/>
@@ -104,7 +104,7 @@
                         </connections>
                     </textField>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Zh-2L-OK0">
-                        <rect key="frame" x="18" y="200" width="199" height="18"/>
+                        <rect key="frame" x="18" y="226" width="199" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Use custom font for task list" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Hux-p9-XAz">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -115,7 +115,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wFd-n2-OjV">
-                        <rect key="frame" x="18" y="311" width="274" height="18"/>
+                        <rect key="frame" x="18" y="362" width="274" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Move to newly added task after creation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7VI-d0-pcv">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -126,7 +126,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LFL-6w-UIX">
-                        <rect key="frame" x="18" y="154.5" width="448" height="18"/>
+                        <rect key="frame" x="18" y="180" width="448" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Use highlight colors for due state, projects, contexts, and due dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g4E-76-FN1">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -137,7 +137,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kOY-JE-iji">
-                        <rect key="frame" x="18" y="127" width="243" height="18"/>
+                        <rect key="frame" x="18" y="153" width="243" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Use custom color for overdue tasks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Xwh-nn-Qfj">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -148,7 +148,7 @@
                         </connections>
                     </button>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="id0-SQ-XPW">
-                        <rect key="frame" x="18" y="100" width="255" height="18"/>
+                        <rect key="frame" x="18" y="126" width="255" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Use custom color for tasks due today" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LWD-r3-4iw">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -159,7 +159,7 @@
                         </connections>
                     </button>
                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kyv-n7-gmA">
-                        <rect key="frame" x="279" y="125" width="44" height="23"/>
+                        <rect key="frame" x="279" y="151" width="44" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
@@ -171,7 +171,7 @@
                         </connections>
                     </colorWell>
                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pJz-fI-VRc">
-                        <rect key="frame" x="279" y="98" width="44" height="23"/>
+                        <rect key="frame" x="279" y="124" width="44" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
@@ -183,7 +183,7 @@
                         </connections>
                     </colorWell>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qki-7l-2C2">
-                        <rect key="frame" x="18" y="73" width="207" height="18"/>
+                        <rect key="frame" x="18" y="99" width="207" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Use custom color for projects" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="JvI-Nx-2UB">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -194,7 +194,7 @@
                         </connections>
                     </button>
                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zF2-3U-srK">
-                        <rect key="frame" x="279" y="71" width="44" height="23"/>
+                        <rect key="frame" x="279" y="97" width="44" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
@@ -206,7 +206,7 @@
                         </connections>
                     </colorWell>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVK-oE-htE">
-                        <rect key="frame" x="18" y="46" width="210" height="18"/>
+                        <rect key="frame" x="18" y="72" width="210" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Use custom color for contexts" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4EM-a2-8Xf">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -217,7 +217,7 @@
                         </connections>
                     </button>
                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agi-nP-xDL">
-                        <rect key="frame" x="279" y="44" width="44" height="23"/>
+                        <rect key="frame" x="279" y="70" width="44" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
@@ -229,7 +229,7 @@
                         </connections>
                     </colorWell>
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q5w-gK-nag">
-                        <rect key="frame" x="18" y="19" width="218" height="18"/>
+                        <rect key="frame" x="18" y="45" width="218" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Use custom color for due dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yVB-1N-NGG">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -240,7 +240,7 @@
                         </connections>
                     </button>
                     <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6MV-d7-Saz">
-                        <rect key="frame" x="279" y="17" width="44" height="23"/>
+                        <rect key="frame" x="279" y="43" width="44" height="23"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
@@ -251,6 +251,17 @@
                             </binding>
                         </connections>
                     </colorWell>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sr6-1i-PgC">
+                        <rect key="frame" x="18" y="337" width="223" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="check" title="Esc key cancels all edits to tasks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wmG-4W-WRo">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.escapeKeyCancelsAllTextChanges" id="7tf-jg-uD0"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <toolbar key="toolbar" implicitIdentifier="0E731F1D-B402-4A44-B42F-E99F834951C6" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconAndLabel" sizeMode="regular" id="mF0-SF-KAE">

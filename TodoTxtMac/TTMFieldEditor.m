@@ -160,4 +160,26 @@
     return superRange;
 }
 
+/*!
+ * @method: cancelOperation:
+ * @abstract This method undoes all changes of the text field being edited when the user hits Esc,
+ * if the user has opted for that setting.
+ * @discussion This method also triggers autocompletion, again dependent on the user setting.
+ */
+- (void)cancelOperation:(id)sender {
+    // How the Esc key behaves is dependent on a user setting.
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"escapeKeyCancelsAllTextChanges"]) {
+        // Undo all events on the undoManager's stack. Autocompletion triggers additional undo
+        // groups to be created, so one undo or undoNestedGroup call is not enough to undo all
+        // changes.
+        NSUndoManager *undoManager = [self undoManager];
+        while ([undoManager canUndo]) {
+            [undoManager undoNestedGroup];
+        }
+    } else {
+        // Trigger autocompletion (default behavior).
+        [self complete:nil];
+    }
+}
+
 @end
