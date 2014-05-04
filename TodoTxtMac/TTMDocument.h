@@ -206,6 +206,12 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
  */
 - (IBAction)deleteSelectedTasks:(id)sender;
 
+/*!
+ * @method appendText:
+ * @abstract Append text, entered in a modal sheet, to selected tasks.
+ */
+- (IBAction)appendText:(id)sender;
+
 #pragma mark - Priority Methods
 
 /*!

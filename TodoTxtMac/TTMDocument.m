@@ -376,11 +376,39 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     [deletePrompt beginSheetModalForWindow:self.windowForSheet
                          completionHandler:^(NSModalResponse returnCode) {
                              if (returnCode == NSAlertDefaultReturn) {
-                                 [self.arrayController removeObjectsAtArrangedObjectIndexes:[self.tableView
-                                                                                             selectedRowIndexes]];
+                                 [self.arrayController
+                                  removeObjectsAtArrangedObjectIndexes:[self.tableView
+                                                                        selectedRowIndexes]];
                                  [self refreshTaskListWithSave:YES];
                              }
                          }];
+}
+
+- (IBAction)appendText:(id)sender {
+    NSAlert *alert = [NSAlert alertWithMessageText:@"Append Text"
+                                     defaultButton:@"OK"
+                                   alternateButton:@"Cancel"
+                                       otherButton:nil
+                         informativeTextWithFormat:@"Text to append to each selected task:"];
+    NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 295, 24)];
+    [input setStringValue:@""];
+    [alert setAccessoryView:input];
+    
+    // Define the completion handler for the modal sheet.
+    void (^appendTextHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
+        if (returnCode != NSAlertDefaultReturn || [[input stringValue] length] == 0) {
+            return;
+        }
+        
+        TaskChangeBlock appendTextTaskBlock = ^(id task, NSUInteger idx, BOOL *stop) {
+            NSString *newRawText = [[task rawText]
+                                    stringByAppendingFormat:@"%c%@", ' ', [input stringValue]];
+            [(TTMTask*)task setRawText:newRawText];
+        };
+        [self forEachSelectedTaskExecuteBlock:appendTextTaskBlock];
+    };
+    
+    [alert beginSheetModalForWindow:self.windowForSheet completionHandler:appendTextHandler];
 }
 
 #pragma mark - Priority Methods
