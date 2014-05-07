@@ -78,6 +78,7 @@ From a design perspective, the goal is to be the fastest, simplest, and cleanest
 - p: postpone task by X (user-entered) days
 - s: set due date
 - i: set priority to user-entered value (A-Z)
+- t: append text to end of selected tasks
 - a: archive completed tasks (archive file done.txt must be set)
 - Command+Up: Increase priority
 - Command+Down: Decrease priority
