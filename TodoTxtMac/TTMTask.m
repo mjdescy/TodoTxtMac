@@ -88,17 +88,33 @@ static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
 #pragma mark - rawText Methods
 
 - (void)setRawText:(NSString*)rawText withPrependedDate:(NSDate*)prependedDate {
+    NSString *newRawText;
+    
     // prepend date only if a prependedDate is passed and if there isn't already a creation date
     if (!prependedDate  ||
         [rawText isMatch:RX(CreationDatePatternIncomplete)] ||
         [rawText isMatch:RX(CreationDatePatternCompleted)]
         ) {
-        [self setRawText:rawText];
-    } else {
-        NSString *newRawText = [NSString stringWithFormat:@"%@%c%@",
-            [TTMDateUtility convertDateToString:prependedDate], ' ', rawText];
-        [self setRawText:newRawText];
+        newRawText = rawText;
     }
+    
+    // if the rawText has a priority, prepend the date after the priority
+    if ([rawText isMatch:RX(PriorityTextPattern)]) {
+         newRawText = [NSString stringWithFormat:@"%@%@%c%@",
+                       [rawText substringToIndex:4],
+                       [TTMDateUtility convertDateToString:prependedDate],
+                       ' ',
+                       [rawText substringFromIndex:4]];
+        
+    // if the rawText has no priority, prepend the date at the beginning of the string
+    } else {
+         newRawText = [NSString stringWithFormat:@"%@%c%@",
+                       [TTMDateUtility convertDateToString:prependedDate],
+                       ' ',
+                       rawText];
+    }
+    
+    [self setRawText:newRawText];
 }
 
 - (void)setRawText:(NSString*)rawText {
