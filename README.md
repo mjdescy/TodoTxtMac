@@ -4,15 +4,13 @@
 
 TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X (10.8 Mountain Lion and higher) that conforms to the todo.txt format spec.
 
-
 # Goals
 
-This application is inspired by the [todotxt.net][] application for Microsoft Windows, with numerous improvements and modifications specific to the Mac OS X platform.
+This application is inspired by the [todotxt.net][] application for Microsoft Windows with numerous improvements and modifications specific to the Mac OS X platform.
 
-From a design perspective, the goal is to be the fastest, simplest, and cleanest implementation possible.
+From a design perspective the goal is to be the fastest, simplest, and cleanest implementation possible.
 
 [todotxt.net]: http://benrhughes.github.io/todotxt.net/
-
 
 # Features
 
@@ -57,7 +55,7 @@ From a design perspective, the goal is to be the fastest, simplest, and cleanest
 
 ## Mac-specific user interface features
 
-- Autosave on change. (Note that the title bar will say "Edited" even after autosaving, because this is the Mac's default behavior.)
+- Autosave on change (Note that the title bar will say "Edited" even after autosaving, because this is the Mac's default behavior).
 - Autocomplete project names.
 - Autocomplete context names.
 - Multiple document interface.
@@ -122,7 +120,6 @@ From a design perspective, the goal is to be the fastest, simplest, and cleanest
 - 9: apply quick filter 9
 - 0: remove applied filter
 
-
 ## Caveats/Features Not Planned
 
 - This application is not meant for direct reordering of tasks in the todo.txt file.
@@ -132,14 +129,13 @@ From a design perspective, the goal is to be the fastest, simplest, and cleanest
 
 This application is dual-licensed under the GNU General Public License and the MIT License. See LICENSE.txt for full license information.
 
-
 # For Contributors
 
 ## Source Code Conventions
 
 I am striving for very clean code. I am following the following general coding conventions:
 
-- For clarify, Limit nesting of brackets to two sets per line, as in: `[[thisString stringValue] isEqualToString:@"otherStringValue"]`
+- For clarity, limit nesting of brackets to two sets per line, as in: `[[thisString stringValue] isEqualToString:@"otherStringValue"]`.
 - Maximum line length of 100 characters.
 - Indent with spaces rather than tabs.
 - Always use curly braces for conditionals and loops.
