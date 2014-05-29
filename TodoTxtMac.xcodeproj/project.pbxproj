@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00165B2618DBD1EC00E137B8 /* TTMFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00165B2518DBD1EC00E137B8 /* TTMFiltersController.m */; };
-		0026614518F1EC2000A9562A /* FontNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0026614418F1EC2000A9562A /* FontNameTransformer.m */; };
 		002EAE5918DBD24C008E7517 /* TTMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002EAE5818DBD24C008E7517 /* TTMAppController.m */; };
 		002EAE5E18DCAE5C008E7517 /* TTMFilterPredicates.m in Sources */ = {isa = PBXBuildFile; fileRef = 002EAE5D18DCAE5C008E7517 /* TTMFilterPredicates.m */; };
 		006062D818EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */; };
@@ -56,8 +55,6 @@
 /* Begin PBXFileReference section */
 		00165B2418DBD1EC00E137B8 /* TTMFiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMFiltersController.h; sourceTree = "<group>"; };
 		00165B2518DBD1EC00E137B8 /* TTMFiltersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFiltersController.m; sourceTree = "<group>"; };
-		0026614318F1EC2000A9562A /* FontNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontNameTransformer.h; sourceTree = "<group>"; };
-		0026614418F1EC2000A9562A /* FontNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontNameTransformer.m; sourceTree = "<group>"; };
 		002EAE5718DBD24C008E7517 /* TTMAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMAppController.h; sourceTree = "<group>"; };
 		002EAE5818DBD24C008E7517 /* TTMAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAppController.m; sourceTree = "<group>"; };
 		002EAE5C18DCAE5C008E7517 /* TTMFilterPredicates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMFilterPredicates.h; sourceTree = "<group>"; };
@@ -166,13 +163,8 @@
 		0080EAA118D388770014DDD1 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				0026614318F1EC2000A9562A /* FontNameTransformer.h */,
-				0026614418F1EC2000A9562A /* FontNameTransformer.m */,
-=======
 				00FA1D2618F1EF340066A437 /* FontNameTransformer.h */,
 				00FA1D2718F1EF340066A437 /* FontNameTransformer.m */,
->>>>>>> release/1.0.1
 				00930EAF18B537C10064D41B /* TTMDateUtility.h */,
 				00930EB018B537C10064D41B /* TTMDateUtility.m */,
 				00930EA818B536B00064D41B /* RegExCategories.h */,
@@ -423,11 +415,7 @@
 				00930EAD18B5371B0064D41B /* TTMTask.m in Sources */,
 				00F3961218C6AC010002EA3F /* TTMTableView.m in Sources */,
 				00930EB118B537C10064D41B /* TTMDateUtility.m in Sources */,
-<<<<<<< HEAD
-				0026614518F1EC2000A9562A /* FontNameTransformer.m in Sources */,
-=======
 				00FA1D2818F1EF340066A437 /* FontNameTransformer.m in Sources */,
->>>>>>> release/1.0.1
 				0086C98518B54F1A00A427AA /* TTMTableViewDelegate.m in Sources */,
 				00B4CBAF18B43E8400313DAA /* TTMDocument.m in Sources */,
 				00930EAA18B536B00064D41B /* RegExCategories.m in Sources */,
