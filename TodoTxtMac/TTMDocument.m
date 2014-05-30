@@ -204,9 +204,21 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
 }
 
 - (IBAction)reloadFile:(id)sender {
+    // Save the current filter number.
+    NSUInteger filterNumber = self.activeFilterPredicateNumber;
+    
+    // Remove the current filter.
+    [self removeTaskListFilter:self];
+    
+    // Reload the file.
     NSError *error;
     [self readFromURL:[self fileURL] ofType:@"TTMDocument" error:&error];
+
+    // Refresh the task list.
     [self refreshTaskListWithSave:NO];
+    
+    // Re-apply the filter active before the file was reloaded.
+    [self changeActiveFilterPredicateToPreset:filterNumber];
 }
 
 #pragma mark - Add/Remove Task Methods
