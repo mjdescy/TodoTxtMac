@@ -10,6 +10,9 @@
 		00165B2618DBD1EC00E137B8 /* TTMFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00165B2518DBD1EC00E137B8 /* TTMFiltersController.m */; };
 		002EAE5918DBD24C008E7517 /* TTMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002EAE5818DBD24C008E7517 /* TTMAppController.m */; };
 		002EAE5E18DCAE5C008E7517 /* TTMFilterPredicates.m in Sources */ = {isa = PBXBuildFile; fileRef = 002EAE5D18DCAE5C008E7517 /* TTMFilterPredicates.m */; };
+		003647DC193D50B200FDF67A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 003647DB193D50B200FDF67A /* Sparkle.framework */; };
+		003647DE193D50FA00FDF67A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003647DB193D50B200FDF67A /* Sparkle.framework */; };
+		003647E1193D562900FDF67A /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 003647E0193D562900FDF67A /* dsa_pub.pem */; };
 		006062D818EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */; };
 		0080EAA518D3E96C0014DDD1 /* TTMPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0080EAA418D3E96C0014DDD1 /* TTMPreferences.xib */; };
 		0086C98518B54F1A00A427AA /* TTMTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0086C98418B54F1A00A427AA /* TTMTableViewDelegate.m */; };
@@ -52,6 +55,19 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		003647DD193D50DA00FDF67A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				003647DE193D50FA00FDF67A /* Sparkle.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		00165B2418DBD1EC00E137B8 /* TTMFiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMFiltersController.h; sourceTree = "<group>"; };
 		00165B2518DBD1EC00E137B8 /* TTMFiltersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFiltersController.m; sourceTree = "<group>"; };
@@ -59,6 +75,8 @@
 		002EAE5818DBD24C008E7517 /* TTMAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAppController.m; sourceTree = "<group>"; };
 		002EAE5C18DCAE5C008E7517 /* TTMFilterPredicates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMFilterPredicates.h; sourceTree = "<group>"; };
 		002EAE5D18DCAE5C008E7517 /* TTMFilterPredicates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFilterPredicates.m; sourceTree = "<group>"; };
+		003647DB193D50B200FDF67A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		003647E0193D562900FDF67A /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		006062D618EC6B0800D147F2 /* NSUserDefaults+myColorSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+myColorSupport.h"; sourceTree = "<group>"; };
 		006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+myColorSupport.m"; sourceTree = "<group>"; };
 		0080EAA418D3E96C0014DDD1 /* TTMPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMPreferences.xib; sourceTree = "<group>"; };
@@ -117,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00B4CB9C18B43E8400313DAA /* Cocoa.framework in Frameworks */,
+				003647DC193D50B200FDF67A /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +179,14 @@
 			name = Filters;
 			sourceTree = "<group>";
 		};
+		003647DF193D55FF00FDF67A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				003647E0193D562900FDF67A /* dsa_pub.pem */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		0080EAA118D388770014DDD1 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +207,7 @@
 			children = (
 				00B4CBA118B43E8400313DAA /* TodoTxtMac */,
 				00B4CBC218B43E8500313DAA /* TodoTxtMacTests */,
+				003647DF193D55FF00FDF67A /* Resources */,
 				00B4CB9A18B43E8400313DAA /* Frameworks */,
 				00B4CB9918B43E8400313DAA /* Products */,
 			);
@@ -197,6 +225,7 @@
 		00B4CB9A18B43E8400313DAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				003647DB193D50B200FDF67A /* Sparkle.framework */,
 				00B4CB9B18B43E8400313DAA /* Cocoa.framework */,
 				00B4CBBD18B43E8500313DAA /* XCTest.framework */,
 				00B4CB9D18B43E8400313DAA /* Other Frameworks */,
@@ -308,6 +337,7 @@
 				00B4CB9418B43E8400313DAA /* Sources */,
 				00B4CB9518B43E8400313DAA /* Frameworks */,
 				00B4CB9618B43E8400313DAA /* Resources */,
+				003647DD193D50DA00FDF67A /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -386,6 +416,7 @@
 				00FCB2F918DB64510070BD4A /* TTMFilters.xib in Resources */,
 				00FA1D2A18F1EF4C0066A437 /* RelativeDates.strings in Resources */,
 				00B4CBB218B43E8400313DAA /* TTMDocument.xib in Resources */,
+				003647E1193D562900FDF67A /* dsa_pub.pem in Resources */,
 				00B4CBB718B43E8500313DAA /* Images.xcassets in Resources */,
 				00B4CBA618B43E8400313DAA /* InfoPlist.strings in Resources */,
 				00B4CBAC18B43E8400313DAA /* Credits.rtf in Resources */,
@@ -568,6 +599,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TodoTxtMac/TodoTxtMac-Prefix.pch";
 				INFOPLIST_FILE = "TodoTxtMac/TodoTxtMac-Info.plist";
@@ -582,6 +617,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TodoTxtMac/TodoTxtMac-Prefix.pch";
 				INFOPLIST_FILE = "TodoTxtMac/TodoTxtMac-Info.plist";

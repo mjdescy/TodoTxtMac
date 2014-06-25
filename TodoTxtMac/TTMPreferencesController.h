@@ -52,8 +52,6 @@
 @property (nonatomic, retain) NSFont *selectedFont;
 //@property (nonatomic) BOOL useUserFont;
 
-- (IBAction)activeGeneralPreferencePane:(id)sender;
-
 - (IBAction)chooseArchiveFile:(id)sender;
 
 - (IBAction)openFontPanel:(id)sender;
