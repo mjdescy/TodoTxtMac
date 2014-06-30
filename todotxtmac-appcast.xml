@@ -5,6 +5,17 @@
         <link>http://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
         <language>en</language>
         <item>
+            <title>Version 1.2.1</title>
+            <description>
+            Added automatic update checking and "none of the following" filter option. Improved organization of Preferences window.
+            </description>
+            <sparkle:releaseNotesLink>
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.1.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Sun, 29 Jun 2014 22:39:00 +0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.1/TodoTxtMac.zip" sparkle:version="1.2.0" length="1122148" type="application/octet-stream" sparkle:dsaSignature="MCwCFFCJxCTdgdCVmS6Ln5ODrNspGlgwAhQK7I3ng9gj0OPX6+227zm60PKNDw==" />
+        </item>
+        <item>
             <title>Version 1.2.0</title>
             <description>
             Added automatic update checking and "none of the following" filter option. Improved organization of Preferences window.
@@ -12,7 +23,7 @@
             <sparkle:releaseNotesLink>
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.0.html
             </sparkle:releaseNotesLink>
-            <pubDate>Sun, 29 Jun 2014 20:07:00 +0500</pubDate>
+            <pubDate>Sun, 29 Jun 2014 22:07:00 +0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.0/TodoTxtMac.zip" sparkle:version="1.2.0" length="1122304" type="application/octet-stream" sparkle:dsaSignature="MCwCFDkUGEJ4qVa58mYSQtWVIzoCADJ3AhQZrMtFxC+71KYBT4vH0mnQrMqSsg==" />
         </item>
     </channel>
