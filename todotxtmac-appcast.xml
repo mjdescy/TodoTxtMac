@@ -7,20 +7,13 @@
         <item>
             <title>Version 1.2.0</title>
             <description>
-            <![CDATA[
-	        <h1>Version 1.2.0</h1>
-	        <h2>New Features</h2>
-	        <ul>
-	        	<li>Added a "None of the following" filter option, which lets you create filters such as "Project does not contain '+Work'".</li>
-	        	<li>Added automated update checking via the Sparkle framework.</li>
-	        </ul>
-		   	]]>
-	        </description>
+            Added automatic update checking and "none of the following" filter option. Improved organization of Preferences window.
+            </description>
             <sparkle:releaseNotesLink>
-            https://github.com/mjdescy/TodoTxtMac/releases/tag/1.2.0
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.0.html
             </sparkle:releaseNotesLink>
-            <pubDate>Tue, 24 Jun 2014 20:00:00 +0500</pubDate>
-            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.0/TodoTxtMac-v1.2.0.dmg" sparkle:version="1.2.0" length="1178666" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCce80PQ/KrFvIlJN3zF6H+i8ReZgIVAIC2PunhWi5yLH0CiajI7LGpyyGs" />
+            <pubDate>Sun, 29 Jun 2014 20:07:00 +0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.0/TodoTxtMac.zip" sparkle:version="1.2.0" length="1122304" type="application/octet-stream" sparkle:dsaSignature="MCwCFDkUGEJ4qVa58mYSQtWVIzoCADJ3AhQZrMtFxC+71KYBT4vH0mnQrMqSsg==" />
         </item>
     </channel>
 </rss>
