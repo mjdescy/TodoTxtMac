@@ -79,9 +79,11 @@
 <li>Full compliance with the todo.txt format spec.</li>
 <li>Fully keyboard-driven, with one-key bindings for commonly-used commands.</li>
 <li>Multiple selection in the task list.</li>
+<li>Support for due dates, which are formatted "due:YYYY-MM-DD".</li>
 <li>Shortcuts to toggle completion, change priority, set due dates, and delete all selected tasks.</li>
 <li>Archive completed tasks (to done.txt), either on command or automatically.</li>
 <li>Preserves Windows or Unix line endings in the todo.txt file for cross-platform compatability.</li>
+<li>Automatic update checking.</li>
 </ul><h2>
 <a name="addingremoving-tasks" class="anchor" href="#addingremoving-tasks"><span class="octicon octicon-link"></span></a>Adding/removing tasks</h2>
 
@@ -120,15 +122,14 @@
 <a name="mac-specific-user-interface-features" class="anchor" href="#mac-specific-user-interface-features"><span class="octicon octicon-link"></span></a>Mac-specific user interface features</h2>
 
 <ul>
-<li>Autosave on change. (Note that the title bar will say "Edited" even after autosaving, because this is the Mac's default behavior.)</li>
+<li>Autosave on change (Note that the title bar will say "Edited" even after autosaving, because this is the Mac's default behavior).</li>
 <li>Autocomplete project names.</li>
 <li>Autocomplete context names.</li>
 <li>Multiple document interface.</li>
 <li>Full screen mode.</li>
 <li>Open todo.txt files by dragging and dropping them onto the application icon.</li>
-<li>Application is sandboxed to only read/write to your todo.txt files and your done.txt file.</li>
 </ul><h1>
-<a name="keyboard-shortcuts" class="anchor" href="#keyboard-shortcuts"><span class="octicon octicon-link"></span></a>Keyboard shortcuts</h1>
+<a name="keyboard-shortcuts" class="anchor" href="#keyboard-shortcuts"><span class="octicon octicon-link"></span></a>Keyboard Shortcuts</h1>
 
 <h2>
 <a name="working-with-tasks" class="anchor" href="#working-with-tasks"><span class="octicon octicon-link"></span></a>Working with tasks</h2>
@@ -142,6 +143,8 @@
 <li>u or Enter: update task</li>
 <li>p: postpone task by X (user-entered) days</li>
 <li>s: set due date</li>
+<li>i: set priority to user-entered value (A-Z)</li>
+<li>t: append text to end of selected tasks</li>
 <li>a: archive completed tasks (archive file done.txt must be set)</li>
 <li>Command+Up: Increase priority</li>
 <li>Command+Down: Decrease priority</li>
@@ -187,36 +190,49 @@
 <li>8: apply quick filter 8</li>
 <li>9: apply quick filter 9</li>
 <li>0: remove applied filter</li>
-</ul><h2>
-<a name="caveatsfeatures-not-planned" class="anchor" href="#caveatsfeatures-not-planned"><span class="octicon octicon-link"></span></a>Caveats/Features Not Planned</h2>
+</ul><h1>
+<a name="features-not-planned" class="anchor" href="#features-not-planned"><span class="octicon octicon-link"></span></a>Features Not Planned</h1>
 
 <ul>
 <li>This application is not meant for direct reordering of tasks in the todo.txt file.</li>
 <li>This application does not retain blank lines in the todo.txt file.</li>
+<li>This application does not support line breaks, long-form notes, attachments, or other features not part of the todo.txt format specification.</li>
 </ul><h1>
+<a name="frequently-asked-questions-faq" class="anchor" href="#frequently-asked-questions-faq"><span class="octicon octicon-link"></span></a>Frequently Asked Questions (FAQ)</h1>
+
+<h2>
+<a name="is-there-a-preference-to-re-open-my-todotxt-file-on-launch" class="anchor" href="#is-there-a-preference-to-re-open-my-todotxt-file-on-launch"><span class="octicon octicon-link"></span></a>Is there a preference to re-open my todo.txt file on launch?</h2>
+
+<p>No, there is no preference, but the application will do this automatically under normal circumstances. The default behavior of TodoTxtMac is to reopen whatever todo.txt files were open when you last quit the app. To enjoy this behavior, do not close your todo.txt file's window prior to quitting the app. This behavior is dependent on </p>
+
+<p>If the TodoTxtMac is not reopening your files, or keeping a list of them in the "File &gt; Open Recent" menu, then you should check the following preferences under System Preferences &gt; General:</p>
+
+<ol>
+<li>"Close windows when quitting an application" must be unchecked.</li>
+<li>"Recent items" must not be "None".</li>
+</ol><h2>
+<a name="is-this-application-dropbox-enabled" class="anchor" href="#is-this-application-dropbox-enabled"><span class="octicon octicon-link"></span></a>Is this application Dropbox-enabled?</h2>
+
+<p>No. Unlike the official Todo.txt iOS application, this application does not call Dropbox's API. You can sync your file outside of TodoTxtMac via Dropbox or other services.</p>
+
+<h2>
+<a name="todotxtmac-says-my-todotxt-file-cannot-be-autosaved-the-file-has-been-changed-by-another-application" class="anchor" href="#todotxtmac-says-my-todotxt-file-cannot-be-autosaved-the-file-has-been-changed-by-another-application"><span class="octicon octicon-link"></span></a>TodoTxtMac says my todo.txt file cannot be autosaved. The file has been changed by another application.</h2>
+
+<p>Your todo.txt file can get modified outside of TodoTxtMac, especially if you are syncing the file via Dropbox or a similar service. TodoTxtMac uses Cocoa's default document object model to handle the file interactions. This means that the application will warn you of file changes that came from outside the application when you try to make changes to the file, not at the moment the file was changed. To avoid file conflicts, try the following strategies:</p>
+
+<ol>
+<li>Reload your TodoTxtMac file manually (press <code>.</code>) before making changes to it, if you believe the file was updated (by Dropbox for example) recently.</li>
+<li>Close TodoTxtMac when not using it for extended periods.</li>
+<li>When presented with the option to "Save Anyway" or "Revert" changes, always revert changes. You will have to re-do your last action in TodoTxtMac, but you will not lose the changes that originated outside the application.</li>
+</ol><h2>
+<a name="will-this-project-be-ported-from-objective-c-to-swift" class="anchor" href="#will-this-project-be-ported-from-objective-c-to-swift"><span class="octicon octicon-link"></span></a>Will this project be ported from Objective C to Swift?</h2>
+
+<p>At this time, there are no plans to move from Objective C to Swift.</p>
+
+<h1>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
 
 <p>This application is dual-licensed under the GNU General Public License and the MIT License. See LICENSE.txt for full license information.</p>
-
-<h1>
-<a name="for-contributors" class="anchor" href="#for-contributors"><span class="octicon octicon-link"></span></a>For Contributors</h1>
-
-<h2>
-<a name="source-code-conventions" class="anchor" href="#source-code-conventions"><span class="octicon octicon-link"></span></a>Source Code Conventions</h2>
-
-<p>I am striving for very clean code. I am following the following general coding conventions:</p>
-
-<ul>
-<li>For clarify, Limit nesting of brackets to two sets per line, as in: <code>[[thisString stringValue] isEqualToString:@"otherStringValue"]</code>
-</li>
-<li>Maximum line length of 100 characters.</li>
-<li>Indent with spaces rather than tabs.</li>
-<li>Always use curly braces for conditionals and loops.</li>
-<li>Use descriptive variable and method names.</li>
-</ul><h2>
-<a name="pull-requests" class="anchor" href="#pull-requests"><span class="octicon octicon-link"></span></a>Pull Requests</h2>
-
-<p>The project uses <a href="https://github.com/nvie/gitflow">git-flow</a> to implement Vincent Driessen's <a href="http://nvie.com/posts/a-successful-git-branching-model/">branching model</a>. All pull requests should be directed at the "develop" branch.</p>
 
 <h1>
 <a name="creditsthanks" class="anchor" href="#creditsthanks"><span class="octicon octicon-link"></span></a>Credits/Thanks</h1>
@@ -227,7 +243,9 @@
 
 <p>Thanks to Josh Wright &lt;<a href="https://github.com/BendyTree" class="user-mention">@BendyTree</a>&gt; for his <a href="https://github.com/bendytree/Objective-C-RegEx-Categories">RegExCategories</a> library.</p>
 
-<p>Thanks to kuba for the image used as the icon. Image Credit: <a href="http://vector.me/browse/329308/ok_icon">OK Icon</a> from <a href="http://vector.me/">Vector.me</a> (by kuba)</p>
+<p>Thanks to kuba for the image used as the icon. Image Credit: <a href="http://vector.me/browse/329308/ok_icon">OK Icon</a> from <a href="http://vector.me/">Vector.me</a> (by kuba).</p>
+
+<p>Thanks to Andy Matuschak and the other contributors for the <a href="http://sparkle.andymatuschak.org/">Sparkle framework</a>.</p>
         </article>
       </div>
     </div>
