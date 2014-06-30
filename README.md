@@ -19,9 +19,11 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - Full compliance with the todo.txt format spec.
 - Fully keyboard-driven, with one-key bindings for commonly-used commands.
 - Multiple selection in the task list.
+- Support for due dates, which are formatted "due:YYYY-MM-DD".
 - Shortcuts to toggle completion, change priority, set due dates, and delete all selected tasks.
 - Archive completed tasks (to done.txt), either on command or automatically.
 - Preserves Windows or Unix line endings in the todo.txt file for cross-platform compatability.
+- Automatic update checking.
 
 ## Adding/removing tasks
 
@@ -120,10 +122,38 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - 9: apply quick filter 9
 - 0: remove applied filter
 
-## Caveats/Features Not Planned
+# Features Not Planned
 
 - This application is not meant for direct reordering of tasks in the todo.txt file.
 - This application does not retain blank lines in the todo.txt file.
+- This application does not support line breaks, long-form notes, attachments, or other features not part of the todo.txt format specification.
+
+# Frequently Asked Questions (FAQ)
+
+## Is there a preference to re-open my todo.txt file on launch?
+
+No, there is no preference, but the application will do this automatically under normal circumstances. The default behavior of TodoTxtMac is to reopen whatever todo.txt files were open when you last quit the app. To enjoy this behavior, do not close your todo.txt file's window prior to quitting the app. This behavior is dependent on 
+
+If the TodoTxtMac is not reopening your files, or keeping a list of them in the "File > Open Recent" menu, then you should check the following preferences under System Preferences > General:
+
+1. "Close windows when quitting an application" must be unchecked.
+2. "Recent items" must not be "None".
+
+## Is this application Dropbox-enabled?
+
+No. Unlike the official Todo.txt iOS application, this application does not call Dropbox's API. You can sync your file outside of TodoTxtMac via Dropbox or other services.
+
+## TodoTxtMac says my todo.txt file cannot be autosaved. The file has been changed by another application.
+
+Your todo.txt file can get modified outside of TodoTxtMac, especially if you are syncing the file via Dropbox or a similar service. TodoTxtMac uses Cocoa's default document object model to handle the file interactions. This means that the application will warn you of file changes that came from outside the application when you try to make changes to the file, not at the moment the file was changed. To avoid file conflicts, try the following strategies:
+
+1. Reload your TodoTxtMac file manually (press `.`) before making changes to it, if you believe the file was updated (by Dropbox for example) recently.
+2. Close TodoTxtMac when not using it for extended periods.
+3. When presented with the option to "Save Anyway" or "Revert" changes, always revert changes. You will have to re-do your last action in TodoTxtMac, but you will not lose the changes that originated outside the application.
+
+## Will this project be ported from Objective C to Swift?
+
+At this time, there are no plans to move from Objective C to Swift.
 
 # License
 
@@ -152,13 +182,16 @@ The project uses [git-flow] to implement Vincent Driessen's [branching model]. A
 
 Thanks to Gina Tripani who created the [Todo.txt][] format and the community of developers who created the command line tools and iOS/Android apps.
 
-Thanks to Ben Hughes whose Windows application [todotxt.net] formed the basis of this application's design and feature set. Todotxt.net is a fantastic program and did not have an analog on the Mac. After starting my application, I contributed some patches to todotxt.net and am happy to be a contributor on such a great project.
+Thanks to Ben Hughes whose Windows application [todotxt.net][] formed the basis of this application's design and feature set. Todotxt.net is a fantastic program and did not have an analog on the Mac. After starting my application, I contributed some patches to todotxt.net and am happy to be a contributor on such a great project.
 
 Thanks to Josh Wright <@BendyTree> for his [RegExCategories][] library.
 
-Thanks to kuba for the image used as the icon. Image Credit: [OK Icon][] from [Vector.me][] (by kuba)
+Thanks to kuba for the image used as the icon. Image Credit: [OK Icon][] from [Vector.me][] (by kuba).
+
+Thanks to Andy Matuschak and the other contributors for the [Sparkle framework].
 
 [Todo.txt]: http://www.todotxt.com
 [RegExCategories]: https://github.com/bendytree/Objective-C-RegEx-Categories
 [OK Icon]: http://vector.me/browse/329308/ok_icon
 [Vector.me]: http://vector.me/
+[Sparkle framework]: http://sparkle.andymatuschak.org/

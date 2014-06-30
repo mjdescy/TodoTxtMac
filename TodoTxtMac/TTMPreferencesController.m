@@ -67,10 +67,6 @@
     [fontPanel display];
 }
 
-- (IBAction)activeGeneralPreferencePane:(id)sender {
-    // This method is only here to make the preference button colored/enabled.
-}
-
 #pragma mark - *** Window delegation ***
 
 - (BOOL)windowShouldClose:(NSWindow *)window {

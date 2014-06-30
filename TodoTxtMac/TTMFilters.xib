@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5053"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTMFiltersController">
@@ -69,6 +69,9 @@
                                                                             </menuItem>
                                                                             <menuItem title="All" id="TCy-6x-0Bc">
                                                                                 <integer key="representedObject" value="1"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="None" id="R8c-B6-dfZ">
+                                                                                <integer key="representedObject" value="0"/>
                                                                             </menuItem>
                                                                         </items>
                                                                     </menu>
@@ -483,6 +486,9 @@
                                                                             <menuItem title="All" id="V9F-OY-nZU">
                                                                                 <integer key="representedObject" value="1"/>
                                                                             </menuItem>
+                                                                            <menuItem title="None" id="t7h-Rs-b0m">
+                                                                                <integer key="representedObject" value="0"/>
+                                                                            </menuItem>
                                                                         </items>
                                                                     </menu>
                                                                     <menu id="Yzb-SW-Nvi">
@@ -895,6 +901,9 @@
                                                                             </menuItem>
                                                                             <menuItem title="All" id="McZ-xy-46T">
                                                                                 <integer key="representedObject" value="1"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="None" id="dRS-ik-9Xv">
+                                                                                <integer key="representedObject" value="0"/>
                                                                             </menuItem>
                                                                         </items>
                                                                     </menu>
@@ -1309,6 +1318,9 @@
                                                                             <menuItem title="All" id="05d-iO-e9O">
                                                                                 <integer key="representedObject" value="1"/>
                                                                             </menuItem>
+                                                                            <menuItem title="None" id="O8U-Cy-LI2">
+                                                                                <integer key="representedObject" value="0"/>
+                                                                            </menuItem>
                                                                         </items>
                                                                     </menu>
                                                                     <menu id="LtA-MP-T6w">
@@ -1721,6 +1733,9 @@
                                                                             </menuItem>
                                                                             <menuItem title="All" id="GIR-FF-e7U">
                                                                                 <integer key="representedObject" value="1"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="None" id="Bgv-hY-jGA">
+                                                                                <integer key="representedObject" value="0"/>
                                                                             </menuItem>
                                                                         </items>
                                                                     </menu>
@@ -2135,6 +2150,9 @@
                                                                             <menuItem title="All" id="ZsB-DZ-uke">
                                                                                 <integer key="representedObject" value="1"/>
                                                                             </menuItem>
+                                                                            <menuItem title="None" id="rOX-dQ-dfp">
+                                                                                <integer key="representedObject" value="0"/>
+                                                                            </menuItem>
                                                                         </items>
                                                                     </menu>
                                                                     <menu id="qWr-NG-QdL">
@@ -2547,6 +2565,9 @@
                                                                             </menuItem>
                                                                             <menuItem title="All" id="tOy-fy-6Aw">
                                                                                 <integer key="representedObject" value="1"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="None" id="lg7-DH-4EQ">
+                                                                                <integer key="representedObject" value="0"/>
                                                                             </menuItem>
                                                                         </items>
                                                                     </menu>
@@ -2961,6 +2982,9 @@
                                                                             <menuItem title="All" id="NFk-yu-0ax">
                                                                                 <integer key="representedObject" value="1"/>
                                                                             </menuItem>
+                                                                            <menuItem title="None" id="dHp-8f-oQ9">
+                                                                                <integer key="representedObject" value="0"/>
+                                                                            </menuItem>
                                                                         </items>
                                                                     </menu>
                                                                     <menu id="qyx-C5-yJR">
@@ -3373,6 +3397,9 @@
                                                                             </menuItem>
                                                                             <menuItem title="All" id="SDh-vt-99b">
                                                                                 <integer key="representedObject" value="1"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="None" id="NRS-Gl-0ZK">
+                                                                                <integer key="representedObject" value="0"/>
                                                                             </menuItem>
                                                                         </items>
                                                                     </menu>
