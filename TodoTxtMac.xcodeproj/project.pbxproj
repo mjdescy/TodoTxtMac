@@ -13,6 +13,7 @@
 		003647DC193D50B200FDF67A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 003647DB193D50B200FDF67A /* Sparkle.framework */; };
 		003647DE193D50FA00FDF67A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003647DB193D50B200FDF67A /* Sparkle.framework */; };
 		003647E1193D562900FDF67A /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 003647E0193D562900FDF67A /* dsa_pub.pem */; };
+		0050D6841996AA38008F349B /* TTMTasklistMetadataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0050D6831996AA38008F349B /* TTMTasklistMetadataTests.m */; };
 		006062D818EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */; };
 		0080EAA518D3E96C0014DDD1 /* TTMPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0080EAA418D3E96C0014DDD1 /* TTMPreferences.xib */; };
 		0086C98518B54F1A00A427AA /* TTMTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0086C98418B54F1A00A427AA /* TTMTableViewDelegate.m */; };
@@ -34,6 +35,8 @@
 		00B4CBC718B43E8500313DAA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B4CBC518B43E8500313DAA /* InfoPlist.strings */; };
 		00B4CBC918B43E8500313DAA /* TodoTxtMacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B4CBC818B43E8500313DAA /* TodoTxtMacTests.m */; };
 		00B8C82518E48FFF008D9E48 /* TTMFieldEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B8C82418E48FFF008D9E48 /* TTMFieldEditor.m */; };
+		00D102B61991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */; };
+		00D102B71991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */; };
 		00EAAB9718E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9618E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m */; };
 		00EAAB9A18E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9918E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m */; };
 		00EAAB9D18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9C18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m */; };
@@ -77,6 +80,7 @@
 		002EAE5D18DCAE5C008E7517 /* TTMFilterPredicates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFilterPredicates.m; sourceTree = "<group>"; };
 		003647DB193D50B200FDF67A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		003647E0193D562900FDF67A /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		0050D6831996AA38008F349B /* TTMTasklistMetadataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTasklistMetadataTests.m; sourceTree = "<group>"; };
 		006062D618EC6B0800D147F2 /* NSUserDefaults+myColorSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+myColorSupport.h"; sourceTree = "<group>"; };
 		006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+myColorSupport.m"; sourceTree = "<group>"; };
 		0080EAA418D3E96C0014DDD1 /* TTMPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMPreferences.xib; sourceTree = "<group>"; };
@@ -111,6 +115,8 @@
 		00B4CBC818B43E8500313DAA /* TodoTxtMacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTxtMacTests.m; sourceTree = "<group>"; };
 		00B8C82318E48FFF008D9E48 /* TTMFieldEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMFieldEditor.h; sourceTree = "<group>"; };
 		00B8C82418E48FFF008D9E48 /* TTMFieldEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFieldEditor.m; sourceTree = "<group>"; };
+		00D102B41991ABBE00D30237 /* TTMTasklistMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMTasklistMetadata.h; sourceTree = "<group>"; };
+		00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTasklistMetadata.m; sourceTree = "<group>"; };
 		00EAAB9518E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorDateRowTemplate.h; sourceTree = "<group>"; };
 		00EAAB9618E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPredicateEditorDateRowTemplate.m; sourceTree = "<group>"; };
 		00EAAB9818E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorDueRowTemplate.h; sourceTree = "<group>"; };
@@ -251,6 +257,7 @@
 				00165B2318DBD18C00E137B8 /* Filters */,
 				00F811F518D5458000379B99 /* TaskList Document */,
 				00F811F418D5454900379B99 /* Task Model */,
+				00D102B31991AB8400D30237 /* Metadata */,
 				0080EAA118D388770014DDD1 /* Libraries */,
 				00B4CBA218B43E8400313DAA /* Supporting Files */,
 				00B4CBB618B43E8500313DAA /* Images.xcassets */,
@@ -277,6 +284,7 @@
 			children = (
 				00B4CBC818B43E8500313DAA /* TodoTxtMacTests.m */,
 				00B4CBC318B43E8500313DAA /* Supporting Files */,
+				0050D6831996AA38008F349B /* TTMTasklistMetadataTests.m */,
 			);
 			path = TodoTxtMacTests;
 			sourceTree = "<group>";
@@ -288,6 +296,15 @@
 				00B4CBC518B43E8500313DAA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		00D102B31991AB8400D30237 /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				00D102B41991ABBE00D30237 /* TTMTasklistMetadata.h */,
+				00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */,
+			);
+			name = Metadata;
 			sourceTree = "<group>";
 		};
 		00F811F418D5454900379B99 /* Task Model */ = {
@@ -373,7 +390,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TTM;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Michael Descy";
 				TargetAttributes = {
 					00B4CB9718B43E8400313DAA = {
@@ -447,6 +464,7 @@
 				00F3961218C6AC010002EA3F /* TTMTableView.m in Sources */,
 				00930EB118B537C10064D41B /* TTMDateUtility.m in Sources */,
 				00FA1D2818F1EF340066A437 /* FontNameTransformer.m in Sources */,
+				00D102B61991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */,
 				0086C98518B54F1A00A427AA /* TTMTableViewDelegate.m in Sources */,
 				00B4CBAF18B43E8400313DAA /* TTMDocument.m in Sources */,
 				00930EAA18B536B00064D41B /* RegExCategories.m in Sources */,
@@ -465,8 +483,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				00930EAE18B5371B0064D41B /* TTMTask.m in Sources */,
+				00D102B71991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */,
 				00930EB218B537C10064D41B /* TTMDateUtility.m in Sources */,
 				00B4CBC918B43E8500313DAA /* TodoTxtMacTests.m in Sources */,
+				0050D6841996AA38008F349B /* TTMTasklistMetadataTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

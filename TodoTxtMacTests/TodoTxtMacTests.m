@@ -81,6 +81,13 @@
     XCTAssertEqualObjects(task.rawText, @"2020-01-01 pick up groceries");
 }
 
+- (void)testIsCompleted {
+    NSString *rawText = @"x 2020-01-31 pick up groceries due:2020-01-31";
+    NSUInteger taskId = 0;
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
+    XCTAssertTrue(task.isCompleted);
+}
+
 - (void)testDueDate {
     NSString *rawText = @"pick up groceries due:2020-01-31";
     NSUInteger taskId = 0;
