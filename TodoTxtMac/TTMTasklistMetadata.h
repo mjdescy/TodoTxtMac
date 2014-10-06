@@ -66,6 +66,9 @@
 @property (nonatomic) NSInteger dueTodayTaskCount;
 @property (nonatomic) NSInteger overdueTaskCount;
 @property (nonatomic) NSInteger notDueTaskCount;
+@property (nonatomic) NSInteger projectsCount;
+@property (nonatomic) NSInteger contextsCount;
+@property (nonatomic) NSInteger prioritiesCount;
 
 /*!
  * @method updateMetadataFromTaskArray:

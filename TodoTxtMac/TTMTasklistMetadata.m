@@ -87,6 +87,11 @@
     self.projectsArray = [self.projectsSet sortedArrayUsingDescriptors:sortDescriptorArray];
     self.contextsArray = [self.contextsSet sortedArrayUsingDescriptors:sortDescriptorArray];
     self.prioritiesArray = [self.prioritiesSet sortedArrayUsingDescriptors:sortDescriptorArray];
+
+    // update counts of projects, contexts, and priorities
+    self.projectsCount = [self.projectsSet count];
+    self.contextsCount = [self.contextsSet count];
+    self.prioritiesCount = [self.prioritiesSet count];
 }
 
 - (void)initialize {
@@ -108,6 +113,10 @@
     self.projectsArray = [NSArray array];
     self.contextsArray = [NSArray array];
     self.prioritiesArray = [NSArray array];
+    
+    self.projectsCount = 0;
+    self.contextsCount = 0;
+    self.prioritiesCount = 0;
 }
 
 - (void)incrementCountsInDictionary:(NSMutableDictionary*)dictionary FromArray:(NSArray*)array {

@@ -133,4 +133,20 @@
     XCTAssertEqualObjects(self.tasklistMetadata.priorityTaskCounts, priorityTaskCounts);
 }
 
+- (void)testProjectsCount
+{
+    XCTAssertEqual(self.tasklistMetadata.projectsCount, 2);
+}
+
+- (void)testContextsCount
+{
+    XCTAssertEqual(self.tasklistMetadata.contextsCount, 2);
+}
+
+- (void)testPrioritiesCount
+{
+    XCTAssertEqual(self.tasklistMetadata.prioritiesCount, 2);
+}
+
+
 @end
