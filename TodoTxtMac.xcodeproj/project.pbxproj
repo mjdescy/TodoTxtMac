@@ -10,8 +10,6 @@
 		00165B2618DBD1EC00E137B8 /* TTMFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00165B2518DBD1EC00E137B8 /* TTMFiltersController.m */; };
 		002EAE5918DBD24C008E7517 /* TTMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002EAE5818DBD24C008E7517 /* TTMAppController.m */; };
 		002EAE5E18DCAE5C008E7517 /* TTMFilterPredicates.m in Sources */ = {isa = PBXBuildFile; fileRef = 002EAE5D18DCAE5C008E7517 /* TTMFilterPredicates.m */; };
-		003647DC193D50B200FDF67A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 003647DB193D50B200FDF67A /* Sparkle.framework */; };
-		003647DE193D50FA00FDF67A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 003647DB193D50B200FDF67A /* Sparkle.framework */; };
 		003647E1193D562900FDF67A /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 003647E0193D562900FDF67A /* dsa_pub.pem */; };
 		0050D6841996AA38008F349B /* TTMTasklistMetadataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0050D6831996AA38008F349B /* TTMTasklistMetadataTests.m */; };
 		006062D818EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */; };
@@ -39,6 +37,8 @@
 		00B8C82518E48FFF008D9E48 /* TTMFieldEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B8C82418E48FFF008D9E48 /* TTMFieldEditor.m */; };
 		00D102B61991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */; };
 		00D102B71991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */; };
+		00DE02EC19E37E340093338A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DE02EB19E37E340093338A /* Sparkle.framework */; };
+		00DE02ED19E37E650093338A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DE02EB19E37E340093338A /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		00EAAB9718E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9618E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m */; };
 		00EAAB9A18E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9918E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m */; };
 		00EAAB9D18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9C18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m */; };
@@ -67,7 +67,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				003647DE193D50FA00FDF67A /* Sparkle.framework in CopyFiles */,
+				00DE02ED19E37E650093338A /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,7 +80,6 @@
 		002EAE5818DBD24C008E7517 /* TTMAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAppController.m; sourceTree = "<group>"; };
 		002EAE5C18DCAE5C008E7517 /* TTMFilterPredicates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMFilterPredicates.h; sourceTree = "<group>"; };
 		002EAE5D18DCAE5C008E7517 /* TTMFilterPredicates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFilterPredicates.m; sourceTree = "<group>"; };
-		003647DB193D50B200FDF67A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		003647E0193D562900FDF67A /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		0050D6831996AA38008F349B /* TTMTasklistMetadataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTasklistMetadataTests.m; sourceTree = "<group>"; };
 		006062D618EC6B0800D147F2 /* NSUserDefaults+myColorSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+myColorSupport.h"; sourceTree = "<group>"; };
@@ -122,6 +121,7 @@
 		00B8C82418E48FFF008D9E48 /* TTMFieldEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFieldEditor.m; sourceTree = "<group>"; };
 		00D102B41991ABBE00D30237 /* TTMTasklistMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMTasklistMetadata.h; sourceTree = "<group>"; };
 		00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTasklistMetadata.m; sourceTree = "<group>"; };
+		00DE02EB19E37E340093338A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		00EAAB9518E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorDateRowTemplate.h; sourceTree = "<group>"; };
 		00EAAB9618E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPredicateEditorDateRowTemplate.m; sourceTree = "<group>"; };
 		00EAAB9818E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorDueRowTemplate.h; sourceTree = "<group>"; };
@@ -146,7 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00B4CB9C18B43E8400313DAA /* Cocoa.framework in Frameworks */,
-				003647DC193D50B200FDF67A /* Sparkle.framework in Frameworks */,
+				00DE02EC19E37E340093338A /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,7 +238,7 @@
 		00B4CB9A18B43E8400313DAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				003647DB193D50B200FDF67A /* Sparkle.framework */,
+				00DE02EB19E37E340093338A /* Sparkle.framework */,
 				00B4CB9B18B43E8400313DAA /* Cocoa.framework */,
 				00B4CBBD18B43E8500313DAA /* XCTest.framework */,
 				00B4CB9D18B43E8400313DAA /* Other Frameworks */,
