@@ -48,6 +48,7 @@
 @class TTMAppController;
 @class TTMFieldEditor;
 @class TTMTask;
+@class TTMTasklistMetadata;
 
 #define SORTMENUTAG   4000
 #define FILTERMENUTAG 5000
@@ -94,6 +95,10 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 
 // Active sort type
 @property (nonatomic) NSUInteger activeSortType;
+
+// Tasklist metadata
+@property (nonatomic) TTMTasklistMetadata *tasklistMetadata;
+@property (nonatomic) IBOutlet NSWindow *tasklistMetadataSheet;
 
 #pragma mark - File Loading and Saving Methods
 
@@ -468,5 +473,19 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
  * @abstract Moves focus to the search box to find text.
  */
 - (IBAction)moveFocusToSearchBox:(id)sender;
+
+#pragma mark - Tasklist Metadata Methods
+
+/*!
+ * @method showTasklistMetadata:
+ * @abstract Display tasklist metadata in a modal sheet.
+ */
+- (IBAction)showTasklistMetadata:(id)sender;
+
+/*!
+ * @method hideTasklistMetadata:
+ * @abstract Hide tasklist metadata modal sheet.
+ */
+- (IBAction)hideTasklistMetadata:(id)sender;
 
 @end

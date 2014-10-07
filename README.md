@@ -24,6 +24,7 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - Archive completed tasks (to done.txt), either on command or automatically.
 - Preserves Windows or Unix line endings in the todo.txt file for cross-platform compatability.
 - Automatic update checking.
+- Displays general metadata (task counts, etc.) about the task list.
 
 ## Adding/removing tasks
 
@@ -95,6 +96,7 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - Command+O: open file
 - Command+S: save file (forces the file to save immediately)
 - .: reload file
+- Command+I: view task list metadata (task counts, etc.)
 
 ## Sorting the task list
 

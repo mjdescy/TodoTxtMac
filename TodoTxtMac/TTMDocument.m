@@ -50,6 +50,8 @@
 #import "TTMFilterPredicates.h"
 #import "TTMFieldEditor.h"
 #import "RegExCategories.h"
+#import "TTMTasklistMetadata.h"
+#import "NSAlert+BlockMethods.h"
 
 @implementation TTMDocument
 
@@ -385,7 +387,7 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
                   alternateButton:@"Cancel"
                       otherButton:nil
         informativeTextWithFormat:@"Are you sure you want to delete all selected tasks?"];
-    [deletePrompt beginSheetModalForWindow:self.windowForSheet
+    [deletePrompt compatibleBeginSheetModalForWindow:self.windowForSheet
                          completionHandler:^(NSModalResponse returnCode) {
                              if (returnCode == NSAlertDefaultReturn) {
                                  [self.arrayController
@@ -420,7 +422,8 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
         [self forEachSelectedTaskExecuteBlock:appendTextTaskBlock];
     };
     
-    [alert beginSheetModalForWindow:self.windowForSheet completionHandler:appendTextHandler];
+    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+                            completionHandler:appendTextHandler];
 }
 
 #pragma mark - Priority Methods
@@ -455,7 +458,8 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
         
     };
 
-    [alert beginSheetModalForWindow:self.windowForSheet completionHandler:priorityHandler];
+    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+                            completionHandler:priorityHandler];
 }
 
 - (IBAction)increasePriority:(id)sender {
@@ -483,7 +487,7 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     [input setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
     [input setDateValue:[TTMDateUtility today]];
     [alert setAccessoryView:input];
-    [alert beginSheetModalForWindow:self.windowForSheet
+    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
                   completionHandler:^(NSModalResponse returnCode) {
                       if (returnCode == NSAlertDefaultReturn) {
                           TaskChangeBlock setDueDateTaskBlock = ^(id task,
@@ -517,7 +521,7 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 50, 24)];
     [input setStringValue:@""];
     [alert setAccessoryView:input];
-    [alert beginSheetModalForWindow:self.windowForSheet
+    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
                   completionHandler:^(NSModalResponse returnCode) {
                          if (returnCode == NSAlertDefaultReturn &&
                              [[input stringValue] length] != 0 &&
@@ -855,6 +859,33 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     [self.searchField setRefusesFirstResponder:NO];
     [self.searchField becomeFirstResponder];
     [self.searchField setRefusesFirstResponder:YES];
+}
+
+#pragma mark - Tasklist Metadata Methods
+
+- (IBAction)showTasklistMetadata:(id)sender {
+    // Update tasklist metadata.
+    if (!self.tasklistMetadata) {
+        self.tasklistMetadata = [[TTMTasklistMetadata alloc] init];
+    }
+    [self.tasklistMetadata updateMetadataFromTaskArray:[self.arrayController arrangedObjects]];
+    
+    // Display tasklist metadata in a modal sheet.
+    if (!self.tasklistMetadataSheet) {
+        [[NSBundle mainBundle] loadNibNamed:@"TTMTasklistMetadata" owner:self topLevelObjects:nil];
+    }
+    
+    [[NSApplication sharedApplication] beginSheet:self.tasklistMetadataSheet
+                                   modalForWindow:[self windowForSheet]
+                                    modalDelegate:self
+                                   didEndSelector:NULL
+                                      contextInfo:NULL];
+}
+
+- (IBAction)hideTasklistMetadata:(id)sender {
+    [NSApp endSheet:self.tasklistMetadataSheet];
+    [self.tasklistMetadataSheet close];
+    self.tasklistMetadataSheet = nil;
 }
 
 @end
