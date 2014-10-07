@@ -50,6 +50,7 @@
 #import "TTMFilterPredicates.h"
 #import "TTMFieldEditor.h"
 #import "RegExCategories.h"
+#import "TTMTasklistMetadata.h"
 
 @implementation TTMDocument
 
@@ -855,6 +856,33 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     [self.searchField setRefusesFirstResponder:NO];
     [self.searchField becomeFirstResponder];
     [self.searchField setRefusesFirstResponder:YES];
+}
+
+#pragma mark - Tasklist Metadata Methods
+
+- (IBAction)showTasklistMetadata:(id)sender {
+    // Update tasklist metadata.
+    if (!self.tasklistMetadata) {
+        self.tasklistMetadata = [[TTMTasklistMetadata alloc] init];
+    }
+    [self.tasklistMetadata updateMetadataFromTaskArray:[self.arrayController arrangedObjects]];
+    
+    // Display tasklist metadata in a modal sheet.
+    if (!self.tasklistMetadataSheet) {
+        [[NSBundle mainBundle] loadNibNamed:@"TTMTasklistMetadata" owner:self topLevelObjects:nil];
+    }
+    
+    [[NSApplication sharedApplication] beginSheet:self.tasklistMetadataSheet
+                                   modalForWindow:[self windowForSheet]
+                                    modalDelegate:self
+                                   didEndSelector:NULL
+                                      contextInfo:NULL];
+}
+
+- (IBAction)hideTasklistMetadata:(id)sender {
+    [NSApp endSheet:self.tasklistMetadataSheet];
+    [self.tasklistMetadataSheet close];
+    self.tasklistMetadataSheet = nil;
 }
 
 @end

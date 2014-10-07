@@ -15,7 +15,7 @@
 		003647E1193D562900FDF67A /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 003647E0193D562900FDF67A /* dsa_pub.pem */; };
 		0050D6841996AA38008F349B /* TTMTasklistMetadataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0050D6831996AA38008F349B /* TTMTasklistMetadataTests.m */; };
 		006062D818EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */; };
-		006BA79E19DB9CFD00C8F408 /* TTMMetadataWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006BA79D19DB9CFD00C8F408 /* TTMMetadataWindow.xib */; };
+		006BA79E19DB9CFD00C8F408 /* TTMTasklistMetadata.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006BA79D19DB9CFD00C8F408 /* TTMTasklistMetadata.xib */; };
 		0080EAA518D3E96C0014DDD1 /* TTMPreferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0080EAA418D3E96C0014DDD1 /* TTMPreferences.xib */; };
 		0086C98518B54F1A00A427AA /* TTMTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0086C98418B54F1A00A427AA /* TTMTableViewDelegate.m */; };
 		00930EAA18B536B00064D41B /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EA918B536B00064D41B /* RegExCategories.m */; };
@@ -84,7 +84,7 @@
 		0050D6831996AA38008F349B /* TTMTasklistMetadataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTasklistMetadataTests.m; sourceTree = "<group>"; };
 		006062D618EC6B0800D147F2 /* NSUserDefaults+myColorSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+myColorSupport.h"; sourceTree = "<group>"; };
 		006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+myColorSupport.m"; sourceTree = "<group>"; };
-		006BA79D19DB9CFD00C8F408 /* TTMMetadataWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMMetadataWindow.xib; sourceTree = "<group>"; };
+		006BA79D19DB9CFD00C8F408 /* TTMTasklistMetadata.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMTasklistMetadata.xib; sourceTree = "<group>"; };
 		0080EAA418D3E96C0014DDD1 /* TTMPreferences.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMPreferences.xib; sourceTree = "<group>"; };
 		0086C98318B54F1A00A427AA /* TTMTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMTableViewDelegate.h; sourceTree = "<group>"; };
 		0086C98418B54F1A00A427AA /* TTMTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTableViewDelegate.m; sourceTree = "<group>"; };
@@ -259,7 +259,7 @@
 				00165B2318DBD18C00E137B8 /* Filters */,
 				00F811F518D5458000379B99 /* TaskList Document */,
 				00F811F418D5454900379B99 /* Task Model */,
-				00D102B31991AB8400D30237 /* Metadata */,
+				00D102B31991AB8400D30237 /* Metadata Model */,
 				0080EAA118D388770014DDD1 /* Libraries */,
 				00B4CBA218B43E8400313DAA /* Supporting Files */,
 				00B4CBB618B43E8500313DAA /* Images.xcassets */,
@@ -300,14 +300,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		00D102B31991AB8400D30237 /* Metadata */ = {
+		00D102B31991AB8400D30237 /* Metadata Model */ = {
 			isa = PBXGroup;
 			children = (
 				00D102B41991ABBE00D30237 /* TTMTasklistMetadata.h */,
 				00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */,
-				006BA79D19DB9CFD00C8F408 /* TTMMetadataWindow.xib */,
 			);
-			name = Metadata;
+			name = "Metadata Model";
 			sourceTree = "<group>";
 		};
 		00F811F418D5454900379B99 /* Task Model */ = {
@@ -323,6 +322,7 @@
 			isa = PBXGroup;
 			children = (
 				00B4CBB018B43E8400313DAA /* TTMDocument.xib */,
+				006BA79D19DB9CFD00C8F408 /* TTMTasklistMetadata.xib */,
 				00B4CBAD18B43E8400313DAA /* TTMDocument.h */,
 				00B4CBAE18B43E8400313DAA /* TTMDocument.m */,
 				0086C98318B54F1A00A427AA /* TTMTableViewDelegate.h */,
@@ -432,7 +432,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				006BA79E19DB9CFD00C8F408 /* TTMMetadataWindow.xib in Resources */,
+				006BA79E19DB9CFD00C8F408 /* TTMTasklistMetadata.xib in Resources */,
 				0080EAA518D3E96C0014DDD1 /* TTMPreferences.xib in Resources */,
 				00FCB2F918DB64510070BD4A /* TTMFilters.xib in Resources */,
 				00FA1D2A18F1EF4C0066A437 /* RelativeDates.strings in Resources */,
