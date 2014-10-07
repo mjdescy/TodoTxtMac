@@ -4,6 +4,18 @@
         <title>TodoTxtMac Changelog</title>
         <link>http://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
         <language>en</language>
+            <item>
+            <title>Version 1.2.2</title>
+            <description>
+            Added task list metadata sheet (Command+I). Fixed OS X 10.8 (Mountain Lion) compatibility for the following commands: delete task, postpone task, set due date, set priority.
+            </description>
+            <sparkle:releaseNotesLink>
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.2.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Tue, 6 Oct 2014 22:00:00 +0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.2/TodoTxtMac.zip" sparkle:version="1.2.2" length="1834688" type="application/octet-stream" sparkle:dsaSignature="MC0CFBHigxsIy2YlA1BNuJO9ue+DRNp3AhUAq+VqkXCBB4hcyOxAD5eF7cb7PnE=" />
+            <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
+        </item>
         <item>
             <title>Version 1.2.1</title>
             <description>
@@ -13,7 +25,8 @@
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.1.html
             </sparkle:releaseNotesLink>
             <pubDate>Sun, 29 Jun 2014 22:39:00 +0500</pubDate>
-            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.1/TodoTxtMac.zip" sparkle:version="1.2.0" length="1122148" type="application/octet-stream" sparkle:dsaSignature="MCwCFFCJxCTdgdCVmS6Ln5ODrNspGlgwAhQK7I3ng9gj0OPX6+227zm60PKNDw==" />
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.1/TodoTxtMac.zip" sparkle:version="1.2.1" length="1122148" type="application/octet-stream" sparkle:dsaSignature="MCwCFFCJxCTdgdCVmS6Ln5ODrNspGlgwAhQK7I3ng9gj0OPX6+227zm60PKNDw==" />
+            <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
         <item>
             <title>Version 1.2.0</title>
@@ -25,6 +38,7 @@
             </sparkle:releaseNotesLink>
             <pubDate>Sun, 29 Jun 2014 22:07:00 +0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.0/TodoTxtMac.zip" sparkle:version="1.2.0" length="1122304" type="application/octet-stream" sparkle:dsaSignature="MCwCFDkUGEJ4qVa58mYSQtWVIzoCADJ3AhQZrMtFxC+71KYBT4vH0mnQrMqSsg==" />
+            <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
     </channel>
 </rss>
