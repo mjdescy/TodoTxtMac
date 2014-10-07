@@ -10,29 +10,29 @@
 	<string>TodoTxtMac</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>2A6A5B2A-5D3C-4E4C-B53F-5DBDAABBFF26</key>
+		<key>7466FF582706CDEEDB6FB7E39AC879FD99CC9718</key>
 		<string>https://github.com/mjdescy/TodoTxtMac.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>TodoTxtMac.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>2A6A5B2A-5D3C-4E4C-B53F-5DBDAABBFF26</key>
+		<key>7466FF582706CDEEDB6FB7E39AC879FD99CC9718</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/mjdescy/TodoTxtMac.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>2A6A5B2A-5D3C-4E4C-B53F-5DBDAABBFF26</string>
+	<string>7466FF582706CDEEDB6FB7E39AC879FD99CC9718</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>2A6A5B2A-5D3C-4E4C-B53F-5DBDAABBFF26</string>
+			<string>7466FF582706CDEEDB6FB7E39AC879FD99CC9718</string>
 			<key>IDESourceControlWCCName</key>
 			<string>TodoTxtMac</string>
 		</dict>

@@ -51,6 +51,7 @@
 #import "TTMFieldEditor.h"
 #import "RegExCategories.h"
 #import "TTMTasklistMetadata.h"
+#import "NSAlert+BlockMethods.h"
 
 @implementation TTMDocument
 
@@ -386,7 +387,7 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
                   alternateButton:@"Cancel"
                       otherButton:nil
         informativeTextWithFormat:@"Are you sure you want to delete all selected tasks?"];
-    [deletePrompt beginSheetModalForWindow:self.windowForSheet
+    [deletePrompt compatibleBeginSheetModalForWindow:self.windowForSheet
                          completionHandler:^(NSModalResponse returnCode) {
                              if (returnCode == NSAlertDefaultReturn) {
                                  [self.arrayController
@@ -421,7 +422,8 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
         [self forEachSelectedTaskExecuteBlock:appendTextTaskBlock];
     };
     
-    [alert beginSheetModalForWindow:self.windowForSheet completionHandler:appendTextHandler];
+    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+                            completionHandler:appendTextHandler];
 }
 
 #pragma mark - Priority Methods
@@ -456,7 +458,8 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
         
     };
 
-    [alert beginSheetModalForWindow:self.windowForSheet completionHandler:priorityHandler];
+    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+                            completionHandler:priorityHandler];
 }
 
 - (IBAction)increasePriority:(id)sender {
@@ -484,7 +487,7 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     [input setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
     [input setDateValue:[TTMDateUtility today]];
     [alert setAccessoryView:input];
-    [alert beginSheetModalForWindow:self.windowForSheet
+    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
                   completionHandler:^(NSModalResponse returnCode) {
                       if (returnCode == NSAlertDefaultReturn) {
                           TaskChangeBlock setDueDateTaskBlock = ^(id task,
@@ -518,7 +521,7 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 50, 24)];
     [input setStringValue:@""];
     [alert setAccessoryView:input];
-    [alert beginSheetModalForWindow:self.windowForSheet
+    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
                   completionHandler:^(NSModalResponse returnCode) {
                          if (returnCode == NSAlertDefaultReturn &&
                              [[input stringValue] length] != 0 &&
