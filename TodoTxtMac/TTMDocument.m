@@ -868,18 +868,24 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     if (!self.tasklistMetadata) {
         self.tasklistMetadata = [[TTMTasklistMetadata alloc] init];
     }
-    [self.tasklistMetadata updateMetadataFromTaskArray:[self.arrayController arrangedObjects]];
+    [self.tasklistMetadata updateMetadataFromTaskArray:self.taskList];
+    
+    // Update filtered tasklist metadata.
+    if (!self.filteredTasklistMetadata) {
+        self.filteredTasklistMetadata = [[TTMTasklistMetadata alloc] init];
+    }
+    [self.filteredTasklistMetadata
+     updateMetadataFromTaskArray:[self.arrayController arrangedObjects]];
     
     // Display tasklist metadata in a modal sheet.
     if (!self.tasklistMetadataSheet) {
         [[NSBundle mainBundle] loadNibNamed:@"TTMTasklistMetadata" owner:self topLevelObjects:nil];
     }
-    
-    [[NSApplication sharedApplication] beginSheet:self.tasklistMetadataSheet
-                                   modalForWindow:[self windowForSheet]
-                                    modalDelegate:self
-                                   didEndSelector:NULL
-                                      contextInfo:NULL];
+    [NSApp beginSheet:self.tasklistMetadataSheet
+       modalForWindow:[self windowForSheet]
+        modalDelegate:self
+       didEndSelector:NULL
+          contextInfo:NULL];
 }
 
 - (IBAction)hideTasklistMetadata:(id)sender {

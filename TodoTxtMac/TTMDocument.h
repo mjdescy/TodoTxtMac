@@ -98,6 +98,7 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 
 // Tasklist metadata
 @property (nonatomic) TTMTasklistMetadata *tasklistMetadata;
+@property (nonatomic) TTMTasklistMetadata *filteredTasklistMetadata;
 @property (nonatomic) IBOutlet NSWindow *tasklistMetadataSheet;
 
 #pragma mark - File Loading and Saving Methods
