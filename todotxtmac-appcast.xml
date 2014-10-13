@@ -4,7 +4,19 @@
         <title>TodoTxtMac Changelog</title>
         <link>http://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
         <language>en</language>
-            <item>
+        <item>
+            <title>Version 1.2.3</title>
+            <description>
+            Added "As Displayed" and "Unfiltered" options to task list metadata view.
+            </description>
+            <sparkle:releaseNotesLink>
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.3.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Mon, 13 Oct 2014 15:25:00 +0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.3/TodoTxtMac.app.zip" sparkle:version="1.2.3" length="1844121" type="application/octet-stream" sparkle:dsaSignature="MCwCFFuRG7XObTyWbf5gGPBtlCOtUeBgAhQFLtZZWZNNclvv9wbUsgtWHRpp+A==" />
+            <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 1.2.2</title>
             <description>
             Added task list metadata sheet (Command+I). Fixed OS X 10.8 (Mountain Lion) compatibility for the following commands: delete task, postpone task, set due date, set priority.
