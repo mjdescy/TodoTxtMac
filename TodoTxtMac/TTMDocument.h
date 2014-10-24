@@ -475,6 +475,12 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
  */
 - (IBAction)moveFocusToSearchBox:(id)sender;
 
+/*!
+ * @method makeSearchBoxRefuseFocus:
+ * @abstract Resets search box to refuse first responder (so user cannot tab to it).
+ */
+- (IBAction)makeSearchBoxRefuseFocus:(id)sender;
+
 #pragma mark - Tasklist Metadata Methods
 
 /*!
