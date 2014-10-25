@@ -133,8 +133,8 @@
         </window>
         <arrayController objectClassName="TTMTask" automaticallyRearrangesObjects="YES" id="z03-iY-Esn">
             <connections>
-                <binding destination="-2" name="contentArray" keyPath="self.taskList" id="6bb-CW-xta"/>
                 <binding destination="-2" name="filterPredicate" keyPath="self.activeFilterPredicate" id="sjF-mO-jcs"/>
+                <binding destination="-2" name="contentArray" keyPath="self.taskList" id="6bb-CW-xta"/>
             </connections>
         </arrayController>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
