@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6245"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTMDocument">
@@ -21,14 +21,14 @@
             <windowCollectionBehavior key="collectionBehavior" fullScreenPrimary="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="133" y="235" width="510" height="447"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <value key="minSize" type="size" width="94" height="86"/>
-            <view key="contentView" id="6">
+            <view key="contentView" wantsLayer="YES" id="6">
                 <rect key="frame" x="0.0" y="0.0" width="510" height="447"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4SD-Qr-9gz">
-                        <rect key="frame" x="0.0" y="425" width="510" height="22"/>
+                        <rect key="frame" x="0.0" y="425" width="527" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" placeholderString="New task..." drawsBackground="YES" usesSingleLineMode="YES" id="Zzr-Le-XIh">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -69,7 +69,6 @@
                                         </tableColumn>
                                     </tableColumns>
                                     <connections>
-                                        <outlet property="arrayController" destination="z03-iY-Esn" id="bhj-9Q-7nI"/>
                                         <outlet property="delegate" destination="7KH-TF-RVa" id="RKc-xT-RyP"/>
                                         <outlet property="parentDocument" destination="-2" id="rdR-3Y-03G"/>
                                     </connections>
@@ -87,13 +86,13 @@
                     </scrollView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="C1v-eN-hR0" secondAttribute="bottom" constant="-1" id="Ef7-Lg-uvt"/>
-                    <constraint firstItem="C1v-eN-hR0" firstAttribute="top" secondItem="6" secondAttribute="top" constant="20" symbolic="YES" id="Qqt-lz-kAM"/>
-                    <constraint firstItem="4SD-Qr-9gz" firstAttribute="top" secondItem="6" secondAttribute="top" id="Xl3-Ac-f80"/>
-                    <constraint firstAttribute="trailing" secondItem="4SD-Qr-9gz" secondAttribute="trailing" id="dtL-W5-fiB"/>
-                    <constraint firstAttribute="trailing" secondItem="C1v-eN-hR0" secondAttribute="trailing" constant="-1" id="fuc-oy-kfe"/>
-                    <constraint firstItem="C1v-eN-hR0" firstAttribute="leading" secondItem="4SD-Qr-9gz" secondAttribute="leading" id="glf-eq-RM7"/>
-                    <constraint firstItem="4SD-Qr-9gz" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="mxC-0t-ncl"/>
+                    <constraint firstAttribute="trailing" secondItem="C1v-eN-hR0" secondAttribute="trailing" constant="-1" id="LVo-ql-fFv"/>
+                    <constraint firstItem="C1v-eN-hR0" firstAttribute="top" secondItem="6" secondAttribute="top" constant="20" symbolic="YES" id="aAI-0I-EhQ"/>
+                    <constraint firstItem="4SD-Qr-9gz" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="aMZ-J0-P7i"/>
+                    <constraint firstAttribute="trailing" secondItem="4SD-Qr-9gz" secondAttribute="trailing" constant="-17" id="dtj-nh-Jp1"/>
+                    <constraint firstItem="4SD-Qr-9gz" firstAttribute="top" secondItem="6" secondAttribute="top" id="fiM-W6-N95"/>
+                    <constraint firstAttribute="bottom" secondItem="C1v-eN-hR0" secondAttribute="bottom" constant="-1" id="hJX-5T-hz0"/>
+                    <constraint firstItem="C1v-eN-hR0" firstAttribute="leading" secondItem="4SD-Qr-9gz" secondAttribute="leading" id="qMQ-Di-c5k"/>
                 </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="EFA160F5-7EE6-497B-A420-285FEC4CA73E" displayMode="iconOnly" sizeMode="small" id="Tbe-3z-Gsw">
@@ -104,7 +103,7 @@
                         <nil key="toolTip"/>
                         <size key="minSize" width="96" height="22"/>
                         <size key="maxSize" width="96" height="22"/>
-                        <searchField key="view" verticalHuggingPriority="750" id="MtW-Mu-7ja">
+                        <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="MtW-Mu-7ja">
                             <rect key="frame" x="0.0" y="14" width="96" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" sendsSearchStringImmediately="YES" id="iTq-XW-8IB">
@@ -135,7 +134,7 @@
         <arrayController objectClassName="TTMTask" automaticallyRearrangesObjects="YES" id="z03-iY-Esn">
             <connections>
                 <binding destination="-2" name="filterPredicate" keyPath="self.activeFilterPredicate" id="sjF-mO-jcs"/>
-                <binding destination="-2" name="contentArray" keyPath="taskList" id="UcI-X7-aws"/>
+                <binding destination="-2" name="contentArray" keyPath="self.taskList" id="6bb-CW-xta"/>
             </connections>
         </arrayController>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>

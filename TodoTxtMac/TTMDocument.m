@@ -855,9 +855,17 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
 
 #pragma mark - Find Methods
 
+#pragma mark - Find Methods
+
 - (IBAction)moveFocusToSearchBox:(id)sender {
     [self.searchField setRefusesFirstResponder:NO];
-    [self.searchField becomeFirstResponder];
+    [self.windowForSheet makeFirstResponder:self.searchField];
+    // Starting in OS X 10.10 Yosemite, setting refusesFirstResponder to YES without a delay causes
+    // the search box to not be editable.
+    [self performSelector:@selector(makeSearchBoxRefuseFocus:) withObject:self afterDelay:0.5];
+}
+
+- (IBAction)makeSearchBoxRefuseFocus:(id)sender {
     [self.searchField setRefusesFirstResponder:YES];
 }
 
