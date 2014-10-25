@@ -14,7 +14,7 @@
 		<string>https://github.com/mjdescy/TodoTxtMac.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>TodoTxtMac.xcodeproj/project.xcworkspace</string>
+	<string>TodoTxtMac.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>7466FF582706CDEEDB6FB7E39AC879FD99CC9718</key>
