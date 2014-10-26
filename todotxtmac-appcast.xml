@@ -5,6 +5,18 @@
         <link>http://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
         <language>en</language>
         <item>
+            <title>Version 1.2.4</title>
+            <description>
+            Bug fixes for Yosemite.
+            </description>
+            <sparkle:releaseNotesLink>
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.4.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Sun, 26 Oct 2014 17:00:00 +0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.4/TodoTxtMac.app.zip" sparkle:version="1.2.4" length="1830351" type="application/octet-stream" sparkle:dsaSignature="MCwCFE/X9tYRrLid0wOIHa8PvVpNukOdAhRagtaWJUkDJth5IWAjxv+077yxXg==" />
+            <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 1.2.3</title>
             <description>
             Added "As Displayed" and "Unfiltered" options to task list metadata view.
