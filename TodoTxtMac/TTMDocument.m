@@ -47,6 +47,7 @@
 #import "TTMDocument.h"
 #import "TTMTask.h"
 #import "TTMDateUtility.h"
+#import "TTMTableView.h"
 #import "TTMFilterPredicates.h"
 #import "TTMFieldEditor.h"
 #import "RegExCategories.h"

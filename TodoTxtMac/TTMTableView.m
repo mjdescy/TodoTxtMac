@@ -59,11 +59,6 @@
     return self;
 }
 
-- (void)drawRect:(NSRect)dirtyRect
-{
-	[super drawRect:dirtyRect];
-}
-
 #pragma mark - Handle Keyboard Events Methods
 
 /*!
