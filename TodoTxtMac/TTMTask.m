@@ -62,7 +62,7 @@ static NSString * const CreationDatePatternIncomplete =
 static NSString * const CreationDatePatternCompleted =
     @"(?<=^x\\s((\\d{4})-(\\d{2})-(\\d{2}))\\s)((\\d{4})-(\\d{2})-(\\d{2}))";
 static NSString * const DueDatePattern = @"(?<=due:)((\\d{4})-(\\d{2})-(\\d{2}))";
-static NSString * const FullDueDatePattern = @"(\\sdue:)((\\d{4})-(\\d{2})-(\\d{2}))";
+static NSString * const FullDueDatePattern = @"((^|\\s)due:)((\\d{4})-(\\d{2})-(\\d{2}))";
 static NSString * const ProjectPattern = @"(?<=^|\\s)(\\+[^\\s]+)";
 static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
 
@@ -454,7 +454,9 @@ static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
     if (self.isBlank || !self.dueDate) {
         return;
     }
-    self.rawText = [self.rawText replace:RX(FullDueDatePattern) with:@""];
+
+    self.rawText = [[self.rawText replace:RX(FullDueDatePattern) with:@""]
+                    stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 }
 
 @end
