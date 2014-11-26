@@ -11,6 +11,7 @@
                 <outlet property="rawTextCell" destination="B31-jc-X0I" id="WRb-Kc-eMO"/>
                 <outlet property="searchField" destination="MtW-Mu-7ja" id="Kva-PL-Nec"/>
                 <outlet property="tableView" destination="FD8-v3-r5U" id="pBH-dg-EN3"/>
+                <outlet property="tableViewDelegate" destination="EHv-Hj-tOM" id="h3o-MM-3Ms"/>
                 <outlet property="textField" destination="4SD-Qr-9gz" id="SxF-oC-RrR"/>
                 <outlet property="window" destination="5" id="18"/>
             </connections>
@@ -69,7 +70,7 @@
                                         </tableColumn>
                                     </tableColumns>
                                     <connections>
-                                        <outlet property="delegate" destination="7KH-TF-RVa" id="RKc-xT-RyP"/>
+                                        <outlet property="delegate" destination="EHv-Hj-tOM" id="uvv-h2-wBm"/>
                                         <outlet property="parentDocument" destination="-2" id="rdR-3Y-03G"/>
                                     </connections>
                                 </tableView>
@@ -139,9 +140,9 @@
         </arrayController>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <userDefaultsController representsSharedInstance="YES" id="ZDT-kG-QuA"/>
-        <customObject id="7KH-TF-RVa" customClass="TTMTableViewDelegate">
+        <customObject id="EHv-Hj-tOM" customClass="TTMTableViewDelegate">
             <connections>
-                <outlet property="arrayController" destination="z03-iY-Esn" id="Ubt-Jk-Mir"/>
+                <outlet property="arrayController" destination="z03-iY-Esn" id="bZW-B4-fSs"/>
             </connections>
         </customObject>
     </objects>

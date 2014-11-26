@@ -50,6 +50,7 @@
 @class TTMTask;
 @class TTMTasklistMetadata;
 @class TTMTableView;
+@class TTMTableViewDelegate;
 
 #define SORTMENUTAG   4000
 #define FILTERMENUTAG 5000
@@ -82,6 +83,7 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 @property (nonatomic, retain) IBOutlet NSTextField *textField;
 @property (nonatomic, retain) IBOutlet NSSearchField *searchField;
 @property (nonatomic, retain) IBOutlet TTMTableView *tableView;
+@property (nonatomic, retain) IBOutlet TTMTableViewDelegate *tableViewDelegate;
 @property (nonatomic, retain) IBOutlet NSArrayController *arrayController;
 @property (nonatomic, retain) IBOutlet NSCell *rawTextCell;
 @property (nonatomic, retain) TTMFieldEditor *customFieldEditor;
