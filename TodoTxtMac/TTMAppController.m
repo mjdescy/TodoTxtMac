@@ -107,4 +107,14 @@ NSString *const TodoFileArgument = @"todo-file";
                                                                  completionHandler:NULL];
 }
 
+#pragma mark - Open Default Todo.txt File Methods
+
+-(void)openDefaultTodoFile {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"openDefaultTodoFileOnStartup"]) {
+        return;
+    }
+    [self openDocumentFromFilePath:[[NSUserDefaults standardUserDefaults]
+                                    stringForKey:@"defaultTodoFilePath"]];
+}
+
 @end

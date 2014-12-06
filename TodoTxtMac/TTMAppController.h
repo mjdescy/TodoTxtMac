@@ -89,5 +89,14 @@ extern NSString *const TodoFileArgument;
  */
 - (void)openDocumentFromFileURL:(NSURL*)fileURL;
 
+#pragma mark - Open Default Todo.txt File Methods
+
+/*!
+ * @method openDefaultTodoFile:
+ * @abstract This method opens the default todo.txt file (TTMDocument) based on user preferences.
+ * If the user preference for opening a default todo.txt file on startup is disabled,
+ * this method does nothing.
+ */
+-(void)openDefaultTodoFile;
 
 @end
