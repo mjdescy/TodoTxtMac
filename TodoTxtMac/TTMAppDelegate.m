@@ -46,6 +46,7 @@
 
 #import "TTMAppDelegate.h"
 #import "TTMFilterPredicates.h"
+#import "TTMAppController.h"
 
 static NSDictionary *defaultValues() {
     
@@ -99,6 +100,11 @@ static NSDictionary *defaultValues() {
     [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:defaultValues()];
     
     [super initialize];
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)notification {
+    // Open file from command line argument. Does nothing if there is no command line argument.
+    [self.appController openTodoFileFromCommandLineArgument];
 }
 
 @end

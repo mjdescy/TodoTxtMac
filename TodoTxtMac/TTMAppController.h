@@ -50,11 +50,44 @@
 
 @interface TTMAppController : NSObject
 
+// Constants for command-line argument names
+extern NSString *const TodoFileArgument;
+
 @property (nonatomic, retain) TTMPreferencesController *preferencesController;
 @property (nonatomic, retain) TTMFiltersController *filtersController;
 
 - (IBAction)openPreferencesWindow:(id)sender;
 - (IBAction)openFiltersWindow:(id)sender;
 - (IBAction)openWebSite:(id)sender;
+
+#pragma mark - Command-line Argument-related Methods
+
+/*!
+ * @method openTodoFileFromCommandLineArgument:
+ * @abstract This method opens a todo.txt file based on the command line argument. 
+ * The name of the argument is defined in the TodoFileArgument constant.
+ * If there is no command line argument, this method does nothing.
+ */
+- (void)openTodoFileFromCommandLineArgument;
+
+/*!
+ * @method commandLineArgumentTodoFile:
+ * @abstract This method returns the value of the todo-file command line argument.
+ * If there is no command-line argument, it returns null.
+ */
+- (NSString*)commandLineArgumentTodoFile;
+
+/*!
+ * @method openDocumentFromFilePath:
+ * @abstract This method opens a todo.txt file (TTMDocument) based on a file path.
+ */
+- (void)openDocumentFromFilePath:(NSString*)filePath;
+
+/*!
+ * @method openDocumentFromFilePath:
+ * @abstract This method opens a todo.txt file (TTMDocument) based on a file URL.
+ */
+- (void)openDocumentFromFileURL:(NSURL*)fileURL;
+
 
 @end

@@ -500,7 +500,11 @@ CA
         </menu>
         <customObject id="419" customClass="NSFontManager"/>
         <customObject id="7QU-ZR-XSK" customClass="TTMAppController"/>
-        <customObject id="lsB-8n-fAQ" customClass="TTMAppDelegate"/>
+        <customObject id="lsB-8n-fAQ" customClass="TTMAppDelegate">
+            <connections>
+                <outlet property="appController" destination="7QU-ZR-XSK" id="Jmb-5i-JMS"/>
+            </connections>
+        </customObject>
         <customObject id="565-dx-Ism" customClass="SUUpdater"/>
     </objects>
 </document>

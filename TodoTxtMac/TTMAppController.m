@@ -48,8 +48,10 @@
 #import "TTMPreferencesController.h"
 #import "TTMFiltersController.h"
 
-
 @implementation TTMAppController
+
+// Constants for command-line argument names
+NSString *const TodoFileArgument = @"todo-file";
 
 - (id)init {
     self = [super init];
@@ -77,6 +79,32 @@
 - (IBAction)openWebSite:(id)sender {
     NSURL *helpURL = [NSURL URLWithString:@"http://mjdescy.github.io/TodoTxtMac/"];
     [[NSWorkspace sharedWorkspace] openURL:helpURL];
+}
+
+#pragma mark - Command-line Argument-related Methods
+
+- (void)openTodoFileFromCommandLineArgument {
+    NSString *fileToOpenOnLaunch = [self commandLineArgumentTodoFile];
+    if (!fileToOpenOnLaunch) {
+        return;
+    }
+    [self openDocumentFromFilePath:fileToOpenOnLaunch];
+}
+
+- (NSString*)commandLineArgumentTodoFile {
+    NSUserDefaults *args = [NSUserDefaults standardUserDefaults];
+    return [args stringForKey:TodoFileArgument];
+}
+
+- (void)openDocumentFromFilePath:(NSString*)filePath {
+    NSURL *fileURL = [NSURL fileURLWithPath:filePath];
+    [self openDocumentFromFileURL:fileURL];
+}
+
+- (void)openDocumentFromFileURL:(NSURL*)fileURL {
+    [[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:fileURL
+                                                                           display:YES
+                                                                 completionHandler:NULL];
 }
 
 @end
