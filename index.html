@@ -37,7 +37,10 @@
 
 <h1><a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>TodoTxtMac Overview</h1>
 
-<p>TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X (10.8 Mountain Lion and higher) that conforms to the todo.txt format spec. (<a href="#screenshots">Additional screenshots below.</a>)</p>
+<p>
+
+
+TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X that conforms to the todo.txt format spec. Official support and testing are only done on Mac OS X 10.10 (Yosemite) at this time, though the application is built to run on Mac OS X 10.8 (Mountain Lion) and higher. (<a href="#screenshots">Additional screenshots below.</a>)</p>
 
 <div><img src="./images/todotxtmac-screenshot.png" alt="TodoTxtMac Screenshot"></div>
 
@@ -195,14 +198,22 @@
 <h2>
 <a name="is-there-a-preference-to-re-open-my-todotxt-file-on-launch" class="anchor" href="#is-there-a-preference-to-re-open-my-todotxt-file-on-launch"><span class="octicon octicon-link"></span></a>Is there a preference to re-open my todo.txt file on launch?</h2>
 
-<p>No, there is no preference, but the application will do this automatically under normal circumstances. The default behavior of TodoTxtMac is to reopen whatever todo.txt files were open when you last quit the app. To enjoy this behavior, do not close your todo.txt file's window prior to quitting the app. This behavior is dependent on </p>
+<p>No. Not yet. Most people will not need such a preference, because the default behavior of TodoTxtMac is to reopen whatever todo.txt files were open when you last quit the app. To enjoy this behavior, do not close your todo.txt file's window prior to quitting the app.</p>
 
 <p>If the TodoTxtMac is not reopening your files, or keeping a list of them in the "File &gt; Open Recent" menu, then you should check the following preferences under System Preferences &gt; General:</p>
 
 <ol>
-<li>"Close windows when quitting an application" must be unchecked.</li>
+<li>"Close windows when quitting an app" must be unchecked.</li>
 <li>"Recent items" must not be "None".</li>
-</ol><h2>
+</ol>
+
+<p>If you need to force TodoTxtMac to open a particular todo file on launch, you may launch the app with the command-line argument "todo-file", in the Terminal, as follows:</p>
+<p class="generic prompt" style="padding-left: 1em;">
+<code>
+$ open /Applications/TodoTxtMac.app --args -todo-file ~/Documents/todo.txt
+</code>
+</p>
+<h2>
 <a name="is-this-application-dropbox-enabled" class="anchor" href="#is-this-application-dropbox-enabled"><span class="octicon octicon-link"></span></a>Is this application Dropbox-enabled?</h2>
 
 <p>No. Unlike the official Todo.txt iOS application, this application does not call Dropbox's API. You can sync your file outside of TodoTxtMac via Dropbox or other services.</p>

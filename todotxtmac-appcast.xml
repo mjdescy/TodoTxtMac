@@ -5,6 +5,18 @@
         <link>http://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
         <language>en</language>
         <item>
+            <title>Version 1.2.6</title>
+            <description>
+            TodoTxtMac can now open a todo file specified on the command line on launch.
+            </description>
+            <sparkle:releaseNotesLink>
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.6.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Fri, 5 Dec 2014 19:45:00 +0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.6/TodoTxtMac.app.zip" sparkle:version="1.2.6" length="1831518" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCAHiTQkNrkkJiU+xDe/WcBu0zULgIVAK5lk+E3GOgncdnPVOvoYTYQzh8E" />
+            <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 1.2.5</title>
             <description>
             Fixes a crash that appears to affect Yosemite only.
@@ -16,7 +28,6 @@
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.5/TodoTxtMac.app.zip" sparkle:version="1.2.5" length="1830868" type="application/octet-stream" sparkle:dsaSignature="MC0CFGb3ooVV4nWw2Gs7dO2ZTwux3bSgAhUAia4jB57P2kZ+LG0hwg/DGA7Bzz0=" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
-
         <item>
             <title>Version 1.2.4</title>
             <description>
