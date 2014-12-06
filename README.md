@@ -2,7 +2,7 @@
 
 # Overview
 
-TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X (10.8 Mountain Lion and higher) that conforms to the todo.txt format spec.
+TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X that conforms to the todo.txt format spec. Official support and testing are only done on Mac OS X 10.10 (Yosemite) at this time, though the application is built to run on Mac OS X 10.8 (Mountain Lion) and higher.
 
 # Goals
 
@@ -134,12 +134,16 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 
 ## Is there a preference to re-open my todo.txt file on launch?
 
-No, there is no preference, but the application will do this automatically under normal circumstances. The default behavior of TodoTxtMac is to reopen whatever todo.txt files were open when you last quit the app. To enjoy this behavior, do not close your todo.txt file's window prior to quitting the app. This behavior is dependent on 
+No. Not yet. Most people will not need such a preference, because the default behavior of TodoTxtMac is to reopen whatever todo.txt files were open when you last quit the app. To enjoy this behavior, do not close your todo.txt file's window prior to quitting the app. 
 
-If the TodoTxtMac is not reopening your files, or keeping a list of them in the "File > Open Recent" menu, then you should check the following preferences under System Preferences > General:
+If the TodoTxtMac is not reopening your files, or is not keeping a list of them in the "File > Open Recent" menu, then you should check the following preferences under System Preferences > General:
 
-1. "Close windows when quitting an application" must be unchecked.
+1. "Close windows when quitting an app" must be unchecked.
 2. "Recent items" must not be "None".
+
+If you need to force TodoTxtMac to open a particular todo file on launch, you may launch the app with the command-line argument "todo-file", in the Terminal, as follows:
+
+    open /Applications/TodoTxtMac.app --args -todo-file ~/Documents/todo.txt
 
 ## Is this application Dropbox-enabled?
 

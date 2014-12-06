@@ -46,6 +46,7 @@
 
 #import "TTMAppDelegate.h"
 #import "TTMFilterPredicates.h"
+#import "TTMAppController.h"
 
 static NSDictionary *defaultValues() {
     
@@ -99,6 +100,18 @@ static NSDictionary *defaultValues() {
     [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:defaultValues()];
     
     [super initialize];
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)notification {
+    // Open file from command line argument. Does nothing if there is no command line argument.
+    [self.appController openTodoFileFromCommandLineArgument];
+}
+
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
+    // Suppress creating an Untitled document on launch if there is a command line argument
+    // to open a todo file. Without this method override, opening a todo file using the
+    // command line argument also opens an Untitled document every time.
+    return ([self.appController commandLineArgumentTodoFile] == NULL);
 }
 
 @end
