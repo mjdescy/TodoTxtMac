@@ -48,11 +48,11 @@
 
 @interface TTMPreferencesController : NSWindowController
 
-@property (nonatomic, retain) IBOutlet NSTextField *archiveFileLabel;
 @property (nonatomic, retain) NSFont *selectedFont;
-//@property (nonatomic) BOOL useUserFont;
 
 - (IBAction)chooseArchiveFile:(id)sender;
+- (IBAction)chooseDefaultTodoFile:(id)sender;
+- (void)chooseFileForUserDefaultsKey:(NSString*)userDefaultsKey withPrompt:(NSString*)prompt;
 
 - (IBAction)openFontPanel:(id)sender;
 

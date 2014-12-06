@@ -87,6 +87,8 @@ static NSDictionary *defaultValues() {
                 [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"contextColor",
                 [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"dueDateColor",
                 @NO, @"escapeKeyCancelsAllTextChanges",
+                @NO, @"openDefaultTodoFileOnStartup",
+                @"", @"defaultTodoFilePath",
                 nil];
     }
     return dict;
