@@ -26,12 +26,15 @@
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="L8o-bt-LMa">
-                                <view key="view" ambiguous="YES" id="kDW-tT-Mxi">
+                                <view key="view" id="kDW-tT-Mxi">
                                     <rect key="frame" x="10" y="33" width="487" height="203"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jj2-Ob-EWZ">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="jj2-Ob-EWZ">
                                             <rect key="frame" x="15" y="184" width="252" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="248" id="uWw-oA-ki8"/>
+                                            </constraints>
                                             <buttonCell key="cell" type="check" title="Prepend date on newly created tasks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Io7-mh-1Cc">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -40,15 +43,18 @@
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.prependDateOnNewTasks" id="7fz-Ob-fys"/>
                                             </connections>
                                         </button>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EbF-No-8Sl">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EbF-No-8Sl">
                                             <rect key="frame" x="15" y="110" width="79" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="75" id="vzB-9u-XgZ"/>
+                                            </constraints>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Archive file:" id="dO7-fz-ew6">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kLG-5x-TgF">
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="kLG-5x-TgF">
                                             <rect key="frame" x="100" y="90" width="267" height="37"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Archive file" placeholderString="Archive file (done.txt)" drawsBackground="YES" id="ER5-Fw-tUr">
                                                 <font key="font" metaFont="smallSystem"/>
@@ -59,8 +65,11 @@
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.archiveFilePath" id="1Nn-Oc-AMn"/>
                                             </connections>
                                         </textField>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gob-0a-fcd">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="Gob-0a-fcd">
                                             <rect key="frame" x="15" y="66" width="216" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="212" id="Dz0-k2-Yhr"/>
+                                            </constraints>
                                             <buttonCell key="cell" type="check" title="Archive tasks upon completion" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yjz-ct-IkY">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -69,8 +78,11 @@
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.archiveTasksUponCompletion" id="EZh-YG-UnL"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aUb-St-NdM">
-                                            <rect key="frame" x="214" y="20" width="60" height="32"/>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aUb-St-NdM">
+                                            <rect key="frame" x="214" y="20" width="69" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="57" id="N2u-1p-xP4"/>
+                                            </constraints>
                                             <buttonCell key="cell" type="push" title="Set..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7nh-a8-lLC">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -79,8 +91,11 @@
                                                 <action selector="openFontPanel:" target="-2" id="9Od-SU-kdD"/>
                                             </connections>
                                         </button>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d9b-fx-36a">
-                                            <rect key="frame" x="276" y="26" width="194" height="22"/>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="d9b-fx-36a">
+                                            <rect key="frame" x="285" y="26" width="185" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="185" id="NUb-Lp-6co"/>
+                                            </constraints>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="2lK-GJ-lfT">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -94,7 +109,7 @@
                                                 </binding>
                                             </connections>
                                         </textField>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Zh-2L-OK0">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="9Zh-2L-OK0">
                                             <rect key="frame" x="15" y="29" width="199" height="18"/>
                                             <buttonCell key="cell" type="check" title="Use custom font for task list" bezelStyle="regularSquare" imagePosition="left" inset="2" id="Hux-p9-XAz">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -104,8 +119,11 @@
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useUserFont" id="PkD-as-hcM"/>
                                             </connections>
                                         </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wFd-n2-OjV">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="wFd-n2-OjV">
                                             <rect key="frame" x="15" y="162" width="274" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="270" id="FGN-W0-KfO"/>
+                                            </constraints>
                                             <buttonCell key="cell" type="check" title="Move to newly added task after creation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7VI-d0-pcv">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -114,8 +132,11 @@
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.moveToTaskListAfterTaskCreation" id="Mko-rW-rL9"/>
                                             </connections>
                                         </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sr6-1i-PgC">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="Sr6-1i-PgC">
                                             <rect key="frame" x="15" y="140" width="235" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="231" id="OUd-WC-mdf"/>
+                                            </constraints>
                                             <buttonCell key="cell" type="check" title="Esc key cancels all edits to tasks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wmG-4W-WRo">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -124,8 +145,11 @@
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.escapeKeyCancelsAllTextChanges" id="7tf-jg-uD0"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Xb-Wn-oSq">
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Xb-Wn-oSq">
                                             <rect key="frame" x="369" y="91" width="107" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="95" id="08L-zW-eKY"/>
+                                            </constraints>
                                             <buttonCell key="cell" type="push" title="Browse..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hif-CU-wHj">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -135,6 +159,32 @@
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="d9b-fx-36a" firstAttribute="trailing" secondItem="7Xb-Wn-oSq" secondAttribute="trailing" id="02N-P3-NOu"/>
+                                        <constraint firstItem="Gob-0a-fcd" firstAttribute="top" secondItem="kLG-5x-TgF" secondAttribute="bottom" constant="8" symbolic="YES" id="36y-Kp-x0c"/>
+                                        <constraint firstItem="7Xb-Wn-oSq" firstAttribute="centerY" secondItem="kDW-tT-Mxi" secondAttribute="centerY" constant="-7" id="3fq-ff-tE9"/>
+                                        <constraint firstItem="aUb-St-NdM" firstAttribute="top" secondItem="Gob-0a-fcd" secondAttribute="bottom" constant="20" symbolic="YES" id="95R-uf-OHU"/>
+                                        <constraint firstItem="jj2-Ob-EWZ" firstAttribute="top" secondItem="kDW-tT-Mxi" secondAttribute="top" constant="3" id="Dmq-aW-SJl"/>
+                                        <constraint firstItem="jj2-Ob-EWZ" firstAttribute="leading" secondItem="kDW-tT-Mxi" secondAttribute="leading" constant="17" id="Hgk-5n-75v"/>
+                                        <constraint firstItem="9Zh-2L-OK0" firstAttribute="baseline" secondItem="aUb-St-NdM" secondAttribute="baseline" id="LYf-9C-h3q"/>
+                                        <constraint firstItem="7Xb-Wn-oSq" firstAttribute="leading" secondItem="kLG-5x-TgF" secondAttribute="trailing" constant="8" symbolic="YES" id="Nm3-6a-ppX"/>
+                                        <constraint firstItem="aUb-St-NdM" firstAttribute="top" secondItem="d9b-fx-36a" secondAttribute="top" id="Nmv-aE-SSm"/>
+                                        <constraint firstItem="EbF-No-8Sl" firstAttribute="leading" secondItem="Sr6-1i-PgC" secondAttribute="leading" id="Oxq-oM-TPW"/>
+                                        <constraint firstItem="EbF-No-8Sl" firstAttribute="leading" secondItem="Gob-0a-fcd" secondAttribute="leading" id="Pql-yS-VYA"/>
+                                        <constraint firstItem="d9b-fx-36a" firstAttribute="leading" secondItem="aUb-St-NdM" secondAttribute="trailing" constant="8" symbolic="YES" id="Rnq-Vy-yXC"/>
+                                        <constraint firstItem="7Xb-Wn-oSq" firstAttribute="centerY" secondItem="kLG-5x-TgF" secondAttribute="centerY" id="WBz-EY-yYW"/>
+                                        <constraint firstItem="Sr6-1i-PgC" firstAttribute="leading" secondItem="wFd-n2-OjV" secondAttribute="leading" id="ZFv-tp-ggr"/>
+                                        <constraint firstItem="kLG-5x-TgF" firstAttribute="top" secondItem="EbF-No-8Sl" secondAttribute="top" id="Zc7-If-0IB"/>
+                                        <constraint firstItem="wFd-n2-OjV" firstAttribute="leading" secondItem="jj2-Ob-EWZ" secondAttribute="leading" id="hXb-tq-MTZ"/>
+                                        <constraint firstAttribute="trailing" secondItem="7Xb-Wn-oSq" secondAttribute="trailing" constant="17" id="iPr-va-hOY"/>
+                                        <constraint firstItem="9Zh-2L-OK0" firstAttribute="leading" secondItem="Gob-0a-fcd" secondAttribute="leading" id="l04-6Q-JFQ"/>
+                                        <constraint firstItem="Gob-0a-fcd" firstAttribute="top" secondItem="EbF-No-8Sl" secondAttribute="bottom" constant="28" id="lHS-Mv-PXl"/>
+                                        <constraint firstItem="wFd-n2-OjV" firstAttribute="top" secondItem="jj2-Ob-EWZ" secondAttribute="bottom" constant="8" id="lmd-KD-DEa"/>
+                                        <constraint firstItem="aUb-St-NdM" firstAttribute="leading" secondItem="9Zh-2L-OK0" secondAttribute="trailing" constant="8" symbolic="YES" id="oUs-1r-YK4"/>
+                                        <constraint firstItem="EbF-No-8Sl" firstAttribute="top" secondItem="Sr6-1i-PgC" secondAttribute="bottom" constant="15" id="ubQ-ii-JdG"/>
+                                        <constraint firstItem="kLG-5x-TgF" firstAttribute="leading" secondItem="EbF-No-8Sl" secondAttribute="trailing" constant="8" symbolic="YES" id="xeP-9Y-qOe"/>
+                                        <constraint firstItem="Sr6-1i-PgC" firstAttribute="top" secondItem="wFd-n2-OjV" secondAttribute="bottom" constant="8" id="yIM-Rv-9u3"/>
+                                    </constraints>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Colors" identifier="2" id="f18-jj-cqZ">
@@ -340,7 +390,7 @@
                                         </textField>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Tp-oa-L2w">
                                             <rect key="frame" x="94" y="142" width="273" height="36"/>
-                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Default todo.txt file" drawsBackground="YES" id="mqs-ny-Nb9">
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Default File" placeholderString="Default file (todo.txt)" drawsBackground="YES" id="mqs-ny-Nb9">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -382,10 +432,10 @@
                     </tabView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="y76-Kz-NYB" secondAttribute="bottom" constant="20" symbolic="YES" id="0PM-tJ-TnS"/>
-                    <constraint firstItem="y76-Kz-NYB" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="12" symbolic="YES" id="VCC-Qs-Ha9"/>
-                    <constraint firstItem="y76-Kz-NYB" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="c3I-i6-QLh"/>
-                    <constraint firstAttribute="trailing" secondItem="y76-Kz-NYB" secondAttribute="trailing" constant="20" symbolic="YES" id="cL9-J5-fMg"/>
+                    <constraint firstItem="y76-Kz-NYB" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="12" symbolic="YES" id="46h-9g-DSu"/>
+                    <constraint firstAttribute="bottom" secondItem="y76-Kz-NYB" secondAttribute="bottom" constant="20" symbolic="YES" id="BDx-fg-KEm"/>
+                    <constraint firstItem="y76-Kz-NYB" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="hK4-RB-qR4"/>
+                    <constraint firstAttribute="trailing" secondItem="y76-Kz-NYB" secondAttribute="trailing" constant="20" symbolic="YES" id="jmd-ED-AFN"/>
                 </constraints>
             </view>
         </window>
