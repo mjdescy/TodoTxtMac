@@ -45,7 +45,10 @@
  */
 
 #import <Foundation/Foundation.h>
+@class TTMAppController;
 
 @interface TTMAppDelegate : NSObject <NSApplicationDelegate>
+
+@property (nonatomic, retain) IBOutlet TTMAppController *appController;
 
 @end
