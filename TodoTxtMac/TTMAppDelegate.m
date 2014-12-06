@@ -107,4 +107,11 @@ static NSDictionary *defaultValues() {
     [self.appController openTodoFileFromCommandLineArgument];
 }
 
+- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
+    // Suppress creating an Untitled document on launch if there is a command line argument
+    // to open a todo file. Without this method override, opening a todo file using the
+    // command line argument also opens an Untitled document every time.
+    return ([self.appController commandLineArgumentTodoFile] == NULL);
+}
+
 @end
