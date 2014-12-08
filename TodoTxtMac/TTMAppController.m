@@ -117,4 +117,19 @@ NSString *const TodoFileArgument = @"todo-file";
                                     stringForKey:@"defaultTodoFilePath"]];
 }
 
+#pragma mark - Close All Windows Methods
+
+- (IBAction)closeAllWindows:(id)sender {
+    [[NSDocumentController sharedDocumentController]
+         closeAllDocumentsWithDelegate:self
+                   didCloseAllSelector:@selector(documentController:didCloseAll:contextInfo:)
+                           contextInfo:NULL];
+}
+
+- (void)documentController:(NSDocumentController *)docController
+                     didCloseAll:(BOOL)didCloseAll
+                     contextInfo:(void *)contextInfo {
+    return;
+}
+
 @end

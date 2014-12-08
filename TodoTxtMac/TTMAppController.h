@@ -99,4 +99,20 @@ extern NSString *const TodoFileArgument;
  */
 -(void)openDefaultTodoFile;
 
+#pragma mark - Close All Windows Methods
+
+/*!
+ * @method closeAllWindows:
+ * @abstract This method closes all open windows.
+ */
+- (IBAction)closeAllWindows:(id)sender;
+
+/*!
+ * @method closeAllWindows:
+ * @abstract This method is a completion handler for closeAllWindows. It does nothing.
+ */
+- (void)documentController:(NSDocumentController *)docController
+               didCloseAll:(BOOL)didCloseAll
+               contextInfo:(void *)contextInfo;
+
 @end
