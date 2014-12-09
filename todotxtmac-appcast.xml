@@ -5,6 +5,18 @@
         <link>http://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
         <language>en</language>
         <item>
+            <title>Version 1.2.7</title>
+            <description>
+            Added feature, found in Preferences > Startup, to open a default todo.txt file on launch.
+            </description>
+            <sparkle:releaseNotesLink>
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.7.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Mon, 8 Dec 2014 19:45:00 +0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.7/TodoTxtMac.app.zip" sparkle:version="1.2.7" length="1834067" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCVSka93stepYgwnnkfGSiw2IGN4QIVAJmvzUJYvsEZTMsafKqcaT27Wx9L" />
+            <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 1.2.6</title>
             <description>
             TodoTxtMac can now open a todo file specified on the command line on launch.
