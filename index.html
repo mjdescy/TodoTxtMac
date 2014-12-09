@@ -200,7 +200,7 @@ TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X that conf
 <h2>
 <a name="is-there-a-preference-to-re-open-my-todotxt-file-on-launch" class="anchor" href="#is-there-a-preference-to-re-open-my-todotxt-file-on-launch"><span class="octicon octicon-link"></span></a>Is there a preference to re-open my todo.txt file on launch?</h2>
 
-<p>No. Not yet. Most people will not need such a preference, because the default behavior of TodoTxtMac is to reopen whatever todo.txt files were open when you last quit the app. To enjoy this behavior, do not close your todo.txt file's window prior to quitting the app.</p>
+<p>Yes, but most people will not need such a preference, because the default behavior of TodoTxtMac is to reopen whatever todo.txt files were open when you last quit the app. To enjoy this behavior, do not close your todo.txt file's window prior to quitting the app.</p>
 
 <p>If the TodoTxtMac is not reopening your files, or keeping a list of them in the "File &gt; Open Recent" menu, then you should check the following preferences under System Preferences &gt; General:</p>
 
@@ -209,7 +209,11 @@ TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X that conf
 <li>"Recent items" must not be "None".</li>
 </ol>
 
-<p>If you need to force TodoTxtMac to open a particular todo file on launch, you may launch the app with the command-line argument "todo-file", in the Terminal, as follows:</p>
+<p>If you need to force TodoTxtMac to open a particular todo file on launch, you may set a default todo.txt file in TodoTxtMac's Preferences > Startup.</p>
+
+<div><img src="./images/todotxtmac-screenshot-preferences-startup.png" alt="TodoTxtMac Startup Preferences Screenshot"></div>
+
+<p>You may also force TodoTxtMac to open a particular todo file on launch, you may launch the app with the command-line argument "todo-file", in the Terminal, as follows:</p>
 <p class="generic prompt" style="padding-left: 1em;">
 <code>
 $ open /Applications/TodoTxtMac.app --args -todo-file ~/Documents/todo.txt
@@ -218,7 +222,7 @@ $ open /Applications/TodoTxtMac.app --args -todo-file ~/Documents/todo.txt
 <h2>
 <a name="is-this-application-dropbox-enabled" class="anchor" href="#is-this-application-dropbox-enabled"><span class="octicon octicon-link"></span></a>Is this application Dropbox-enabled?</h2>
 
-<p>No. Unlike the official Todo.txt iOS application, this application does not call Dropbox's API. You can sync your file outside of TodoTxtMac via Dropbox or other services.</p>
+<p>No. Unlike the official Todo.txt iOS application, this application does not call Dropbox's API. You can sync your file outside of TodoTxtMac via Dropbox or other services. You can easily reload you todo.txt file with a keyboard shortcut (".") to load any changes made outside TodoTxtMac.</p>
 
 <h2>
 <a name="todotxtmac-says-my-todotxt-file-cannot-be-autosaved-the-file-has-been-changed-by-another-application" class="anchor" href="#todotxtmac-says-my-todotxt-file-cannot-be-autosaved-the-file-has-been-changed-by-another-application"><span class="octicon octicon-link"></span></a>TodoTxtMac says my todo.txt file cannot be autosaved. The file has been changed by another application.</h2>
@@ -261,6 +265,14 @@ $ open /Applications/TodoTxtMac.app --args -todo-file ~/Documents/todo.txt
 <h2>Color Preferences</h2>
 
 <div><img src="./images/todotxtmac-screenshot-preferences-colors.png" alt="TodoTxtMac Color Preferences Screenshot"></div>
+
+<h2>Updates Preferences</h2>
+
+<div><img src="./images/todotxtmac-screenshot-preferences-updates.png" alt="TodoTxtMac Updates Preferences Screenshot"></div>
+
+<h2>Startup Preferences</h2>
+
+<div><img src="./images/todotxtmac-screenshot-preferences-startup.png" alt="TodoTxtMac Startup Preferences Screenshot"></div>
 
 <h2>Task List Filters</h2>
 
