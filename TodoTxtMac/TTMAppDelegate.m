@@ -87,6 +87,8 @@ static NSDictionary *defaultValues() {
                 [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"contextColor",
                 [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"dueDateColor",
                 @NO, @"escapeKeyCancelsAllTextChanges",
+                @NO, @"openDefaultTodoFileOnStartup",
+                @"", @"defaultTodoFilePath",
                 nil];
     }
     return dict;
@@ -105,13 +107,19 @@ static NSDictionary *defaultValues() {
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
     // Open file from command line argument. Does nothing if there is no command line argument.
     [self.appController openTodoFileFromCommandLineArgument];
+    
+    // Open default todo file, if one is selected and the option is enabled.
+    [self.appController openDefaultTodoFile];
 }
 
 - (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
-    // Suppress creating an Untitled document on launch if there is a command line argument
-    // to open a todo file. Without this method override, opening a todo file using the
-    // command line argument also opens an Untitled document every time.
-    return ([self.appController commandLineArgumentTodoFile] == NULL);
+    // Suppress creating an Untitled document on launch if either:
+    // 1. there is a command line argument to open a todo file, or
+    // 2. the open default todo.txt file on startup user preference is selected.
+    // Without this method override, opening a todo file using the command line argument
+    // or the default todo file user preference also opens an Untitled document every time.
+    return ([self.appController commandLineArgumentTodoFile] == NULL &&
+            ![[NSUserDefaults standardUserDefaults] boolForKey:@"openDefaultTodoFileOnStartup"]);
 }
 
 @end

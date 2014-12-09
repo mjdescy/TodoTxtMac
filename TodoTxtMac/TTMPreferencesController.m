@@ -76,19 +76,24 @@
 #pragma mark - Preference-related methods
 
 - (IBAction)chooseArchiveFile:(id)sender {
+    [self chooseFileForUserDefaultsKey:@"archiveFilePath" withPrompt:@"Choose Archive File"];
+}
+
+- (IBAction)chooseDefaultTodoFile:(id)sender {
+    [self chooseFileForUserDefaultsKey:@"defaultTodoFilePath" withPrompt:@"Choose todo.txt File"];
+}
+
+- (void)chooseFileForUserDefaultsKey:(NSString*)userDefaultsKey withPrompt:(NSString*)prompt {
     NSOpenPanel *panel = [NSOpenPanel openPanel];
     [panel setCanChooseFiles:YES];
     [panel setCanChooseDirectories:NO];
     [panel setAllowsMultipleSelection:NO];
-    [panel setPrompt:@"Open Archive File"];
+    [panel setPrompt:prompt];
     [panel setAllowedFileTypes:@[@"txt", @"TXT", @"todo", @"TODO", @""]];
     
     if ([panel runModal] == NSFileHandlingPanelOKButton) {
         for (NSURL *fileURL in [panel URLs]) {
-            NSString *filePath = [fileURL path];
-            NSLog(@"Archive file selected: '%@'.", filePath);
-            [self.archiveFileLabel setStringValue:filePath];
-            [[NSUserDefaults standardUserDefaults] setValue:[fileURL path] forKey:@"archiveFilePath"];
+            [[NSUserDefaults standardUserDefaults] setValue:[fileURL path] forKey:userDefaultsKey];
         }
     }
 }
