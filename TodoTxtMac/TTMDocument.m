@@ -857,8 +857,6 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
 
 #pragma mark - Find Methods
 
-#pragma mark - Find Methods
-
 - (IBAction)moveFocusToSearchBox:(id)sender {
     [self.searchField setRefusesFirstResponder:NO];
     [self.windowForSheet makeFirstResponder:self.searchField];

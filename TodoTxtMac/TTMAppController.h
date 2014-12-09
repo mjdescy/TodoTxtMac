@@ -89,5 +89,30 @@ extern NSString *const TodoFileArgument;
  */
 - (void)openDocumentFromFileURL:(NSURL*)fileURL;
 
+#pragma mark - Open Default Todo.txt File Methods
+
+/*!
+ * @method openDefaultTodoFile:
+ * @abstract This method opens the default todo.txt file (TTMDocument) based on user preferences.
+ * If the user preference for opening a default todo.txt file on startup is disabled,
+ * this method does nothing.
+ */
+-(void)openDefaultTodoFile;
+
+#pragma mark - Close All Windows Methods
+
+/*!
+ * @method closeAllWindows:
+ * @abstract This method closes all open windows.
+ */
+- (IBAction)closeAllWindows:(id)sender;
+
+/*!
+ * @method closeAllWindows:
+ * @abstract This method is a completion handler for closeAllWindows. It does nothing.
+ */
+- (void)documentController:(NSDocumentController *)docController
+               didCloseAll:(BOOL)didCloseAll
+               contextInfo:(void *)contextInfo;
 
 @end

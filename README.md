@@ -97,6 +97,8 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - Command+S: save file (forces the file to save immediately)
 - .: reload file
 - Command+I: view task list metadata (task counts, etc.)
+- Command+W: close file
+- Command+Option+W: close all files
 
 ## Sorting the task list
 

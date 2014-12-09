@@ -107,4 +107,29 @@ NSString *const TodoFileArgument = @"todo-file";
                                                                  completionHandler:NULL];
 }
 
+#pragma mark - Open Default Todo.txt File Methods
+
+-(void)openDefaultTodoFile {
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"openDefaultTodoFileOnStartup"]) {
+        return;
+    }
+    [self openDocumentFromFilePath:[[NSUserDefaults standardUserDefaults]
+                                    stringForKey:@"defaultTodoFilePath"]];
+}
+
+#pragma mark - Close All Windows Methods
+
+- (IBAction)closeAllWindows:(id)sender {
+    [[NSDocumentController sharedDocumentController]
+         closeAllDocumentsWithDelegate:self
+                   didCloseAllSelector:@selector(documentController:didCloseAll:contextInfo:)
+                           contextInfo:NULL];
+}
+
+- (void)documentController:(NSDocumentController *)docController
+                     didCloseAll:(BOOL)didCloseAll
+                     contextInfo:(void *)contextInfo {
+    return;
+}
+
 @end
