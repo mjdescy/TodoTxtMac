@@ -208,6 +208,9 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
 }
 
 - (IBAction)reloadFile:(id)sender {
+    // retain selected items, because selection is lost when the file/arrayController is reloaded
+    NSArray *taskListSelectedItemsList = [self getTaskListSelections];
+    
     // Save the current filter number.
     NSUInteger filterNumber = self.activeFilterPredicateNumber;
     
@@ -223,6 +226,39 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     
     // Re-apply the filter active before the file was reloaded.
     [self changeActiveFilterPredicateToPreset:filterNumber];
+    
+    // re-set selected items
+    [self setTaskListSelections:taskListSelectedItemsList];
+}
+
+- (NSArray*)getTaskListSelections {
+    return [[self.arrayController selectedObjects] copy];
+}
+
+- (void)setTaskListSelections:(NSArray*)taskListSelectedItems {
+    if (taskListSelectedItems == nil) {
+        return;
+    }
+
+    NSMutableArray *selectedItems = [NSMutableArray arrayWithArray:taskListSelectedItems];
+    NSMutableArray *itemsToSelect = [NSMutableArray array];
+    
+    for (TTMTask *task in [self.arrayController arrangedObjects]) {
+        int i = 0;
+        BOOL selected = NO;
+        while (i < [selectedItems count] && !selected) {
+            TTMTask *selection = [selectedItems objectAtIndex:i];
+            if ([task.rawText isEqualToString:selection.rawText]) {
+                [itemsToSelect addObject:task];
+                [selectedItems removeObjectAtIndex:i];
+                selected = YES;
+            }
+            else {
+                i++;
+            }
+        }
+    }
+    [self.arrayController setSelectedObjects:itemsToSelect];
 }
 
 #pragma mark - Add/Remove Task Methods

@@ -78,6 +78,7 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 @property (nonatomic, copy) NSString *preferredLineEnding;
 @property (nonatomic, copy) NSArray *projectsArray;
 @property (nonatomic, copy) NSArray *contextsArray;
+//@property (nonatomic, copy) NSMutableArray *taskListSelectedItemsList;
 
 // Window controls
 @property (nonatomic, retain) IBOutlet NSTextField *textField;
@@ -111,6 +112,27 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
  * @abstract Reloads the task list file.
  */
 - (IBAction)reloadFile:(id)sender;
+
+/*!
+ * @method getTaskListSelections
+ * @abstract This method gets/saves selected items in the task list before the reload:
+ * method reloads the task list file, to allow for selections to be retained (as much as possible)
+ * after the user reloads the file.
+ */
+- (NSMutableArray*)getTaskListSelections;
+
+/*!
+ * @method setTaskListSelections:
+ * @param taskListSelections Array of task items to select
+ * @abstract This method re-sets selected items in the task list after the reload:
+ * method reloads the task list file, to allow for selections to be retained (as much as possible)
+ * after the user reloads the file. This method makes a best effort to select the same tasks as
+ * were selected before (which are to be returned by the getTaskListSelections: method prior to
+ * reloading the file. Tasks that change (i.e., are completed or otherwise modified) or removed 
+ * from the list will not be selected after reload. For duplicate tasks (those with identical
+ * raw text), the first of the duplicate tasks will be selected.
+ */
+- (void)setTaskListSelections:(NSArray*)taskListSelectedItems;
 
 #pragma mark - Add/Remove Task(s) methods
 
