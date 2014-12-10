@@ -108,11 +108,19 @@ extern NSString *const TodoFileArgument;
 - (IBAction)closeAllWindows:(id)sender;
 
 /*!
- * @method closeAllWindows:
+ * @method documentController:didCloseAll:contextInfo
  * @abstract This method is a completion handler for closeAllWindows. It does nothing.
  */
 - (void)documentController:(NSDocumentController *)docController
                didCloseAll:(BOOL)didCloseAll
                contextInfo:(void *)contextInfo;
+
+#pragma mark - Reload All Methods
+
+/*!
+ * @method reloadAll:
+ * @abstract This method refreshes the task list from disk for all open windows.
+ */
+- (IBAction)reloadAll:(id)sender;
 
 @end

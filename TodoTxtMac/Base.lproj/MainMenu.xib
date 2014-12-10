@@ -140,6 +140,12 @@
                                     <action selector="reloadFile:" target="-1" id="bcz-EK-Zbg"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Reload All" alternate="YES" keyEquivalent="." id="Q6W-AH-Whq">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                <connections>
+                                    <action selector="reloadAll:" target="7QU-ZR-XSK" id="2NE-Np-SLF"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Archive Completed Tasks" keyEquivalent="a" id="Kkd-iR-JVT">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
