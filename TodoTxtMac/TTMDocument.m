@@ -394,6 +394,10 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     [self.tableView reloadData];
 }
 
+- (IBAction)visualRefreshOnly:(id)sender {
+    [self.tableView reloadData];
+}
+
 - (IBAction)updateSelectedTask:(id)sender {
     // cancel if multiple rows are selected
     if ([[self.tableView selectedRowIndexes] count]!=1) {

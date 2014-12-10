@@ -123,4 +123,12 @@ extern NSString *const TodoFileArgument;
  */
 - (IBAction)reloadAll:(id)sender;
 
+#pragma mark - Visual Refresh Methods
+
+/*!
+ * @method visualRefreshAll:
+ * @abstract This method visually refreshes the task list for all open windows.
+ */
+- (IBAction)visualRefreshAll:(id)sender;
+
 @end

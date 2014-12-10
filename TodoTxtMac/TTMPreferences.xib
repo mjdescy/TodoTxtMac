@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTMPreferencesController">
@@ -199,6 +199,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="NQo-qy-J4o"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useHighlightColorsInTaskList" id="UUk-mO-tRk"/>
                                             </connections>
                                         </button>
@@ -209,6 +210,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="IiD-14-edE"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForOverdueTasks" id="5oV-wB-2Uc"/>
                                             </connections>
                                         </button>
@@ -219,6 +221,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="ltX-s4-peB"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueTodayTasks" id="TZg-WU-88H"/>
                                             </connections>
                                         </button>
@@ -229,6 +232,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="eD1-Ky-oca"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForProjects" id="you-NU-vbR"/>
                                             </connections>
                                         </button>
@@ -239,6 +243,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="HGR-Od-RDI"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForContexts" id="QkC-x2-e3E"/>
                                             </connections>
                                         </button>
@@ -249,6 +254,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="zat-ke-iCF"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueDates" id="q7r-xQ-BAA"/>
                                             </connections>
                                         </button>
@@ -456,5 +462,6 @@
             </defaultToolbarItems>
         </toolbar>
         <customObject id="oDD-Zm-tB0" customClass="SUUpdater"/>
+        <customObject id="cda-0y-TXV" customClass="TTMAppController"/>
     </objects>
 </document>

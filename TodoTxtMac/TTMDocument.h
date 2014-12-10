@@ -212,6 +212,12 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 - (void)refreshTaskListWithSave:(BOOL)saveToFile;
 
 /*!
+ * @method visualRefreshOnly:
+ * @abstract Refreshes the tableView control to apply color changes, etc., only.
+ */
+- (IBAction)visualRefreshOnly:(id)sender;
+
+/*!
  * @method updateSelectedTask:
  * @abstract Set the selected task in the task list to edit mode.
  */
