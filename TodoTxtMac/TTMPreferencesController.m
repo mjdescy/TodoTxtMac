@@ -76,7 +76,7 @@
     return [window makeFirstResponder:nil]; // validate editing
 }
 
-#pragma mark - Preference-related methods
+#pragma mark - Choose File Methods
 
 - (IBAction)chooseArchiveFile:(id)sender {
     [self chooseFileForUserDefaultsKey:@"archiveFilePath" withPrompt:@"Choose Archive File"];
@@ -101,6 +101,8 @@
     }
 }
 
+#pragma mark - Font Change Methods
+
 - (IBAction)openFontPanel:(id)sender {
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
     [fontManager setTarget:self];
@@ -120,6 +122,12 @@
 
 - (void)setSelectedFont:(NSFont*)newFont {
     [NSFont setUserFont:newFont];
+}
+
+#pragma mark - Color Change Methods
+
+- (IBAction)colorChanged:(id)sender {
+    [self.appController visualRefreshAll:self];
 }
 
 @end

@@ -52,10 +52,44 @@
 @property (nonatomic, retain) IBOutlet TTMAppController *appController;
 @property (nonatomic, retain) NSFont *selectedFont;
 
+#pragma mark - Choose File Methods
+
+/*!
+ * @method chooseArchiveFile:
+ * @abstract This method allows the user to choose the archive file (done.txt).
+ */
 - (IBAction)chooseArchiveFile:(id)sender;
+
+/*!
+ * @method chooseDefaultTodoFile:
+ * @abstract This method allows the user to choose a default todo.txt file to open at startup.
+ */
 - (IBAction)chooseDefaultTodoFile:(id)sender;
+
+/*!
+ * @method chooseFileForUserDefaultsKey:withPrompt:
+ * @abstract This method calls the file open method, allows the user to select a file,
+ * and stores the file URL to a specified user default key.
+ * @discussion This is a helper method called by chooseArchiveFile: and chooseDefaultTodoFile:.
+ */
 - (void)chooseFileForUserDefaultsKey:(NSString*)userDefaultsKey withPrompt:(NSString*)prompt;
 
+#pragma mark - Font Change Methods
+
+/*!
+ * @method openFontPanel:
+ * @abstract This method allows the user to choose a user font from the font panel.
+ * @discussion The changeFont: method is called whenever the user changes the font in the font panel.
+ */
 - (IBAction)openFontPanel:(id)sender;
+
+#pragma mark - Color Change Methods
+
+/*!
+ * @method colorChanged:
+ * @abstract This method triggers a visual refresh of all open todo files.
+ * @discussion This method is called whenever a user changes the color in an associated colorwell.
+ */
+- (IBAction)colorChanged:(id)sender;
 
 @end
