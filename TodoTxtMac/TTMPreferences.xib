@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTMPreferencesController">
             <connections>
+                <outlet property="appController" destination="cda-0y-TXV" id="g2i-w3-ifB"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="NDZ-dg-79d"/>
             </connections>
         </customObject>
@@ -116,6 +117,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="WhV-JV-fOE"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useUserFont" id="PkD-as-hcM"/>
                                             </connections>
                                         </button>
@@ -199,6 +201,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="NQo-qy-J4o"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useHighlightColorsInTaskList" id="UUk-mO-tRk"/>
                                             </connections>
                                         </button>
@@ -209,6 +212,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="IiD-14-edE"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForOverdueTasks" id="5oV-wB-2Uc"/>
                                             </connections>
                                         </button>
@@ -219,6 +223,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="ltX-s4-peB"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueTodayTasks" id="TZg-WU-88H"/>
                                             </connections>
                                         </button>
@@ -229,6 +234,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="eD1-Ky-oca"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForProjects" id="you-NU-vbR"/>
                                             </connections>
                                         </button>
@@ -239,6 +245,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="HGR-Od-RDI"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForContexts" id="QkC-x2-e3E"/>
                                             </connections>
                                         </button>
@@ -249,6 +256,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="zat-ke-iCF"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueDates" id="q7r-xQ-BAA"/>
                                             </connections>
                                         </button>
@@ -256,6 +264,7 @@
                                             <rect key="frame" x="288" y="155" width="44" height="23"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
+                                                <action selector="colorChanged:" target="-1" id="dWA-Ou-2Ft"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.overdueColor" id="QQo-sj-K0U">
                                                     <dictionary key="options">
                                                         <string key="NSValueTransformerName">NSUnarchiveFromData</string>
@@ -267,6 +276,7 @@
                                             <rect key="frame" x="288" y="128" width="44" height="23"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
+                                                <action selector="colorChanged:" target="-1" id="OVe-hf-sT4"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.dueTodayColor" id="rd3-79-doD">
                                                     <dictionary key="options">
                                                         <string key="NSValueTransformerName">NSUnarchiveFromData</string>
@@ -278,6 +288,7 @@
                                             <rect key="frame" x="288" y="101" width="44" height="23"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
+                                                <action selector="colorChanged:" target="-1" id="0rs-RG-Rsd"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.projectColor" id="aif-bN-ASG">
                                                     <dictionary key="options">
                                                         <string key="NSValueTransformerName">NSUnarchiveFromData</string>
@@ -289,6 +300,7 @@
                                             <rect key="frame" x="288" y="74" width="44" height="23"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
+                                                <action selector="colorChanged:" target="-1" id="rby-dk-hLN"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.contextColor" id="bRT-l7-w6e">
                                                     <dictionary key="options">
                                                         <string key="NSValueTransformerName">NSUnarchiveFromData</string>
@@ -300,6 +312,7 @@
                                             <rect key="frame" x="288" y="47" width="44" height="23"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
+                                                <action selector="colorChanged:" target="-1" id="p3L-12-rZx"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.dueDateColor" id="m6b-LO-QB0">
                                                     <dictionary key="options">
                                                         <string key="NSValueTransformerName">NSUnarchiveFromData</string>
@@ -456,5 +469,6 @@
             </defaultToolbarItems>
         </toolbar>
         <customObject id="oDD-Zm-tB0" customClass="SUUpdater"/>
+        <customObject id="cda-0y-TXV" customClass="TTMAppController"/>
     </objects>
 </document>
