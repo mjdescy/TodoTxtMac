@@ -45,9 +45,11 @@
  */
 
 #import <Cocoa/Cocoa.h>
+@class TTMAppController;
 
 @interface TTMPreferencesController : NSWindowController
 
+@property (nonatomic, retain) IBOutlet TTMAppController *appController;
 @property (nonatomic, retain) NSFont *selectedFont;
 
 - (IBAction)chooseArchiveFile:(id)sender;

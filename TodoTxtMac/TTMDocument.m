@@ -117,13 +117,8 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     // Set up drag and drop for tableView.
     [self.tableView setDraggingSourceOperationMask:NSDragOperationEvery forLocal:NO];
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
-    
-    // Set up font selection for tableView.
-    self.usingUserFont = [[NSUserDefaults standardUserDefaults] boolForKey:@"useUserFont"];
-    if (self.usingUserFont) {
-        self.userFont = [NSFont userFontOfSize:0.0];
-        [self.rawTextCell setFont:self.userFont];
-    }
+
+    [self setTaskListFont];
 }
 
 - (NSString *)windowNibName {
@@ -395,7 +390,18 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
 }
 
 - (IBAction)visualRefreshOnly:(id)sender {
+    [self setTaskListFont];
     [self.tableView reloadData];
+}
+
+- (void)setTaskListFont {
+    self.usingUserFont = [[NSUserDefaults standardUserDefaults] boolForKey:@"useUserFont"];
+    if (self.usingUserFont) {
+        self.userFont = [NSFont userFontOfSize:0.0];
+    } else {
+        self.userFont = [NSFont controlContentFontOfSize:0];
+    }
+    [self.rawTextCell setFont:self.userFont];
 }
 
 - (IBAction)updateSelectedTask:(id)sender {

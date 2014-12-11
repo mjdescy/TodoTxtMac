@@ -45,6 +45,9 @@
  */
 
 #import "TTMPreferencesController.h"
+#import "TTMAppController.h"
+
+#define COMPLETION_DELAY (0.25)
 
 @implementation TTMPreferencesController
 
@@ -100,13 +103,15 @@
 
 - (IBAction)openFontPanel:(id)sender {
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
+    [fontManager setTarget:self];
     [fontManager setSelectedFont:[NSFont userFontOfSize:0.0] isMultiple:NO];
     [fontManager orderFrontFontPanel:self];
+    [self.appController visualRefreshAll:self];
 }
 
 - (void)changeFont:(id)fontManager {
     self.selectedFont = [fontManager convertFont:self.selectedFont];
-    [NSFont setUserFont:self.selectedFont];
+    [self.appController visualRefreshAll:self];
 }
 
 - (NSFont*)selectedFont {

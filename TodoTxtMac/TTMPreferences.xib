@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTMPreferencesController">
             <connections>
+                <outlet property="appController" destination="cda-0y-TXV" id="g2i-w3-ifB"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="NDZ-dg-79d"/>
             </connections>
         </customObject>
@@ -116,6 +117,7 @@
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
                                             <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="WhV-JV-fOE"/>
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useUserFont" id="PkD-as-hcM"/>
                                             </connections>
                                         </button>

@@ -78,7 +78,6 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 @property (nonatomic, copy) NSString *preferredLineEnding;
 @property (nonatomic, copy) NSArray *projectsArray;
 @property (nonatomic, copy) NSArray *contextsArray;
-//@property (nonatomic, copy) NSMutableArray *taskListSelectedItemsList;
 
 // Window controls
 @property (nonatomic, retain) IBOutlet NSTextField *textField;
@@ -216,6 +215,12 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
  * @abstract Refreshes the tableView control to apply color changes, etc., only.
  */
 - (IBAction)visualRefreshOnly:(id)sender;
+
+/*!
+ * @method setTaskListFont:
+ * @abstract Sets/changes font for task list.
+ */
+- (void)setTaskListFont;
 
 /*!
  * @method updateSelectedTask:
