@@ -47,6 +47,7 @@
 #import "TTMAppController.h"
 #import "TTMPreferencesController.h"
 #import "TTMFiltersController.h"
+#import "TTMDocument.h"
 
 @implementation TTMAppController
 
@@ -130,6 +131,24 @@ NSString *const TodoFileArgument = @"todo-file";
                      didCloseAll:(BOOL)didCloseAll
                      contextInfo:(void *)contextInfo {
     return;
+}
+
+#pragma mark - Reload All Methods
+
+- (IBAction)reloadAll:(id)sender {
+    NSArray *documents = [[NSDocumentController sharedDocumentController] documents];
+    [documents enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [(TTMDocument*)obj reloadFile:self];
+    }];
+}
+
+#pragma mark - Visual Refresh Methods
+
+- (IBAction)visualRefreshAll:(id)sender {
+    NSArray *documents = [[NSDocumentController sharedDocumentController] documents];
+    [documents enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [(TTMDocument*)obj visualRefreshOnly:self];
+    }];
 }
 
 @end

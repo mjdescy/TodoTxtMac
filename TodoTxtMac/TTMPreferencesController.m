@@ -45,6 +45,9 @@
  */
 
 #import "TTMPreferencesController.h"
+#import "TTMAppController.h"
+
+#define COMPLETION_DELAY (0.25)
 
 @implementation TTMPreferencesController
 
@@ -73,7 +76,7 @@
     return [window makeFirstResponder:nil]; // validate editing
 }
 
-#pragma mark - Preference-related methods
+#pragma mark - Choose File Methods
 
 - (IBAction)chooseArchiveFile:(id)sender {
     [self chooseFileForUserDefaultsKey:@"archiveFilePath" withPrompt:@"Choose Archive File"];
@@ -98,15 +101,19 @@
     }
 }
 
+#pragma mark - Font Change Methods
+
 - (IBAction)openFontPanel:(id)sender {
     NSFontManager *fontManager = [NSFontManager sharedFontManager];
+    [fontManager setTarget:self];
     [fontManager setSelectedFont:[NSFont userFontOfSize:0.0] isMultiple:NO];
     [fontManager orderFrontFontPanel:self];
+    [self.appController visualRefreshAll:self];
 }
 
 - (void)changeFont:(id)fontManager {
     self.selectedFont = [fontManager convertFont:self.selectedFont];
-    [NSFont setUserFont:self.selectedFont];
+    [self.appController visualRefreshAll:self];
 }
 
 - (NSFont*)selectedFont {
@@ -115,6 +122,12 @@
 
 - (void)setSelectedFont:(NSFont*)newFont {
     [NSFont setUserFont:newFont];
+}
+
+#pragma mark - Color Change Methods
+
+- (IBAction)colorChanged:(id)sender {
+    [self.appController visualRefreshAll:self];
 }
 
 @end
