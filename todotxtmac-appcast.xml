@@ -5,6 +5,19 @@
         <link>http://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
         <language>en</language>
         <item>
+            <title>Version 1.2.8</title>
+            <description>
+            Task selections are now retained, as much as possible, when reloading a file from disk. Color and font preferences are now live-updating for all open windows. Added a "Reload All" command (Option+.).
+            </description>
+            <sparkle:releaseNotesLink>
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.8.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Mon, 15 Dec 2014 14:11:00 +0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.8/TodoTxtMac.app.zip" sparkle:version="1.2.8" length="1955296" type="application/octet-stream" sparkle:dsaSignature="MC4CFQC/Mn2xob/yDmzmLnEo1jwC3ZCWIQIVAJvuAUTP1ld8jvdqj/YeRdnn1+ze" />
+            <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
+        </item>
+
+        <item>
             <title>Version 1.2.7</title>
             <description>
             Added feature, found in Preferences > Startup, to open a default todo.txt file on launch.

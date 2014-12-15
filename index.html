@@ -156,6 +156,7 @@ TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X that conf
 <li>Command+O: open file</li>
 <li>Command+S: save file (forces the file to save immediately)</li>
 <li>.: reload file</li>
+<li>Option+.: reload all files</li>
 <li>Command+I: view task list metadata (task counts, etc.)</li>
 <li>Command+W: close file</li>
 <li>Command+Option+W: close all files</li>
@@ -233,7 +234,11 @@ $ open /Applications/TodoTxtMac.app --args -todo-file ~/Documents/todo.txt
 <li>Reload your TodoTxtMac file manually (press <code>.</code>) before making changes to it, if you believe the file was updated (by Dropbox for example) recently.</li>
 <li>Close TodoTxtMac when not using it for extended periods.</li>
 <li>When presented with the option to "Save Anyway" or "Revert" changes, always revert changes. You will have to re-do your last action in TodoTxtMac, but you will not lose the changes that originated outside the application.</li>
-</ol><h2>
+</ol>
+
+<p>Note that modifying your todo.txt file in a Cocoa NSDocument-based application, such as TextEdit, will result in live updates in TodoTxtMac.</p>
+
+<h2>
 <a name="will-this-project-be-ported-from-objective-c-to-swift" class="anchor" href="#will-this-project-be-ported-from-objective-c-to-swift"><span class="octicon octicon-link"></span></a>Will this project be ported from Objective C to Swift?</h2>
 
 <p>At this time, there are no plans to move from Objective C to Swift.</p>
