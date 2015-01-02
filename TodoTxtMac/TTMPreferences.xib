@@ -16,14 +16,14 @@
         <window title="TodoTxtMac Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="533" height="265"/>
+            <rect key="contentRect" x="196" y="240" width="546" height="265"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="533" height="265"/>
+                <rect key="frame" x="0.0" y="0.0" width="546" height="265"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tabView translatesAutoresizingMaskIntoConstraints="NO" id="y76-Kz-NYB">
-                        <rect key="frame" x="13" y="10" width="507" height="249"/>
+                        <rect key="frame" x="13" y="10" width="520" height="249"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="L8o-bt-LMa">
@@ -191,12 +191,12 @@
                             </tabViewItem>
                             <tabViewItem label="Colors" identifier="2" id="f18-jj-cqZ">
                                 <view key="view" id="mhP-oh-atP">
-                                    <rect key="frame" x="10" y="33" width="487" height="203"/>
+                                    <rect key="frame" x="10" y="33" width="500" height="203"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LFL-6w-UIX">
-                                            <rect key="frame" x="15" y="184" width="448" height="18"/>
-                                            <buttonCell key="cell" type="check" title="Use highlight colors for due state, projects, contexts, and due dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g4E-76-FN1">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="LFL-6w-UIX">
+                                            <rect key="frame" x="15" y="184" width="461" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Use highlight colors for due state, projects, contexts, tags, &amp; due dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g4E-76-FN1">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -205,7 +205,7 @@
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useHighlightColorsInTaskList" id="UUk-mO-tRk"/>
                                             </connections>
                                         </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kOY-JE-iji">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="kOY-JE-iji">
                                             <rect key="frame" x="15" y="157" width="243" height="18"/>
                                             <buttonCell key="cell" type="check" title="Use custom color for overdue tasks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Xwh-nn-Qfj">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -216,7 +216,7 @@
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForOverdueTasks" id="5oV-wB-2Uc"/>
                                             </connections>
                                         </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="id0-SQ-XPW">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="id0-SQ-XPW">
                                             <rect key="frame" x="15" y="130" width="255" height="18"/>
                                             <buttonCell key="cell" type="check" title="Use custom color for tasks due today" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LWD-r3-4iw">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -227,8 +227,11 @@
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueTodayTasks" id="TZg-WU-88H"/>
                                             </connections>
                                         </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qki-7l-2C2">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="Qki-7l-2C2">
                                             <rect key="frame" x="15" y="103" width="207" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="203" id="pei-yb-bMD"/>
+                                            </constraints>
                                             <buttonCell key="cell" type="check" title="Use custom color for projects" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="JvI-Nx-2UB">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -238,7 +241,7 @@
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForProjects" id="you-NU-vbR"/>
                                             </connections>
                                         </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVK-oE-htE">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="IVK-oE-htE">
                                             <rect key="frame" x="15" y="76" width="210" height="18"/>
                                             <buttonCell key="cell" type="check" title="Use custom color for contexts" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4EM-a2-8Xf">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -249,19 +252,11 @@
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForContexts" id="QkC-x2-e3E"/>
                                             </connections>
                                         </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q5w-gK-nag">
-                                            <rect key="frame" x="15" y="49" width="218" height="18"/>
-                                            <buttonCell key="cell" type="check" title="Use custom color for due dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yVB-1N-NGG">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="zat-ke-iCF"/>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueDates" id="q7r-xQ-BAA"/>
-                                            </connections>
-                                        </button>
-                                        <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kyv-n7-gmA">
+                                        <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="kyv-n7-gmA">
                                             <rect key="frame" x="288" y="155" width="44" height="23"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="fNm-2f-gra"/>
+                                            </constraints>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="colorChanged:" target="-1" id="dWA-Ou-2Ft"/>
@@ -272,7 +267,7 @@
                                                 </binding>
                                             </connections>
                                         </colorWell>
-                                        <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pJz-fI-VRc">
+                                        <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="pJz-fI-VRc">
                                             <rect key="frame" x="288" y="128" width="44" height="23"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -284,7 +279,7 @@
                                                 </binding>
                                             </connections>
                                         </colorWell>
-                                        <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zF2-3U-srK">
+                                        <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="zF2-3U-srK">
                                             <rect key="frame" x="288" y="101" width="44" height="23"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -296,7 +291,7 @@
                                                 </binding>
                                             </connections>
                                         </colorWell>
-                                        <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agi-nP-xDL">
+                                        <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="Agi-nP-xDL">
                                             <rect key="frame" x="288" y="74" width="44" height="23"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
@@ -308,8 +303,42 @@
                                                 </binding>
                                             </connections>
                                         </colorWell>
-                                        <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6MV-d7-Saz">
+                                        <button toolTip="Tags are &quot;key:value&quot; pairs." translatesAutoresizingMaskIntoConstraints="NO" id="H2T-43-uze">
+                                            <rect key="frame" x="15" y="49" width="218" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Use custom color for tags" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="oCR-Hh-sAn">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="jNK-rb-ou7"/>
+                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForTags" id="FzB-PL-KNd"/>
+                                            </connections>
+                                        </button>
+                                        <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="BS6-EI-GId">
                                             <rect key="frame" x="288" y="47" width="44" height="23"/>
+                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="colorChanged:" target="-1" id="7KG-g8-R1a"/>
+                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.tagColor" id="YnN-Mo-ilE">
+                                                    <dictionary key="options">
+                                                        <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                    </dictionary>
+                                                </binding>
+                                            </connections>
+                                        </colorWell>
+                                        <button toolTip="Due dates must be in the format &quot;due:YYYY-MM-DD&quot;." translatesAutoresizingMaskIntoConstraints="NO" id="q5w-gK-nag">
+                                            <rect key="frame" x="15" y="22" width="218" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Use custom color for due dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yVB-1N-NGG">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="zat-ke-iCF"/>
+                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueDates" id="q7r-xQ-BAA"/>
+                                            </connections>
+                                        </button>
+                                        <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="6MV-d7-Saz">
+                                            <rect key="frame" x="288" y="20" width="44" height="23"/>
                                             <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="colorChanged:" target="-1" id="p3L-12-rZx"/>
@@ -321,6 +350,51 @@
                                             </connections>
                                         </colorWell>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="pJz-fI-VRc" firstAttribute="top" secondItem="kyv-n7-gmA" secondAttribute="bottom" constant="4" id="2vl-hw-Cnt"/>
+                                        <constraint firstItem="BS6-EI-GId" firstAttribute="leading" secondItem="Agi-nP-xDL" secondAttribute="leading" id="5bH-0E-DA0"/>
+                                        <constraint firstItem="q5w-gK-nag" firstAttribute="trailing" secondItem="H2T-43-uze" secondAttribute="trailing" id="5kU-LI-CVo"/>
+                                        <constraint firstItem="Agi-nP-xDL" firstAttribute="top" secondItem="zF2-3U-srK" secondAttribute="bottom" constant="4" id="6sr-Vd-B28"/>
+                                        <constraint firstItem="id0-SQ-XPW" firstAttribute="top" secondItem="kOY-JE-iji" secondAttribute="bottom" constant="13" id="GTG-aG-Xmw"/>
+                                        <constraint firstItem="Agi-nP-xDL" firstAttribute="centerY" secondItem="IVK-oE-htE" secondAttribute="centerY" id="Gda-gd-qwo"/>
+                                        <constraint firstItem="IVK-oE-htE" firstAttribute="top" secondItem="Qki-7l-2C2" secondAttribute="bottom" constant="13" id="HBB-3s-M8Z"/>
+                                        <constraint firstItem="Agi-nP-xDL" firstAttribute="trailing" secondItem="zF2-3U-srK" secondAttribute="trailing" id="HCJ-N7-CWS"/>
+                                        <constraint firstItem="Qki-7l-2C2" firstAttribute="top" secondItem="id0-SQ-XPW" secondAttribute="bottom" constant="13" id="Hfb-sY-trQ"/>
+                                        <constraint firstItem="LFL-6w-UIX" firstAttribute="top" secondItem="mhP-oh-atP" secondAttribute="top" constant="3" id="IQs-LN-a1I"/>
+                                        <constraint firstItem="H2T-43-uze" firstAttribute="leading" secondItem="IVK-oE-htE" secondAttribute="leading" id="KPR-r3-42t"/>
+                                        <constraint firstItem="q5w-gK-nag" firstAttribute="centerY" secondItem="6MV-d7-Saz" secondAttribute="centerY" id="MAx-JN-kOe"/>
+                                        <constraint firstItem="LFL-6w-UIX" firstAttribute="leading" secondItem="kOY-JE-iji" secondAttribute="leading" id="MOz-eb-eaR"/>
+                                        <constraint firstItem="kyv-n7-gmA" firstAttribute="leading" secondItem="kOY-JE-iji" secondAttribute="trailing" constant="32" id="N6a-la-RiR"/>
+                                        <constraint firstItem="pJz-fI-VRc" firstAttribute="leading" secondItem="id0-SQ-XPW" secondAttribute="trailing" constant="20" id="NP0-VB-WLp"/>
+                                        <constraint firstItem="IVK-oE-htE" firstAttribute="leading" secondItem="Qki-7l-2C2" secondAttribute="leading" id="OSd-JG-Nhn"/>
+                                        <constraint firstItem="zF2-3U-srK" firstAttribute="leading" secondItem="Agi-nP-xDL" secondAttribute="leading" id="P4f-0h-943"/>
+                                        <constraint firstItem="Qki-7l-2C2" firstAttribute="leading" secondItem="id0-SQ-XPW" secondAttribute="leading" id="Qtd-EL-E1O"/>
+                                        <constraint firstItem="kyv-n7-gmA" firstAttribute="top" secondItem="LFL-6w-UIX" secondAttribute="bottom" constant="8" symbolic="YES" id="Qxv-h4-7f2"/>
+                                        <constraint firstItem="zF2-3U-srK" firstAttribute="centerY" secondItem="Qki-7l-2C2" secondAttribute="centerY" id="TD9-IH-jz2"/>
+                                        <constraint firstItem="BS6-EI-GId" firstAttribute="trailing" secondItem="Agi-nP-xDL" secondAttribute="trailing" id="Tm5-KM-BSA"/>
+                                        <constraint firstItem="6MV-d7-Saz" firstAttribute="leading" secondItem="BS6-EI-GId" secondAttribute="leading" id="VPG-BP-wPB"/>
+                                        <constraint firstItem="kyv-n7-gmA" firstAttribute="leading" secondItem="pJz-fI-VRc" secondAttribute="leading" id="Zkb-zH-uyo"/>
+                                        <constraint firstItem="pJz-fI-VRc" firstAttribute="centerY" secondItem="id0-SQ-XPW" secondAttribute="centerY" id="aDB-jx-fhx"/>
+                                        <constraint firstItem="LFL-6w-UIX" firstAttribute="leading" secondItem="mhP-oh-atP" secondAttribute="leading" constant="17" id="d4n-D8-42I"/>
+                                        <constraint firstItem="H2T-43-uze" firstAttribute="top" secondItem="IVK-oE-htE" secondAttribute="bottom" constant="13" id="fBG-fi-qjy"/>
+                                        <constraint firstItem="pJz-fI-VRc" firstAttribute="leading" secondItem="zF2-3U-srK" secondAttribute="leading" id="gKI-QP-HDV"/>
+                                        <constraint firstItem="zF2-3U-srK" firstAttribute="leading" secondItem="Qki-7l-2C2" secondAttribute="trailing" constant="68" id="i4e-Ke-Aut"/>
+                                        <constraint firstItem="6MV-d7-Saz" firstAttribute="top" secondItem="BS6-EI-GId" secondAttribute="bottom" constant="4" id="kxC-XV-ySi"/>
+                                        <constraint firstItem="pJz-fI-VRc" firstAttribute="trailing" secondItem="kyv-n7-gmA" secondAttribute="trailing" id="lai-cY-t83"/>
+                                        <constraint firstItem="pJz-fI-VRc" firstAttribute="trailing" secondItem="zF2-3U-srK" secondAttribute="trailing" id="los-yi-zfs"/>
+                                        <constraint firstItem="H2T-43-uze" firstAttribute="centerY" secondItem="BS6-EI-GId" secondAttribute="centerY" id="nO0-vq-ebr"/>
+                                        <constraint firstItem="Agi-nP-xDL" firstAttribute="leading" secondItem="IVK-oE-htE" secondAttribute="trailing" constant="65" id="otf-xV-UDo"/>
+                                        <constraint firstItem="zF2-3U-srK" firstAttribute="top" secondItem="pJz-fI-VRc" secondAttribute="bottom" constant="4" id="plP-Z1-ydp"/>
+                                        <constraint firstItem="kOY-JE-iji" firstAttribute="top" secondItem="LFL-6w-UIX" secondAttribute="bottom" constant="13" id="pwi-gU-uqR"/>
+                                        <constraint firstItem="kOY-JE-iji" firstAttribute="centerY" secondItem="kyv-n7-gmA" secondAttribute="centerY" id="qCi-zg-Bh7"/>
+                                        <constraint firstItem="BS6-EI-GId" firstAttribute="leading" secondItem="H2T-43-uze" secondAttribute="trailing" constant="57" id="r6B-6U-4p4"/>
+                                        <constraint firstItem="BS6-EI-GId" firstAttribute="top" secondItem="Agi-nP-xDL" secondAttribute="bottom" constant="4" id="spR-9e-ZJD"/>
+                                        <constraint firstItem="q5w-gK-nag" firstAttribute="leading" secondItem="H2T-43-uze" secondAttribute="leading" id="vLh-1E-OLb"/>
+                                        <constraint firstItem="6MV-d7-Saz" firstAttribute="trailing" secondItem="BS6-EI-GId" secondAttribute="trailing" id="we8-Ec-Md9"/>
+                                        <constraint firstItem="id0-SQ-XPW" firstAttribute="leading" secondItem="kOY-JE-iji" secondAttribute="leading" id="xPx-oA-orV"/>
+                                        <constraint firstAttribute="trailing" secondItem="LFL-6w-UIX" secondAttribute="trailing" constant="26" id="xhc-GW-9yz"/>
+                                        <constraint firstItem="q5w-gK-nag" firstAttribute="top" secondItem="H2T-43-uze" secondAttribute="bottom" constant="13" id="zlM-Hf-10O"/>
+                                    </constraints>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Updates" identifier="3" id="tiU-nI-23F">
@@ -445,12 +519,13 @@
                     </tabView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="y76-Kz-NYB" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="12" symbolic="YES" id="46h-9g-DSu"/>
-                    <constraint firstAttribute="bottom" secondItem="y76-Kz-NYB" secondAttribute="bottom" constant="20" symbolic="YES" id="BDx-fg-KEm"/>
-                    <constraint firstItem="y76-Kz-NYB" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="hK4-RB-qR4"/>
-                    <constraint firstAttribute="trailing" secondItem="y76-Kz-NYB" secondAttribute="trailing" constant="20" symbolic="YES" id="jmd-ED-AFN"/>
+                    <constraint firstItem="y76-Kz-NYB" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="12" symbolic="YES" id="CNz-b6-cNf"/>
+                    <constraint firstAttribute="bottom" secondItem="y76-Kz-NYB" secondAttribute="bottom" constant="20" symbolic="YES" id="EGg-qJ-OUT"/>
+                    <constraint firstItem="y76-Kz-NYB" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="O9u-h0-WtF"/>
+                    <constraint firstAttribute="trailing" secondItem="y76-Kz-NYB" secondAttribute="trailing" constant="20" symbolic="YES" id="gce-nU-bgm"/>
                 </constraints>
             </view>
+            <point key="canvasLocation" x="82.5" y="296.5"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="p0U-mu-Cyy"/>
         <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="Ys4-1l-evD">

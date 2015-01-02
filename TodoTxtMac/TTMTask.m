@@ -65,6 +65,7 @@ static NSString * const DueDatePattern = @"(?<=due:)((\\d{4})-(\\d{2})-(\\d{2}))
 static NSString * const FullDueDatePattern = @"((^|\\s)due:)((\\d{4})-(\\d{2})-(\\d{2}))";
 static NSString * const ProjectPattern = @"(?<=^|\\s)(\\+[^\\s]+)";
 static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
+static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
 
 #pragma mark - Init Methods
 
@@ -252,6 +253,14 @@ static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
     
     // Highlight contexts.
     matches = [self.rawText matchesWithDetails:RX(ContextPattern)];
+    for (RxMatch *match in matches) {
+        [as addAttribute:NSForegroundColorAttributeName
+                   value:[NSColor darkGrayColor]
+                   range:match.range];
+    }
+    
+    // Highlight tags.
+    matches = [self.rawText matchesWithDetails:RX(TagPattern)];
     for (RxMatch *match in matches) {
         [as addAttribute:NSForegroundColorAttributeName
                    value:[NSColor darkGrayColor]
