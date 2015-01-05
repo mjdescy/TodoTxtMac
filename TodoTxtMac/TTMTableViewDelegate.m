@@ -53,8 +53,9 @@
 
 static NSString * const ProjectPattern = @"(?<=^|\\s)(\\+[^\\s]+)";
 static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
-static NSString * const FullDueDatePattern = @"(\\sdue:)((\\d{4})-(\\d{2})-(\\d{2}))";
 static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
+static NSString * const FullDueDatePattern = @"(\\sdue:)((\\d{4})-(\\d{2})-(\\d{2}))";
+static NSString * const FullThresholdDatePattern = @"((^|\\s)t:)((\\d{4})-(\\d{2})-(\\d{2}))";
 
 #pragma mark - TableView Delegate Methods
 
@@ -125,6 +126,10 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
                                    boolForKey:@"useCustomColorForDueDates"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"dueDateColor"] :
             [NSColor darkGrayColor];
+        NSColor *thresholdDateColor = ([[NSUserDefaults standardUserDefaults]
+                                         boolForKey:@"useCustomColorForThresholdDates"]) ?
+            [[NSUserDefaults standardUserDefaults] colorForKey:@"thresholdDateColor"] :
+            [NSColor darkGrayColor];
         
         // Color due texts.
         if (task.dueState == DueToday) {
@@ -169,6 +174,14 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
         for (RxMatch *match in matches) {
             [as addAttribute:NSForegroundColorAttributeName
                        value:dueDateColor
+                       range:match.range];
+        }
+        
+        // Color threshold dates.
+        matches = [task.rawText matchesWithDetails:RX(FullThresholdDatePattern)];
+        for (RxMatch *match in matches) {
+            [as addAttribute:NSForegroundColorAttributeName
+                       value:thresholdDateColor
                        range:match.range];
         }
     }

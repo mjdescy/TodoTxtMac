@@ -22,13 +22,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="546" height="265"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tabView translatesAutoresizingMaskIntoConstraints="NO" id="y76-Kz-NYB">
+                    <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y76-Kz-NYB">
                         <rect key="frame" x="13" y="10" width="520" height="249"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="General" identifier="1" id="L8o-bt-LMa">
                                 <view key="view" id="kDW-tT-Mxi">
-                                    <rect key="frame" x="10" y="33" width="487" height="203"/>
+                                    <rect key="frame" x="10" y="33" width="500" height="203"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="jj2-Ob-EWZ">
@@ -82,7 +82,7 @@
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aUb-St-NdM">
                                             <rect key="frame" x="214" y="20" width="69" height="32"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="57" id="N2u-1p-xP4"/>
+                                                <constraint firstAttribute="width" constant="57" id="pvk-9s-spm"/>
                                             </constraints>
                                             <buttonCell key="cell" type="push" title="Set..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7nh-a8-lLC">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -150,7 +150,7 @@
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Xb-Wn-oSq">
                                             <rect key="frame" x="369" y="91" width="107" height="32"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="95" id="08L-zW-eKY"/>
+                                                <constraint firstAttribute="width" constant="95" id="sEw-Us-2Zc"/>
                                             </constraints>
                                             <buttonCell key="cell" type="push" title="Browse..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hif-CU-wHj">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -162,27 +162,29 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="d9b-fx-36a" firstAttribute="trailing" secondItem="7Xb-Wn-oSq" secondAttribute="trailing" id="02N-P3-NOu"/>
+                                        <constraint firstItem="7Xb-Wn-oSq" firstAttribute="trailing" secondItem="d9b-fx-36a" secondAttribute="trailing" id="1K0-7P-Fkb"/>
+                                        <constraint firstItem="7Xb-Wn-oSq" firstAttribute="centerY" secondItem="kDW-tT-Mxi" secondAttribute="centerY" constant="-7" id="2yQ-Rx-hld"/>
                                         <constraint firstItem="Gob-0a-fcd" firstAttribute="top" secondItem="kLG-5x-TgF" secondAttribute="bottom" constant="8" symbolic="YES" id="36y-Kp-x0c"/>
-                                        <constraint firstItem="7Xb-Wn-oSq" firstAttribute="centerY" secondItem="kDW-tT-Mxi" secondAttribute="centerY" constant="-7" id="3fq-ff-tE9"/>
-                                        <constraint firstItem="aUb-St-NdM" firstAttribute="top" secondItem="Gob-0a-fcd" secondAttribute="bottom" constant="20" symbolic="YES" id="95R-uf-OHU"/>
                                         <constraint firstItem="jj2-Ob-EWZ" firstAttribute="top" secondItem="kDW-tT-Mxi" secondAttribute="top" constant="3" id="Dmq-aW-SJl"/>
+                                        <constraint firstItem="7Xb-Wn-oSq" firstAttribute="leading" secondItem="kLG-5x-TgF" secondAttribute="trailing" constant="8" symbolic="YES" id="Ed7-ew-sRd"/>
                                         <constraint firstItem="jj2-Ob-EWZ" firstAttribute="leading" secondItem="kDW-tT-Mxi" secondAttribute="leading" constant="17" id="Hgk-5n-75v"/>
-                                        <constraint firstItem="9Zh-2L-OK0" firstAttribute="baseline" secondItem="aUb-St-NdM" secondAttribute="baseline" id="LYf-9C-h3q"/>
-                                        <constraint firstItem="7Xb-Wn-oSq" firstAttribute="leading" secondItem="kLG-5x-TgF" secondAttribute="trailing" constant="8" symbolic="YES" id="Nm3-6a-ppX"/>
-                                        <constraint firstItem="aUb-St-NdM" firstAttribute="top" secondItem="d9b-fx-36a" secondAttribute="top" id="Nmv-aE-SSm"/>
+                                        <constraint firstItem="aUb-St-NdM" firstAttribute="leading" secondItem="9Zh-2L-OK0" secondAttribute="trailing" constant="8" symbolic="YES" id="InJ-8C-jXO"/>
+                                        <constraint firstItem="aUb-St-NdM" firstAttribute="baseline" secondItem="9Zh-2L-OK0" secondAttribute="baseline" id="IpH-yc-yqY"/>
+                                        <constraint firstItem="aUb-St-NdM" firstAttribute="top" secondItem="d9b-fx-36a" secondAttribute="top" id="NTI-lK-oWp"/>
                                         <constraint firstItem="EbF-No-8Sl" firstAttribute="leading" secondItem="Sr6-1i-PgC" secondAttribute="leading" id="Oxq-oM-TPW"/>
                                         <constraint firstItem="EbF-No-8Sl" firstAttribute="leading" secondItem="Gob-0a-fcd" secondAttribute="leading" id="Pql-yS-VYA"/>
-                                        <constraint firstItem="d9b-fx-36a" firstAttribute="leading" secondItem="aUb-St-NdM" secondAttribute="trailing" constant="8" symbolic="YES" id="Rnq-Vy-yXC"/>
-                                        <constraint firstItem="7Xb-Wn-oSq" firstAttribute="centerY" secondItem="kLG-5x-TgF" secondAttribute="centerY" id="WBz-EY-yYW"/>
+                                        <constraint firstItem="aUb-St-NdM" firstAttribute="top" secondItem="Gob-0a-fcd" secondAttribute="bottom" constant="20" symbolic="YES" id="SOS-7R-JwH"/>
                                         <constraint firstItem="Sr6-1i-PgC" firstAttribute="leading" secondItem="wFd-n2-OjV" secondAttribute="leading" id="ZFv-tp-ggr"/>
                                         <constraint firstItem="kLG-5x-TgF" firstAttribute="top" secondItem="EbF-No-8Sl" secondAttribute="top" id="Zc7-If-0IB"/>
                                         <constraint firstItem="wFd-n2-OjV" firstAttribute="leading" secondItem="jj2-Ob-EWZ" secondAttribute="leading" id="hXb-tq-MTZ"/>
-                                        <constraint firstAttribute="trailing" secondItem="7Xb-Wn-oSq" secondAttribute="trailing" constant="17" id="iPr-va-hOY"/>
+                                        <constraint firstItem="d9b-fx-36a" firstAttribute="top" secondItem="7Xb-Wn-oSq" secondAttribute="bottom" constant="50" id="iMx-ss-z0k"/>
                                         <constraint firstItem="9Zh-2L-OK0" firstAttribute="leading" secondItem="Gob-0a-fcd" secondAttribute="leading" id="l04-6Q-JFQ"/>
                                         <constraint firstItem="Gob-0a-fcd" firstAttribute="top" secondItem="EbF-No-8Sl" secondAttribute="bottom" constant="28" id="lHS-Mv-PXl"/>
                                         <constraint firstItem="wFd-n2-OjV" firstAttribute="top" secondItem="jj2-Ob-EWZ" secondAttribute="bottom" constant="8" id="lmd-KD-DEa"/>
-                                        <constraint firstItem="aUb-St-NdM" firstAttribute="leading" secondItem="9Zh-2L-OK0" secondAttribute="trailing" constant="8" symbolic="YES" id="oUs-1r-YK4"/>
+                                        <constraint firstItem="7Xb-Wn-oSq" firstAttribute="centerY" secondItem="kLG-5x-TgF" secondAttribute="centerY" id="oG0-d5-xWF"/>
+                                        <constraint firstAttribute="trailing" secondItem="7Xb-Wn-oSq" secondAttribute="trailing" constant="30" id="ooc-zS-qII"/>
+                                        <constraint firstItem="d9b-fx-36a" firstAttribute="leading" secondItem="aUb-St-NdM" secondAttribute="trailing" constant="8" symbolic="YES" id="rPq-BT-6nG"/>
+                                        <constraint firstItem="7Xb-Wn-oSq" firstAttribute="leading" secondItem="kDW-tT-Mxi" secondAttribute="leading" constant="375" id="svg-Ui-w69"/>
                                         <constraint firstItem="EbF-No-8Sl" firstAttribute="top" secondItem="Sr6-1i-PgC" secondAttribute="bottom" constant="15" id="ubQ-ii-JdG"/>
                                         <constraint firstItem="kLG-5x-TgF" firstAttribute="leading" secondItem="EbF-No-8Sl" secondAttribute="trailing" constant="8" symbolic="YES" id="xeP-9Y-qOe"/>
                                         <constraint firstItem="Sr6-1i-PgC" firstAttribute="top" secondItem="wFd-n2-OjV" secondAttribute="bottom" constant="8" id="yIM-Rv-9u3"/>
@@ -195,8 +197,8 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="LFL-6w-UIX">
-                                            <rect key="frame" x="15" y="184" width="461" height="18"/>
-                                            <buttonCell key="cell" type="check" title="Use highlight colors for due state, projects, contexts, tags, &amp; due dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g4E-76-FN1">
+                                            <rect key="frame" x="15" y="184" width="470" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Highlight due state, projects, contexts, due date, tags, etc." bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g4E-76-FN1">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
                                             </buttonCell>
@@ -205,201 +207,269 @@
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useHighlightColorsInTaskList" id="UUk-mO-tRk"/>
                                             </connections>
                                         </button>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="kOY-JE-iji">
-                                            <rect key="frame" x="15" y="157" width="243" height="18"/>
-                                            <buttonCell key="cell" type="check" title="Use custom color for overdue tasks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Xwh-nn-Qfj">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="IiD-14-edE"/>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForOverdueTasks" id="5oV-wB-2Uc"/>
-                                            </connections>
-                                        </button>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="id0-SQ-XPW">
-                                            <rect key="frame" x="15" y="130" width="255" height="18"/>
-                                            <buttonCell key="cell" type="check" title="Use custom color for tasks due today" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LWD-r3-4iw">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="ltX-s4-peB"/>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueTodayTasks" id="TZg-WU-88H"/>
-                                            </connections>
-                                        </button>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="Qki-7l-2C2">
-                                            <rect key="frame" x="15" y="103" width="207" height="18"/>
+                                        <box autoresizesSubviews="NO" title="Customize colors for:" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="d7n-EI-WOY">
+                                            <rect key="frame" x="6" y="5" width="488" height="173"/>
+                                            <view key="contentView">
+                                                <rect key="frame" x="1" y="1" width="486" height="155"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="LEW-wA-0dI">
+                                                        <rect key="frame" x="241" y="14" width="5" height="131"/>
+                                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                        <font key="titleFont" metaFont="system"/>
+                                                    </box>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="kOY-JE-iji">
+                                                        <rect key="frame" x="16" y="121" width="150" height="26"/>
+                                                        <buttonCell key="cell" type="check" title="Overdue tasks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Xwh-nn-Qfj">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="visualRefreshAll:" target="cda-0y-TXV" id="IiD-14-edE"/>
+                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForOverdueTasks" id="5oV-wB-2Uc"/>
+                                                        </connections>
+                                                    </button>
+                                                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="kyv-n7-gmA">
+                                                        <rect key="frame" x="176" y="122" width="44" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="44" id="hus-6Q-LVH"/>
+                                                            <constraint firstAttribute="height" constant="23" id="pH0-Bd-hQV"/>
+                                                        </constraints>
+                                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="colorChanged:" target="-1" id="dWA-Ou-2Ft"/>
+                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.overdueColor" id="QQo-sj-K0U">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </colorWell>
+                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="id0-SQ-XPW">
+                                                        <rect key="frame" x="16" y="97" width="150" height="18"/>
+                                                        <buttonCell key="cell" type="check" title="Tasks due today" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LWD-r3-4iw">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="visualRefreshAll:" target="cda-0y-TXV" id="ltX-s4-peB"/>
+                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueTodayTasks" id="TZg-WU-88H"/>
+                                                        </connections>
+                                                    </button>
+                                                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="pJz-fI-VRc">
+                                                        <rect key="frame" x="176" y="95" width="44" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="23" id="7qj-8K-3YF"/>
+                                                        </constraints>
+                                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="colorChanged:" target="-1" id="OVe-hf-sT4"/>
+                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.dueTodayColor" id="rd3-79-doD">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </colorWell>
+                                                    <button toolTip="Projects begin with &quot;+&quot;." translatesAutoresizingMaskIntoConstraints="NO" id="Qki-7l-2C2">
+                                                        <rect key="frame" x="16" y="70" width="150" height="18"/>
+                                                        <buttonCell key="cell" type="check" title="Projects" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="JvI-Nx-2UB">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="visualRefreshAll:" target="cda-0y-TXV" id="eD1-Ky-oca"/>
+                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForProjects" id="you-NU-vbR"/>
+                                                        </connections>
+                                                    </button>
+                                                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="zF2-3U-srK">
+                                                        <rect key="frame" x="176" y="68" width="44" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="23" id="KC4-23-4GI"/>
+                                                        </constraints>
+                                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="colorChanged:" target="-1" id="0rs-RG-Rsd"/>
+                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.projectColor" id="aif-bN-ASG">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </colorWell>
+                                                    <button toolTip="Contexts begin with &quot;@&quot;." translatesAutoresizingMaskIntoConstraints="NO" id="IVK-oE-htE">
+                                                        <rect key="frame" x="16" y="43" width="150" height="18"/>
+                                                        <buttonCell key="cell" type="check" title="Contexts" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4EM-a2-8Xf">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="visualRefreshAll:" target="cda-0y-TXV" id="HGR-Od-RDI"/>
+                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForContexts" id="QkC-x2-e3E"/>
+                                                        </connections>
+                                                    </button>
+                                                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="Agi-nP-xDL">
+                                                        <rect key="frame" x="176" y="41" width="44" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="23" id="7xi-gk-Hvf"/>
+                                                        </constraints>
+                                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="colorChanged:" target="-1" id="rby-dk-hLN"/>
+                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.contextColor" id="bRT-l7-w6e">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </colorWell>
+                                                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="BS6-EI-GId">
+                                                        <rect key="frame" x="407" y="122" width="44" height="23"/>
+                                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="colorChanged:" target="-1" id="7KG-g8-R1a"/>
+                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.tagColor" id="YnN-Mo-ilE">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </colorWell>
+                                                    <button toolTip="Due dates must be in the format &quot;due:YYYY-MM-DD&quot;." translatesAutoresizingMaskIntoConstraints="NO" id="q5w-gK-nag">
+                                                        <rect key="frame" x="257" y="97" width="150" height="18"/>
+                                                        <buttonCell key="cell" type="check" title="Due dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yVB-1N-NGG">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="visualRefreshAll:" target="cda-0y-TXV" id="zat-ke-iCF"/>
+                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueDates" id="q7r-xQ-BAA"/>
+                                                        </connections>
+                                                    </button>
+                                                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="6MV-d7-Saz">
+                                                        <rect key="frame" x="407" y="95" width="44" height="23"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="44" id="cwV-N5-BIe"/>
+                                                        </constraints>
+                                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="colorChanged:" target="-1" id="p3L-12-rZx"/>
+                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.dueDateColor" id="m6b-LO-QB0">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </colorWell>
+                                                    <button toolTip="Threshold dates must be in the format &quot;t:YYYY-MM-DD&quot;." translatesAutoresizingMaskIntoConstraints="NO" id="Dvn-44-EkF">
+                                                        <rect key="frame" x="257" y="70" width="150" height="18"/>
+                                                        <buttonCell key="cell" type="check" title="Threshold dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8Ot-rG-fIl">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="visualRefreshAll:" target="cda-0y-TXV" id="ptq-YZ-Mm8"/>
+                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForThresholdDates" id="sO9-uS-cCV"/>
+                                                        </connections>
+                                                    </button>
+                                                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="Hfg-JN-STm">
+                                                        <rect key="frame" x="407" y="68" width="44" height="23"/>
+                                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <action selector="colorChanged:" target="-1" id="9jk-f8-OMt"/>
+                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.thresholdDateColor" id="3sb-jm-xUB">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
+                                                        </connections>
+                                                    </colorWell>
+                                                    <button toolTip="Tags are &quot;key:value&quot; pairs." translatesAutoresizingMaskIntoConstraints="NO" id="H2T-43-uze">
+                                                        <rect key="frame" x="257" y="121" width="150" height="22"/>
+                                                        <buttonCell key="cell" type="check" title="Tags" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="oCR-Hh-sAn">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="visualRefreshAll:" target="cda-0y-TXV" id="jNK-rb-ou7"/>
+                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForTags" id="FzB-PL-KNd"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </view>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="203" id="pei-yb-bMD"/>
+                                                <constraint firstItem="pJz-fI-VRc" firstAttribute="leading" secondItem="kyv-n7-gmA" secondAttribute="leading" id="06s-sc-8Dz"/>
+                                                <constraint firstItem="H2T-43-uze" firstAttribute="trailing" secondItem="q5w-gK-nag" secondAttribute="trailing" id="0X4-SD-5Cf"/>
+                                                <constraint firstItem="6MV-d7-Saz" firstAttribute="trailing" secondItem="BS6-EI-GId" secondAttribute="trailing" id="1eP-Zp-YSp"/>
+                                                <constraint firstItem="pJz-fI-VRc" firstAttribute="leading" secondItem="id0-SQ-XPW" secondAttribute="trailing" constant="12" id="2J9-E9-l39"/>
+                                                <constraint firstItem="kyv-n7-gmA" firstAttribute="top" secondItem="LEW-wA-0dI" secondAttribute="top" id="326-Zx-Pqh"/>
+                                                <constraint firstItem="BS6-EI-GId" firstAttribute="centerY" secondItem="kyv-n7-gmA" secondAttribute="centerY" id="3ea-f0-hDw"/>
+                                                <constraint firstItem="pJz-fI-VRc" firstAttribute="top" secondItem="kyv-n7-gmA" secondAttribute="bottom" constant="4" id="5cA-Sw-3o1"/>
+                                                <constraint firstItem="Agi-nP-xDL" firstAttribute="leading" secondItem="zF2-3U-srK" secondAttribute="leading" id="61Y-4E-OXo"/>
+                                                <constraint firstItem="IVK-oE-htE" firstAttribute="centerY" secondItem="Agi-nP-xDL" secondAttribute="centerY" id="6Cm-BK-eZC"/>
+                                                <constraint firstItem="6MV-d7-Saz" firstAttribute="leading" secondItem="q5w-gK-nag" secondAttribute="trailing" constant="2" id="7Ev-Ej-uPQ"/>
+                                                <constraint firstItem="pJz-fI-VRc" firstAttribute="trailing" secondItem="kyv-n7-gmA" secondAttribute="trailing" id="9H1-Sa-r2L"/>
+                                                <constraint firstItem="Agi-nP-xDL" firstAttribute="trailing" secondItem="zF2-3U-srK" secondAttribute="trailing" id="9k2-Ay-bcH"/>
+                                                <constraint firstAttribute="centerX" secondItem="LEW-wA-0dI" secondAttribute="centerX" id="CHS-34-Dck"/>
+                                                <constraint firstItem="Agi-nP-xDL" firstAttribute="top" secondItem="zF2-3U-srK" secondAttribute="bottom" constant="4" id="CVz-O3-iC6"/>
+                                                <constraint firstItem="pJz-fI-VRc" firstAttribute="trailing" secondItem="zF2-3U-srK" secondAttribute="trailing" id="Cr3-Oc-Vdn"/>
+                                                <constraint firstItem="kyv-n7-gmA" firstAttribute="top" secondItem="d7n-EI-WOY" secondAttribute="top" constant="27" id="EUj-C1-JTz"/>
+                                                <constraint firstItem="zF2-3U-srK" firstAttribute="centerY" secondItem="LEW-wA-0dI" secondAttribute="centerY" id="EaS-iC-Lmd"/>
+                                                <constraint firstItem="pJz-fI-VRc" firstAttribute="leading" secondItem="zF2-3U-srK" secondAttribute="leading" id="HSP-Pe-rua"/>
+                                                <constraint firstItem="zF2-3U-srK" firstAttribute="top" secondItem="pJz-fI-VRc" secondAttribute="bottom" constant="4" id="JuN-ZW-O1z"/>
+                                                <constraint firstItem="6MV-d7-Saz" firstAttribute="top" secondItem="pJz-fI-VRc" secondAttribute="top" id="L5G-IJ-ECt"/>
+                                                <constraint firstItem="kyv-n7-gmA" firstAttribute="top" secondItem="kOY-JE-iji" secondAttribute="top" id="Lmw-4F-oih"/>
+                                                <constraint firstItem="Dvn-44-EkF" firstAttribute="leading" secondItem="LEW-wA-0dI" secondAttribute="trailing" constant="15" id="Mv2-jn-jO9"/>
+                                                <constraint firstItem="zF2-3U-srK" firstAttribute="centerY" secondItem="Qki-7l-2C2" secondAttribute="centerY" id="Prk-9i-31B"/>
+                                                <constraint firstItem="BS6-EI-GId" firstAttribute="centerY" secondItem="kOY-JE-iji" secondAttribute="centerY" id="SfG-eI-AQH"/>
+                                                <constraint firstItem="kyv-n7-gmA" firstAttribute="leading" secondItem="d7n-EI-WOY" secondAttribute="leading" constant="174" id="Siq-Z7-NgQ"/>
+                                                <constraint firstItem="Qki-7l-2C2" firstAttribute="leading" secondItem="kOY-JE-iji" secondAttribute="leading" id="UTy-9e-LzX"/>
+                                                <constraint firstItem="kyv-n7-gmA" firstAttribute="bottom" secondItem="BS6-EI-GId" secondAttribute="bottom" id="ZUm-xl-Bly"/>
+                                                <constraint firstItem="H2T-43-uze" firstAttribute="top" secondItem="d7n-EI-WOY" secondAttribute="top" constant="31" id="ZXv-Jp-7kP"/>
+                                                <constraint firstItem="kyv-n7-gmA" firstAttribute="top" secondItem="BS6-EI-GId" secondAttribute="top" id="ZvV-bH-gNc"/>
+                                                <constraint firstAttribute="bottom" secondItem="Agi-nP-xDL" secondAttribute="bottom" constant="38" id="aRe-U3-OTa"/>
+                                                <constraint firstItem="zF2-3U-srK" firstAttribute="leading" secondItem="Qki-7l-2C2" secondAttribute="trailing" constant="12" id="ads-rI-LuQ"/>
+                                                <constraint firstItem="Dvn-44-EkF" firstAttribute="baseline" secondItem="Qki-7l-2C2" secondAttribute="baseline" id="akd-7w-aJC"/>
+                                                <constraint firstItem="q5w-gK-nag" firstAttribute="trailing" secondItem="Dvn-44-EkF" secondAttribute="trailing" id="b6u-dO-rNj"/>
+                                                <constraint firstItem="q5w-gK-nag" firstAttribute="centerY" secondItem="pJz-fI-VRc" secondAttribute="centerY" id="bwJ-h3-5sk"/>
+                                                <constraint firstItem="Qki-7l-2C2" firstAttribute="leading" secondItem="id0-SQ-XPW" secondAttribute="leading" id="evn-TQ-f3I"/>
+                                                <constraint firstItem="q5w-gK-nag" firstAttribute="centerY" secondItem="6MV-d7-Saz" secondAttribute="centerY" id="fKP-Ym-Bf9"/>
+                                                <constraint firstItem="Qki-7l-2C2" firstAttribute="leading" secondItem="IVK-oE-htE" secondAttribute="leading" id="fWG-Ca-ZT7"/>
+                                                <constraint firstItem="Agi-nP-xDL" firstAttribute="leading" secondItem="IVK-oE-htE" secondAttribute="trailing" constant="12" id="gAk-hd-GIU"/>
+                                                <constraint firstAttribute="trailing" secondItem="6MV-d7-Saz" secondAttribute="trailing" constant="33" id="je1-zx-g1A"/>
+                                                <constraint firstItem="zF2-3U-srK" firstAttribute="bottom" secondItem="Hfg-JN-STm" secondAttribute="bottom" id="kaL-2W-vOt"/>
+                                                <constraint firstItem="q5w-gK-nag" firstAttribute="leading" secondItem="Dvn-44-EkF" secondAttribute="leading" id="nH7-wd-Dya"/>
+                                                <constraint firstItem="H2T-43-uze" firstAttribute="baseline" secondItem="kOY-JE-iji" secondAttribute="baseline" id="qTd-VE-akU"/>
+                                                <constraint firstItem="6MV-d7-Saz" firstAttribute="trailing" secondItem="Hfg-JN-STm" secondAttribute="trailing" id="qVm-7Q-ae6"/>
+                                                <constraint firstItem="q5w-gK-nag" firstAttribute="baseline" secondItem="id0-SQ-XPW" secondAttribute="baseline" id="tKt-HD-mDN"/>
+                                                <constraint firstItem="H2T-43-uze" firstAttribute="leading" secondItem="q5w-gK-nag" secondAttribute="leading" id="uUh-EX-MFB"/>
+                                                <constraint firstItem="6MV-d7-Saz" firstAttribute="leading" secondItem="BS6-EI-GId" secondAttribute="leading" id="uZi-QH-MyS"/>
+                                                <constraint firstItem="kyv-n7-gmA" firstAttribute="leading" secondItem="kOY-JE-iji" secondAttribute="trailing" constant="12" id="vcv-EP-XL7"/>
+                                                <constraint firstItem="6MV-d7-Saz" firstAttribute="leading" secondItem="Hfg-JN-STm" secondAttribute="leading" id="wrc-f1-fLB"/>
+                                                <constraint firstItem="LEW-wA-0dI" firstAttribute="leading" secondItem="kyv-n7-gmA" secondAttribute="trailing" constant="23" id="xPR-tL-8Q1"/>
+                                                <constraint firstItem="IVK-oE-htE" firstAttribute="leading" secondItem="d7n-EI-WOY" secondAttribute="leading" constant="16" id="xt3-oQ-UGU"/>
+                                                <constraint firstItem="zF2-3U-srK" firstAttribute="top" secondItem="Hfg-JN-STm" secondAttribute="top" id="yL5-ER-lhI"/>
                                             </constraints>
-                                            <buttonCell key="cell" type="check" title="Use custom color for projects" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="JvI-Nx-2UB">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="eD1-Ky-oca"/>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForProjects" id="you-NU-vbR"/>
-                                            </connections>
-                                        </button>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="IVK-oE-htE">
-                                            <rect key="frame" x="15" y="76" width="210" height="18"/>
-                                            <buttonCell key="cell" type="check" title="Use custom color for contexts" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4EM-a2-8Xf">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="HGR-Od-RDI"/>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForContexts" id="QkC-x2-e3E"/>
-                                            </connections>
-                                        </button>
-                                        <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="kyv-n7-gmA">
-                                            <rect key="frame" x="288" y="155" width="44" height="23"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="44" id="fNm-2f-gra"/>
-                                            </constraints>
-                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="colorChanged:" target="-1" id="dWA-Ou-2Ft"/>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.overdueColor" id="QQo-sj-K0U">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSUnarchiveFromData</string>
-                                                    </dictionary>
-                                                </binding>
-                                            </connections>
-                                        </colorWell>
-                                        <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="pJz-fI-VRc">
-                                            <rect key="frame" x="288" y="128" width="44" height="23"/>
-                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="colorChanged:" target="-1" id="OVe-hf-sT4"/>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.dueTodayColor" id="rd3-79-doD">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSUnarchiveFromData</string>
-                                                    </dictionary>
-                                                </binding>
-                                            </connections>
-                                        </colorWell>
-                                        <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="zF2-3U-srK">
-                                            <rect key="frame" x="288" y="101" width="44" height="23"/>
-                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="colorChanged:" target="-1" id="0rs-RG-Rsd"/>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.projectColor" id="aif-bN-ASG">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSUnarchiveFromData</string>
-                                                    </dictionary>
-                                                </binding>
-                                            </connections>
-                                        </colorWell>
-                                        <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="Agi-nP-xDL">
-                                            <rect key="frame" x="288" y="74" width="44" height="23"/>
-                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="colorChanged:" target="-1" id="rby-dk-hLN"/>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.contextColor" id="bRT-l7-w6e">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSUnarchiveFromData</string>
-                                                    </dictionary>
-                                                </binding>
-                                            </connections>
-                                        </colorWell>
-                                        <button toolTip="Tags are &quot;key:value&quot; pairs." translatesAutoresizingMaskIntoConstraints="NO" id="H2T-43-uze">
-                                            <rect key="frame" x="15" y="49" width="218" height="18"/>
-                                            <buttonCell key="cell" type="check" title="Use custom color for tags" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="oCR-Hh-sAn">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="jNK-rb-ou7"/>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForTags" id="FzB-PL-KNd"/>
-                                            </connections>
-                                        </button>
-                                        <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="BS6-EI-GId">
-                                            <rect key="frame" x="288" y="47" width="44" height="23"/>
-                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="colorChanged:" target="-1" id="7KG-g8-R1a"/>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.tagColor" id="YnN-Mo-ilE">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSUnarchiveFromData</string>
-                                                    </dictionary>
-                                                </binding>
-                                            </connections>
-                                        </colorWell>
-                                        <button toolTip="Due dates must be in the format &quot;due:YYYY-MM-DD&quot;." translatesAutoresizingMaskIntoConstraints="NO" id="q5w-gK-nag">
-                                            <rect key="frame" x="15" y="22" width="218" height="18"/>
-                                            <buttonCell key="cell" type="check" title="Use custom color for due dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yVB-1N-NGG">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                            </buttonCell>
-                                            <connections>
-                                                <action selector="visualRefreshAll:" target="cda-0y-TXV" id="zat-ke-iCF"/>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueDates" id="q7r-xQ-BAA"/>
-                                            </connections>
-                                        </button>
-                                        <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="6MV-d7-Saz">
-                                            <rect key="frame" x="288" y="20" width="44" height="23"/>
-                                            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <connections>
-                                                <action selector="colorChanged:" target="-1" id="p3L-12-rZx"/>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.dueDateColor" id="m6b-LO-QB0">
-                                                    <dictionary key="options">
-                                                        <string key="NSValueTransformerName">NSUnarchiveFromData</string>
-                                                    </dictionary>
-                                                </binding>
-                                            </connections>
-                                        </colorWell>
+                                            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <font key="titleFont" metaFont="cellTitle"/>
+                                        </box>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="pJz-fI-VRc" firstAttribute="top" secondItem="kyv-n7-gmA" secondAttribute="bottom" constant="4" id="2vl-hw-Cnt"/>
-                                        <constraint firstItem="BS6-EI-GId" firstAttribute="leading" secondItem="Agi-nP-xDL" secondAttribute="leading" id="5bH-0E-DA0"/>
-                                        <constraint firstItem="q5w-gK-nag" firstAttribute="trailing" secondItem="H2T-43-uze" secondAttribute="trailing" id="5kU-LI-CVo"/>
-                                        <constraint firstItem="Agi-nP-xDL" firstAttribute="top" secondItem="zF2-3U-srK" secondAttribute="bottom" constant="4" id="6sr-Vd-B28"/>
-                                        <constraint firstItem="id0-SQ-XPW" firstAttribute="top" secondItem="kOY-JE-iji" secondAttribute="bottom" constant="13" id="GTG-aG-Xmw"/>
-                                        <constraint firstItem="Agi-nP-xDL" firstAttribute="centerY" secondItem="IVK-oE-htE" secondAttribute="centerY" id="Gda-gd-qwo"/>
-                                        <constraint firstItem="IVK-oE-htE" firstAttribute="top" secondItem="Qki-7l-2C2" secondAttribute="bottom" constant="13" id="HBB-3s-M8Z"/>
-                                        <constraint firstItem="Agi-nP-xDL" firstAttribute="trailing" secondItem="zF2-3U-srK" secondAttribute="trailing" id="HCJ-N7-CWS"/>
-                                        <constraint firstItem="Qki-7l-2C2" firstAttribute="top" secondItem="id0-SQ-XPW" secondAttribute="bottom" constant="13" id="Hfb-sY-trQ"/>
-                                        <constraint firstItem="LFL-6w-UIX" firstAttribute="top" secondItem="mhP-oh-atP" secondAttribute="top" constant="3" id="IQs-LN-a1I"/>
-                                        <constraint firstItem="H2T-43-uze" firstAttribute="leading" secondItem="IVK-oE-htE" secondAttribute="leading" id="KPR-r3-42t"/>
-                                        <constraint firstItem="q5w-gK-nag" firstAttribute="centerY" secondItem="6MV-d7-Saz" secondAttribute="centerY" id="MAx-JN-kOe"/>
-                                        <constraint firstItem="LFL-6w-UIX" firstAttribute="leading" secondItem="kOY-JE-iji" secondAttribute="leading" id="MOz-eb-eaR"/>
-                                        <constraint firstItem="kyv-n7-gmA" firstAttribute="leading" secondItem="kOY-JE-iji" secondAttribute="trailing" constant="32" id="N6a-la-RiR"/>
-                                        <constraint firstItem="pJz-fI-VRc" firstAttribute="leading" secondItem="id0-SQ-XPW" secondAttribute="trailing" constant="20" id="NP0-VB-WLp"/>
-                                        <constraint firstItem="IVK-oE-htE" firstAttribute="leading" secondItem="Qki-7l-2C2" secondAttribute="leading" id="OSd-JG-Nhn"/>
-                                        <constraint firstItem="zF2-3U-srK" firstAttribute="leading" secondItem="Agi-nP-xDL" secondAttribute="leading" id="P4f-0h-943"/>
-                                        <constraint firstItem="Qki-7l-2C2" firstAttribute="leading" secondItem="id0-SQ-XPW" secondAttribute="leading" id="Qtd-EL-E1O"/>
-                                        <constraint firstItem="kyv-n7-gmA" firstAttribute="top" secondItem="LFL-6w-UIX" secondAttribute="bottom" constant="8" symbolic="YES" id="Qxv-h4-7f2"/>
-                                        <constraint firstItem="zF2-3U-srK" firstAttribute="centerY" secondItem="Qki-7l-2C2" secondAttribute="centerY" id="TD9-IH-jz2"/>
-                                        <constraint firstItem="BS6-EI-GId" firstAttribute="trailing" secondItem="Agi-nP-xDL" secondAttribute="trailing" id="Tm5-KM-BSA"/>
-                                        <constraint firstItem="6MV-d7-Saz" firstAttribute="leading" secondItem="BS6-EI-GId" secondAttribute="leading" id="VPG-BP-wPB"/>
-                                        <constraint firstItem="kyv-n7-gmA" firstAttribute="leading" secondItem="pJz-fI-VRc" secondAttribute="leading" id="Zkb-zH-uyo"/>
-                                        <constraint firstItem="pJz-fI-VRc" firstAttribute="centerY" secondItem="id0-SQ-XPW" secondAttribute="centerY" id="aDB-jx-fhx"/>
-                                        <constraint firstItem="LFL-6w-UIX" firstAttribute="leading" secondItem="mhP-oh-atP" secondAttribute="leading" constant="17" id="d4n-D8-42I"/>
-                                        <constraint firstItem="H2T-43-uze" firstAttribute="top" secondItem="IVK-oE-htE" secondAttribute="bottom" constant="13" id="fBG-fi-qjy"/>
-                                        <constraint firstItem="pJz-fI-VRc" firstAttribute="leading" secondItem="zF2-3U-srK" secondAttribute="leading" id="gKI-QP-HDV"/>
-                                        <constraint firstItem="zF2-3U-srK" firstAttribute="leading" secondItem="Qki-7l-2C2" secondAttribute="trailing" constant="68" id="i4e-Ke-Aut"/>
-                                        <constraint firstItem="6MV-d7-Saz" firstAttribute="top" secondItem="BS6-EI-GId" secondAttribute="bottom" constant="4" id="kxC-XV-ySi"/>
-                                        <constraint firstItem="pJz-fI-VRc" firstAttribute="trailing" secondItem="kyv-n7-gmA" secondAttribute="trailing" id="lai-cY-t83"/>
-                                        <constraint firstItem="pJz-fI-VRc" firstAttribute="trailing" secondItem="zF2-3U-srK" secondAttribute="trailing" id="los-yi-zfs"/>
-                                        <constraint firstItem="H2T-43-uze" firstAttribute="centerY" secondItem="BS6-EI-GId" secondAttribute="centerY" id="nO0-vq-ebr"/>
-                                        <constraint firstItem="Agi-nP-xDL" firstAttribute="leading" secondItem="IVK-oE-htE" secondAttribute="trailing" constant="65" id="otf-xV-UDo"/>
-                                        <constraint firstItem="zF2-3U-srK" firstAttribute="top" secondItem="pJz-fI-VRc" secondAttribute="bottom" constant="4" id="plP-Z1-ydp"/>
-                                        <constraint firstItem="kOY-JE-iji" firstAttribute="top" secondItem="LFL-6w-UIX" secondAttribute="bottom" constant="13" id="pwi-gU-uqR"/>
-                                        <constraint firstItem="kOY-JE-iji" firstAttribute="centerY" secondItem="kyv-n7-gmA" secondAttribute="centerY" id="qCi-zg-Bh7"/>
-                                        <constraint firstItem="BS6-EI-GId" firstAttribute="leading" secondItem="H2T-43-uze" secondAttribute="trailing" constant="57" id="r6B-6U-4p4"/>
-                                        <constraint firstItem="BS6-EI-GId" firstAttribute="top" secondItem="Agi-nP-xDL" secondAttribute="bottom" constant="4" id="spR-9e-ZJD"/>
-                                        <constraint firstItem="q5w-gK-nag" firstAttribute="leading" secondItem="H2T-43-uze" secondAttribute="leading" id="vLh-1E-OLb"/>
-                                        <constraint firstItem="6MV-d7-Saz" firstAttribute="trailing" secondItem="BS6-EI-GId" secondAttribute="trailing" id="we8-Ec-Md9"/>
-                                        <constraint firstItem="id0-SQ-XPW" firstAttribute="leading" secondItem="kOY-JE-iji" secondAttribute="leading" id="xPx-oA-orV"/>
-                                        <constraint firstAttribute="trailing" secondItem="LFL-6w-UIX" secondAttribute="trailing" constant="26" id="xhc-GW-9yz"/>
-                                        <constraint firstItem="q5w-gK-nag" firstAttribute="top" secondItem="H2T-43-uze" secondAttribute="bottom" constant="13" id="zlM-Hf-10O"/>
+                                        <constraint firstItem="LFL-6w-UIX" firstAttribute="centerX" secondItem="d7n-EI-WOY" secondAttribute="centerX" id="8fv-fY-dRw"/>
+                                        <constraint firstAttribute="bottom" secondItem="d7n-EI-WOY" secondAttribute="bottom" constant="9" id="AX0-kS-n9f"/>
+                                        <constraint firstAttribute="trailing" secondItem="d7n-EI-WOY" secondAttribute="trailing" constant="9" id="D7n-UP-JQD"/>
+                                        <constraint firstItem="d7n-EI-WOY" firstAttribute="top" secondItem="LFL-6w-UIX" secondAttribute="bottom" constant="8" symbolic="YES" id="Omw-tR-zeu"/>
+                                        <constraint firstItem="d7n-EI-WOY" firstAttribute="leading" secondItem="mhP-oh-atP" secondAttribute="leading" constant="9" id="aTt-LL-OuC"/>
+                                        <constraint firstItem="d7n-EI-WOY" firstAttribute="top" secondItem="mhP-oh-atP" secondAttribute="top" constant="25" id="kWJ-2J-d1O"/>
+                                        <constraint firstItem="LFL-6w-UIX" firstAttribute="leading" secondItem="mhP-oh-atP" secondAttribute="leading" constant="17" id="pDE-Iy-q5K"/>
                                     </constraints>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Updates" identifier="3" id="tiU-nI-23F">
                                 <view key="view" id="un9-sN-dpv">
-                                    <rect key="frame" x="10" y="33" width="487" height="203"/>
+                                    <rect key="frame" x="10" y="33" width="500" height="203"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7BY-xZ-OO3">
@@ -444,7 +514,7 @@
                             </tabViewItem>
                             <tabViewItem label="Startup" identifier="4" id="OIw-jK-Q91">
                                 <view key="view" id="gCJ-fs-wzk">
-                                    <rect key="frame" x="10" y="33" width="487" height="203"/>
+                                    <rect key="frame" x="10" y="33" width="500" height="203"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="kiN-tj-bg5">
@@ -467,7 +537,7 @@
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ibn-uO-HXl">
                                             <rect key="frame" x="15" y="161" width="134" height="17"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="130" id="q2K-6m-FBV"/>
+                                                <constraint firstAttribute="width" constant="130" id="Ozz-c8-8a6"/>
                                             </constraints>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default file:" id="E9J-yc-K3H">
                                                 <font key="font" metaFont="system"/>
@@ -476,7 +546,10 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Tp-oa-L2w">
-                                            <rect key="frame" x="94" y="142" width="273" height="36"/>
+                                            <rect key="frame" x="94" y="142" width="286" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="286" id="CeM-YN-FzW"/>
+                                            </constraints>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Default File" placeholderString="Default file (todo.txt)" drawsBackground="YES" id="mqs-ny-Nb9">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -487,10 +560,10 @@
                                             </connections>
                                         </textField>
                                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tzr-c2-lHB">
-                                            <rect key="frame" x="369" y="143" width="107" height="32"/>
+                                            <rect key="frame" x="382" y="143" width="107" height="32"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="HPR-r9-twJ"/>
-                                                <constraint firstAttribute="width" constant="95" id="UzR-Hi-yOf"/>
+                                                <constraint firstAttribute="width" constant="95" id="7DF-6d-Ys6"/>
+                                                <constraint firstAttribute="height" constant="21" id="RFw-Tx-Sry"/>
                                             </constraints>
                                             <buttonCell key="cell" type="push" title="Browse..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1Od-IU-0xH">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -502,30 +575,25 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="Tzr-c2-lHB" secondAttribute="trailing" constant="17" id="53J-gR-Xhb"/>
-                                        <constraint firstItem="8Tp-oa-L2w" firstAttribute="leading" secondItem="gCJ-fs-wzk" secondAttribute="leading" constant="94" id="9c9-CX-yGI"/>
-                                        <constraint firstItem="kiN-tj-bg5" firstAttribute="leading" secondItem="ibn-uO-HXl" secondAttribute="leading" id="II3-k3-Akr"/>
-                                        <constraint firstItem="Tzr-c2-lHB" firstAttribute="centerY" secondItem="8Tp-oa-L2w" secondAttribute="centerY" id="LKX-OR-uss"/>
-                                        <constraint firstItem="Tzr-c2-lHB" firstAttribute="top" secondItem="gCJ-fs-wzk" secondAttribute="top" constant="32" id="Lct-Yt-BPO"/>
-                                        <constraint firstItem="ibn-uO-HXl" firstAttribute="top" secondItem="kiN-tj-bg5" secondAttribute="bottom" constant="8" symbolic="YES" id="RIi-1F-wmG"/>
-                                        <constraint firstItem="Tzr-c2-lHB" firstAttribute="leading" secondItem="8Tp-oa-L2w" secondAttribute="trailing" constant="8" symbolic="YES" id="Smk-WP-Ayj"/>
-                                        <constraint firstItem="8Tp-oa-L2w" firstAttribute="top" secondItem="ibn-uO-HXl" secondAttribute="top" id="Yf1-07-ym5"/>
+                                        <constraint firstItem="Tzr-c2-lHB" firstAttribute="leading" secondItem="8Tp-oa-L2w" secondAttribute="trailing" constant="8" symbolic="YES" id="4RH-x5-G6T"/>
+                                        <constraint firstItem="Tzr-c2-lHB" firstAttribute="top" secondItem="gCJ-fs-wzk" secondAttribute="top" constant="32" id="Hrv-nv-ZNS"/>
+                                        <constraint firstItem="ibn-uO-HXl" firstAttribute="leading" secondItem="kiN-tj-bg5" secondAttribute="leading" id="Lkm-8c-Z7F"/>
                                         <constraint firstItem="kiN-tj-bg5" firstAttribute="top" secondItem="gCJ-fs-wzk" secondAttribute="top" constant="3" id="cu5-lU-KGv"/>
+                                        <constraint firstItem="ibn-uO-HXl" firstAttribute="top" secondItem="kiN-tj-bg5" secondAttribute="bottom" constant="8" symbolic="YES" id="edv-L9-0hN"/>
+                                        <constraint firstAttribute="bottom" secondItem="ibn-uO-HXl" secondAttribute="bottom" constant="161" id="hXd-AJ-IHD"/>
+                                        <constraint firstItem="Tzr-c2-lHB" firstAttribute="centerY" secondItem="8Tp-oa-L2w" secondAttribute="centerY" id="j6B-KT-otF"/>
+                                        <constraint firstItem="8Tp-oa-L2w" firstAttribute="leading" secondItem="gCJ-fs-wzk" secondAttribute="leading" constant="94" id="lpZ-au-WaO"/>
+                                        <constraint firstAttribute="trailing" secondItem="Tzr-c2-lHB" secondAttribute="trailing" constant="17" id="nNC-tD-LOQ"/>
                                         <constraint firstItem="kiN-tj-bg5" firstAttribute="leading" secondItem="gCJ-fs-wzk" secondAttribute="leading" constant="17" id="xOP-kR-kbh"/>
+                                        <constraint firstItem="8Tp-oa-L2w" firstAttribute="top" secondItem="ibn-uO-HXl" secondAttribute="top" id="yhs-aZ-Run"/>
                                     </constraints>
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
                     </tabView>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="y76-Kz-NYB" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="12" symbolic="YES" id="CNz-b6-cNf"/>
-                    <constraint firstAttribute="bottom" secondItem="y76-Kz-NYB" secondAttribute="bottom" constant="20" symbolic="YES" id="EGg-qJ-OUT"/>
-                    <constraint firstItem="y76-Kz-NYB" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="O9u-h0-WtF"/>
-                    <constraint firstAttribute="trailing" secondItem="y76-Kz-NYB" secondAttribute="trailing" constant="20" symbolic="YES" id="gce-nU-bgm"/>
-                </constraints>
             </view>
-            <point key="canvasLocation" x="82.5" y="296.5"/>
+            <point key="canvasLocation" x="82" y="296.5"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="p0U-mu-Cyy"/>
         <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="Ys4-1l-evD">
