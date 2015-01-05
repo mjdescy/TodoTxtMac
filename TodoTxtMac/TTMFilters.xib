@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1080" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTMFiltersController">
@@ -20,19 +20,21 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Define Filter Presets" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="573" height="406"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="573" height="406"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="x3A-pX-TrY">
                         <rect key="frame" x="18" y="369" width="449" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="445" id="y8a-Qx-uqH"/>
+                        </constraints>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Define Filter Presets, which are called by pressing 1-9 on the keyboard" id="ypi-Vz-2nM">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -41,7 +43,6 @@
                     </textField>
                     <tabView translatesAutoresizingMaskIntoConstraints="NO" id="qgL-I9-GFI">
                         <rect key="frame" x="13" y="41" width="547" height="326"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="1" identifier="1" id="wnd-MT-awa">
@@ -51,13 +52,12 @@
                                     <subviews>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kfn-x9-ZHF">
                                             <rect key="frame" x="17" y="17" width="493" height="260"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="4lo-Nv-gzt">
                                                 <rect key="frame" x="1" y="1" width="491" height="258"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="kyY-lA-F0K">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="258"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="250"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="jH5-WL-wUc">
@@ -382,6 +382,47 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="dKj-5x-DcD" customClass="TTMPredicateEditorDateRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">thresholdDate</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="900"/>
+                                                                <popUpMenus>
+                                                                    <menu id="sV2-yE-J5j">
+                                                                        <items>
+                                                                            <menuItem title="threshold date" state="on" id="ckU-2I-B9S">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">thresholdDate</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="RYM-tu-6a5">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="kiC-HO-pj1">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is not" id="iBe-oS-jbq">
+                                                                                <integer key="representedObject" value="5"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than" id="vaR-MA-Vdu">
+                                                                                <integer key="representedObject" value="0"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than" id="GqJ-Qt-uVZ">
+                                                                                <integer key="representedObject" value="2"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than or equal to" id="2Q8-t7-byE">
+                                                                                <integer key="representedObject" value="1"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than or equal to" id="U5e-ht-uhz">
+                                                                                <integer key="representedObject" value="3"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                             <predicateEditorRowTemplate rowType="simple" id="CUW-kE-U2V" customClass="TTMPredicateEditorCompletedRowTemplate">
                                                                 <array key="leftExpressionObject">
                                                                     <expression type="keyPath">
@@ -446,7 +487,7 @@
                                                 <rect key="frame" x="-100" y="-100" width="360" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
-                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="tcy-Zc-P6i">
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="tcy-Zc-P6i">
                                                 <rect key="frame" x="477" y="1" width="15" height="245"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
@@ -467,13 +508,12 @@
                                     <subviews>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gV7-vJ-B61">
                                             <rect key="frame" x="17" y="17" width="493" height="260"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="6so-Zw-0Bg">
                                                 <rect key="frame" x="1" y="1" width="491" height="258"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="Ymr-Te-Jsu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="258"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="250"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="4K2-dy-Irs">
@@ -798,6 +838,47 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="MGC-MY-nXu" customClass="TTMPredicateEditorDateRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">thresholdDate</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="900"/>
+                                                                <popUpMenus>
+                                                                    <menu id="WAg-rY-zYb">
+                                                                        <items>
+                                                                            <menuItem title="threshold date" state="on" id="JPm-ul-RVg">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">thresholdDate</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="keR-35-Vg0">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="n7q-LM-EGP">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is not" id="RCd-ns-dJo">
+                                                                                <integer key="representedObject" value="5"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than" id="d2z-Dk-yh0">
+                                                                                <integer key="representedObject" value="0"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than" id="G1B-7K-D4O">
+                                                                                <integer key="representedObject" value="2"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than or equal to" id="f1X-hW-Cxj">
+                                                                                <integer key="representedObject" value="1"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than or equal to" id="tFm-Vo-iHe">
+                                                                                <integer key="representedObject" value="3"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                             <predicateEditorRowTemplate rowType="simple" id="efw-81-5H5" customClass="TTMPredicateEditorCompletedRowTemplate">
                                                                 <array key="leftExpressionObject">
                                                                     <expression type="keyPath">
@@ -862,7 +943,7 @@
                                                 <rect key="frame" x="-100" y="-100" width="360" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
-                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="vAx-J9-pQC">
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="vAx-J9-pQC">
                                                 <rect key="frame" x="475" y="1" width="15" height="249"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
@@ -883,13 +964,12 @@
                                     <subviews>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rl5-k4-2Qu">
                                             <rect key="frame" x="17" y="17" width="493" height="260"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="heN-Oz-PCI">
                                                 <rect key="frame" x="1" y="1" width="491" height="258"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="6q7-hn-dBp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="258"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="250"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="xh2-WQ-Iok">
@@ -1214,6 +1294,47 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="SqN-xb-Hyb" customClass="TTMPredicateEditorDateRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">thresholdDate</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="900"/>
+                                                                <popUpMenus>
+                                                                    <menu id="pfg-OW-2P4">
+                                                                        <items>
+                                                                            <menuItem title="threshold date" state="on" id="J89-Kk-b4e">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">thresholdDate</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="TQe-kg-mff">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="TRU-cx-6kK">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is not" id="kIg-we-aeS">
+                                                                                <integer key="representedObject" value="5"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than" id="7L9-kj-TkG">
+                                                                                <integer key="representedObject" value="0"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than" id="Agp-UP-hef">
+                                                                                <integer key="representedObject" value="2"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than or equal to" id="962-xZ-vfp">
+                                                                                <integer key="representedObject" value="1"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than or equal to" id="Fdu-bH-iQr">
+                                                                                <integer key="representedObject" value="3"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                             <predicateEditorRowTemplate rowType="simple" id="KyY-Lz-iiV" customClass="TTMPredicateEditorCompletedRowTemplate">
                                                                 <array key="leftExpressionObject">
                                                                     <expression type="keyPath">
@@ -1278,7 +1399,7 @@
                                                 <rect key="frame" x="-100" y="-100" width="360" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
-                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="ues-cY-hv0">
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="ues-cY-hv0">
                                                 <rect key="frame" x="475" y="1" width="15" height="249"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
@@ -1299,13 +1420,12 @@
                                     <subviews>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ahb-tN-8y0">
                                             <rect key="frame" x="17" y="17" width="493" height="260"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="OMr-xw-FM3">
                                                 <rect key="frame" x="1" y="1" width="491" height="258"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="dqt-SY-XL3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="258"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="250"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="RVr-y6-3Au">
@@ -1630,6 +1750,47 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="Fft-vK-fCL" customClass="TTMPredicateEditorDateRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">thresholdDate</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="900"/>
+                                                                <popUpMenus>
+                                                                    <menu id="Inn-MU-71x">
+                                                                        <items>
+                                                                            <menuItem title="threshold date" state="on" id="aNb-7g-BrK">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">thresholdDate</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="7mu-ik-fJb">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="m2U-NV-2rw">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is not" id="1Uf-qT-joB">
+                                                                                <integer key="representedObject" value="5"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than" id="MKM-hS-dXN">
+                                                                                <integer key="representedObject" value="0"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than" id="Xrv-6M-ztg">
+                                                                                <integer key="representedObject" value="2"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than or equal to" id="e1o-ba-hzU">
+                                                                                <integer key="representedObject" value="1"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than or equal to" id="0Sm-yV-no5">
+                                                                                <integer key="representedObject" value="3"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                             <predicateEditorRowTemplate rowType="simple" id="eh3-qD-tdj" customClass="TTMPredicateEditorCompletedRowTemplate">
                                                                 <array key="leftExpressionObject">
                                                                     <expression type="keyPath">
@@ -1694,7 +1855,7 @@
                                                 <rect key="frame" x="-100" y="-100" width="360" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
-                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Dn2-oy-WkD">
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Dn2-oy-WkD">
                                                 <rect key="frame" x="475" y="1" width="15" height="249"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
@@ -1715,13 +1876,12 @@
                                     <subviews>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myt-XN-4g3">
                                             <rect key="frame" x="17" y="17" width="493" height="260"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="Tt4-YI-Ls6">
                                                 <rect key="frame" x="1" y="1" width="491" height="258"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="Kic-py-fTP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="258"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="250"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="dFn-PY-Alr">
@@ -2046,6 +2206,47 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="Iz4-TE-VSg" customClass="TTMPredicateEditorDateRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">thresholdDate</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="900"/>
+                                                                <popUpMenus>
+                                                                    <menu id="c1g-D8-KHa">
+                                                                        <items>
+                                                                            <menuItem title="threshold date" state="on" id="48Q-7T-dLn">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">thresholdDate</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="A3g-FZ-QpW">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="DTa-Bn-pg1">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is not" id="3pP-B4-MMQ">
+                                                                                <integer key="representedObject" value="5"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than" id="MCQ-A1-5te">
+                                                                                <integer key="representedObject" value="0"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than" id="mwV-Ar-f8C">
+                                                                                <integer key="representedObject" value="2"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than or equal to" id="21j-Bv-IVE">
+                                                                                <integer key="representedObject" value="1"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than or equal to" id="TK0-g3-Bhh">
+                                                                                <integer key="representedObject" value="3"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                             <predicateEditorRowTemplate rowType="simple" id="Arf-rL-mQ4" customClass="TTMPredicateEditorCompletedRowTemplate">
                                                                 <array key="leftExpressionObject">
                                                                     <expression type="keyPath">
@@ -2110,7 +2311,7 @@
                                                 <rect key="frame" x="-100" y="-100" width="360" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
-                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="Xch-za-6Nr">
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Xch-za-6Nr">
                                                 <rect key="frame" x="475" y="1" width="15" height="249"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
@@ -2131,13 +2332,12 @@
                                     <subviews>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJg-TB-rbH">
                                             <rect key="frame" x="17" y="17" width="493" height="260"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="rhP-z4-ere">
                                                 <rect key="frame" x="1" y="1" width="491" height="258"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="Fft-UT-LWs">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="258"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="250"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="wFo-ei-zAn">
@@ -2462,6 +2662,47 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="PbW-Hp-ZEU" customClass="TTMPredicateEditorDateRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">thresholdDate</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="900"/>
+                                                                <popUpMenus>
+                                                                    <menu id="baE-Bx-6Vl">
+                                                                        <items>
+                                                                            <menuItem title="threshold date" state="on" id="LEa-xs-ddn">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">thresholdDate</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="e32-Pr-8GQ">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="TJr-sX-gyQ">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is not" id="Cvm-nd-bia">
+                                                                                <integer key="representedObject" value="5"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than" id="T2o-fP-BNw">
+                                                                                <integer key="representedObject" value="0"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than" id="Yh1-jB-U9q">
+                                                                                <integer key="representedObject" value="2"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than or equal to" id="IMV-bY-HVV">
+                                                                                <integer key="representedObject" value="1"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than or equal to" id="fJo-he-ZQE">
+                                                                                <integer key="representedObject" value="3"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                             <predicateEditorRowTemplate rowType="simple" id="sma-92-4V1" customClass="TTMPredicateEditorCompletedRowTemplate">
                                                                 <array key="leftExpressionObject">
                                                                     <expression type="keyPath">
@@ -2526,7 +2767,7 @@
                                                 <rect key="frame" x="-100" y="-100" width="360" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
-                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="2bq-D6-2te">
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="2bq-D6-2te">
                                                 <rect key="frame" x="475" y="1" width="15" height="249"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
@@ -2547,13 +2788,12 @@
                                     <subviews>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8P-00-hHa">
                                             <rect key="frame" x="17" y="17" width="493" height="260"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="nQT-Sx-oIv">
                                                 <rect key="frame" x="1" y="1" width="491" height="258"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="abs-37-qFl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="258"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="250"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="lgC-Ia-v3w">
@@ -2878,6 +3118,47 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="7zM-v0-b3f" customClass="TTMPredicateEditorDateRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">thresholdDate</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="900"/>
+                                                                <popUpMenus>
+                                                                    <menu id="pOa-gD-kw3">
+                                                                        <items>
+                                                                            <menuItem title="threshold date" state="on" id="LM6-aE-qkg">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">thresholdDate</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="mYs-gM-xgu">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="5N9-lO-oJN">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is not" id="pnS-Ml-dZa">
+                                                                                <integer key="representedObject" value="5"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than" id="Y4D-UK-Goz">
+                                                                                <integer key="representedObject" value="0"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than" id="0GV-IJ-4Fn">
+                                                                                <integer key="representedObject" value="2"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than or equal to" id="VsS-CI-fRI">
+                                                                                <integer key="representedObject" value="1"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than or equal to" id="eI5-Ed-lFM">
+                                                                                <integer key="representedObject" value="3"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                             <predicateEditorRowTemplate rowType="simple" id="kJ9-4W-Ktk" customClass="TTMPredicateEditorCompletedRowTemplate">
                                                                 <array key="leftExpressionObject">
                                                                     <expression type="keyPath">
@@ -2942,7 +3223,7 @@
                                                 <rect key="frame" x="-100" y="-100" width="360" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
-                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="JkQ-8M-KaS">
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="JkQ-8M-KaS">
                                                 <rect key="frame" x="475" y="1" width="15" height="249"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
@@ -2963,13 +3244,12 @@
                                     <subviews>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2Z-r8-sHg">
                                             <rect key="frame" x="17" y="17" width="493" height="260"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="YX2-Z4-PmF">
                                                 <rect key="frame" x="1" y="1" width="491" height="258"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="m5a-mt-V4E">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="258"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="250"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="UOZ-Wg-dsx">
@@ -3294,6 +3574,47 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="VIN-DX-jgd" customClass="TTMPredicateEditorDateRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">thresholdDate</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="900"/>
+                                                                <popUpMenus>
+                                                                    <menu id="cRy-io-o3D">
+                                                                        <items>
+                                                                            <menuItem title="threshold date" state="on" id="Bm0-PI-VvG">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">thresholdDate</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="yM4-GF-UhM">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="dGy-RT-5G5">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is not" id="3Q6-54-I3x">
+                                                                                <integer key="representedObject" value="5"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than" id="Waq-RR-9Tf">
+                                                                                <integer key="representedObject" value="0"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than" id="g6M-Ed-xau">
+                                                                                <integer key="representedObject" value="2"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than or equal to" id="Uaq-Tf-S8P">
+                                                                                <integer key="representedObject" value="1"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than or equal to" id="0W0-5e-iUI">
+                                                                                <integer key="representedObject" value="3"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                             <predicateEditorRowTemplate rowType="simple" id="NHy-mp-SxE" customClass="TTMPredicateEditorCompletedRowTemplate">
                                                                 <array key="leftExpressionObject">
                                                                     <expression type="keyPath">
@@ -3358,7 +3679,7 @@
                                                 <rect key="frame" x="-100" y="-100" width="360" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
-                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="h5H-Ye-21u">
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="h5H-Ye-21u">
                                                 <rect key="frame" x="475" y="1" width="15" height="249"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
@@ -3379,13 +3700,12 @@
                                     <subviews>
                                         <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPh-yy-JhP">
                                             <rect key="frame" x="17" y="17" width="493" height="260"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="f1j-8H-LvM">
                                                 <rect key="frame" x="1" y="1" width="491" height="258"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="XsA-Sd-hjN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="258"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="250"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="1xb-nc-bj6">
@@ -3710,6 +4030,47 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="F6S-mE-eqS" customClass="TTMPredicateEditorDateRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">thresholdDate</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="900"/>
+                                                                <popUpMenus>
+                                                                    <menu id="yOA-cX-UFL">
+                                                                        <items>
+                                                                            <menuItem title="threshold date" state="on" id="anR-B4-YRq">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">thresholdDate</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="BGi-SB-KZZ">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="uQD-Gh-bIt">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is not" id="grx-i4-swz">
+                                                                                <integer key="representedObject" value="5"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than" id="Oqg-Ye-s38">
+                                                                                <integer key="representedObject" value="0"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than" id="ftE-dg-Jgb">
+                                                                                <integer key="representedObject" value="2"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is less than or equal to" id="05D-9y-4fn">
+                                                                                <integer key="representedObject" value="1"/>
+                                                                            </menuItem>
+                                                                            <menuItem title="is greater than or equal to" id="cDB-1v-bws">
+                                                                                <integer key="representedObject" value="3"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                             <predicateEditorRowTemplate rowType="simple" id="Kmh-UY-TJ8" customClass="TTMPredicateEditorCompletedRowTemplate">
                                                                 <array key="leftExpressionObject">
                                                                     <expression type="keyPath">
@@ -3774,7 +4135,7 @@
                                                 <rect key="frame" x="-100" y="-100" width="360" height="15"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
-                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="uW2-e6-tfL">
+                                            <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="uW2-e6-tfL">
                                                 <rect key="frame" x="475" y="1" width="15" height="249"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
@@ -3792,7 +4153,9 @@
                     </tabView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="K5U-Nz-fQB">
                         <rect key="frame" x="485" y="13" width="74" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="62" id="YaC-SX-HfI"/>
+                        </constraints>
                         <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fp0-Cf-XSV">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -3803,13 +4166,13 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="x3A-pX-TrY" firstAttribute="leading" secondItem="qgL-I9-GFI" secondAttribute="leading" id="2GY-8E-lnZ"/>
+                    <constraint firstItem="x3A-pX-TrY" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="2Mr-A5-gQB"/>
                     <constraint firstAttribute="trailing" secondItem="qgL-I9-GFI" secondAttribute="trailing" constant="20" symbolic="YES" id="6Rp-kF-kAf"/>
-                    <constraint firstItem="x3A-pX-TrY" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="82H-6D-nhk"/>
-                    <constraint firstItem="K5U-Nz-fQB" firstAttribute="top" secondItem="qgL-I9-GFI" secondAttribute="bottom" constant="10" id="FaV-3c-JPW"/>
-                    <constraint firstItem="x3A-pX-TrY" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="Ga3-EA-cbF"/>
-                    <constraint firstItem="qgL-I9-GFI" firstAttribute="top" secondItem="x3A-pX-TrY" secondAttribute="bottom" constant="8" symbolic="YES" id="I5V-k1-L9o"/>
-                    <constraint firstItem="qgL-I9-GFI" firstAttribute="leading" secondItem="x3A-pX-TrY" secondAttribute="leading" id="jHj-MM-5nP"/>
-                    <constraint firstItem="K5U-Nz-fQB" firstAttribute="trailing" secondItem="qgL-I9-GFI" secondAttribute="trailing" id="pHx-Bs-YyI"/>
+                    <constraint firstItem="x3A-pX-TrY" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="6d1-F7-noZ"/>
+                    <constraint firstItem="K5U-Nz-fQB" firstAttribute="top" secondItem="qgL-I9-GFI" secondAttribute="bottom" constant="10" id="LVx-qa-jk4"/>
+                    <constraint firstItem="qgL-I9-GFI" firstAttribute="top" secondItem="x3A-pX-TrY" secondAttribute="bottom" constant="8" symbolic="YES" id="lQI-7G-I5z"/>
+                    <constraint firstItem="K5U-Nz-fQB" firstAttribute="trailing" secondItem="qgL-I9-GFI" secondAttribute="trailing" id="lZb-8y-kxr"/>
                     <constraint firstAttribute="bottom" secondItem="qgL-I9-GFI" secondAttribute="bottom" constant="51" id="xga-Qj-MeD"/>
                 </constraints>
             </view>
