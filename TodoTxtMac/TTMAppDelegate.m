@@ -50,9 +50,12 @@
 
 static NSDictionary *defaultValues() {
     
+    // Default filter predicate.
     static NSData *newPredicateData = nil;
     if (!newPredicateData) {
-        NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"rawText != ''"];
+        NSPredicate *newSubPredicate = [NSPredicate predicateWithFormat:@"ALL rawText contains ''"];
+        NSPredicate *newPredicate = [NSCompoundPredicate
+                                     andPredicateWithSubpredicates:@[newSubPredicate]];
         newPredicateData = [NSKeyedArchiver archivedDataWithRootObject:newPredicate];
     }
     
@@ -82,12 +85,14 @@ static NSDictionary *defaultValues() {
                 @NO, @"useCustomColorForContexts",
                 @NO, @"useCustomColorForTags",
                 @NO, @"useCustomColorForDueDates",
+                @NO, @"useCustomColorForThresholdDates",
                 [NSArchiver archivedDataWithRootObject:[NSColor redColor]], @"dueTodayColor",
                 [NSArchiver archivedDataWithRootObject:[NSColor purpleColor]], @"overdueColor",
                 [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"projectColor",
                 [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"contextColor",
                 [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"tagColor",
                 [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"dueDateColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"thresholdDateColor",
                 @NO, @"escapeKeyCancelsAllTextChanges",
                 @NO, @"openDefaultTodoFileOnStartup",
                 @"", @"defaultTodoFilePath",

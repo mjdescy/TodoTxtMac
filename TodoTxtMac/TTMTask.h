@@ -62,6 +62,14 @@ typedef enum : NSUInteger {
     NotDue
 } TTMDueState;
 
+/*! Defines the three threshold date-related states of a task: before, after, 
+    and on the threshold date */
+typedef enum : NSUInteger {
+    BeforeThresholdDate,
+    OnThresholdDate,
+    AfterThresholdDate
+} TTMThresholdState;
+
 #pragma mark - Properties
 
 /*! Raw text of the task (a single line in the todo.txt file) */
@@ -79,6 +87,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, readonly) NSDate *creationDate;
 @property (nonatomic, readonly) NSString *completionDateText;
 @property (nonatomic, readonly) NSDate *completionDate;
+@property (nonatomic, readonly) NSString *thresholdDateText;
+@property (nonatomic, readonly) NSDate *thresholdDate;
 @property (nonatomic, readonly, copy) NSArray *contextsArray;
 @property (nonatomic, readonly, copy) NSString *contexts;
 @property (nonatomic, readonly) BOOL hasContexts;
@@ -86,6 +96,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, readonly, copy) NSString *projects;
 @property (nonatomic, readonly) BOOL hasProjects;
 @property (nonatomic, readonly) TTMDueState dueState;
+@property (nonatomic, readonly) TTMThresholdState thresholdState;
 @property (nonatomic, readonly) BOOL isCompleted;
 @property (nonatomic, readonly) BOOL isPrioritized;
 @property (nonatomic, readonly) BOOL isBlank;
@@ -168,6 +179,19 @@ typedef enum : NSUInteger {
  * @discussion This method sets the property dueState.
  */
 - (TTMDueState)getDueState;
+
+#pragma mark - Threshold State Method
+
+/*!
+ * @method getThresholdState:
+ * @abstract Compares the task's thresholdDate property to today's date and determines
+ * the status of the task (today's date is before, on, or after the threshold date).
+ * @return Returns a TTMThresholdState enum type value that indicates whether today is before,
+   on, or after a task's threshold date.
+ * or "Due Today".
+ * @discussion This method sets the property thresholdState.
+ */
+- (TTMThresholdState)getThresholdState;
 
 #pragma mark - Priority Methods
 

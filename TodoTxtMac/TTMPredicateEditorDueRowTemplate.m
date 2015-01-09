@@ -122,13 +122,15 @@
 }
 
 - (NSPredicate*)predicateWithSubpredicates:(NSArray*)subpredicates {
+    NSPredicate *p = [super predicateWithSubpredicates:subpredicates];
+    NSComparisonPredicate *comparison = (NSComparisonPredicate*)p;
 	NSPredicate *newPredicate =
         [NSComparisonPredicate
          predicateWithLeftExpression:[[self.keypathPopUp selectedItem] representedObject]
          rightExpression:[[self.dueStatePopUp selectedItem] representedObject]
-         modifier:NSDirectPredicateModifier
-         type:NSEqualToPredicateOperatorType
-         options:0];
+         modifier:[comparison comparisonPredicateModifier]
+         type:[comparison predicateOperatorType]
+         options:[comparison options]];
 	return newPredicate;
 }
 

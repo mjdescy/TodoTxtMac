@@ -63,6 +63,8 @@ static NSString * const CreationDatePatternCompleted =
     @"(?<=^x\\s((\\d{4})-(\\d{2})-(\\d{2}))\\s)((\\d{4})-(\\d{2})-(\\d{2}))";
 static NSString * const DueDatePattern = @"(?<=due:)((\\d{4})-(\\d{2})-(\\d{2}))";
 static NSString * const FullDueDatePattern = @"((^|\\s)due:)((\\d{4})-(\\d{2})-(\\d{2}))";
+static NSString * const ThresholdDatePattern = @"(?<=t:)((\\d{4})-(\\d{2})-(\\d{2}))";
+static NSString * const FullThresholdDatePattern = @"((^|\\s)t:)((\\d{4})-(\\d{2})-(\\d{2}))";
 static NSString * const ProjectPattern = @"(?<=^|\\s)(\\+[^\\s]+)";
 static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
 static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
@@ -140,11 +142,14 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
         _contextsArray = nil;
         _projects = @"";
         _projectsArray = nil;
-        _completionDateText = nil;
+        _completionDateText = @"";
         _completionDate = nil;
         _dueDateText = @"";
         _dueDate = nil;
         _creationDateText = @"";
+        _creationDate = nil;
+        _thresholdDateText = @"";
+        _thresholdDate = nil;
         _dueState = NotDue;
         _hasContexts = NO;
         _hasProjects = NO;
@@ -196,14 +201,25 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     _creationDateText = _isCompleted ?
         [_rawText firstMatch:RX(CreationDatePatternCompleted)] :
         [_rawText firstMatch:RX(CreationDatePatternIncomplete)];
-    // Set creation date to the high date (9999012031) to ensure that tasks with no
+    // Set creation date to the high date (9999-12-31) to ensure that tasks with no
     // creation date are sorted after tasks with a creation date.
     _creationDate = (_creationDateText == nil) ?
         [TTMDateUtility convertStringToDate:@"9999-12-31"] :
         [TTMDateUtility convertStringToDate:_creationDateText];
+
+    // threshold date
+    _thresholdDateText = [_rawText firstMatch:RX(ThresholdDatePattern)];
+    // Set threshold date to the high date (1900-01-01) to ensure that tasks with no
+    // threshold date are properly sorted/displated when filtered.
+    _thresholdDate = (_thresholdDateText == nil) ?
+        [TTMDateUtility convertStringToDate:@"1900-01-01"] :
+        [TTMDateUtility convertStringToDate:_thresholdDateText];
     
     // due state (past due, due today, not due)
     _dueState = [self getDueState];
+    
+    // threshold state (before, on, after threshold date)
+    _thresholdState = [self getThresholdState];
 }
 
 - (NSString*)rawText {
@@ -274,6 +290,14 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
                    value:[NSColor darkGrayColor]
                    range:match.range];
     }
+
+    // Highlight threshold dates.
+    matches = [self.rawText matchesWithDetails:RX(FullThresholdDatePattern)];
+    for (RxMatch *match in matches) {
+        [as addAttribute:NSForegroundColorAttributeName
+                   value:[NSColor darkGrayColor]
+                   range:match.range];
+    }
     
     return as;
 }
@@ -298,6 +322,25 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
         return NotDue;
     } else {
         return DueToday;
+    }
+}
+
+#pragma mark - Threshold State Method
+
+- (TTMThresholdState)getThresholdState {
+    // If there is a threshold date, compare it to today's date to determine
+    // if the task is overdue, not due, or due today.
+    NSDate *todaysDate = [TTMDateUtility today];
+    NSInteger interval = [[[NSCalendar currentCalendar] components:NSDayCalendarUnit
+                                                          fromDate:todaysDate
+                                                            toDate:self.thresholdDate
+                                                           options:0] day];
+    if (interval < 0) {
+        return AfterThresholdDate;
+    } else if (interval > 0) {
+        return BeforeThresholdDate;
+    } else {
+        return OnThresholdDate;
     }
 }
 
