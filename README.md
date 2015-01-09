@@ -188,13 +188,13 @@ The project uses [git-flow] to implement Vincent Driessen's [branching model]. A
 
 # Credits/Thanks
 
-Thanks to Gina Tripani who created the [Todo.txt][] format and the community of developers who created the command line tools and iOS/Android apps.
+Thanks to Gina Trapani who created the [Todo.txt][] format and the community of developers who created the command line tools and iOS/Android apps.
 
 Thanks to Ben Hughes whose Windows application [todotxt.net][] formed the basis of this application's design and feature set. Todotxt.net is a fantastic program and did not have an analog on the Mac. After starting my application, I contributed some patches to todotxt.net and am happy to be a contributor on such a great project.
 
 Thanks to Josh Wright <@BendyTree> for his [RegExCategories][] library.
 
-Thanks to kuba for the image used as the icon. Image Credit: [OK Icon][] from [Vector.me][] (by kuba).
+Thanks to Sam Daitzman <@sdaitzman> for the application icon.
 
 Thanks to Andy Matuschak and the other contributors for the [Sparkle framework].
 
