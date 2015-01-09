@@ -50,9 +50,12 @@
 
 static NSDictionary *defaultValues() {
     
+    // Default filter predicate.
     static NSData *newPredicateData = nil;
     if (!newPredicateData) {
-        NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"rawText != ''"];
+        NSPredicate *newSubPredicate = [NSPredicate predicateWithFormat:@"ALL rawText contains ''"];
+        NSPredicate *newPredicate = [NSCompoundPredicate
+                                     andPredicateWithSubpredicates:@[newSubPredicate]];
         newPredicateData = [NSKeyedArchiver archivedDataWithRootObject:newPredicate];
     }
     

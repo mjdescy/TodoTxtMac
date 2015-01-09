@@ -106,7 +106,7 @@ filter9Predicate;
 
 - (void)initializePredicateEditor:(NSPredicateEditor*)predicateEditor {
     if ([predicateEditor numberOfRows] == 0) {
-        [predicateEditor addRow:self];
+        [predicateEditor addRow:nil];
     }
 }
 
