@@ -49,6 +49,59 @@
 #import "TTMFiltersController.h"
 #import "TTMDocument.h"
 
+static NSDictionary *defaultValues() {
+    
+    // Default filter predicate.
+    static NSData *newPredicateData = nil;
+    if (!newPredicateData) {
+        NSPredicate *newSubPredicate = [NSPredicate predicateWithFormat:@"ALL rawText contains ''"];
+        NSPredicate *newPredicate = [NSCompoundPredicate
+                                     andPredicateWithSubpredicates:@[newSubPredicate]];
+        newPredicateData = [NSKeyedArchiver archivedDataWithRootObject:newPredicate];
+    }
+    
+    static NSDictionary *dict = nil;
+    if (!dict) {
+        dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                @NO, @"prependDateOnNewTasks",
+                @1, @"taskListSortType",
+                newPredicateData, @"activefilterPredicate",
+                newPredicateData, @"filter1Predicate",
+                newPredicateData, @"filter2Predicate",
+                newPredicateData, @"filter3Predicate",
+                newPredicateData, @"filter4Predicate",
+                newPredicateData, @"filter5Predicate",
+                newPredicateData, @"filter6Predicate",
+                newPredicateData, @"filter7Predicate",
+                newPredicateData, @"filter8Predicate",
+                newPredicateData, @"filter9Predicate",
+                @"", @"archiveFilePath",
+                @NO, @"archiveTasksUponCompletion",
+                @NO, @"useUserFont",
+                @NO, @"moveToTaskListAfterTaskCreation",
+                @YES, @"useHighlightColorsInTaskList",
+                @NO, @"useCustomColorForOverdueTasks",
+                @NO, @"useCustomColorForDueTodayTasks",
+                @NO, @"useCustomColorForProjects",
+                @NO, @"useCustomColorForContexts",
+                @NO, @"useCustomColorForTags",
+                @NO, @"useCustomColorForDueDates",
+                @NO, @"useCustomColorForThresholdDates",
+                [NSArchiver archivedDataWithRootObject:[NSColor redColor]], @"dueTodayColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor purpleColor]], @"overdueColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"projectColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"contextColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"tagColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"dueDateColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"thresholdDateColor",
+                @NO, @"escapeKeyCancelsAllTextChanges",
+                @NO, @"openDefaultTodoFileOnStartup",
+                @"", @"defaultTodoFilePath",
+                nil];
+    }
+    return dict;
+}
+
 @implementation TTMAppController
 
 // Constants for command-line argument names
@@ -80,6 +133,17 @@ NSString *const TodoFileArgument = @"todo-file";
 - (IBAction)openWebSite:(id)sender {
     NSURL *helpURL = [NSURL URLWithString:@"http://mjdescy.github.io/TodoTxtMac/"];
     [[NSWorkspace sharedWorkspace] openURL:helpURL];
+}
+
+#pragma mark - User Defaults-related Methods
+
+- (void)initializeUserDefaults:(id)sender {
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues()];
+    [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:defaultValues()];
+}
+
+- (IBAction)resetUserDefaults:(id)sender {
+    [[NSUserDefaultsController sharedUserDefaultsController] revertToInitialValues:self];
 }
 
 #pragma mark - Command-line Argument-related Methods
