@@ -1,6 +1,6 @@
 /**
  * @author Michael Descy
- * @copyright 2015 Michael Descy
+ * @copyright 2014-2015 Michael Descy
  * @discussion Dual-licensed under the GNU General Public License and the MIT License
  *
  *
