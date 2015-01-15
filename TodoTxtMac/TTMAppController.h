@@ -71,8 +71,9 @@ extern NSString *const TodoFileArgument;
 /*!
  * @method resetUserDefaults:
  * @abstract This method resets preferences managed by NSUserDefaultsController to default values.
+ * It does not reset fitler-related preferences.
  */
-- (IBAction)resetUserDefaults:(id)sender;
+- (void)resetUserDefaults:(id)sender;
 
 #pragma mark - Command-line Argument-related Methods
 

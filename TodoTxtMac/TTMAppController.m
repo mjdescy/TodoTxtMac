@@ -47,34 +47,32 @@
 #import "TTMAppController.h"
 #import "TTMPreferencesController.h"
 #import "TTMFiltersController.h"
+#import "TTMFilterPredicates.h"
 #import "TTMDocument.h"
 
+// Default user preference values, including those for saved filters
 static NSDictionary *defaultValues() {
     
-    // Default filter predicate.
-    static NSData *newPredicateData = nil;
-    if (!newPredicateData) {
-        NSPredicate *newSubPredicate = [NSPredicate predicateWithFormat:@"ALL rawText contains ''"];
-        NSPredicate *newPredicate = [NSCompoundPredicate
-                                     andPredicateWithSubpredicates:@[newSubPredicate]];
-        newPredicateData = [NSKeyedArchiver archivedDataWithRootObject:newPredicate];
+    static NSData *defaultPredicateData = nil;
+    if (defaultPredicateData == nil) {
+        defaultPredicateData = [TTMFilterPredicates defaultFilterPredicateData];
     }
-    
+
     static NSDictionary *dict = nil;
     if (!dict) {
         dict = [[NSDictionary alloc] initWithObjectsAndKeys:
                 @NO, @"prependDateOnNewTasks",
                 @1, @"taskListSortType",
-                newPredicateData, @"activefilterPredicate",
-                newPredicateData, @"filter1Predicate",
-                newPredicateData, @"filter2Predicate",
-                newPredicateData, @"filter3Predicate",
-                newPredicateData, @"filter4Predicate",
-                newPredicateData, @"filter5Predicate",
-                newPredicateData, @"filter6Predicate",
-                newPredicateData, @"filter7Predicate",
-                newPredicateData, @"filter8Predicate",
-                newPredicateData, @"filter9Predicate",
+                defaultPredicateData, @"activefilterPredicate",
+                defaultPredicateData, @"filterPredicate1",
+                defaultPredicateData, @"filterPredicate2",
+                defaultPredicateData, @"filterPredicate3",
+                defaultPredicateData, @"filterPredicate4",
+                defaultPredicateData, @"filterPredicate5",
+                defaultPredicateData, @"filterPredicate6",
+                defaultPredicateData, @"filterPredicate7",
+                defaultPredicateData, @"filterPredicate8",
+                defaultPredicateData, @"filterPredicate9",
                 @"", @"archiveFilePath",
                 @NO, @"archiveTasksUponCompletion",
                 @NO, @"useUserFont",
@@ -100,6 +98,19 @@ static NSDictionary *defaultValues() {
                 nil];
     }
     return dict;
+}
+
+// Default user preference values, excluding those for saved filters.
+// Defined to help allow users to reset preferences without losing saved filters.
+static NSDictionary *defaultValuesExcludingFilters() {
+    static NSMutableDictionary *defaults = nil;
+    if (defaults == nil) {
+        for (int i = 1; i <= 9; i++) {
+            [defaults removeObjectForKey:[TTMFilterPredicates keyFromPresetNumber:i]];
+        }
+        [defaults removeObjectForKey:@"activefilterPredicate"];
+    }
+    return defaults;
 }
 
 @implementation TTMAppController
@@ -142,8 +153,11 @@ NSString *const TodoFileArgument = @"todo-file";
     [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:defaultValues()];
 }
 
-- (IBAction)resetUserDefaults:(id)sender {
+- (void)resetUserDefaults:(id)sender {
+    [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:
+                                                                 defaultValuesExcludingFilters()];
     [[NSUserDefaultsController sharedUserDefaultsController] revertToInitialValues:self];
+    [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:defaultValues()];
 }
 
 #pragma mark - Command-line Argument-related Methods
