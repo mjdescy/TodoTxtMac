@@ -52,6 +52,15 @@
 @property (nonatomic, retain) IBOutlet TTMAppController *appController;
 @property (nonatomic, retain) NSFont *selectedFont;
 
+#pragma mark - General Prefererences Methods
+
+/*!
+ * @method resetAllUserPreferencesToDefaults:
+ * @abstract This method allows the user to reset all user preferences and 
+ * filters to the defaults defined in TTMAppDelegate.
+ */
+- (IBAction)resetAllUserPreferencesToDefaults:(id)sender;
+
 #pragma mark - Choose File Methods
 
 /*!

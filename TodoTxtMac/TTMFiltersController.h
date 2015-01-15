@@ -58,19 +58,10 @@
 @property (nonatomic, retain) IBOutlet NSPredicateEditor *filter8PredicateEditor;
 @property (nonatomic, retain) IBOutlet NSPredicateEditor *filter9PredicateEditor;
 
-@property (nonatomic, retain) NSPredicate *filter1Predicate;
-@property (nonatomic, retain) NSPredicate *filter2Predicate;
-@property (nonatomic, retain) NSPredicate *filter3Predicate;
-@property (nonatomic, retain) NSPredicate *filter4Predicate;
-@property (nonatomic, retain) NSPredicate *filter5Predicate;
-@property (nonatomic, retain) NSPredicate *filter6Predicate;
-@property (nonatomic, retain) NSPredicate *filter7Predicate;
-@property (nonatomic, retain) NSPredicate *filter8Predicate;
-@property (nonatomic, retain) NSPredicate *filter9Predicate;
-
-- (void)getAllFilterPredicatesFromDefaults;
-- (void)setAllFilterPredicatesToDefaults;
-- (void)initializeAllPredicateEditors;
-- (void)initializePredicateEditor:(NSPredicateEditor*)predicateEditor;
+/*!
+ * @method resetAllFilters:
+ * @abstract This method allows the user to clear/reset all filters.
+ */
+- (IBAction)resetAllFilters:(id)sender;
 
 @end

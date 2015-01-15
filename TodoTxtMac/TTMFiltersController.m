@@ -46,12 +46,9 @@
 
 #import "TTMFiltersController.h"
 #import "TTMFilterPredicates.h"
+#import "NSAlert+BlockMethods.h"
 
 @implementation TTMFiltersController
-
-@synthesize filter1Predicate, filter2Predicate, filter3Predicate, filter4Predicate,
-filter5Predicate, filter6Predicate, filter7Predicate, filter8Predicate,
-filter9Predicate;
 
 - (id)initWithWindow:(NSWindow *)window {
     self = [super initWithWindow:window];
@@ -61,53 +58,20 @@ filter9Predicate;
     return self;
 }
 
-- (void)awakeFromNib {
-    // Load filter predicates.
-    [self getAllFilterPredicatesFromDefaults];
-    // initialize predicate editors (add lines if they are empty)
-    [self initializeAllPredicateEditors];
-}
-
-- (void)getAllFilterPredicatesFromDefaults {
-    self.filter1Predicate = [TTMFilterPredicates getFilterPredicateFromPresetNumber:1];
-    self.filter2Predicate = [TTMFilterPredicates getFilterPredicateFromPresetNumber:2];
-    self.filter3Predicate = [TTMFilterPredicates getFilterPredicateFromPresetNumber:3];
-    self.filter4Predicate = [TTMFilterPredicates getFilterPredicateFromPresetNumber:4];
-    self.filter5Predicate = [TTMFilterPredicates getFilterPredicateFromPresetNumber:5];
-    self.filter6Predicate = [TTMFilterPredicates getFilterPredicateFromPresetNumber:6];
-    self.filter7Predicate = [TTMFilterPredicates getFilterPredicateFromPresetNumber:7];
-    self.filter8Predicate = [TTMFilterPredicates getFilterPredicateFromPresetNumber:8];
-    self.filter9Predicate = [TTMFilterPredicates getFilterPredicateFromPresetNumber:9];
-}
-
-- (void)setAllFilterPredicatesToDefaults {
-    [TTMFilterPredicates setFilterPredicate:self.filter1Predicate toPresetNumber:1];
-    [TTMFilterPredicates setFilterPredicate:self.filter2Predicate toPresetNumber:2];
-    [TTMFilterPredicates setFilterPredicate:self.filter3Predicate toPresetNumber:3];
-    [TTMFilterPredicates setFilterPredicate:self.filter4Predicate toPresetNumber:4];
-    [TTMFilterPredicates setFilterPredicate:self.filter5Predicate toPresetNumber:5];
-    [TTMFilterPredicates setFilterPredicate:self.filter6Predicate toPresetNumber:6];
-    [TTMFilterPredicates setFilterPredicate:self.filter7Predicate toPresetNumber:7];
-    [TTMFilterPredicates setFilterPredicate:self.filter8Predicate toPresetNumber:8];
-    [TTMFilterPredicates setFilterPredicate:self.filter9Predicate toPresetNumber:9];
-}
-
-- (void)initializeAllPredicateEditors {
-    [self initializePredicateEditor:self.filter1PredicateEditor];
-    [self initializePredicateEditor:self.filter2PredicateEditor];
-    [self initializePredicateEditor:self.filter3PredicateEditor];
-    [self initializePredicateEditor:self.filter4PredicateEditor];
-    [self initializePredicateEditor:self.filter5PredicateEditor];
-    [self initializePredicateEditor:self.filter6PredicateEditor];
-    [self initializePredicateEditor:self.filter7PredicateEditor];
-    [self initializePredicateEditor:self.filter8PredicateEditor];
-    [self initializePredicateEditor:self.filter9PredicateEditor];
-}
-
-- (void)initializePredicateEditor:(NSPredicateEditor*)predicateEditor {
-    if ([predicateEditor numberOfRows] == 0) {
-        [predicateEditor addRow:nil];
-    }
+- (IBAction)resetAllFilters:(id)sender {
+    NSAlert *resetPrompt =
+    [NSAlert alertWithMessageText:@"Clear all filters"
+                    defaultButton:@"OK"
+                  alternateButton:@"Cancel"
+                      otherButton:nil
+        informativeTextWithFormat:
+     @"Are you sure you want to do this? You will lose all filter customizations."];
+    [resetPrompt compatibleBeginSheetModalForWindow:self.window
+                                  completionHandler:^(NSModalResponse returnCode) {
+                                      if (returnCode == NSAlertDefaultReturn) {
+                                          [TTMFilterPredicates resetAllFilterPredicates];
+                                      }
+                                  }];
 }
 
 #pragma mark - Window Delegate Methods
@@ -117,10 +81,5 @@ filter9Predicate;
     // closes the window without hitting enter or tab.
     return [window makeFirstResponder:nil];
 }
-
-- (void)windowWillClose:(NSNotification *)notification {
-    // save all filter predicates to user defaults
-    [self setAllFilterPredicatesToDefaults];
-}
-
+ 
 @end

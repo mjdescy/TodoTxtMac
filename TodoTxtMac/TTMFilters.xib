@@ -509,7 +509,11 @@
                                                             </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
-                                                            <binding destination="-2" name="value" keyPath="self.filter1Predicate" id="ZLA-wD-2Na"/>
+                                                            <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate1" id="nNL-eP-zci">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
                                                         </connections>
                                                     </predicateEditor>
                                                 </subviews>
@@ -545,7 +549,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="Ymr-Te-Jsu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="275"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="4K2-dy-Irs">
@@ -997,7 +1001,11 @@
                                                             </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
-                                                            <binding destination="-2" name="value" keyPath="self.filter2Predicate" id="leM-3G-kfd"/>
+                                                            <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate2" id="xSl-H6-No6">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
                                                         </connections>
                                                     </predicateEditor>
                                                 </subviews>
@@ -1033,7 +1041,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="6q7-hn-dBp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="275"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="xh2-WQ-Iok">
@@ -1485,7 +1493,11 @@
                                                             </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
-                                                            <binding destination="-2" name="value" keyPath="self.filter3Predicate" id="mdr-or-hAa"/>
+                                                            <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate3" id="mxZ-7U-OEE">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
                                                         </connections>
                                                     </predicateEditor>
                                                 </subviews>
@@ -1521,7 +1533,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="dqt-SY-XL3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="275"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="RVr-y6-3Au">
@@ -1973,7 +1985,11 @@
                                                             </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
-                                                            <binding destination="-2" name="value" keyPath="self.filter4Predicate" id="jxY-P5-D61"/>
+                                                            <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate4" id="dcI-bd-T3G">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
                                                         </connections>
                                                     </predicateEditor>
                                                 </subviews>
@@ -2009,7 +2025,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="Kic-py-fTP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="275"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="dFn-PY-Alr">
@@ -2461,7 +2477,11 @@
                                                             </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
-                                                            <binding destination="-2" name="value" keyPath="self.filter5Predicate" id="maW-Gc-F55"/>
+                                                            <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate5" id="Q1e-in-vhO">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
                                                         </connections>
                                                     </predicateEditor>
                                                 </subviews>
@@ -2497,7 +2517,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="Fft-UT-LWs">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="275"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="wFo-ei-zAn">
@@ -2949,7 +2969,11 @@
                                                             </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
-                                                            <binding destination="-2" name="value" keyPath="self.filter6Predicate" id="b00-pE-cJi"/>
+                                                            <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate6" id="Lk0-wU-BwF">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
                                                         </connections>
                                                     </predicateEditor>
                                                 </subviews>
@@ -2985,7 +3009,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="abs-37-qFl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="275"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="lgC-Ia-v3w">
@@ -3437,7 +3461,11 @@
                                                             </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
-                                                            <binding destination="-2" name="value" keyPath="self.filter7Predicate" id="Mqi-6B-ecE"/>
+                                                            <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate7" id="zOI-8I-1Pk">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
                                                         </connections>
                                                     </predicateEditor>
                                                 </subviews>
@@ -3473,7 +3501,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="m5a-mt-V4E">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="275"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="UOZ-Wg-dsx">
@@ -3925,7 +3953,11 @@
                                                             </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
-                                                            <binding destination="-2" name="value" keyPath="self.filter8Predicate" id="nAS-fN-8XD"/>
+                                                            <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate8" id="ydF-u1-heh">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
                                                         </connections>
                                                     </predicateEditor>
                                                 </subviews>
@@ -3961,7 +3993,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="XsA-Sd-hjN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="275"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="1xb-nc-bj6">
@@ -4413,7 +4445,11 @@
                                                             </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
-                                                            <binding destination="-2" name="value" keyPath="self.filter9Predicate" id="pnU-jo-HgU"/>
+                                                            <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate9" id="yYm-0Y-a5Q">
+                                                                <dictionary key="options">
+                                                                    <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
+                                                                </dictionary>
+                                                            </binding>
                                                         </connections>
                                                     </predicateEditor>
                                                 </subviews>
@@ -4452,6 +4488,16 @@
                             <action selector="performClose:" target="QvC-M9-y7g" id="DIT-dx-zcn"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EFZ-M9-oeC">
+                        <rect key="frame" x="14" y="13" width="91" height="32"/>
+                        <buttonCell key="cell" type="push" title="Clear all" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DJx-pl-BFw">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="resetAllFilters:" target="-2" id="ykM-Zu-HeD"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="x3A-pX-TrY" firstAttribute="leading" secondItem="qgL-I9-GFI" secondAttribute="leading" id="2GY-8E-lnZ"/>
@@ -4472,7 +4518,6 @@
             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
             <autoresizingMask key="autoresizingMask"/>
         </view>
-        <userDefaultsController id="aTP-g4-QHL"/>
-        <customObject id="rel-Z7-czp"/>
+        <userDefaultsController representsSharedInstance="YES" id="VIO-0n-UUv"/>
     </objects>
 </document>

@@ -47,7 +47,71 @@
 #import "TTMAppController.h"
 #import "TTMPreferencesController.h"
 #import "TTMFiltersController.h"
+#import "TTMFilterPredicates.h"
 #import "TTMDocument.h"
+
+// Default user preference values, including those for saved filters
+static NSDictionary *defaultValues() {
+    
+    static NSData *defaultPredicateData = nil;
+    if (defaultPredicateData == nil) {
+        defaultPredicateData = [TTMFilterPredicates defaultFilterPredicateData];
+    }
+
+    static NSDictionary *dict = nil;
+    if (!dict) {
+        dict = [[NSDictionary alloc] initWithObjectsAndKeys:
+                @NO, @"prependDateOnNewTasks",
+                @1, @"taskListSortType",
+                defaultPredicateData, @"activefilterPredicate",
+                defaultPredicateData, @"filterPredicate1",
+                defaultPredicateData, @"filterPredicate2",
+                defaultPredicateData, @"filterPredicate3",
+                defaultPredicateData, @"filterPredicate4",
+                defaultPredicateData, @"filterPredicate5",
+                defaultPredicateData, @"filterPredicate6",
+                defaultPredicateData, @"filterPredicate7",
+                defaultPredicateData, @"filterPredicate8",
+                defaultPredicateData, @"filterPredicate9",
+                @"", @"archiveFilePath",
+                @NO, @"archiveTasksUponCompletion",
+                @NO, @"useUserFont",
+                @NO, @"moveToTaskListAfterTaskCreation",
+                @YES, @"useHighlightColorsInTaskList",
+                @NO, @"useCustomColorForOverdueTasks",
+                @NO, @"useCustomColorForDueTodayTasks",
+                @NO, @"useCustomColorForProjects",
+                @NO, @"useCustomColorForContexts",
+                @NO, @"useCustomColorForTags",
+                @NO, @"useCustomColorForDueDates",
+                @NO, @"useCustomColorForThresholdDates",
+                [NSArchiver archivedDataWithRootObject:[NSColor redColor]], @"dueTodayColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor purpleColor]], @"overdueColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"projectColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"contextColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"tagColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"dueDateColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"thresholdDateColor",
+                @NO, @"escapeKeyCancelsAllTextChanges",
+                @NO, @"openDefaultTodoFileOnStartup",
+                @"", @"defaultTodoFilePath",
+                nil];
+    }
+    return dict;
+}
+
+// Default user preference values, excluding those for saved filters.
+// Defined to help allow users to reset preferences without losing saved filters.
+static NSDictionary *defaultValuesExcludingFilters() {
+    static NSMutableDictionary *defaults = nil;
+    if (defaults == nil) {
+        for (int i = 1; i <= 9; i++) {
+            [defaults removeObjectForKey:[TTMFilterPredicates keyFromPresetNumber:i]];
+        }
+        [defaults removeObjectForKey:@"activefilterPredicate"];
+    }
+    return defaults;
+}
 
 @implementation TTMAppController
 
@@ -80,6 +144,20 @@ NSString *const TodoFileArgument = @"todo-file";
 - (IBAction)openWebSite:(id)sender {
     NSURL *helpURL = [NSURL URLWithString:@"http://mjdescy.github.io/TodoTxtMac/"];
     [[NSWorkspace sharedWorkspace] openURL:helpURL];
+}
+
+#pragma mark - User Defaults-related Methods
+
+- (void)initializeUserDefaults:(id)sender {
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues()];
+    [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:defaultValues()];
+}
+
+- (void)resetUserDefaults:(id)sender {
+    [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:
+                                                                 defaultValuesExcludingFilters()];
+    [[NSUserDefaultsController sharedUserDefaultsController] revertToInitialValues:self];
+    [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:defaultValues()];
 }
 
 #pragma mark - Command-line Argument-related Methods
