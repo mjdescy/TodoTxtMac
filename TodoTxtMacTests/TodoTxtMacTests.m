@@ -96,6 +96,24 @@
     XCTAssertEqualObjects(task.dueDate, date);
 }
 
+- (void)testSetDueDate {
+    NSString *rawText = @"pick up groceries";
+    NSUInteger taskId = 0;
+    NSDate *date = [TTMDateUtility convertStringToDate:@"2020-01-31"];
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
+    [task setDueDate:date];
+    XCTAssertEqualObjects(task.dueDate, date);
+}
+
+- (void)testRemoveDueDate {
+    NSString *rawText = @"pick up groceries t:2020-01-01 due:2020-01-31";
+    NSUInteger taskId = 0;
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
+    NSString *modifiedText = @"pick up groceries t:2020-01-01";
+    [task removeDueDate];
+    XCTAssertEqualObjects(task.rawText, modifiedText);
+}
+
 - (void)testDueDateText {
     NSString *rawText = @"pick up groceries due:2020-01-31";
     NSUInteger taskId = 0;
@@ -267,6 +285,49 @@
     XCTAssertEqual(task.thresholdState, AfterThresholdDate);
 }
 
+- (void)testSetThresholdDate {
+    NSString *rawText = @"pick up groceries due:2020-01-31";
+    NSUInteger taskId = 0;
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
+    NSDate *date = [TTMDateUtility convertStringToDate:@"2020-01-01"];
+    [task setThresholdDate:date];
+    XCTAssertEqualObjects(task.thresholdDate, date);
+}
 
+- (void)testIncrementThresholdDate {
+    NSString *rawText = @"(A) pick up groceries t:2020-01-01 due:2020-01-31";
+    NSUInteger taskId = 0;
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
+    NSDate *date = [TTMDateUtility convertStringToDate:@"2020-01-02"];
+    [task incrementThresholdDay:1];
+    XCTAssertEqualObjects(task.thresholdDate, date);
+}
+
+- (void)testIncrementThresholdDateWhenNoThresholdDate {
+    NSString *rawText = @"(A) pick up groceries due:2020-01-31";
+    NSUInteger taskId = 0;
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
+    NSDate *date = [TTMDateUtility addDays:1 toDate:[TTMDateUtility today]];
+    [task incrementThresholdDay:1];
+    XCTAssertEqualObjects(task.thresholdDate, date);
+}
+
+- (void)testDecrementThresholdDate {
+    NSString *rawText = @"(A) pick up groceries t:2020-01-01 due:2020-01-31";
+    NSUInteger taskId = 0;
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
+    NSDate *date = [TTMDateUtility convertStringToDate:@"2019-12-31"];
+    [task decrementThresholdDay:1];
+    XCTAssertEqualObjects(task.thresholdDate, date);
+}
+
+- (void)testRemoveThresholdDate {
+    NSString *rawText = @"pick up groceries t:2020-01-01 due:2020-01-31";
+    NSUInteger taskId = 0;
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
+    NSString *modifiedText = @"pick up groceries due:2020-01-31";
+    [task removeThresholdDate];
+    XCTAssertEqualObjects(task.rawText, modifiedText);
+}
 
 @end

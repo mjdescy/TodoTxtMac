@@ -323,6 +323,37 @@ CA
                                     <action selector="removeDueDate:" target="-1" id="auI-HN-cQk"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="rXL-8W-w5S"/>
+                            <menuItem title="Set Threshold Date" keyEquivalent="s" id="l4o-09-m07">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                <connections>
+                                    <action selector="setThresholdDate:" target="-1" id="Ugf-Kp-aQg"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Increase Threshold Date By 1 Day" keyEquivalent="" id="298-EH-Uic">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="increaseThresholdDateByOneDay:" target="-1" id="a5v-Bs-UWe"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Decrease Treshold Date By 1 Day" keyEquivalent="" id="Chu-wi-rII">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="decreaseThresholdDateByOneDay:" target="-1" id="n8g-S3-3Kb"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Remove Threshold Date" keyEquivalent="" id="6Iu-dJ-mki">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="removeThresholdDate:" target="-1" id="JAn-de-tBw"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Remove Threshold Date" hidden="YES" keyEquivalent="" id="wxr-lt-ibv">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="removeThresholdDate:" target="-1" id="Dd9-oI-0iG"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

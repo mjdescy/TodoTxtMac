@@ -325,7 +325,52 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     }
 }
 
-#pragma mark - Threshold State Method
+#pragma mark - Threshold Date Methods
+
+- (void)setThresholdDate:(NSDate *)thresholdDate {
+    NSString *newThresholdDateText = [TTMDateUtility convertDateToString:thresholdDate];
+    // If the item has a threshold date, exchange the current threshold date with the new.
+    // Else if the item does not have a threshold date, append the new threshold date to the task.
+    self.rawText = (self.thresholdDateText != nil) ?
+        [self.rawText replace:RX(ThresholdDatePattern) with:newThresholdDateText] :
+        [self.rawText stringByAppendingFormat:@" t:%@", newThresholdDateText];
+}
+
+- (void)removeThresholdDate {
+    // Blank and tasks without a threshold date do not get updated.
+    if (self.isBlank || !self.thresholdDate) {
+        return;
+    }
+    
+    self.rawText = [[self.rawText replace:RX(FullThresholdDatePattern) with:@""]
+                    stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+- (void)incrementThresholdDay:(NSInteger)days {
+    // Blank tasks don't get updated threshold dates.
+    if (self.isBlank) {
+        return;
+    }
+    
+    if (days == 0) {
+        return;
+    }
+    
+    // Get threshold date of the selected task.
+    // If the selected task doesn't have a threshold date, use today as the due date.
+    NSDate *oldThresholdDate = (self.thresholdDateText != nil) ?
+        self.thresholdDate :
+        [TTMDateUtility today];
+    
+    // Add days to that date to create the new due date.
+    NSDate *newThresholdDate = [TTMDateUtility addDays:days toDate:oldThresholdDate];
+    
+    [self setThresholdDate:newThresholdDate];
+}
+
+- (void)decrementThresholdDay:(NSInteger)days {
+    [self incrementThresholdDay:(-1 * days)];
+}
 
 - (TTMThresholdState)getThresholdState {
     // If there is a threshold date, compare it to today's date to determine
@@ -472,7 +517,6 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
 # pragma mark - Postpone and Set Due Date Methods
 
 - (void)postponeTask:(NSInteger)daysToPostpone {
-    
     // Blank and completed tasks don't get postponed.
     if (self.isBlank || self.isCompleted) {
         return;

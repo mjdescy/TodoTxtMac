@@ -180,7 +180,38 @@ typedef enum : NSUInteger {
  */
 - (TTMDueState)getDueState;
 
-#pragma mark - Threshold State Method
+#pragma mark - Threshold Date Methods
+
+/*!
+ * @method setThresholdDate:
+ * @abstract Sets the threshold date.
+ * @param dueDate The threshold date to set.
+ * @discussion The thresholdDate parameter is not a string, it is an NSDate value.
+ * Handling of "natural language" due dates would have be handled prior to invoking this method.
+ */
+- (void)setThresholdDate:(NSDate *)thresholdDate;
+
+/*!
+ * @method removeThresholdDate;
+ * @abstract Removes the threshold date from the task's raw text.
+ */
+- (void)removeThresholdDate;
+
+/*!
+ * @method incrementThresholdDay;
+ * @abstract Increases threshold day by a specified number of days.
+ * Sets threshold date to today if there is no threshold date.
+ * @param Number of days to add to the task threshold date.
+ */
+- (void)incrementThresholdDay:(NSInteger)days;
+
+/*!
+ * @method decrementThresholdDay;
+ * @abstract Decreases threshold day by a specified number of days.
+ * Sets threshold date to today if there is no threshold date.
+ * @param Number of days to subtract to the task threshold date.
+ */
+- (void)decrementThresholdDay:(NSInteger)days;
 
 /*!
  * @method getThresholdState:
@@ -196,7 +227,7 @@ typedef enum : NSUInteger {
 #pragma mark - Priority Methods
 
 /*!
- * @method setPriorityTo:
+ * @method setPriority:
  * @abstract Sets the priority of a task, whether or not it already has
  * a priority assigned.
  * @param priority This is the priority to set the task to. It must be a capital letter [A-Z],
