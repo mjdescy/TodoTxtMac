@@ -237,6 +237,12 @@ DQ
                                     <action selector="appendText:" target="-1" id="p5w-qa-iTB"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Prepend Text" keyEquivalent="t" id="N06-zv-uJi">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                <connections>
+                                    <action selector="prependText:" target="-1" id="Uvh-d3-wu5"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Delete" id="ezd-Y3-tV6">
                                 <string key="keyEquivalent" base64-UTF8="YES">
 CA

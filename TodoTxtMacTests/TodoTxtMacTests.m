@@ -330,4 +330,49 @@
     XCTAssertEqualObjects(task.rawText, modifiedText);
 }
 
+- (void)testAppendText {
+    NSString *rawText = @"pick up groceries";
+    NSUInteger taskId = 0;
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
+    NSString *textToAppend = @"due:2020-01-31";
+    NSString *modifiedText = @"pick up groceries due:2020-01-31";
+    [task appendText:textToAppend];
+    XCTAssertEqualObjects(task.rawText, modifiedText);
+}
+
+- (void)testPrependText {
+    NSString *rawText = @"pick up groceries";
+    NSUInteger taskId = 0;
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
+    NSString *textToPrepend = @"t:2020-01-01";
+    NSString *modifiedText = @"t:2020-01-01 pick up groceries";
+    [task prependText:textToPrepend];
+    XCTAssertEqualObjects(task.rawText, modifiedText);
+}
+
+- (void)testPrependTextWithPriority {
+    NSString *rawText = @"(C) pick up groceries";
+    NSUInteger taskId = 0;
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
+    NSString *textToPrepend = @"t:2020-01-01";
+    NSString *modifiedText = @"(C) t:2020-01-01 pick up groceries";
+    [task prependText:textToPrepend];
+    XCTAssertEqualObjects(task.rawText, modifiedText);
+}
+
+- (void)testPrependTextWithPriorityAndCreationDate {
+    NSString *rawText = @"(C) 2014-01-01 pick up groceries";
+    NSUInteger taskId = 0;
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
+    NSString *textToPrepend = @"t:2020-01-01";
+    NSString *modifiedText = @"(C) 2014-01-01 t:2020-01-01 pick up groceries";
+    [task prependText:textToPrepend];
+    XCTAssertEqualObjects(task.rawText, modifiedText);
+}
+
+- (void)testPrependTextWithCreationDate {
+    
+}
+
+
 @end

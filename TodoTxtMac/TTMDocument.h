@@ -255,6 +255,12 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
  */
 - (IBAction)appendText:(id)sender;
 
+/*!
+ * @method prependText:
+ * @abstract Prepend text, entered in a modal sheet, to selected tasks.
+ */
+- (IBAction)prependText:(id)sender;
+
 #pragma mark - Priority Methods
 
 /*!

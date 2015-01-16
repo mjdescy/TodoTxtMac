@@ -472,15 +472,40 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
         }
         
         TaskChangeBlock appendTextTaskBlock = ^(id task, NSUInteger idx, BOOL *stop) {
-            NSString *newRawText = [[task rawText]
-                                    stringByAppendingFormat:@"%c%@", ' ', [input stringValue]];
-            [(TTMTask*)task setRawText:newRawText];
+            [(TTMTask*)task appendText:[input stringValue]];
         };
         [self forEachSelectedTaskExecuteBlock:appendTextTaskBlock];
     };
     
     [alert compatibleBeginSheetModalForWindow:self.windowForSheet
                             completionHandler:appendTextHandler];
+}
+
+- (IBAction)prependText:(id)sender {
+    NSAlert *alert = [NSAlert alertWithMessageText:@"Prepend Text"
+                                     defaultButton:@"OK"
+                                   alternateButton:@"Cancel"
+                                       otherButton:nil
+                         informativeTextWithFormat:@"Text to prepend to each selected task:"];
+    NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 295, 24)];
+    [input setStringValue:@""];
+    [alert setAccessoryView:input];
+    
+    // Define the completion handler for the modal sheet.
+    void (^appendTextHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
+        if (returnCode != NSAlertDefaultReturn || [[input stringValue] length] == 0) {
+            return;
+        }
+        
+        TaskChangeBlock prependTextTaskBlock = ^(id task, NSUInteger idx, BOOL *stop) {
+            [(TTMTask*)task prependText:[input stringValue]];
+        };
+        [self forEachSelectedTaskExecuteBlock:prependTextTaskBlock];
+    };
+    
+    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+                            completionHandler:appendTextHandler];
+    
 }
 
 #pragma mark - Priority Methods

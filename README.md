@@ -54,7 +54,7 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - Bold priorities in task list.
 - Colors completed tasks in light gray and applies strikethrough.
 - Colors overdue tasks in purple and tasks due today in red. Both these colors are user customizable.
-- Colors projects and contexts in dark gray in task list. Both these colors are user customizable.
+- User-customizable colors for projects, contexts, due dates, threshold dates, and arbitrary tags in task list.
 
 ## Mac-specific user interface features
 
@@ -65,22 +65,22 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - Full screen mode.
 - Open todo.txt files by dragging and dropping them onto the application icon.
 
-
 # Keyboard Shortcuts
 
 ## Working with tasks
 
-- n: new task
-- j: move down to next task
-- k: move up to previous task
-- x: toggle task completion
-- d or Backspace: delete task (with confirmation)
-- u or Enter: update task
-- p: postpone task by X (user-entered) days
-- s: set due date
-- i: set priority to user-entered value (A-Z)
-- t: append text to end of selected tasks
-- a: archive completed tasks (archive file done.txt must be set)
+- N: new task
+- J: move down to next task
+- K: move up to previous task
+- X: toggle task completion
+- D or Backspace: delete task (with confirmation)
+- U or Enter: update task
+- P: postpone task by X (user-entered) days
+- S: set due date
+- I: set priority to user-entered value (A-Z)
+- T: append text to end of selected tasks
+- Option+T: prepend text to beginning of selected tasks (after priority and creation date if they exist)
+- A: archive completed tasks (archive file done.txt must be set)
 - Command+Up: Increase priority
 - Command+Down: Decrease priority
 - Command+Left or Command+Right: Remove priority
@@ -109,7 +109,8 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - Command+4: due date
 - Command+5: creation date
 - Command+6: completion date
-- Command+7: alphabetical
+- Command+7: threshold date
+- Command+8: alphabetical
 
 ## Filtering the task list
 
@@ -136,16 +137,18 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 
 ## Is there a preference to re-open my todo.txt file on launch?
 
-No. Not yet. Most people will not need such a preference, because the default behavior of TodoTxtMac is to reopen whatever todo.txt files were open when you last quit the app. To enjoy this behavior, do not close your todo.txt file's window prior to quitting the app. 
+Yes, but most people will not need such a preference, because the default behavior of TodoTxtMac is to reopen whatever todo.txt files were open when you last quit the app. To enjoy this behavior, do not close your todo.txt file's window prior to quitting the app.
 
-If the TodoTxtMac is not reopening your files, or is not keeping a list of them in the "File > Open Recent" menu, then you should check the following preferences under System Preferences > General:
+If the TodoTxtMac is not reopening your files, or keeping a list of them in the "File > Open Recent" menu, then you should check the following preferences under System Preferences > General:
 
 1. "Close windows when quitting an app" must be unchecked.
 2. "Recent items" must not be "None".
 
-If you need to force TodoTxtMac to open a particular todo file on launch, you may launch the app with the command-line argument "todo-file", in the Terminal, as follows:
+If you need to force TodoTxtMac to open a particular todo file on launch, you may set a default todo.txt file in TodoTxtMac's Preferences > Startup.
 
-    open /Applications/TodoTxtMac.app --args -todo-file ~/Documents/todo.txt
+You may also force TodoTxtMac to open a particular todo file on launch, you may launch the app with the command-line argument "todo-file", in the Terminal, as follows:
+
+    $ open /Applications/TodoTxtMac.app --args -todo-file ~/Documents/todo.txt
 
 ## Is this application Dropbox-enabled?
 
