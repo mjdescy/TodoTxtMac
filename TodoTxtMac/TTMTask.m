@@ -325,7 +325,26 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     }
 }
 
-#pragma mark - Threshold State Method
+#pragma mark - Threshold Date Methods
+
+- (void)setThresholdDate:(NSDate *)thresholdDate {
+    NSString *newThresholdDateText = [TTMDateUtility convertDateToString:thresholdDate];
+    // If the item has a threshold date, exchange the current threshold date with the new.
+    // Else if the item does not have a threshold date, append the new threshold date to the task.
+    self.rawText = (self.thresholdDateText != nil) ?
+        [self.rawText replace:RX(ThresholdDatePattern) with:newThresholdDateText] :
+        [self.rawText stringByAppendingFormat:@" t:%@", newThresholdDateText];
+}
+
+- (void)removeThresholdDate {
+    // Blank and tasks without a threshold date do not get updated.
+    if (self.isBlank || !self.thresholdDate) {
+        return;
+    }
+    
+    self.rawText = [[self.rawText replace:RX(FullThresholdDatePattern) with:@""]
+                    stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
 
 - (TTMThresholdState)getThresholdState {
     // If there is a threshold date, compare it to today's date to determine

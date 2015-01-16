@@ -83,6 +83,9 @@ TaskChangeBlock _decreaseDueDateByOneDay   = ^(id task, NSUInteger idx, BOOL *st
 TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task removeDueDate];
 };
+TaskChangeBlock _removeThresholdDate   = ^(id task, NSUInteger idx, BOOL *stop) {
+    [(TTMTask*)task removeThresholdDate];
+};
 
 #pragma mark - init Methods
 
@@ -582,6 +585,37 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
                          [self forEachSelectedTaskExecuteBlock:postponeTaskBlock];
                   }
     }];
+}
+
+#pragma mark - Threshold Date Methods
+
+- (IBAction)setThresholdDate:(id)sender {
+    NSAlert *alert = [NSAlert alertWithMessageText:@"Threshold Date"
+                                     defaultButton:@"OK"
+                                   alternateButton:@"Cancel"
+                                       otherButton:nil
+                         informativeTextWithFormat:@"Set the threshold date:"];
+    NSDatePicker *input = [[NSDatePicker alloc] initWithFrame:NSMakeRect(0, 0, 110, 24)];
+    [input setDatePickerElements:NSYearMonthDayDatePickerElementFlag];
+    [input setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    [input setDateValue:[TTMDateUtility today]];
+    [alert setAccessoryView:input];
+    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+                            completionHandler:^(NSModalResponse returnCode) {
+                                if (returnCode == NSAlertDefaultReturn) {
+                                    TaskChangeBlock setThresholdDateTaskBlock = ^(id task,
+                                                                                  NSUInteger idx,
+                                                                                  BOOL *stop) {
+                                        [(TTMTask*)task setThresholdDate:[input dateValue]];
+                                    };
+                                    [self forEachSelectedTaskExecuteBlock:setThresholdDateTaskBlock];
+                                }
+                            }];
+
+}
+
+- (IBAction)removeThresholdDate:(id)sender {
+    [self forEachSelectedTaskExecuteBlock:_removeThresholdDate];
 }
 
 #pragma mark - Sorting Methods

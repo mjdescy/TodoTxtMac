@@ -315,6 +315,20 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
  */
 - (IBAction)postpone:(id)sender;
 
+#pragma mark - Threshold Date Methods
+
+/*!
+ * @method setThresholdDate:
+ * @abstract Sets the threshold date for selected tasks via a modal sheet.
+ */
+- (IBAction)setThresholdDate:(id)sender;
+
+/*!
+ * @method removeThresholdDate:
+ * @abstract Removes threshold date for selected tasks.
+ */
+- (IBAction)removeThresholdDate:(id)sender;
+
 #pragma mark - Sort Methods
 
 /*!
