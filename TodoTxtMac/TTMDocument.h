@@ -324,6 +324,18 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 - (IBAction)setThresholdDate:(id)sender;
 
 /*!
+ * @method increaseThresholdDateByOneDay:
+ * @abstract Increases the threshold date of selected tasks by one day, e.g. from 2014-12-01 to 2014-12-02.
+ */
+- (IBAction)increaseThresholdDateByOneDay:(id)sender;
+
+/*!
+ * @method decreaseDueDateByOneDay:
+ * @abstract Decreases the threshold date of selected tasks by one day, e.g. from 2014-12-02 to 2014-12-01.
+ */
+- (IBAction)decreaseThresholdDateByOneDay:(id)sender;
+
+/*!
  * @method removeThresholdDate:
  * @abstract Removes threshold date for selected tasks.
  */

@@ -198,6 +198,22 @@ typedef enum : NSUInteger {
 - (void)removeThresholdDate;
 
 /*!
+ * @method incrementThresholdDay;
+ * @abstract Increases threshold day by a specified number of days.
+ * Sets threshold date to today if there is no threshold date.
+ * @param Number of days to add to the task threshold date.
+ */
+- (void)incrementThresholdDay:(NSInteger)days;
+
+/*!
+ * @method decrementThresholdDay;
+ * @abstract Decreases threshold day by a specified number of days.
+ * Sets threshold date to today if there is no threshold date.
+ * @param Number of days to subtract to the task threshold date.
+ */
+- (void)decrementThresholdDay:(NSInteger)days;
+
+/*!
  * @method getThresholdState:
  * @abstract Compares the task's thresholdDate property to today's date and determines
  * the status of the task (today's date is before, on, or after the threshold date).

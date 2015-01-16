@@ -74,17 +74,23 @@ TaskChangeBlock _decreaseTaskPriority = ^(id task, NSUInteger idx, BOOL *stop) {
 TaskChangeBlock _removeTaskPriority   = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task removePriority];
 };
-TaskChangeBlock _increaseDueDateByOneDay   = ^(id task, NSUInteger idx, BOOL *stop) {
+TaskChangeBlock _increaseDueDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task postponeTask:1];
 };
-TaskChangeBlock _decreaseDueDateByOneDay   = ^(id task, NSUInteger idx, BOOL *stop) {
+TaskChangeBlock _decreaseDueDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task postponeTask:-1];
 };
-TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
+TaskChangeBlock _removeDueDate = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task removeDueDate];
 };
-TaskChangeBlock _removeThresholdDate   = ^(id task, NSUInteger idx, BOOL *stop) {
+TaskChangeBlock _removeThresholdDate = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task removeThresholdDate];
+};
+TaskChangeBlock _increaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
+    [(TTMTask*)task incrementThresholdDay:1];
+};
+TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
+    [(TTMTask*)task decrementThresholdDay:1];
 };
 
 #pragma mark - init Methods
@@ -612,6 +618,15 @@ TaskChangeBlock _removeThresholdDate   = ^(id task, NSUInteger idx, BOOL *stop) 
                                 }
                             }];
 
+}
+
+
+- (IBAction)increaseThresholdDateByOneDay:(id)sender {
+    [self forEachSelectedTaskExecuteBlock:_increaseThresholdDateByOneDay];
+}
+
+- (IBAction)decreaseThresholdDateByOneDay:(id)sender {
+    [self forEachSelectedTaskExecuteBlock:_decreaseThresholdDateByOneDay];
 }
 
 - (IBAction)removeThresholdDate:(id)sender {
