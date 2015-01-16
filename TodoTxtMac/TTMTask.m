@@ -302,6 +302,37 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     return as;
 }
 
+#pragma mark - Append and Prepend Methods
+
+- (void)appendText:(NSString*)textToAppend {
+    NSString *newRawText = [self.rawText
+                            stringByAppendingFormat:@"%c%@", ' ', textToAppend];
+    [self setRawText:newRawText];
+}
+
+- (void)prependText:(NSString*)textToPrepend {
+    NSString *separator = @" ";
+    NSString *rawTextRemainder = self.rawText;
+    NSArray *stringComponents = nil;
+    NSString *trimmedPriorityText = [self.fullPriorityText substringToIndex:3];
+
+    if (self.isPrioritized && self.creationDateText != nil) {
+        rawTextRemainder = [self.rawText substringFromIndex:15];
+        stringComponents = @[trimmedPriorityText, self.creationDateText,
+                             textToPrepend, rawTextRemainder  ];
+    } else if (self.isPrioritized && self.creationDateText == nil) {
+        rawTextRemainder = [self.rawText substringFromIndex:4];
+        stringComponents = @[trimmedPriorityText, textToPrepend, rawTextRemainder];
+    } else if (self.creationDateText != nil) {
+        rawTextRemainder = [self.rawText substringFromIndex:11];
+        stringComponents = @[self.creationDateText, textToPrepend, rawTextRemainder];
+    } else {
+        rawTextRemainder = self.rawText;
+        stringComponents = @[textToPrepend, rawTextRemainder];
+    }
+    [self setRawText:[stringComponents componentsJoinedByString:separator]];
+}
+
 #pragma mark - Due/Not Due Method
 
 - (TTMDueState)getDueState {

@@ -168,6 +168,23 @@ typedef enum : NSUInteger {
  */
 - (NSAttributedString*)displayText;
 
+#pragma mark - Append and Prepend Methods
+
+/*!
+ * @method appendText:
+ * @abstract Appends text to the end of the task.
+ */
+- (void)appendText:(NSString*)textToAppend;
+
+/*!
+ * @method prependText:
+ * @abstract Prepends text to the beginning of the task. 
+ @ @discussion Prepending text to a task with a priority or a creation date will 
+ * insert text after the priority or creation date. Otherwise, it will insert text 
+ * at the start of the task.
+ */
+- (void)prependText:(NSString*)textToPrepend;
+
 #pragma mark - Due/Not Due Method
 
 /*!
