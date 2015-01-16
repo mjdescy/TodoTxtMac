@@ -63,6 +63,7 @@ typedef enum : NSUInteger {
     TTMSortDueDate,
     TTMSortCreationDate,
     TTMSortCompletionDate,
+    TTMSortThresholdDate,
     TTMSortAlphabetical
 } TTMTaskListSortType;
 
@@ -352,76 +353,10 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 - (void)sortTaskList:(TTMTaskListSortType)sortType;
 
 /*!
- * @method sortByOrderInFile:
- * @abstract Sorts the task list by the order of tasks in the todo.txt file.
- * @discussion This method calls the sortTaskList: method.
+ * @method sortTaskListUsingTagforPreset:
+ * @abstract Sorts the task list, using the preset number found in the sender's tag.
  */
-- (IBAction)sortByOrderInFile:(id)sender;
-
-/*!
- * @method sortByPriority:
- * @abstract Sorts the task list by priority.
- * @discussion Priority sort is a multi-level sort of the following task attributes, in order:
- * (1) Priority; (2) Is Completed; (3) Due State (overdue, due tuday, not due); (4) Due Date;
- * and (5) order in file (Task ID).
- * @discussion This method calls by the sortTaskList: method.
- */
-- (IBAction)sortByPriority:(id)sender;
-
-/*!
- * @method sortByProject:
- * @abstract Sorts the task list by project.
- * @discussion Project sort is a multi-level sort of the following task attributes, in order:
- * (1) Project; (2) Priority; (3) Is Completed; (4) Due State (overdue, due tuday, not due); 
- * (5) Due Date; and (6) order in file (Task ID).
- * @discussion This method calls the sortTaskList: method.
- */
-- (IBAction)sortByProject:(id)sender;
-
-/*!
- * @method sortByContext:
- * @abstract Sorts the task list by context.
- * @discussion Project sort is a multi-level sort of the following task attributes, in order:
- * (1) Context; (2) Priority; (3) Is Completed; (4) Due State (overdue, due tuday, not due);
- * (5) Due Date; and (6) order in file (Task ID).
- * @discussion This method calls the sortTaskList: method.
- */
-- (IBAction)sortByContext:(id)sender;
-
-/*!
- * @method sortByDueDate:
- * @abstract Sorts the task list by due date.
- * @discussion Due date sort is a multi-level sort of the following task attributes, in order:
- * (1) Due Date; (2) Priority; (3) order in file (Task ID).
- * @discussion This method calls the sortTaskList: method.
- */
-- (IBAction)sortByDueDate:(id)sender;
-
-/*!
- * @method sortByCreationDate:
- * @abstract Sorts the task list by creation date.
- * @discussion Due date sort is a multi-level sort of the following task attributes, in order:
- * (1) Creation Date; (2) Priority; (3) order in file (Task ID).
- * @discussion This method calls the sortTaskList: method.
- */
-- (IBAction)sortByCreationDate:(id)sender;
-
-/*!
- * @method sortByCompletionDate:
- * @abstract Sorts the task list by completion date.
- * @discussion Due date sort is a multi-level sort of the following task attributes, in order:
- * (1) Creation Date; (2) order in file (Task ID).
- * @discussion This method calls the sortTaskList: method.
- */
-- (IBAction)sortByCompletionDate:(id)sender;
-
-/*!
- * @method sortByAlphabetical:
- * @abstract Sorts the task list in alphabetical order of the tasks.
- * @discussion Due date sort is a signle-level sort of the task's raw text attribute.
- * @discussion This method calls the sortTaskList: method.
- */
-- (IBAction)sortByAlphabetical:(id)sender;
+- (IBAction)sortTaskListUsingTagforPreset:(id)sender;
 
 #pragma mark - Filter Methods
 

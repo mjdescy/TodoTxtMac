@@ -363,43 +363,48 @@ CA
                         <items>
                             <menuItem title="Order In File" keyEquivalent="0" id="uAq-fh-i5h">
                                 <connections>
-                                    <action selector="sortByOrderInFile:" target="-1" id="Cjk-yq-L60"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="NUv-TU-Reb"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="XrW-8C-6ZT"/>
                             <menuItem title="Priority" tag="1" keyEquivalent="1" id="dQS-l3-d0y">
                                 <connections>
-                                    <action selector="sortByPriority:" target="-1" id="gdP-9Y-G6h"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="tGs-B4-4sC"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Project" tag="2" keyEquivalent="2" id="SCn-7e-0Pw">
                                 <connections>
-                                    <action selector="sortByProject:" target="-1" id="VPV-TM-7UT"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="Iet-Dd-5eW"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Context" tag="3" keyEquivalent="3" id="iev-Ie-urO">
                                 <connections>
-                                    <action selector="sortByContext:" target="-1" id="350-1h-hpt"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="3LI-Hc-yyM"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Due Date" tag="4" keyEquivalent="4" id="hAN-bI-6Lj">
                                 <connections>
-                                    <action selector="sortByDueDate:" target="-1" id="xvF-3I-IM4"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="y7Z-UD-a81"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Creation Date" tag="5" keyEquivalent="5" id="aTb-nI-t5a">
                                 <connections>
-                                    <action selector="sortByCreationDate:" target="-1" id="4uu-U0-Mqb"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="Zqt-xH-KnX"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Completion Date" tag="6" keyEquivalent="6" id="Syc-Jy-VcH">
                                 <connections>
-                                    <action selector="sortByCompletionDate:" target="-1" id="ckL-Dp-Gnb"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="YfC-gi-PwP"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Alphabetical" tag="7" keyEquivalent="7" id="ts8-6t-CtK">
+                            <menuItem title="Threshold Date" tag="7" keyEquivalent="7" id="7gp-lw-eUf">
                                 <connections>
-                                    <action selector="sortByAlphabetical:" target="-1" id="YYK-Hq-Ifg"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="H9G-OO-d9P"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Alphabetical" tag="8" keyEquivalent="8" id="ts8-6t-CtK">
+                                <connections>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="RCy-a1-sSA"/>
                                 </connections>
                             </menuItem>
                         </items>

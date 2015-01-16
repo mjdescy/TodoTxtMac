@@ -686,6 +686,10 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
         [[NSSortDescriptor alloc] initWithKey:@"isCompleted"
                                     ascending:YES
                                      selector:@selector(compare:)];
+    NSSortDescriptor *thresholdDateDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:@"thresholdDate"
+                                ascending:YES
+                                 selector:@selector(compare:)];
     NSSortDescriptor *alphabeticalDescriptor =
         [[NSSortDescriptor alloc] initWithKey:@"rawText"
                                     ascending:YES
@@ -699,26 +703,28 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
             break;
         case TTMSortPriority:
             sortDescriptors = @[isPrioritizedDescriptor, priorityDescriptor, completedDescriptor,
-                                dueStateDescriptor, dueDateDescriptor, taskIdDescriptor];
+                                dueStateDescriptor, dueDateDescriptor, thresholdDateDescriptor, taskIdDescriptor];
             break;
         case TTMSortProject:
             sortDescriptors = @[hasProjectsDescriptor, projectDescriptor, priorityDescriptor,
-                                completedDescriptor, dueDateDescriptor, taskIdDescriptor];
+                                completedDescriptor, dueDateDescriptor, thresholdDateDescriptor, taskIdDescriptor];
             break;
         case TTMSortContext:
             sortDescriptors = @[hasContextsDescriptor, contextDescriptor, isPrioritizedDescriptor,
-                                priorityDescriptor, completedDescriptor, dueDateDescriptor,
-                                taskIdDescriptor];
+                                priorityDescriptor, completedDescriptor, dueDateDescriptor, thresholdDateDescriptor, taskIdDescriptor];
             break;
         case TTMSortDueDate:
             sortDescriptors = @[dueDateDescriptor, isPrioritizedDescriptor, priorityDescriptor,
-                                taskIdDescriptor];
+                                thresholdDateDescriptor, taskIdDescriptor];
             break;
         case TTMSortCreationDate:
             sortDescriptors = @[creationDateDescriptor, taskIdDescriptor];
             break;
         case TTMSortCompletionDate:
             sortDescriptors = @[completionDateDescriptor, taskIdDescriptor];
+            break;
+        case TTMSortThresholdDate:
+            sortDescriptors = @[thresholdDateDescriptor, isPrioritizedDescriptor, priorityDescriptor, completedDescriptor, dueStateDescriptor, dueDateDescriptor, taskIdDescriptor];
             break;
         case TTMSortAlphabetical:
             sortDescriptors = @[alphabeticalDescriptor];
@@ -737,36 +743,8 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (IBAction)sortByOrderInFile:(id)sender {
-    [self sortTaskList:TTMSortOrderInFile];
-}
-
-- (IBAction)sortByPriority:(id)sender {
-    [self sortTaskList:TTMSortPriority];
-}
-
-- (IBAction)sortByProject:(id)sender {
-    [self sortTaskList:TTMSortProject];
-}
-
-- (IBAction)sortByContext:(id)sender {
-    [self sortTaskList:TTMSortContext];
-}
-
-- (IBAction)sortByDueDate:(id)sender {
-    [self sortTaskList:TTMSortDueDate];
-}
-
-- (IBAction)sortByCreationDate:(id)sender {
-    [self sortTaskList:TTMSortCreationDate];
-}
-
-- (IBAction)sortByCompletionDate:(id)sender {
-    [self sortTaskList:TTMSortCompletionDate];
-}
-
-- (IBAction)sortByAlphabetical:(id)sender {
-    [self sortTaskList:TTMSortAlphabetical];
+- (IBAction)sortTaskListUsingTagforPreset:(id)sender {
+    [self sortTaskList:[sender tag]];
 }
 
 #pragma mark - Filter Methods
