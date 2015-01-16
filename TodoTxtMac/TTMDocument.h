@@ -361,65 +361,17 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 #pragma mark - Filter Methods
 
 /*!
+ * @method filterTaskListUsingTagforPreset:
+ * @abstract Sets the filter on the task list to a numbered preset, based on the sender's tag.
+ * Filter preset 0 is defined to mean "no filter".
+ */
+- (IBAction)filterTaskListUsingTagforPreset:(id)sender;
+
+/*!
  * @method removeTaskListFilter:
- * @abstract Removes the filter on the task list.
+ * @abstract Removes the currently active filter.
  */
-- (IBAction)removeTaskListFilter:(id)sender;
-
-/*!
- * @method applyTaskListFilter1:
- * @abstract Applies user-defined filter 1 to the task list.
- */
-- (IBAction)applyTaskListFilter1:(id)sender;
-
-/*!
- * @method applyTaskListFilter2:
- * @abstract Applies user-defined filter 2 to the task list.
- */
-- (IBAction)applyTaskListFilter2:(id)sender;
-
-/*!
- * @method applyTaskListFilter3:
- * @abstract Applies user-defined filter 3 to the task list.
- */
-- (IBAction)applyTaskListFilter3:(id)sender;
-
-/*!
- * @method applyTaskListFilter4:
- * @abstract Applies user-defined filter 4 to the task list.
- */
-
-- (IBAction)applyTaskListFilter4:(id)sender;
-
-/*!
- * @method applyTaskListFilter5:
- * @abstract Applies user-defined filter 5 to the task list.
- */
-- (IBAction)applyTaskListFilter5:(id)sender;
-
-/*!
- * @method applyTaskListFilter1:
- * @abstract Applies user-defined filter 6 to the task list.
- */
-- (IBAction)applyTaskListFilter6:(id)sender;
-
-/*!
- * @method applyTaskListFilter7:
- * @abstract Applies user-defined filter 7 to the task list.
- */
-- (IBAction)applyTaskListFilter7:(id)sender;
-
-/*!
- * @method applyTaskListFilter8:
- * @abstract Applies user-defined filter 8 to the task list.
- */
-- (IBAction)applyTaskListFilter8:(id)sender;
-
-/*!
- * @method applyTaskListFilter9:
- * @abstract Applies user-defined filter 9 to the task list.
- */
-- (IBAction)applyTaskListFilter9:(id)sender;
+- (void)removeTaskListFilter;
 
 /*!
  * @method reapplyActiveFilterPredicate:

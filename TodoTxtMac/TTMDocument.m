@@ -219,7 +219,7 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     NSUInteger filterNumber = self.activeFilterPredicateNumber;
     
     // Remove the current filter.
-    [self removeTaskListFilter:self];
+    [self removeTaskListFilter];
     
     // Reload the file.
     NSError *error;
@@ -749,44 +749,12 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 
 #pragma mark - Filter Methods
 
-- (IBAction)removeTaskListFilter:(id)sender {
+- (IBAction)filterTaskListUsingTagforPreset:(id)sender {
+    [self changeActiveFilterPredicateToPreset:[sender tag]];
+}
+
+- (void)removeTaskListFilter {
     [self changeActiveFilterPredicateToPreset:0];
-}
-
-- (IBAction)applyTaskListFilter1:(id)sender {
-    [self changeActiveFilterPredicateToPreset:1];
-}
-
-- (IBAction)applyTaskListFilter2:(id)sender {
-    [self changeActiveFilterPredicateToPreset:2];
-}
-
-- (IBAction)applyTaskListFilter3:(id)sender {
-    [self changeActiveFilterPredicateToPreset:3];
-}
-
-- (IBAction)applyTaskListFilter4:(id)sender {
-    [self changeActiveFilterPredicateToPreset:4];
-}
-
-- (IBAction)applyTaskListFilter5:(id)sender {
-    [self changeActiveFilterPredicateToPreset:5];
-}
-
-- (IBAction)applyTaskListFilter6:(id)sender {
-    [self changeActiveFilterPredicateToPreset:6];
-}
-
-- (IBAction)applyTaskListFilter7:(id)sender {
-    [self changeActiveFilterPredicateToPreset:7];
-}
-
-- (IBAction)applyTaskListFilter8:(id)sender {
-    [self changeActiveFilterPredicateToPreset:8];
-}
-
-- (IBAction)applyTaskListFilter9:(id)sender {
-    [self changeActiveFilterPredicateToPreset:9];
 }
 
 - (void)reapplyActiveFilterPredicate {
