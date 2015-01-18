@@ -115,7 +115,7 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 ## Filtering the task list
 
 - Command+F: find (moves focus to the search field)
-- f: define quick filters
+- F: define quick filters
 - 1: apply quick filter 1
 - 2: apply quick filter 2
 - 3: apply quick filter 3
