@@ -1,6 +1,6 @@
 /**
  * @author Michael Descy
- * @copyright 2014 Michael Descy
+ * @copyright 2014-2015 Michael Descy
  * @discussion Dual-licensed under the GNU General Public License and the MIT License
  *
  *
@@ -46,8 +46,7 @@
 
 #import "TTMPreferencesController.h"
 #import "TTMAppController.h"
-
-#define COMPLETION_DELAY (0.25)
+#import "NSAlert+BlockMethods.h"
 
 @implementation TTMPreferencesController
 
@@ -74,6 +73,25 @@
 
 - (BOOL)windowShouldClose:(NSWindow *)window {
     return [window makeFirstResponder:nil]; // validate editing
+}
+
+#pragma mark - General Prefererences Methods
+
+- (IBAction)resetAllUserPreferencesToDefaults:(id)sender {
+    NSAlert *resetPrompt =
+        [NSAlert alertWithMessageText:@"Reset user preferences"
+                        defaultButton:@"OK"
+                      alternateButton:@"Cancel"
+                          otherButton:nil
+            informativeTextWithFormat:
+         @"Are you sure you want to do this? You will lose all settings and customizations."];
+    [resetPrompt compatibleBeginSheetModalForWindow:self.window
+                                   completionHandler:^(NSModalResponse returnCode) {
+                                       if (returnCode == NSAlertDefaultReturn) {
+                                           [self.appController resetUserDefaults:self];
+                                           [self.appController visualRefreshAll:self];
+                                       }
+                                   }];
 }
 
 #pragma mark - Choose File Methods

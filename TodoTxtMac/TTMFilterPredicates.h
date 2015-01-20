@@ -1,6 +1,6 @@
 /**
  * @author Michael Descy
- * @copyright 2014 Michael Descy
+ * @copyright 2014-2015 Michael Descy
  * @discussion Dual-licensed under the GNU General Public License and the MIT License
  *
  *
@@ -48,14 +48,96 @@
 
 @interface TTMFilterPredicates : NSObject
 
-// Methods to read/write filter predicates from user preferences
-+ (void)setFilterPredicate:(NSPredicate*)predicate toUserDefaultsKey:(NSString*)key;
-+ (void)setFilterPredicate:(NSPredicate*)predicate toPresetNumber:(NSUInteger)presetNumber;
-+ (void)setActiveFilterPredicate:(NSPredicate*)predicate;
-+ (NSPredicate*)getActiveFilterPredicate;
-+ (NSPredicate*)getFilterPredicateFromUserDefaultsKey:(NSString*)key;
-+ (NSPredicate*)getFilterPredicateFromPresetNumber:(NSUInteger)presetNumber;
-+ (NSString*)keyFromPresetNumber:(NSUInteger)presetNumber;
+#pragma mark - Default Filter Predicate Methods
+
+/*!
+ * @method defaultFilterPredicate:
+ * @abstract This method returns a default (blank) filter predicate for use with TTMDocument.
+ */
++ (NSPredicate*)defaultFilterPredicate;
+
+/*!
+ * @method defaultFilterPredicateData:
+ * @abstract This method returns a default (blank) filter predicate in the form of an NSData
+ * object, from defaultFitlerPredicate:, for use in user defaults.
+ */
++ (NSData*)defaultFilterPredicateData;
+
+/*!
+ * @method noFilterPredicate:
+ * @abstract This method returns a filter predicate for use when the filter is disabled.
+ */
 + (NSPredicate*)noFilterPredicate;
+
+#pragma mark - Set Filter Predicate Methods
+
+/*!
+ * @method setFilterPredicate:toUserDefaultsKey:
+ * @abstract This method sets a filter predicate value to the user defaults.
+ * @param predicate The predicate to set to user defaults.
+ * @param key The user defaults key to set the predicate to.
+ */
++ (void)setFilterPredicate:(NSPredicate*)predicate toUserDefaultsKey:(NSString*)key;
+
+/*!
+ * @method setFilterPredicate:toPresetNumber:
+ * @abstract This method sets a filter predicate value to the user defaults.
+ * @param predicate The predicate to set to user defaults.
+ * @param presetNumber The (user-facing) preset number to set the predicate to.
+ */
++ (void)setFilterPredicate:(NSPredicate*)predicate toPresetNumber:(NSUInteger)presetNumber;
+
+/*!
+ * @method setActiveFilterPredicate:
+ * @abstract This method sets the active filter predicate in user defaults.
+ * @param predicate The predicate to set as the active filter predicate in user defaults.
+ */
++ (void)setActiveFilterPredicate:(NSPredicate*)predicate;
+
+#pragma mark - Get Filter Predicate Methods
+
+/*!
+ * @method getFilterPredicateFromUserDefaultsKey:
+ * @abstract This method gets a filter predicate value from the user defaults.
+ * @param key The user defaults key to get the predicate from.
+ */
++ (NSPredicate*)getFilterPredicateFromUserDefaultsKey:(NSString*)key;
+
+/*!
+ * @method getFilterPredicateFromPresetNumber:
+ * @abstract This method gets a filter predicate value from the user defaults.
+ * @param presetNumber The (user-facing) preset number to get the predicate for.
+ */
++ (NSPredicate*)getFilterPredicateFromPresetNumber:(NSUInteger)presetNumber;
+
+/*!
+ * @method keyFromPresetNumber:
+ * @abstract This method returns the user defaults key name for a given preset number.
+ * @param presetNumber The (user-facing) preset number to get the key name for.
+ */
++ (NSString*)keyFromPresetNumber:(NSUInteger)presetNumber;
+
+/*!
+ * @method getActiveFilterPredicate:
+ * @abstract This method returns the active filter predicate from user defaults.
+ * @param presetNumber The (user-facing) preset number to get the key name for.
+ */
++ (NSPredicate*)getActiveFilterPredicate;
+
+#pragma mark - Reset Filter Predicate Methods
+
+/*!
+ * @method resetAllFilterPredicates:
+ * @abstract This method clears/resets a single filter preset to the default filter predicate
+ * returned by defaultFilterPredicate:.
+ */
++ (void)resetFilterPredicate:(NSUInteger)presetNumber;
+
+/*!
+ * @method resetAllFilterPredicates:
+ * @abstract This method clears/resets all filters to the default filter predicate
+ * returned by defaultFilterPredicate:.
+ */
++ (void)resetAllFilterPredicates;
 
 @end

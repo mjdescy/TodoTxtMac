@@ -1,6 +1,6 @@
 /**
  * @author Michael Descy
- * @copyright 2014 Michael Descy
+ * @copyright 2014-2015 Michael Descy
  * @discussion Dual-licensed under the GNU General Public License and the MIT License
  *
  *
@@ -48,63 +48,11 @@
 #import "TTMFilterPredicates.h"
 #import "TTMAppController.h"
 
-static NSDictionary *defaultValues() {
-    
-    static NSData *newPredicateData = nil;
-    if (!newPredicateData) {
-        NSPredicate *newPredicate = [NSPredicate predicateWithFormat:@"rawText != ''"];
-        newPredicateData = [NSKeyedArchiver archivedDataWithRootObject:newPredicate];
-    }
-    
-    static NSDictionary *dict = nil;
-    if (!dict) {
-        dict = [[NSDictionary alloc] initWithObjectsAndKeys:
-                @NO, @"prependDateOnNewTasks",
-                @1, @"taskListSortType",
-                newPredicateData, @"activefilterPredicate",
-                newPredicateData, @"filter1Predicate",
-                newPredicateData, @"filter2Predicate",
-                newPredicateData, @"filter3Predicate",
-                newPredicateData, @"filter4Predicate",
-                newPredicateData, @"filter5Predicate",
-                newPredicateData, @"filter6Predicate",
-                newPredicateData, @"filter7Predicate",
-                newPredicateData, @"filter8Predicate",
-                newPredicateData, @"filter9Predicate",
-                @"", @"archiveFilePath",
-                @NO, @"archiveTasksUponCompletion",
-                @NO, @"useUserFont",
-                @NO, @"moveToTaskListAfterTaskCreation",
-                @YES, @"useHighlightColorsInTaskList",
-                @NO, @"useCustomColorForOverdueTasks",
-                @NO, @"useCustomColorForDueTodayTasks",
-                @NO, @"useCustomColorForProjects",
-                @NO, @"useCustomColorForContexts",
-                @NO, @"useCustomColorForDueDates",
-                [NSArchiver archivedDataWithRootObject:[NSColor redColor]], @"dueTodayColor",
-                [NSArchiver archivedDataWithRootObject:[NSColor purpleColor]], @"overdueColor",
-                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"projectColor",
-                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"contextColor",
-                [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"dueDateColor",
-                @NO, @"escapeKeyCancelsAllTextChanges",
-                @NO, @"openDefaultTodoFileOnStartup",
-                @"", @"defaultTodoFilePath",
-                nil];
-    }
-    return dict;
-}
-
 @implementation TTMAppDelegate
 
-+ (void)initialize {
-    // Set up default values for preferences managed by NSUserDefaultsController
-    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues()];
-    [[NSUserDefaultsController sharedUserDefaultsController] setInitialValues:defaultValues()];
-    
-    [super initialize];
-}
-
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
+    [self.appController initializeUserDefaults:self];
+    
     // Open file from command line argument. Does nothing if there is no command line argument.
     [self.appController openTodoFileFromCommandLineArgument];
     

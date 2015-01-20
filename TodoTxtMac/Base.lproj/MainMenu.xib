@@ -237,6 +237,12 @@ DQ
                                     <action selector="appendText:" target="-1" id="p5w-qa-iTB"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Prepend Text" keyEquivalent="t" id="N06-zv-uJi">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                <connections>
+                                    <action selector="prependText:" target="-1" id="Uvh-d3-wu5"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Delete" id="ezd-Y3-tV6">
                                 <string key="keyEquivalent" base64-UTF8="YES">
 CA
@@ -323,6 +329,37 @@ CA
                                     <action selector="removeDueDate:" target="-1" id="auI-HN-cQk"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="rXL-8W-w5S"/>
+                            <menuItem title="Set Threshold Date" keyEquivalent="s" id="l4o-09-m07">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                                <connections>
+                                    <action selector="setThresholdDate:" target="-1" id="Ugf-Kp-aQg"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Increase Threshold Date By 1 Day" keyEquivalent="" id="298-EH-Uic">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="increaseThresholdDateByOneDay:" target="-1" id="a5v-Bs-UWe"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Decrease Treshold Date By 1 Day" keyEquivalent="" id="Chu-wi-rII">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="decreaseThresholdDateByOneDay:" target="-1" id="n8g-S3-3Kb"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Remove Threshold Date" keyEquivalent="" id="6Iu-dJ-mki">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="removeThresholdDate:" target="-1" id="JAn-de-tBw"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Remove Threshold Date" hidden="YES" keyEquivalent="" id="wxr-lt-ibv">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="removeThresholdDate:" target="-1" id="Dd9-oI-0iG"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
@@ -332,43 +369,48 @@ CA
                         <items>
                             <menuItem title="Order In File" keyEquivalent="0" id="uAq-fh-i5h">
                                 <connections>
-                                    <action selector="sortByOrderInFile:" target="-1" id="Cjk-yq-L60"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="NUv-TU-Reb"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="XrW-8C-6ZT"/>
                             <menuItem title="Priority" tag="1" keyEquivalent="1" id="dQS-l3-d0y">
                                 <connections>
-                                    <action selector="sortByPriority:" target="-1" id="gdP-9Y-G6h"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="tGs-B4-4sC"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Project" tag="2" keyEquivalent="2" id="SCn-7e-0Pw">
                                 <connections>
-                                    <action selector="sortByProject:" target="-1" id="VPV-TM-7UT"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="Iet-Dd-5eW"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Context" tag="3" keyEquivalent="3" id="iev-Ie-urO">
                                 <connections>
-                                    <action selector="sortByContext:" target="-1" id="350-1h-hpt"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="3LI-Hc-yyM"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Due Date" tag="4" keyEquivalent="4" id="hAN-bI-6Lj">
                                 <connections>
-                                    <action selector="sortByDueDate:" target="-1" id="xvF-3I-IM4"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="y7Z-UD-a81"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Creation Date" tag="5" keyEquivalent="5" id="aTb-nI-t5a">
                                 <connections>
-                                    <action selector="sortByCreationDate:" target="-1" id="4uu-U0-Mqb"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="Zqt-xH-KnX"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Completion Date" tag="6" keyEquivalent="6" id="Syc-Jy-VcH">
                                 <connections>
-                                    <action selector="sortByCompletionDate:" target="-1" id="ckL-Dp-Gnb"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="YfC-gi-PwP"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Alphabetical" tag="7" keyEquivalent="7" id="ts8-6t-CtK">
+                            <menuItem title="Threshold Date" tag="7" keyEquivalent="7" id="7gp-lw-eUf">
                                 <connections>
-                                    <action selector="sortByAlphabetical:" target="-1" id="YYK-Hq-Ifg"/>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="H9G-OO-d9P"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Alphabetical" tag="8" keyEquivalent="8" id="ts8-6t-CtK">
+                                <connections>
+                                    <action selector="sortTaskListUsingTagforPreset:" target="-1" id="RCy-a1-sSA"/>
                                 </connections>
                             </menuItem>
                         </items>
@@ -388,62 +430,62 @@ CA
                             <menuItem title="Remove Filter" keyEquivalent="0" id="f8L-Hj-7Fl">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="removeTaskListFilter:" target="-1" id="8V3-ii-52S"/>
+                                    <action selector="filterTaskListUsingTagforPreset:" target="-1" id="6Vs-wz-bSq"/>
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="GOO-i2-vC0"/>
                             <menuItem title="Quick Filter 1" tag="1" keyEquivalent="1" id="26K-oV-RLQ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="applyTaskListFilter1:" target="-1" id="vRQ-aU-dh7"/>
+                                    <action selector="filterTaskListUsingTagforPreset:" target="-1" id="Dto-Hg-AuY"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Quick Filter 2" tag="2" keyEquivalent="2" id="jEv-9H-XhK">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="applyTaskListFilter2:" target="-1" id="5YA-H6-Fz5"/>
+                                    <action selector="filterTaskListUsingTagforPreset:" target="-1" id="oMM-TT-WnO"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Quick Filter 3" tag="3" keyEquivalent="3" id="Bbf-lb-dWq">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="applyTaskListFilter3:" target="-1" id="5p2-7V-ZDm"/>
+                                    <action selector="filterTaskListUsingTagforPreset:" target="-1" id="Qm9-Zx-Aqt"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Quick Filter 4" tag="4" keyEquivalent="4" id="z7P-iy-Jns">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="applyTaskListFilter4:" target="-1" id="NYg-ag-n1V"/>
+                                    <action selector="filterTaskListUsingTagforPreset:" target="-1" id="OdZ-xz-aGp"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Quick Filter 5" tag="5" keyEquivalent="5" id="ALm-yg-nEh">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="applyTaskListFilter5:" target="-1" id="J8U-LX-iwb"/>
+                                    <action selector="filterTaskListUsingTagforPreset:" target="-1" id="KPt-p6-4qJ"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Quick Filter 6" tag="6" keyEquivalent="6" id="8It-YB-3jc">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="applyTaskListFilter6:" target="-1" id="cre-6l-8ZS"/>
+                                    <action selector="filterTaskListUsingTagforPreset:" target="-1" id="zhf-GB-kSX"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Quick Filter 7" tag="7" keyEquivalent="7" id="RPL-WC-b0f">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="applyTaskListFilter7:" target="-1" id="mnA-wz-Lj9"/>
+                                    <action selector="filterTaskListUsingTagforPreset:" target="-1" id="KKc-GA-5e7"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Quick Filter 8" tag="8" keyEquivalent="8" id="em5-Zj-zX8">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="applyTaskListFilter8:" target="-1" id="884-7L-8dU"/>
+                                    <action selector="filterTaskListUsingTagforPreset:" target="-1" id="pSy-0T-8Bx"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Quick Filter 9" tag="9" keyEquivalent="9" id="kWx-h9-xo5">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
-                                    <action selector="applyTaskListFilter9:" target="-1" id="lsf-NZ-jPU"/>
+                                    <action selector="filterTaskListUsingTagforPreset:" target="-1" id="X4G-QF-Z3g"/>
                                 </connections>
                             </menuItem>
                         </items>

@@ -1,6 +1,6 @@
 /**
  * @author Michael Descy
- * @copyright 2014 Michael Descy
+ * @copyright 2014-2015 Michael Descy
  * @discussion Dual-licensed under the GNU General Public License and the MIT License
  *
  *
@@ -53,7 +53,9 @@
 
 static NSString * const ProjectPattern = @"(?<=^|\\s)(\\+[^\\s]+)";
 static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
+static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
 static NSString * const FullDueDatePattern = @"(\\sdue:)((\\d{4})-(\\d{2})-(\\d{2}))";
+static NSString * const FullThresholdDatePattern = @"((^|\\s)t:)((\\d{4})-(\\d{2})-(\\d{2}))";
 
 #pragma mark - TableView Delegate Methods
 
@@ -116,9 +118,17 @@ static NSString * const FullDueDatePattern = @"(\\sdue:)((\\d{4})-(\\d{2})-(\\d{
                                   boolForKey:@"useCustomColorForContexts"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"contextColor"] :
             [NSColor darkGrayColor];
+        NSColor *tagColor = ([[NSUserDefaults standardUserDefaults]
+                                  boolForKey:@"useCustomColorForTags"]) ?
+            [[NSUserDefaults standardUserDefaults] colorForKey:@"tagColor"] :
+            [NSColor darkGrayColor];
         NSColor *dueDateColor = ([[NSUserDefaults standardUserDefaults]
                                    boolForKey:@"useCustomColorForDueDates"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"dueDateColor"] :
+            [NSColor darkGrayColor];
+        NSColor *thresholdDateColor = ([[NSUserDefaults standardUserDefaults]
+                                         boolForKey:@"useCustomColorForThresholdDates"]) ?
+            [[NSUserDefaults standardUserDefaults] colorForKey:@"thresholdDateColor"] :
             [NSColor darkGrayColor];
         
         // Color due texts.
@@ -151,11 +161,27 @@ static NSString * const FullDueDatePattern = @"(\\sdue:)((\\d{4})-(\\d{2})-(\\d{
                        range:match.range];
         }
         
+        // Color tags.
+        matches = [task.rawText matchesWithDetails:RX(TagPattern)];
+        for (RxMatch *match in matches) {
+            [as addAttribute:NSForegroundColorAttributeName
+                       value:tagColor
+                       range:match.range];
+        }
+        
         // Color due dates.
         matches = [task.rawText matchesWithDetails:RX(FullDueDatePattern)];
         for (RxMatch *match in matches) {
             [as addAttribute:NSForegroundColorAttributeName
                        value:dueDateColor
+                       range:match.range];
+        }
+        
+        // Color threshold dates.
+        matches = [task.rawText matchesWithDetails:RX(FullThresholdDatePattern)];
+        for (RxMatch *match in matches) {
+            [as addAttribute:NSForegroundColorAttributeName
+                       value:thresholdDateColor
                        range:match.range];
         }
     }

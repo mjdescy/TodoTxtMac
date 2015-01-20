@@ -1,6 +1,6 @@
 /**
  * @author Michael Descy
- * @copyright 2014 Michael Descy
+ * @copyright 2014-2015 Michael Descy
  * @discussion Dual-licensed under the GNU General Public License and the MIT License
  *
  *
@@ -51,6 +51,15 @@
 
 @property (nonatomic, retain) IBOutlet TTMAppController *appController;
 @property (nonatomic, retain) NSFont *selectedFont;
+
+#pragma mark - General Prefererences Methods
+
+/*!
+ * @method resetAllUserPreferencesToDefaults:
+ * @abstract This method allows the user to reset all user preferences and 
+ * filters to the defaults defined in TTMAppDelegate.
+ */
+- (IBAction)resetAllUserPreferencesToDefaults:(id)sender;
 
 #pragma mark - Choose File Methods
 

@@ -1,6 +1,6 @@
 /**
  * @author Michael Descy
- * @copyright 2014 Michael Descy
+ * @copyright 2014-2015 Michael Descy
  * @discussion Dual-licensed under the GNU General Public License and the MIT License
  *
  *
@@ -74,14 +74,23 @@ TaskChangeBlock _decreaseTaskPriority = ^(id task, NSUInteger idx, BOOL *stop) {
 TaskChangeBlock _removeTaskPriority   = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task removePriority];
 };
-TaskChangeBlock _increaseDueDateByOneDay   = ^(id task, NSUInteger idx, BOOL *stop) {
+TaskChangeBlock _increaseDueDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task postponeTask:1];
 };
-TaskChangeBlock _decreaseDueDateByOneDay   = ^(id task, NSUInteger idx, BOOL *stop) {
+TaskChangeBlock _decreaseDueDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task postponeTask:-1];
 };
-TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
+TaskChangeBlock _removeDueDate = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task removeDueDate];
+};
+TaskChangeBlock _removeThresholdDate = ^(id task, NSUInteger idx, BOOL *stop) {
+    [(TTMTask*)task removeThresholdDate];
+};
+TaskChangeBlock _increaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
+    [(TTMTask*)task incrementThresholdDay:1];
+};
+TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
+    [(TTMTask*)task decrementThresholdDay:1];
 };
 
 #pragma mark - init Methods
@@ -210,7 +219,7 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     NSUInteger filterNumber = self.activeFilterPredicateNumber;
     
     // Remove the current filter.
-    [self removeTaskListFilter:self];
+    [self removeTaskListFilter];
     
     // Reload the file.
     NSError *error;
@@ -463,15 +472,40 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
         }
         
         TaskChangeBlock appendTextTaskBlock = ^(id task, NSUInteger idx, BOOL *stop) {
-            NSString *newRawText = [[task rawText]
-                                    stringByAppendingFormat:@"%c%@", ' ', [input stringValue]];
-            [(TTMTask*)task setRawText:newRawText];
+            [(TTMTask*)task appendText:[input stringValue]];
         };
         [self forEachSelectedTaskExecuteBlock:appendTextTaskBlock];
     };
     
     [alert compatibleBeginSheetModalForWindow:self.windowForSheet
                             completionHandler:appendTextHandler];
+}
+
+- (IBAction)prependText:(id)sender {
+    NSAlert *alert = [NSAlert alertWithMessageText:@"Prepend Text"
+                                     defaultButton:@"OK"
+                                   alternateButton:@"Cancel"
+                                       otherButton:nil
+                         informativeTextWithFormat:@"Text to prepend to each selected task:"];
+    NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 295, 24)];
+    [input setStringValue:@""];
+    [alert setAccessoryView:input];
+    
+    // Define the completion handler for the modal sheet.
+    void (^appendTextHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
+        if (returnCode != NSAlertDefaultReturn || [[input stringValue] length] == 0) {
+            return;
+        }
+        
+        TaskChangeBlock prependTextTaskBlock = ^(id task, NSUInteger idx, BOOL *stop) {
+            [(TTMTask*)task prependText:[input stringValue]];
+        };
+        [self forEachSelectedTaskExecuteBlock:prependTextTaskBlock];
+    };
+    
+    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+                            completionHandler:appendTextHandler];
+    
 }
 
 #pragma mark - Priority Methods
@@ -584,6 +618,46 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     }];
 }
 
+#pragma mark - Threshold Date Methods
+
+- (IBAction)setThresholdDate:(id)sender {
+    NSAlert *alert = [NSAlert alertWithMessageText:@"Threshold Date"
+                                     defaultButton:@"OK"
+                                   alternateButton:@"Cancel"
+                                       otherButton:nil
+                         informativeTextWithFormat:@"Set the threshold date:"];
+    NSDatePicker *input = [[NSDatePicker alloc] initWithFrame:NSMakeRect(0, 0, 110, 24)];
+    [input setDatePickerElements:NSYearMonthDayDatePickerElementFlag];
+    [input setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
+    [input setDateValue:[TTMDateUtility today]];
+    [alert setAccessoryView:input];
+    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+                            completionHandler:^(NSModalResponse returnCode) {
+                                if (returnCode == NSAlertDefaultReturn) {
+                                    TaskChangeBlock setThresholdDateTaskBlock = ^(id task,
+                                                                                  NSUInteger idx,
+                                                                                  BOOL *stop) {
+                                        [(TTMTask*)task setThresholdDate:[input dateValue]];
+                                    };
+                                    [self forEachSelectedTaskExecuteBlock:setThresholdDateTaskBlock];
+                                }
+                            }];
+
+}
+
+
+- (IBAction)increaseThresholdDateByOneDay:(id)sender {
+    [self forEachSelectedTaskExecuteBlock:_increaseThresholdDateByOneDay];
+}
+
+- (IBAction)decreaseThresholdDateByOneDay:(id)sender {
+    [self forEachSelectedTaskExecuteBlock:_decreaseThresholdDateByOneDay];
+}
+
+- (IBAction)removeThresholdDate:(id)sender {
+    [self forEachSelectedTaskExecuteBlock:_removeThresholdDate];
+}
+
 #pragma mark - Sorting Methods
 
 - (void)sortTaskList:(TTMTaskListSortType)sortType {
@@ -637,6 +711,10 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
         [[NSSortDescriptor alloc] initWithKey:@"isCompleted"
                                     ascending:YES
                                      selector:@selector(compare:)];
+    NSSortDescriptor *thresholdDateDescriptor =
+        [[NSSortDescriptor alloc] initWithKey:@"thresholdDate"
+                                ascending:YES
+                                 selector:@selector(compare:)];
     NSSortDescriptor *alphabeticalDescriptor =
         [[NSSortDescriptor alloc] initWithKey:@"rawText"
                                     ascending:YES
@@ -650,26 +728,28 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
             break;
         case TTMSortPriority:
             sortDescriptors = @[isPrioritizedDescriptor, priorityDescriptor, completedDescriptor,
-                                dueStateDescriptor, dueDateDescriptor, taskIdDescriptor];
+                                dueStateDescriptor, dueDateDescriptor, thresholdDateDescriptor, taskIdDescriptor];
             break;
         case TTMSortProject:
             sortDescriptors = @[hasProjectsDescriptor, projectDescriptor, priorityDescriptor,
-                                completedDescriptor, dueDateDescriptor, taskIdDescriptor];
+                                completedDescriptor, dueDateDescriptor, thresholdDateDescriptor, taskIdDescriptor];
             break;
         case TTMSortContext:
             sortDescriptors = @[hasContextsDescriptor, contextDescriptor, isPrioritizedDescriptor,
-                                priorityDescriptor, completedDescriptor, dueDateDescriptor,
-                                taskIdDescriptor];
+                                priorityDescriptor, completedDescriptor, dueDateDescriptor, thresholdDateDescriptor, taskIdDescriptor];
             break;
         case TTMSortDueDate:
             sortDescriptors = @[dueDateDescriptor, isPrioritizedDescriptor, priorityDescriptor,
-                                taskIdDescriptor];
+                                thresholdDateDescriptor, taskIdDescriptor];
             break;
         case TTMSortCreationDate:
             sortDescriptors = @[creationDateDescriptor, taskIdDescriptor];
             break;
         case TTMSortCompletionDate:
             sortDescriptors = @[completionDateDescriptor, taskIdDescriptor];
+            break;
+        case TTMSortThresholdDate:
+            sortDescriptors = @[thresholdDateDescriptor, isPrioritizedDescriptor, priorityDescriptor, completedDescriptor, dueStateDescriptor, dueDateDescriptor, taskIdDescriptor];
             break;
         case TTMSortAlphabetical:
             sortDescriptors = @[alphabeticalDescriptor];
@@ -688,78 +768,18 @@ TaskChangeBlock _removeDueDate   = ^(id task, NSUInteger idx, BOOL *stop) {
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (IBAction)sortByOrderInFile:(id)sender {
-    [self sortTaskList:TTMSortOrderInFile];
-}
-
-- (IBAction)sortByPriority:(id)sender {
-    [self sortTaskList:TTMSortPriority];
-}
-
-- (IBAction)sortByProject:(id)sender {
-    [self sortTaskList:TTMSortProject];
-}
-
-- (IBAction)sortByContext:(id)sender {
-    [self sortTaskList:TTMSortContext];
-}
-
-- (IBAction)sortByDueDate:(id)sender {
-    [self sortTaskList:TTMSortDueDate];
-}
-
-- (IBAction)sortByCreationDate:(id)sender {
-    [self sortTaskList:TTMSortCreationDate];
-}
-
-- (IBAction)sortByCompletionDate:(id)sender {
-    [self sortTaskList:TTMSortCompletionDate];
-}
-
-- (IBAction)sortByAlphabetical:(id)sender {
-    [self sortTaskList:TTMSortAlphabetical];
+- (IBAction)sortTaskListUsingTagforPreset:(id)sender {
+    [self sortTaskList:[sender tag]];
 }
 
 #pragma mark - Filter Methods
 
-- (IBAction)removeTaskListFilter:(id)sender {
+- (IBAction)filterTaskListUsingTagforPreset:(id)sender {
+    [self changeActiveFilterPredicateToPreset:[sender tag]];
+}
+
+- (void)removeTaskListFilter {
     [self changeActiveFilterPredicateToPreset:0];
-}
-
-- (IBAction)applyTaskListFilter1:(id)sender {
-    [self changeActiveFilterPredicateToPreset:1];
-}
-
-- (IBAction)applyTaskListFilter2:(id)sender {
-    [self changeActiveFilterPredicateToPreset:2];
-}
-
-- (IBAction)applyTaskListFilter3:(id)sender {
-    [self changeActiveFilterPredicateToPreset:3];
-}
-
-- (IBAction)applyTaskListFilter4:(id)sender {
-    [self changeActiveFilterPredicateToPreset:4];
-}
-
-- (IBAction)applyTaskListFilter5:(id)sender {
-    [self changeActiveFilterPredicateToPreset:5];
-}
-
-- (IBAction)applyTaskListFilter6:(id)sender {
-    [self changeActiveFilterPredicateToPreset:6];
-}
-
-- (IBAction)applyTaskListFilter7:(id)sender {
-    [self changeActiveFilterPredicateToPreset:7];
-}
-
-- (IBAction)applyTaskListFilter8:(id)sender {
-    [self changeActiveFilterPredicateToPreset:8];
-}
-
-- (IBAction)applyTaskListFilter9:(id)sender {
-    [self changeActiveFilterPredicateToPreset:9];
 }
 
 - (void)reapplyActiveFilterPredicate {

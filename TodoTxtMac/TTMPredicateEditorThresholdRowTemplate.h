@@ -44,24 +44,11 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
-@interface TTMFiltersController : NSWindowController <NSWindowDelegate>
+@interface TTMPredicateEditorThresholdRowTemplate : NSPredicateEditorRowTemplate
 
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter1PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter2PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter3PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter4PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter5PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter6PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter7PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter8PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter9PredicateEditor;
-
-/*!
- * @method resetAllFilters:
- * @abstract This method allows the user to clear/reset all filters.
- */
-- (IBAction)resetAllFilters:(id)sender;
+@property (nonatomic, retain) NSPopUpButton *keypathPopUp;
+@property (nonatomic, retain) NSPopUpButton *thresholdStatePopUp;
 
 @end

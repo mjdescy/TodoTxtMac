@@ -1,6 +1,6 @@
 /**
  * @author Michael Descy
- * @copyright 2014 Michael Descy
+ * @copyright 2014-2015 Michael Descy
  * @discussion Dual-licensed under the GNU General Public License and the MIT License
  *
  *
@@ -57,7 +57,33 @@
     return self;
 }
 
-#pragma mark - Filter Predicate-related Methods
+#pragma mark - Default Filter Predicate Methods
+
++ (NSPredicate*)defaultFilterPredicate {
+    static NSPredicate *defaultPredicate = nil;
+    if (defaultPredicate == nil) {
+        NSPredicate *defaultSubPredicate = [NSPredicate predicateWithFormat:@"rawText contains ''"];
+        NSArray *subPredicates = @[defaultSubPredicate];
+        defaultPredicate = [NSCompoundPredicate
+                            andPredicateWithSubpredicates:subPredicates];
+    }
+    return defaultPredicate;
+}
+
++ (NSData*)defaultFilterPredicateData {
+    static NSData *defaultPredicateData = nil;
+    if (defaultPredicateData == nil) {
+        defaultPredicateData = [NSKeyedArchiver
+                                archivedDataWithRootObject:[self defaultFilterPredicate]];
+    }
+    return defaultPredicateData;
+}
+
++ (NSPredicate*)noFilterPredicate {
+    return nil;
+}
+
+#pragma mark - Set Filter Predicate Methods
 
 + (void)setFilterPredicate:(NSPredicate*)predicate toUserDefaultsKey:(NSString*)key {
     NSData *filterPredicateData = [NSKeyedArchiver archivedDataWithRootObject:predicate];
@@ -72,17 +98,11 @@
     [self setFilterPredicate:predicate toUserDefaultsKey:@"activeFilterPredicate"];
 }
 
-+ (NSPredicate*)getActiveFilterPredicate {
-    return [self getFilterPredicateFromUserDefaultsKey:@"activeFilterPredicate"];
-}
+#pragma mark - Get Filter Predicate Methods
 
 + (NSPredicate*)getFilterPredicateFromUserDefaultsKey:(NSString*)key {
     NSData *filterPredicateData = [[NSUserDefaults standardUserDefaults] objectForKey:key];
     return [NSKeyedUnarchiver unarchiveObjectWithData:filterPredicateData];
-}
-
-+ (NSPredicate*)noFilterPredicate {
-    return nil;
 }
 
 + (NSPredicate*)getFilterPredicateFromPresetNumber:(NSUInteger)presetNumber {
@@ -100,6 +120,22 @@
         return nil;
     }
     return [NSString stringWithFormat:@"filterPredicate%lu", (unsigned long)presetNumber];
+}
+
++ (NSPredicate*)getActiveFilterPredicate {
+    return [self getFilterPredicateFromUserDefaultsKey:@"activeFilterPredicate"];
+}
+
+#pragma mark - Reset Filter Predicate Methods
+
++ (void)resetFilterPredicate:(NSUInteger)presetNumber {
+    [self setFilterPredicate:[self defaultFilterPredicate] toPresetNumber:presetNumber];
+}
+
++ (void)resetAllFilterPredicates {
+    for (int i = 1; i <= 9; i++) {
+        [self resetFilterPredicate:i];
+    }
 }
 
 @end

@@ -1,6 +1,6 @@
 /**
  * @author Michael Descy
- * @copyright 2014 Michael Descy
+ * @copyright 2014-2015 Michael Descy
  * @discussion Dual-licensed under the GNU General Public License and the MIT License
  *
  *
@@ -63,8 +63,11 @@ static NSString * const CreationDatePatternCompleted =
     @"(?<=^x\\s((\\d{4})-(\\d{2})-(\\d{2}))\\s)((\\d{4})-(\\d{2})-(\\d{2}))";
 static NSString * const DueDatePattern = @"(?<=due:)((\\d{4})-(\\d{2})-(\\d{2}))";
 static NSString * const FullDueDatePattern = @"((^|\\s)due:)((\\d{4})-(\\d{2})-(\\d{2}))";
+static NSString * const ThresholdDatePattern = @"(?<=t:)((\\d{4})-(\\d{2})-(\\d{2}))";
+static NSString * const FullThresholdDatePattern = @"((^|\\s)t:)((\\d{4})-(\\d{2})-(\\d{2}))";
 static NSString * const ProjectPattern = @"(?<=^|\\s)(\\+[^\\s]+)";
 static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
+static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
 
 #pragma mark - Init Methods
 
@@ -139,11 +142,14 @@ static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
         _contextsArray = nil;
         _projects = @"";
         _projectsArray = nil;
-        _completionDateText = nil;
+        _completionDateText = @"";
         _completionDate = nil;
         _dueDateText = @"";
         _dueDate = nil;
         _creationDateText = @"";
+        _creationDate = nil;
+        _thresholdDateText = @"";
+        _thresholdDate = nil;
         _dueState = NotDue;
         _hasContexts = NO;
         _hasProjects = NO;
@@ -195,14 +201,25 @@ static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
     _creationDateText = _isCompleted ?
         [_rawText firstMatch:RX(CreationDatePatternCompleted)] :
         [_rawText firstMatch:RX(CreationDatePatternIncomplete)];
-    // Set creation date to the high date (9999012031) to ensure that tasks with no
+    // Set creation date to the high date (9999-12-31) to ensure that tasks with no
     // creation date are sorted after tasks with a creation date.
     _creationDate = (_creationDateText == nil) ?
         [TTMDateUtility convertStringToDate:@"9999-12-31"] :
         [TTMDateUtility convertStringToDate:_creationDateText];
+
+    // threshold date
+    _thresholdDateText = [_rawText firstMatch:RX(ThresholdDatePattern)];
+    // Set threshold date to the high date (1900-01-01) to ensure that tasks with no
+    // threshold date are properly sorted/displated when filtered.
+    _thresholdDate = (_thresholdDateText == nil) ?
+        [TTMDateUtility convertStringToDate:@"1900-01-01"] :
+        [TTMDateUtility convertStringToDate:_thresholdDateText];
     
     // due state (past due, due today, not due)
     _dueState = [self getDueState];
+    
+    // threshold state (before, on, after threshold date)
+    _thresholdState = [self getThresholdState];
 }
 
 - (NSString*)rawText {
@@ -257,6 +274,14 @@ static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
                    value:[NSColor darkGrayColor]
                    range:match.range];
     }
+    
+    // Highlight tags.
+    matches = [self.rawText matchesWithDetails:RX(TagPattern)];
+    for (RxMatch *match in matches) {
+        [as addAttribute:NSForegroundColorAttributeName
+                   value:[NSColor darkGrayColor]
+                   range:match.range];
+    }
 
     // Highlight due dates.
     matches = [self.rawText matchesWithDetails:RX(FullDueDatePattern)];
@@ -265,8 +290,47 @@ static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
                    value:[NSColor darkGrayColor]
                    range:match.range];
     }
+
+    // Highlight threshold dates.
+    matches = [self.rawText matchesWithDetails:RX(FullThresholdDatePattern)];
+    for (RxMatch *match in matches) {
+        [as addAttribute:NSForegroundColorAttributeName
+                   value:[NSColor darkGrayColor]
+                   range:match.range];
+    }
     
     return as;
+}
+
+#pragma mark - Append and Prepend Methods
+
+- (void)appendText:(NSString*)textToAppend {
+    NSString *newRawText = [self.rawText
+                            stringByAppendingFormat:@"%c%@", ' ', textToAppend];
+    [self setRawText:newRawText];
+}
+
+- (void)prependText:(NSString*)textToPrepend {
+    NSString *separator = @" ";
+    NSString *rawTextRemainder = self.rawText;
+    NSArray *stringComponents = nil;
+    NSString *trimmedPriorityText = [self.fullPriorityText substringToIndex:3];
+
+    if (self.isPrioritized && self.creationDateText != nil) {
+        rawTextRemainder = [self.rawText substringFromIndex:15];
+        stringComponents = @[trimmedPriorityText, self.creationDateText,
+                             textToPrepend, rawTextRemainder  ];
+    } else if (self.isPrioritized && self.creationDateText == nil) {
+        rawTextRemainder = [self.rawText substringFromIndex:4];
+        stringComponents = @[trimmedPriorityText, textToPrepend, rawTextRemainder];
+    } else if (self.creationDateText != nil) {
+        rawTextRemainder = [self.rawText substringFromIndex:11];
+        stringComponents = @[self.creationDateText, textToPrepend, rawTextRemainder];
+    } else {
+        rawTextRemainder = self.rawText;
+        stringComponents = @[textToPrepend, rawTextRemainder];
+    }
+    [self setRawText:[stringComponents componentsJoinedByString:separator]];
 }
 
 #pragma mark - Due/Not Due Method
@@ -289,6 +353,70 @@ static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
         return NotDue;
     } else {
         return DueToday;
+    }
+}
+
+#pragma mark - Threshold Date Methods
+
+- (void)setThresholdDate:(NSDate *)thresholdDate {
+    NSString *newThresholdDateText = [TTMDateUtility convertDateToString:thresholdDate];
+    // If the item has a threshold date, exchange the current threshold date with the new.
+    // Else if the item does not have a threshold date, append the new threshold date to the task.
+    self.rawText = (self.thresholdDateText != nil) ?
+        [self.rawText replace:RX(ThresholdDatePattern) with:newThresholdDateText] :
+        [self.rawText stringByAppendingFormat:@" t:%@", newThresholdDateText];
+}
+
+- (void)removeThresholdDate {
+    // Blank and tasks without a threshold date do not get updated.
+    if (self.isBlank || !self.thresholdDate) {
+        return;
+    }
+    
+    self.rawText = [[self.rawText replace:RX(FullThresholdDatePattern) with:@""]
+                    stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+}
+
+- (void)incrementThresholdDay:(NSInteger)days {
+    // Blank tasks don't get updated threshold dates.
+    if (self.isBlank) {
+        return;
+    }
+    
+    if (days == 0) {
+        return;
+    }
+    
+    // Get threshold date of the selected task.
+    // If the selected task doesn't have a threshold date, use today as the due date.
+    NSDate *oldThresholdDate = (self.thresholdDateText != nil) ?
+        self.thresholdDate :
+        [TTMDateUtility today];
+    
+    // Add days to that date to create the new due date.
+    NSDate *newThresholdDate = [TTMDateUtility addDays:days toDate:oldThresholdDate];
+    
+    [self setThresholdDate:newThresholdDate];
+}
+
+- (void)decrementThresholdDay:(NSInteger)days {
+    [self incrementThresholdDay:(-1 * days)];
+}
+
+- (TTMThresholdState)getThresholdState {
+    // If there is a threshold date, compare it to today's date to determine
+    // if the task is overdue, not due, or due today.
+    NSDate *todaysDate = [TTMDateUtility today];
+    NSInteger interval = [[[NSCalendar currentCalendar] components:NSDayCalendarUnit
+                                                          fromDate:todaysDate
+                                                            toDate:self.thresholdDate
+                                                           options:0] day];
+    if (interval < 0) {
+        return AfterThresholdDate;
+    } else if (interval > 0) {
+        return BeforeThresholdDate;
+    } else {
+        return OnThresholdDate;
     }
 }
 
@@ -420,7 +548,6 @@ static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
 # pragma mark - Postpone and Set Due Date Methods
 
 - (void)postponeTask:(NSInteger)daysToPostpone {
-    
     // Blank and completed tasks don't get postponed.
     if (self.isBlank || self.isCompleted) {
         return;

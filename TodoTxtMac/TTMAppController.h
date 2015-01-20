@@ -1,6 +1,6 @@
 /**
  * @author Michael Descy
- * @copyright 2014 Michael Descy
+ * @copyright 2014-2015 Michael Descy
  * @discussion Dual-licensed under the GNU General Public License and the MIT License
  *
  *
@@ -59,6 +59,21 @@ extern NSString *const TodoFileArgument;
 - (IBAction)openPreferencesWindow:(id)sender;
 - (IBAction)openFiltersWindow:(id)sender;
 - (IBAction)openWebSite:(id)sender;
+
+#pragma mark - User Defaults-related Methods
+
+/*!
+ * @method initializeUserDefaults:
+ * @abstract This method sets up preferences managed by NSUserDefaultsController.
+ */
+- (void)initializeUserDefaults:(id)sender;
+
+/*!
+ * @method resetUserDefaults:
+ * @abstract This method resets preferences managed by NSUserDefaultsController to default values.
+ * It does not reset fitler-related preferences.
+ */
+- (void)resetUserDefaults:(id)sender;
 
 #pragma mark - Command-line Argument-related Methods
 

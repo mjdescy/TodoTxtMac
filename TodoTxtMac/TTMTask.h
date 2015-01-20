@@ -1,6 +1,6 @@
 /**
  * @author Michael Descy
- * @copyright 2014 Michael Descy
+ * @copyright 2014-2015 Michael Descy
  * @discussion Dual-licensed under the GNU General Public License and the MIT License
  *
  *
@@ -62,6 +62,14 @@ typedef enum : NSUInteger {
     NotDue
 } TTMDueState;
 
+/*! Defines the three threshold date-related states of a task: before, after, 
+    and on the threshold date */
+typedef enum : NSUInteger {
+    BeforeThresholdDate,
+    OnThresholdDate,
+    AfterThresholdDate
+} TTMThresholdState;
+
 #pragma mark - Properties
 
 /*! Raw text of the task (a single line in the todo.txt file) */
@@ -79,6 +87,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, readonly) NSDate *creationDate;
 @property (nonatomic, readonly) NSString *completionDateText;
 @property (nonatomic, readonly) NSDate *completionDate;
+@property (nonatomic, readonly) NSString *thresholdDateText;
+@property (nonatomic, readonly) NSDate *thresholdDate;
 @property (nonatomic, readonly, copy) NSArray *contextsArray;
 @property (nonatomic, readonly, copy) NSString *contexts;
 @property (nonatomic, readonly) BOOL hasContexts;
@@ -86,6 +96,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, readonly, copy) NSString *projects;
 @property (nonatomic, readonly) BOOL hasProjects;
 @property (nonatomic, readonly) TTMDueState dueState;
+@property (nonatomic, readonly) TTMThresholdState thresholdState;
 @property (nonatomic, readonly) BOOL isCompleted;
 @property (nonatomic, readonly) BOOL isPrioritized;
 @property (nonatomic, readonly) BOOL isBlank;
@@ -157,6 +168,23 @@ typedef enum : NSUInteger {
  */
 - (NSAttributedString*)displayText;
 
+#pragma mark - Append and Prepend Methods
+
+/*!
+ * @method appendText:
+ * @abstract Appends text to the end of the task.
+ */
+- (void)appendText:(NSString*)textToAppend;
+
+/*!
+ * @method prependText:
+ * @abstract Prepends text to the beginning of the task. 
+ @ @discussion Prepending text to a task with a priority or a creation date will 
+ * insert text after the priority or creation date. Otherwise, it will insert text 
+ * at the start of the task.
+ */
+- (void)prependText:(NSString*)textToPrepend;
+
 #pragma mark - Due/Not Due Method
 
 /*!
@@ -169,10 +197,54 @@ typedef enum : NSUInteger {
  */
 - (TTMDueState)getDueState;
 
+#pragma mark - Threshold Date Methods
+
+/*!
+ * @method setThresholdDate:
+ * @abstract Sets the threshold date.
+ * @param dueDate The threshold date to set.
+ * @discussion The thresholdDate parameter is not a string, it is an NSDate value.
+ * Handling of "natural language" due dates would have be handled prior to invoking this method.
+ */
+- (void)setThresholdDate:(NSDate *)thresholdDate;
+
+/*!
+ * @method removeThresholdDate;
+ * @abstract Removes the threshold date from the task's raw text.
+ */
+- (void)removeThresholdDate;
+
+/*!
+ * @method incrementThresholdDay;
+ * @abstract Increases threshold day by a specified number of days.
+ * Sets threshold date to today if there is no threshold date.
+ * @param Number of days to add to the task threshold date.
+ */
+- (void)incrementThresholdDay:(NSInteger)days;
+
+/*!
+ * @method decrementThresholdDay;
+ * @abstract Decreases threshold day by a specified number of days.
+ * Sets threshold date to today if there is no threshold date.
+ * @param Number of days to subtract to the task threshold date.
+ */
+- (void)decrementThresholdDay:(NSInteger)days;
+
+/*!
+ * @method getThresholdState:
+ * @abstract Compares the task's thresholdDate property to today's date and determines
+ * the status of the task (today's date is before, on, or after the threshold date).
+ * @return Returns a TTMThresholdState enum type value that indicates whether today is before,
+   on, or after a task's threshold date.
+ * or "Due Today".
+ * @discussion This method sets the property thresholdState.
+ */
+- (TTMThresholdState)getThresholdState;
+
 #pragma mark - Priority Methods
 
 /*!
- * @method setPriorityTo:
+ * @method setPriority:
  * @abstract Sets the priority of a task, whether or not it already has
  * a priority assigned.
  * @param priority This is the priority to set the task to. It must be a capital letter [A-Z],
