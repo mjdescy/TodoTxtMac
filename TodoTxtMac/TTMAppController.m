@@ -105,6 +105,7 @@ static NSDictionary *defaultValues() {
 static NSDictionary *defaultValuesExcludingFilters() {
     static NSMutableDictionary *defaults = nil;
     if (defaults == nil) {
+        defaults = [NSMutableDictionary dictionaryWithDictionary:defaultValues()];
         for (int i = 1; i <= 9; i++) {
             [defaults removeObjectForKey:[TTMFilterPredicates keyFromPresetNumber:i]];
         }

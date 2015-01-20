@@ -74,7 +74,7 @@
 - (NSPopUpButton*)thresholdStatePopUp {
     if (!_thresholdStatePopUp) {
         NSMenuItem *thresholdPastItem = [[NSMenuItem alloc]
-                                         initWithTitle:@"threshold date is in the past"
+                                         initWithTitle:@"in the past"
                                          action:nil
                                          keyEquivalent:@""];
         [thresholdPastItem setRepresentedObject:[NSExpression
@@ -83,7 +83,7 @@
         [thresholdPastItem setTag:(long)AfterThresholdDate];
         
         NSMenuItem *thresholdTodayItem = [[NSMenuItem alloc]
-                                          initWithTitle:@"threshold date is today"
+                                          initWithTitle:@"today"
                                                  action:nil
                                           keyEquivalent:@""];
         [thresholdTodayItem setRepresentedObject:[NSExpression
@@ -92,7 +92,7 @@
         [thresholdTodayItem setTag:(long)OnThresholdDate];
         
         NSMenuItem *thresholdFutureItem = [[NSMenuItem alloc]
-                                           initWithTitle:@"threshold date is in the future"
+                                           initWithTitle:@"in the future"
                                                   action:nil
                                            keyEquivalent:@""];
         [thresholdFutureItem setRepresentedObject:[NSExpression
