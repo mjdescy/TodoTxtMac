@@ -70,6 +70,19 @@
                                   completionHandler:^(NSModalResponse returnCode) {
                                       if (returnCode == NSAlertDefaultReturn) {
                                           [TTMFilterPredicates resetAllFilterPredicates];
+                                          // Reload all the filter predicate editors because
+                                          // the one with focus at the time this method is executed
+                                          // will not be cleared. This is only really necessary to
+                                          // call on the predicate editor with focus.
+                                          [self.filter1PredicateEditor reloadCriteria];
+                                          [self.filter2PredicateEditor reloadCriteria];
+                                          [self.filter3PredicateEditor reloadCriteria];
+                                          [self.filter4PredicateEditor reloadCriteria];
+                                          [self.filter5PredicateEditor reloadCriteria];
+                                          [self.filter6PredicateEditor reloadCriteria];
+                                          [self.filter7PredicateEditor reloadCriteria];
+                                          [self.filter8PredicateEditor reloadCriteria];
+                                          [self.filter9PredicateEditor reloadCriteria];
                                       }
                                   }];
 }
