@@ -64,6 +64,7 @@ static NSDictionary *defaultValues() {
                 @NO, @"prependDateOnNewTasks",
                 @1, @"taskListSortType",
                 defaultPredicateData, @"activefilterPredicate",
+                @0, @"activefilterPreset",
                 defaultPredicateData, @"filterPredicate1",
                 defaultPredicateData, @"filterPredicate2",
                 defaultPredicateData, @"filterPredicate3",
@@ -95,6 +96,8 @@ static NSDictionary *defaultValues() {
                 @NO, @"escapeKeyCancelsAllTextChanges",
                 @NO, @"openDefaultTodoFileOnStartup",
                 @"", @"defaultTodoFilePath",
+                @YES, @"showStatusBar",
+                @"Filter #: {Filter Preset} | Sort: {Sort Name} | Tasks: {Shown Tasks} of {All Tasks} | Incomplete: {Shown Incomplete} | Due Today: {All Due Today} | Overdue: {All Overdue}", @"statusBarFormat",
                 nil];
     }
     return dict;

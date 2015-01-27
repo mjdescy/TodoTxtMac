@@ -54,6 +54,7 @@
 
 #define SORTMENUTAG   4000
 #define FILTERMENUTAG 5000
+#define STATUSBARMENUITEMTAG 6000
 
 typedef enum : NSUInteger {
     TTMSortOrderInFile,
@@ -77,8 +78,6 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 @property (nonatomic, copy) NSMutableArray *taskList;
 @property (nonatomic) BOOL usesWindowsLineEndings;
 @property (nonatomic, copy) NSString *preferredLineEnding;
-@property (nonatomic, copy) NSArray *projectsArray;
-@property (nonatomic, copy) NSArray *contextsArray;
 
 // Window controls
 @property (nonatomic, retain) IBOutlet NSTextField *textField;
@@ -88,6 +87,9 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 @property (nonatomic, retain) IBOutlet NSArrayController *arrayController;
 @property (nonatomic, retain) IBOutlet NSCell *rawTextCell;
 @property (nonatomic, retain) TTMFieldEditor *customFieldEditor;
+@property (nonatomic, retain) IBOutlet NSTextField *statusBarTextField;
+@property (nonatomic, retain) NSString *statusBarText;
+@property (nonatomic, retain) IBOutlet NSLayoutConstraint *bottomConstraint;
 
 // User font preference
 @property (nonatomic) BOOL usingUserFont;
@@ -412,16 +414,6 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
  */
 - (void)appendString:(NSString*)content toArchiveFile:(NSString*)archiveFilePath;
 
-#pragma mark - Autocompletion Methods
-
-/*!
- * @method updateProjectsAndContextsArrays:
- * @abstract Updates the arrays of projects and contexts used for autocompletion.
- * @discussion The projects and contexts arrays updated by this method are passed to the
- * custom field editor to allow for autocompletion of projects and contexts.
- */
-- (void)updateProjectsAndContextsArrays;
-
 #pragma mark - Find Methods
 
 /*!
@@ -449,5 +441,35 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
  * @abstract Hide tasklist metadata modal sheet.
  */
 - (IBAction)hideTasklistMetadata:(id)sender;
+
+#pragma mark - Status Bar Methods
+
+/*!
+ * @method updateStatusBarText:
+ * @abstract Updates the status bar text, based on the properties of the TTMDocument.
+ */
+- (void)updateStatusBarText;
+
+/*!
+ * @method statusBarVisable:
+ * @abstract Returns whether the status bar is visible.
+ */
+- (BOOL)statusBarVisable;
+
+/*!
+ * @method setStatusBarVisable:
+ * @abstract Show or hide the status bar.
+ * Each time this method is called the choice to show or hide the status bar is saved to user
+ * defaults. The next window opened (including after relaunch) will either show or hide the 
+ * status bar according to the flag passed to this method.
+ * @param flag Set to true to show the status bar; set to false to hide the status bar.
+ */
+- (void)setStatusBarVisable:(BOOL)flag;
+
+/*!
+ * @method toggleStatusBarVisability:
+ * @abstract Change whether the status bar is shown or hidden. 
+ */
+- (IBAction)toggleStatusBarVisability:(id)sender;
 
 @end

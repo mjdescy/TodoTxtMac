@@ -500,7 +500,13 @@ CA
                                     <action selector="toggleToolbarShown:" target="-1" id="366"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Show Status Bar" tag="6000" keyEquivalent="/" id="4lx-6A-S2z">
+                                <connections>
+                                    <action selector="toggleStatusBarVisability:" target="-1" id="AWn-Xq-tHt"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Customize Toolbar…" id="298">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="runToolbarCustomizationPalette:" target="-1" id="365"/>
                                 </connections>
@@ -560,5 +566,7 @@ CA
             </connections>
         </customObject>
         <customObject id="565-dx-Ism" customClass="SUUpdater"/>
+        <customObject id="oKW-8b-22O" customClass="NSDocumentController"/>
+        <userDefaultsController representsSharedInstance="YES" id="w2u-Zb-wUd"/>
     </objects>
 </document>
