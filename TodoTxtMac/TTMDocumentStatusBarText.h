@@ -97,7 +97,7 @@ extern NSString* const TTMActiveSortName;
  */
 - (NSDictionary*)documentMetadata;
 
-#pragma mark - Output/Property Method
+#pragma mark - Output/Property Methods
 
 /*!
  * @method statusBarText:
@@ -105,5 +105,18 @@ extern NSString* const TTMActiveSortName;
  * by replacing tags within the format property string with document metadata.
  */
 - (NSString*)statusBarText;
+
+/*!
+ * @method availableTags:
+ * @abstract This method returns a list of tags available for the user to insert into the status
+ * bar format string.
+ */
++ (NSArray*)availableTags;
+
+/*!
+ * @method defaultFormat:
+ * @abstract This method returns the default status bar format string. 
+ */
++ (NSString*)defaultFormat;
 
 @end

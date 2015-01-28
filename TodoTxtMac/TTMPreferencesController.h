@@ -47,10 +47,13 @@
 #import <Cocoa/Cocoa.h>
 @class TTMAppController;
 
-@interface TTMPreferencesController : NSWindowController
+@interface TTMPreferencesController : NSWindowController <NSTextFieldDelegate>
 
 @property (nonatomic, retain) IBOutlet TTMAppController *appController;
 @property (nonatomic, retain) NSFont *selectedFont;
+@property (nonatomic, retain) IBOutlet NSTextField *statusBarFormat;
+@property (nonatomic, retain) NSArray *availableStatusBarTags;
+@property (nonatomic, retain) IBOutlet NSArrayController *statusBarTags;
 
 #pragma mark - General Prefererences Methods
 
@@ -100,5 +103,26 @@
  * @discussion This method is called whenever a user changes the color in an associated colorwell.
  */
 - (IBAction)colorChanged:(id)sender;
+
+#pragma mark - Status Bar Methods
+
+/*!
+ * @method insertTagIntoStatusBarFormat:
+ * @abstract This method inserts the tag selected from the tags popup into the status bar format.
+ */
+- (IBAction)insertTagIntoStatusBarFormat:(id)sender;
+
+/*!
+ * @method resetStatusBarFormatToDefault:
+ * @abstract This method resets the status bar format to the default value.
+ */
+- (IBAction)resetStatusBarFormatToDefault:(id)sender;
+
+/*!
+ * @method controlTextDidChange:
+ * @abstract This is a delegate method for the status bar text field. On any change to the text,
+ * it forces a visual refresh of all open windows, to update the status bars.
+ */
+- (void)controlTextDidChange:(NSNotification *)aNotification;
 
 @end

@@ -404,6 +404,7 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 - (IBAction)visualRefreshOnly:(id)sender {
     [self setTaskListFont];
     [self.tableView reloadData];
+    [self updateTaskListMetadata];
 }
 
 - (void)setTaskListFont {

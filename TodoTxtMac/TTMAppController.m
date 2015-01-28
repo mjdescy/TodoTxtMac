@@ -49,6 +49,7 @@
 #import "TTMFiltersController.h"
 #import "TTMFilterPredicates.h"
 #import "TTMDocument.h"
+#import "TTMDocumentStatusBarText.h"
 
 // Default user preference values, including those for saved filters
 static NSDictionary *defaultValues() {
@@ -97,7 +98,7 @@ static NSDictionary *defaultValues() {
                 @NO, @"openDefaultTodoFileOnStartup",
                 @"", @"defaultTodoFilePath",
                 @YES, @"showStatusBar",
-                @"Filter #: {Filter Preset} | Sort: {Sort Name} | Tasks: {Shown Tasks} of {All Tasks} | Incomplete: {Shown Incomplete} | Due Today: {All Due Today} | Overdue: {All Overdue}", @"statusBarFormat",
+                [TTMDocumentStatusBarText defaultFormat], @"statusBarFormat",
                 nil];
     }
     return dict;

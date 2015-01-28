@@ -69,7 +69,6 @@ NSString* const TTMShownNotDueTaskCount = @"{Shown Not Due}";
 NSString* const TTMShownProjectsCount = @"{Shown Projects}";
 NSString* const TTMShownContextsCount = @"{Shown Contexts}";
 NSString* const TTMShownPrioritiesCount = @"{Shown Priorities}";
-
 NSString* const TTMActiveFilterNumber = @"{Filter Preset}";
 NSString* const TTMActiveSortNumber = @"{Sort Preset}";
 NSString* const TTMActiveSortName = @"{Sort Name}";
@@ -123,7 +122,7 @@ NSString* const TTMActiveSortName = @"{Sort Name}";
              };
 }
 
-#pragma mark - Output/Property Method
+#pragma mark - Output/Property Methods
 
 - (NSString*)statusBarText {
     NSMutableString *text = [self.format mutableCopy];
@@ -136,6 +135,35 @@ NSString* const TTMActiveSortName = @"{Sort Name}";
                                    range:NSMakeRange(0, text.length)];
     }
     return text;
+}
+
++ (NSArray*)availableTags {
+    return @[TTMAllStatusBarAllTaskCountTag,
+             TTMAllCompletedTaskCount,
+             TTMAllIncompleteTaskCount,
+             TTMAllDueTodayTaskCount,
+             TTMAllOverdueTaskCount,
+             TTMAllNotDueTaskCount,
+             TTMAllPrioritiesCount,
+             TTMAllProjectsCount,
+             TTMAllContextsCount,
+             TTMShownStatusBarAllTaskCountTag,
+             TTMShownCompletedTaskCount,
+             TTMShownIncompleteTaskCount,
+             TTMShownDueTodayTaskCount,
+             TTMShownOverdueTaskCount,
+             TTMShownNotDueTaskCount,
+             TTMShownPrioritiesCount,
+             TTMShownProjectsCount,
+             TTMShownContextsCount,
+             TTMActiveFilterNumber,
+             TTMActiveSortNumber,
+             TTMActiveSortName
+             ];
+}
+
++ (NSString*)defaultFormat {
+    return @"Filter #: {Filter Preset} | Sort: {Sort Name} | Tasks: {Shown Tasks} of {All Tasks} | Incomplete: {Shown Incomplete} | Due Today: {Shown Due Today} | Overdue: {Shown Overdue}";
 }
 
 @end
