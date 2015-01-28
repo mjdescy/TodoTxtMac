@@ -122,8 +122,16 @@
     return [NSString stringWithFormat:@"filterPredicate%lu", (unsigned long)presetNumber];
 }
 
-+ (NSPredicate*)getActiveFilterPredicate {
++ (NSPredicate*)activeFilterPredicate {
     return [self getFilterPredicateFromUserDefaultsKey:@"activeFilterPredicate"];
+}
+
++ (void)setActiveFilterPredicatePresetNumber:(NSUInteger)presetNumber {
+    [[NSUserDefaults standardUserDefaults] setObject:@(presetNumber) forKey:@"activeFilterPreset"];
+}
+
++ (NSUInteger)activeFilterPredicatePresetNumber {
+    return [[NSUserDefaults standardUserDefaults] integerForKey:@"activeFilterPreset"];
 }
 
 #pragma mark - Reset Filter Predicate Methods

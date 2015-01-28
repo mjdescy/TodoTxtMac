@@ -54,6 +54,7 @@
 #import "RegExCategories.h"
 #import "TTMTasklistMetadata.h"
 #import "NSAlert+BlockMethods.h"
+#import "TTMDocumentStatusBarText.h"
 
 @implementation TTMDocument
 
@@ -104,6 +105,7 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
         _arrayController = [[NSArrayController alloc] initWithContent:_taskList];
         _preferredLineEnding = @"\n";
         _usesWindowsLineEndings = NO;
+        _activeFilterPredicateNumber = [TTMFilterPredicates activeFilterPredicatePresetNumber];
         [[self undoManager] enableUndoRegistration];
     }
     return self;
@@ -116,12 +118,11 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     // Set custom field editor.
     
     // Set arrayController sort type.
-    TTMTaskListSortType taskListSortType =
-        [[NSUserDefaults standardUserDefaults] integerForKey:@"taskListSortType"];
-    [self sortTaskList:taskListSortType];
+    self.activeSortType = [[NSUserDefaults standardUserDefaults] integerForKey:@"taskListSortType"];
+    [self sortTaskList:self.activeSortType];
 
     // Load active filter predicate.
-    self.activeFilterPredicate = [TTMFilterPredicates getActiveFilterPredicate];
+    self.activeFilterPredicate = [TTMFilterPredicates activeFilterPredicate];
     
     // Set up drag and drop for tableView.
     [self.tableView setDraggingSourceOperationMask:NSDragOperationEvery forLocal:NO];
@@ -136,8 +137,11 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {
     [super windowControllerDidLoadNib:aController];
+    
     // Add any code here that needs to be executed once the windowController
     // has loaded the document's window.
+    
+    self.statusBarVisable = [[NSUserDefaults standardUserDefaults] boolForKey:@"showStatusBar"];
 }
 
 - (id)windowWillReturnFieldEditor:(NSWindow *)sender toObject:(id)client {
@@ -145,8 +149,8 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
         self.customFieldEditor = [[TTMFieldEditor alloc] init];
     }
     [self.customFieldEditor setFieldEditor:YES];
-    self.customFieldEditor.projectsArray = self.projectsArray;
-    self.customFieldEditor.contextsArray = self.contextsArray;
+    self.customFieldEditor.projectsArray = self.tasklistMetadata.projectsArray;
+    self.customFieldEditor.contextsArray = self.tasklistMetadata.contextsArray;
     return self.customFieldEditor;
 }
 
@@ -203,8 +207,6 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     // Refresh the arrayController and tableView
     [self addTasksFromArray:rawTextStrings removeAllTasksFirst:YES];
     
-    [self updateProjectsAndContextsArrays];
-
     // Clear the document modified flag.
     [self updateChangeCount:NSChangeCleared];
     
@@ -321,6 +323,7 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
             }
         }
     }
+    [self updateTaskListMetadata];
 }
 
 - (IBAction)addNewTask:(id)sender {
@@ -390,17 +393,18 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     if (saveToFile) {
         [self updateChangeCount:NSChangeDone];
     }
-    // Update the lists of projects and contexts.
-    [self updateProjectsAndContextsArrays];
     // Re-sort the table.
     [self.arrayController rearrangeObjects];
     // Reload table.
     [self.tableView reloadData];
+    // Update the lists of projects and contexts.
+    [self updateTaskListMetadata];
 }
 
 - (IBAction)visualRefreshOnly:(id)sender {
     [self setTaskListFont];
     [self.tableView reloadData];
+    [self updateTaskListMetadata];
 }
 
 - (void)setTaskListFont {
@@ -766,6 +770,8 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     // Change the default sort type.
     [[NSUserDefaults standardUserDefaults] setInteger:sortType forKey:@"taskListSortType"];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [self updateTaskListMetadata];
 }
 
 - (IBAction)sortTaskListUsingTagforPreset:(id)sender {
@@ -783,14 +789,16 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 }
 
 - (void)reapplyActiveFilterPredicate {
-    self.activeFilterPredicate = [TTMFilterPredicates getActiveFilterPredicate];
+    self.activeFilterPredicate = [TTMFilterPredicates activeFilterPredicate];
 }
 
 - (void)changeActiveFilterPredicateToPreset:(NSUInteger)presetNumber {
     self.activeFilterPredicate = [TTMFilterPredicates
                                   getFilterPredicateFromPresetNumber:presetNumber];
     [TTMFilterPredicates setActiveFilterPredicate:self.activeFilterPredicate];
+    [TTMFilterPredicates setActiveFilterPredicatePresetNumber:presetNumber];
     self.activeFilterPredicateNumber = presetNumber;
+    [self updateTaskListMetadata];
 }
 
 #pragma mark - Archiving Methods
@@ -875,27 +883,6 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     [self addNewTasksFromClipboard:self];
 }
 
-#pragma mark - Autocompletion Methods
-
-- (void)updateProjectsAndContextsArrays {
-    // Collect all the tasks' projects and contexts into sets, which gaurantee uniqueness.
-    NSMutableSet *projectsSet = [[NSMutableSet alloc] init];
-    NSMutableSet *contextsSet = [[NSMutableSet alloc] init];
-    for (TTMTask *task in [self.arrayController arrangedObjects]) {
-        [projectsSet addObjectsFromArray:task.projectsArray];
-        [contextsSet addObjectsFromArray:task.contextsArray];
-    }
-    
-    // Convert the sets to case-insensitive-sorted arrays.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
-                                        initWithKey:@""
-                                          ascending:YES
-                                           selector:@selector(caseInsensitiveCompare:)];
-    NSArray *sortDescriptorArray = @[sortDescriptor];
-    self.projectsArray = [projectsSet sortedArrayUsingDescriptors:sortDescriptorArray];
-    self.contextsArray = [contextsSet sortedArrayUsingDescriptors:sortDescriptorArray];
-}
-
 #pragma mark - Menu Item Validation Methods
 
 - (BOOL)validateMenuItem:(NSMenuItem *)menuItem {
@@ -918,7 +905,15 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
             [menuItem setState:NSOffState];
         }
     }
-    return YES;
+    // Toggle show/hide status bar menu title
+    if (menuItem.tag == STATUSBARMENUITEMTAG) {
+        if (self.statusBarVisable) {
+            [menuItem setTitle:@"Hide Status Bar"];
+        } else {
+            [menuItem setTitle:@"Show Status Bar"];
+        }
+    }
+    return [super validateMenuItem:menuItem];
 }
 
 #pragma mark - Find Methods
@@ -937,7 +932,7 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 
 #pragma mark - Tasklist Metadata Methods
 
-- (IBAction)showTasklistMetadata:(id)sender {
+- (void)updateTaskListMetadata {
     // Update tasklist metadata.
     if (!self.tasklistMetadata) {
         self.tasklistMetadata = [[TTMTasklistMetadata alloc] init];
@@ -950,6 +945,13 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     }
     [self.filteredTasklistMetadata
      updateMetadataFromTaskArray:[self.arrayController arrangedObjects]];
+    
+    // Update status bar text
+    [self updateStatusBarText];
+}
+
+- (IBAction)showTasklistMetadata:(id)sender {
+    [self updateTaskListMetadata];
     
     // Display tasklist metadata in a modal sheet.
     if (!self.tasklistMetadataSheet) {
@@ -966,6 +968,32 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     [NSApp endSheet:self.tasklistMetadataSheet];
     [self.tasklistMetadataSheet close];
     self.tasklistMetadataSheet = nil;
+}
+
+#pragma mark - Status Bar Methods
+
+- (void)updateStatusBarText {
+    NSString *format = [[NSUserDefaults standardUserDefaults] stringForKey:@"statusBarFormat"];
+    TTMDocumentStatusBarText *txt = [[TTMDocumentStatusBarText alloc]
+                                     initWithTTMDocument:self
+                                     format:format];
+    self.statusBarText = [txt statusBarText];
+}
+
+- (BOOL)statusBarVisable {
+    return ([self.bottomConstraint constant] != 0.0);
+}
+
+- (void)setStatusBarVisable:(BOOL)flag {
+    CGFloat bottomBorderHeight = (flag) ? 22.0 : 0.0;
+    [self.bottomConstraint setConstant:bottomBorderHeight];
+    [self.windowForSheet setContentBorderThickness:bottomBorderHeight forEdge:NSMinYEdge];
+    [self.statusBarTextField setHidden:!flag];
+    [[NSUserDefaults standardUserDefaults] setBool:flag forKey:@"showStatusBar"];
+}
+
+- (IBAction)toggleStatusBarVisability:(id)sender {
+    [self setStatusBarVisable:!self.statusBarVisable];
 }
 
 @end

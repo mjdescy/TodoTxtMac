@@ -118,11 +118,24 @@
 + (NSString*)keyFromPresetNumber:(NSUInteger)presetNumber;
 
 /*!
- * @method getActiveFilterPredicate:
+ * @method activeFilterPredicate:
  * @abstract This method returns the active filter predicate from user defaults.
  * @param presetNumber The (user-facing) preset number to get the key name for.
  */
-+ (NSPredicate*)getActiveFilterPredicate;
++ (NSPredicate*)activeFilterPredicate;
+
+/*!
+ * @method setActiveFilterPredicatePresetNumber:
+ * @abstract This method sets the active filter predicate to user defaults.
+ * @param presetNumber The (user-facing) preset number to set the default to.
+ */
++ (void)setActiveFilterPredicatePresetNumber:(NSUInteger)presetNumber;
+
+/*!
+ * @method activeFilterPredicatePresetNumber:
+ * @abstract This method gets the active filter preset number from user defaults.
+ */
++ (NSUInteger)activeFilterPredicatePresetNumber;
 
 #pragma mark - Reset Filter Predicate Methods
 

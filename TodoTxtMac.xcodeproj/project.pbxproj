@@ -48,6 +48,7 @@
 		00F811EF18D53F7300379B99 /* TTMPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F811ED18D53F7300379B99 /* TTMPreferencesController.m */; };
 		00FA1D2818F1EF340066A437 /* FontNameTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FA1D2718F1EF340066A437 /* FontNameTransformer.m */; };
 		00FA1D2A18F1EF4C0066A437 /* RelativeDates.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00FA1D2918F1EF4C0066A437 /* RelativeDates.strings */; };
+		00FB47861A733E6100F8D2B3 /* TTMDocumentStatusBarText.m in Sources */ = {isa = PBXBuildFile; fileRef = 00FB47851A733E6100F8D2B3 /* TTMDocumentStatusBarText.m */; };
 		00FCB2F918DB64510070BD4A /* TTMFilters.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00FCB2F818DB64510070BD4A /* TTMFilters.xib */; };
 /* End PBXBuildFile section */
 
@@ -140,6 +141,8 @@
 		00FA1D2618F1EF340066A437 /* FontNameTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontNameTransformer.h; sourceTree = "<group>"; };
 		00FA1D2718F1EF340066A437 /* FontNameTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FontNameTransformer.m; sourceTree = "<group>"; };
 		00FA1D2918F1EF4C0066A437 /* RelativeDates.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = RelativeDates.strings; sourceTree = "<group>"; };
+		00FB47841A733E6100F8D2B3 /* TTMDocumentStatusBarText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMDocumentStatusBarText.h; sourceTree = "<group>"; };
+		00FB47851A733E6100F8D2B3 /* TTMDocumentStatusBarText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMDocumentStatusBarText.m; sourceTree = "<group>"; };
 		00FCB2F818DB64510070BD4A /* TTMFilters.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMFilters.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -341,6 +344,8 @@
 				00F3961118C6AC010002EA3F /* TTMTableView.m */,
 				00B8C82318E48FFF008D9E48 /* TTMFieldEditor.h */,
 				00B8C82418E48FFF008D9E48 /* TTMFieldEditor.m */,
+				00FB47841A733E6100F8D2B3 /* TTMDocumentStatusBarText.h */,
+				00FB47851A733E6100F8D2B3 /* TTMDocumentStatusBarText.m */,
 			);
 			name = "TaskList Document";
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 				00EC5EA118E3BC920021242B /* TTMAppDelegate.m in Sources */,
 				00F811EF18D53F7300379B99 /* TTMPreferencesController.m in Sources */,
 				00165B2618DBD1EC00E137B8 /* TTMFiltersController.m in Sources */,
+				00FB47861A733E6100F8D2B3 /* TTMDocumentStatusBarText.m in Sources */,
 				00B8C82518E48FFF008D9E48 /* TTMFieldEditor.m in Sources */,
 				00EAAB9D18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m in Sources */,
 			);

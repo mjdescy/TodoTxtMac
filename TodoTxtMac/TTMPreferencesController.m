@@ -47,6 +47,7 @@
 #import "TTMPreferencesController.h"
 #import "TTMAppController.h"
 #import "NSAlert+BlockMethods.h"
+#import "TTMDocumentStatusBarText.h"
 
 @implementation TTMPreferencesController
 
@@ -54,6 +55,7 @@
     self = [super initWithWindow:window];
     if (self) {
         // Initialization code here.
+        _availableStatusBarTags = [NSArray arrayWithArray:[TTMDocumentStatusBarText availableTags]];
     }
     return self;
 }
@@ -145,6 +147,35 @@
 #pragma mark - Color Change Methods
 
 - (IBAction)colorChanged:(id)sender {
+    [self.appController visualRefreshAll:self];
+}
+
+#pragma mark - Status Bar Methods
+
+- (IBAction)insertTagIntoStatusBarFormat:(id)sender {
+    [[self.statusBarFormat currentEditor] insertText:self.statusBarTags.selectedObjects[0]];
+}
+
+- (IBAction)resetStatusBarFormatToDefault:(id)sender {
+    NSAlert *resetPrompt =
+    [NSAlert alertWithMessageText:@"Reset status bar format to default?"
+                    defaultButton:@"OK"
+                  alternateButton:@"Cancel"
+                      otherButton:nil
+        informativeTextWithFormat:
+     @"Are you sure you want to do this? You will lose all status bar customizations."];
+    [resetPrompt compatibleBeginSheetModalForWindow:self.window
+                                  completionHandler:^(NSModalResponse returnCode) {
+                                      if (returnCode == NSAlertDefaultReturn) {
+                                          [[NSUserDefaults standardUserDefaults]
+                                           setValue:[TTMDocumentStatusBarText defaultFormat]
+                                             forKey:@"statusBarFormat"];
+                                          [self.appController visualRefreshAll:self];
+                                      }
+                                  }];
+}
+
+- (void)controlTextDidChange:(NSNotification *)aNotification {
     [self.appController visualRefreshAll:self];
 }
 
