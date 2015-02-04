@@ -185,6 +185,16 @@ typedef enum : NSUInteger {
  */
 - (void)prependText:(NSString*)textToPrepend;
 
+#pragma Find/replace Method
+
+/*!
+ * @method prependText:
+ * @abstract Prepends text to the beginning of the task.
+ * @param textToReplace
+ * @param replacementText
+ */
+- (void)replaceText:(NSString*)textToReplace withText:(NSString*)replacementText;
+
 #pragma mark - Due/Not Due Method
 
 /*!

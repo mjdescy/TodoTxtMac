@@ -203,6 +203,12 @@
                                     <action selector="moveFocusToSearchBox:" target="-1" id="O41-7n-bnw"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Replace..." keyEquivalent="f" id="i9O-dp-SXT">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="replaceText:" target="-1" id="Hqx-1H-7KY"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
@@ -568,5 +574,8 @@ CA
         <customObject id="565-dx-Ism" customClass="SUUpdater"/>
         <customObject id="oKW-8b-22O" customClass="NSDocumentController"/>
         <userDefaultsController representsSharedInstance="YES" id="w2u-Zb-wUd"/>
+        <menuItem title="Item" id="m59-bi-F45">
+            <modifierMask key="keyEquivalentModifierMask"/>
+        </menuItem>
     </objects>
 </document>

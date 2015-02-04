@@ -90,6 +90,9 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 @property (nonatomic, retain) IBOutlet NSTextField *statusBarTextField;
 @property (nonatomic, retain) NSString *statusBarText;
 @property (nonatomic, retain) IBOutlet NSLayoutConstraint *bottomConstraint;
+@property (nonatomic, retain) IBOutlet NSView *findReplaceView;
+@property (nonatomic, retain) IBOutlet NSTextField *findText;
+@property (nonatomic, retain) IBOutlet NSTextField *replaceText;
 
 // User font preference
 @property (nonatomic) BOOL usingUserFont;
@@ -262,6 +265,12 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
  * @abstract Prepend text, entered in a modal sheet, to selected tasks.
  */
 - (IBAction)prependText:(id)sender;
+
+/*!
+ * @method replaceText:
+ * @abstract Find and replace text, entered in a modal sheet, to selected tasks.
+ */
+- (IBAction)replaceText:(id)sender;
 
 #pragma mark - Priority Methods
 

@@ -143,7 +143,6 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     
     // Add any code here that needs to be executed once the windowController
     // has loaded the document's window.
-    
     self.statusBarVisable = [[NSUserDefaults standardUserDefaults] boolForKey:@"showStatusBar"];
 }
 
@@ -499,7 +498,7 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     [alert setAccessoryView:input];
     
     // Define the completion handler for the modal sheet.
-    void (^appendTextHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
+    void (^prependTextHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
         if (returnCode != NSAlertDefaultReturn || [[input stringValue] length] == 0) {
             return;
         }
@@ -511,8 +510,33 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     };
     
     [alert compatibleBeginSheetModalForWindow:self.windowForSheet
-                            completionHandler:appendTextHandler];
+                            completionHandler:prependTextHandler];
+}
+
+- (IBAction)replaceText:(id)sender {
+    NSAlert *alert = [NSAlert alertWithMessageText:@"Replace Text"
+                                     defaultButton:@"OK"
+                                   alternateButton:@"Cancel"
+                                       otherButton:nil
+                         informativeTextWithFormat:@"Text to prepend to each selected task:"];
+    [NSBundle.mainBundle loadNibNamed:@"TTMFindReplace" owner:self topLevelObjects:nil];
+    [alert setAccessoryView:self.findReplaceView];
     
+    // Define the completion handler for the modal sheet.
+    void (^replaceTextHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
+        if (returnCode != NSAlertDefaultReturn || [[self.findText stringValue] length] == 0) {
+            return;
+        }
+        
+        TaskChangeBlock replaceTextTaskBlock = ^(id task, NSUInteger idx, BOOL *stop) {
+            [(TTMTask*)task replaceText:[self.findText stringValue]
+                               withText:[self.replaceText stringValue]];
+        };
+        [self forEachSelectedTaskExecuteBlock:replaceTextTaskBlock];
+    };
+    
+    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+                            completionHandler:replaceTextHandler];
 }
 
 #pragma mark - Priority Methods
