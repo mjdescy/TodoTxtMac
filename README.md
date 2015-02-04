@@ -79,7 +79,7 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - S: set due date
 - I: set priority to user-entered value (A-Z)
 - T: append text to end of selected tasks
-- Option+T: prepend text to beginning of selected tasks (after priority and creation date if they exist)
+- R: prepend text to beginning of selected tasks (after priority and creation date if they exist)
 - A: archive completed tasks (archive file done.txt must be set)
 - Command+Up: Increase priority
 - Command+Down: Decrease priority
