@@ -129,6 +129,9 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
 
     [self setTaskListFont];
+    
+    // Observe array controller selection to update "selected tasks" count in status bar
+    [self.arrayController addObserver:self forKeyPath:@"selection" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (NSString *)windowNibName {
@@ -971,6 +974,12 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 }
 
 #pragma mark - Status Bar Methods
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"selection"]) {
+        [self updateStatusBarText];
+    }
+}
 
 - (void)updateStatusBarText {
     NSString *format = [[NSUserDefaults standardUserDefaults] stringForKey:@"statusBarFormat"];

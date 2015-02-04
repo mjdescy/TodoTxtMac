@@ -73,6 +73,7 @@ extern NSString* const TTMShownPrioritiesCount;
 extern NSString* const TTMActiveFilterNumber;
 extern NSString* const TTMActiveSortNumber;
 extern NSString* const TTMActiveSortName;
+extern NSString* const TTMSelectedTaskCount;
 
 @property (nonatomic, retain) TTMDocument *document;
 @property (nonatomic) NSString *format;

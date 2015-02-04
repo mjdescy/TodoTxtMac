@@ -72,6 +72,7 @@ NSString* const TTMShownPrioritiesCount = @"{Shown Priorities}";
 NSString* const TTMActiveFilterNumber = @"{Filter Preset}";
 NSString* const TTMActiveSortNumber = @"{Sort Preset}";
 NSString* const TTMActiveSortName = @"{Sort Name}";
+NSString* const TTMSelectedTaskCount = @"{Selected}";
 
 #pragma mark - Init Method
 
@@ -118,7 +119,8 @@ NSString* const TTMActiveSortName = @"{Sort Name}";
              TTMShownContextsCount : @(self.document.filteredTasklistMetadata.contextsCount),
              TTMActiveFilterNumber : @(self.document.activeFilterPredicateNumber),
              TTMActiveSortNumber : @(self.document.activeSortType),
-             TTMActiveSortName : [sortNames objectForKey:@(self.document.activeSortType)]
+             TTMActiveSortName : [sortNames objectForKey:@(self.document.activeSortType)],
+             TTMSelectedTaskCount : @(self.document.arrayController.selectionIndexes.count)
              };
 }
 
@@ -158,7 +160,8 @@ NSString* const TTMActiveSortName = @"{Sort Name}";
              TTMShownContextsCount,
              TTMActiveFilterNumber,
              TTMActiveSortNumber,
-             TTMActiveSortName
+             TTMActiveSortName,
+             TTMSelectedTaskCount
              ];
 }
 
