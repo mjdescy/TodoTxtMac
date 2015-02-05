@@ -123,9 +123,10 @@
                        indexOfSelectedItem:(NSInteger*)index {
     // Check the character range for "@" and "+".
     NSString *partialString = [[self string] substringWithRange:charRange];
-    if ([partialString hasSuffix:@"+"]) {
+    
+    if ([partialString hasPrefix:@"+"]) {
         return self.projectsArray;
-    } else if ([partialString hasSuffix:@"@"]) {
+    } else if ([partialString hasPrefix:@"@"]) {
         return self.contextsArray;
     } else {
         // Call the super method to get the default behavior.
@@ -146,17 +147,15 @@
 - (NSRange)rangeForUserCompletion {
     // Call the super method to get the default behavior.
     NSRange superRange = [super rangeForUserCompletion];
-    
-    // Only override the default behavior if there is an "@" in the partial range.
-    NSString *partialString = [[self string] substringWithRange:superRange];
-    NSRange atSignRange = [partialString rangeOfString:@"@" options:NSBackwardsSearch];
-    if (atSignRange.location == NSNotFound) {
-        return superRange;
+
+    // For some reason, when triggering autocompletion of contexts, which begin with "@",
+    // the superRange has a length of 0, which prevents autocompletion from working.
+    // This conditional code block, which adjusts the range, fixes that.
+    if (superRange.length == 0 && superRange.location > 0) {
+        superRange.location -= 1;
+        superRange.length = 1;
     }
     
-    // Modify the range properties to just return the "@" at the end of the range.
-    superRange.location = superRange.location + atSignRange.location;
-    superRange.length = 1;
     return superRange;
 }
 
