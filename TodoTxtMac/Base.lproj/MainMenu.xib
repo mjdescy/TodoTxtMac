@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
@@ -203,6 +203,12 @@
                                     <action selector="moveFocusToSearchBox:" target="-1" id="O41-7n-bnw"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Replace..." keyEquivalent="f" id="i9O-dp-SXT">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="replaceText:" target="-1" id="Hqx-1H-7KY"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
@@ -237,8 +243,8 @@ DQ
                                     <action selector="appendText:" target="-1" id="p5w-qa-iTB"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Prepend Text" keyEquivalent="t" id="N06-zv-uJi">
-                                <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                            <menuItem title="Prepend Text" keyEquivalent="r" id="N06-zv-uJi">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="prependText:" target="-1" id="Uvh-d3-wu5"/>
                                 </connections>
@@ -500,7 +506,13 @@ CA
                                     <action selector="toggleToolbarShown:" target="-1" id="366"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Show Status Bar" tag="6000" keyEquivalent="/" id="4lx-6A-S2z">
+                                <connections>
+                                    <action selector="toggleStatusBarVisability:" target="-1" id="AWn-Xq-tHt"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Customize Toolbar…" id="298">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="runToolbarCustomizationPalette:" target="-1" id="365"/>
                                 </connections>
@@ -560,5 +572,10 @@ CA
             </connections>
         </customObject>
         <customObject id="565-dx-Ism" customClass="SUUpdater"/>
+        <customObject id="oKW-8b-22O" customClass="NSDocumentController"/>
+        <userDefaultsController representsSharedInstance="YES" id="w2u-Zb-wUd"/>
+        <menuItem title="Item" id="m59-bi-F45">
+            <modifierMask key="keyEquivalentModifierMask"/>
+        </menuItem>
     </objects>
 </document>

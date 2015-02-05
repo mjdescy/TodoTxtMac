@@ -129,4 +129,12 @@
     }
 }
 
+- (NSString*)projects {
+    return [self.projectsArray componentsJoinedByString:@"\n"];
+}
+
+- (NSString*)contexts {
+    return [self.contextsArray componentsJoinedByString:@"\n"];
+}
+
 @end

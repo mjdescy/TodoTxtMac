@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTMDocument">
             <connections>
                 <outlet property="arrayController" destination="z03-iY-Esn" id="WqA-XF-LYw"/>
+                <outlet property="bottomConstraint" destination="jTL-GW-mrE" id="wuW-dl-UBs"/>
                 <outlet property="rawTextCell" destination="B31-jc-X0I" id="WRb-Kc-eMO"/>
                 <outlet property="searchField" destination="MtW-Mu-7ja" id="Kva-PL-Nec"/>
+                <outlet property="statusBarTextField" destination="Sky-Qt-diC" id="SoO-R7-lpJ"/>
                 <outlet property="tableView" destination="FD8-v3-r5U" id="pBH-dg-EN3"/>
                 <outlet property="tableViewDelegate" destination="EHv-Hj-tOM" id="h3o-MM-3Ms"/>
                 <outlet property="textField" destination="4SD-Qr-9gz" id="SxF-oC-RrR"/>
@@ -29,7 +31,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4SD-Qr-9gz">
-                        <rect key="frame" x="0.0" y="425" width="527" height="22"/>
+                        <rect key="frame" x="0.0" y="425" width="510" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" placeholderString="New task..." drawsBackground="YES" usesSingleLineMode="YES" id="Zzr-Le-XIh">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -40,19 +42,19 @@
                         </connections>
                     </textField>
                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1v-eN-hR0">
-                        <rect key="frame" x="0.0" y="-1" width="511" height="428"/>
+                        <rect key="frame" x="0.0" y="22" width="510" height="405"/>
                         <clipView key="contentView" id="5aa-vY-NrO">
                             <rect key="frame" x="1" y="1" width="509" height="426"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" emptySelection="NO" autosaveColumns="NO" id="FD8-v3-r5U" customClass="TTMTableView">
-                                    <rect key="frame" x="0.0" y="0.0" width="509" height="19"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="508" height="19"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="_sourceListBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn identifier="rawText" width="506" minWidth="100" maxWidth="10000" id="Psh-Gi-D1c">
+                                        <tableColumn identifier="rawText" width="505" minWidth="100" maxWidth="10000" id="Psh-Gi-D1c">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="rawText">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -85,15 +87,32 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
+                    <textField horizontalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="Sky-Qt-diC">
+                        <rect key="frame" x="3" y="2" width="504" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="NXt-rJ-2VE"/>
+                        </constraints>
+                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Label" id="ZsD-0k-HPu">
+                            <font key="font" metaFont="smallSystem"/>
+                            <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <binding destination="-2" name="value" keyPath="self.statusBarText" id="m6H-KR-ctN"/>
+                            </connections>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="C1v-eN-hR0" secondAttribute="trailing" constant="-1" id="LVo-ql-fFv"/>
-                    <constraint firstItem="C1v-eN-hR0" firstAttribute="top" secondItem="6" secondAttribute="top" constant="20" symbolic="YES" id="aAI-0I-EhQ"/>
+                    <constraint firstAttribute="trailing" secondItem="C1v-eN-hR0" secondAttribute="trailing" id="Wzh-ei-LrI"/>
                     <constraint firstItem="4SD-Qr-9gz" firstAttribute="leading" secondItem="6" secondAttribute="leading" id="aMZ-J0-P7i"/>
-                    <constraint firstAttribute="trailing" secondItem="4SD-Qr-9gz" secondAttribute="trailing" constant="-17" id="dtj-nh-Jp1"/>
+                    <constraint firstItem="Sky-Qt-diC" firstAttribute="leading" secondItem="6" secondAttribute="leading" constant="5" id="brB-pD-hAb"/>
+                    <constraint firstAttribute="trailing" secondItem="4SD-Qr-9gz" secondAttribute="trailing" id="dtj-nh-Jp1"/>
+                    <constraint firstItem="C1v-eN-hR0" firstAttribute="leading" secondItem="4SD-Qr-9gz" secondAttribute="leading" id="eyp-63-iZa"/>
                     <constraint firstItem="4SD-Qr-9gz" firstAttribute="top" secondItem="6" secondAttribute="top" id="fiM-W6-N95"/>
-                    <constraint firstAttribute="bottom" secondItem="C1v-eN-hR0" secondAttribute="bottom" constant="-1" id="hJX-5T-hz0"/>
-                    <constraint firstItem="C1v-eN-hR0" firstAttribute="leading" secondItem="4SD-Qr-9gz" secondAttribute="leading" id="qMQ-Di-c5k"/>
+                    <constraint firstAttribute="trailing" secondItem="Sky-Qt-diC" secondAttribute="trailing" constant="5" id="j1w-Kd-0vp"/>
+                    <constraint firstAttribute="bottom" secondItem="Sky-Qt-diC" secondAttribute="bottom" constant="2" id="jJO-2M-jzG"/>
+                    <constraint firstAttribute="bottom" secondItem="C1v-eN-hR0" secondAttribute="bottom" constant="22" id="jTL-GW-mrE"/>
+                    <constraint firstItem="C1v-eN-hR0" firstAttribute="top" secondItem="6" secondAttribute="top" constant="20" symbolic="YES" id="xW4-u4-bzy"/>
                 </constraints>
             </view>
             <toolbar key="toolbar" implicitIdentifier="EFA160F5-7EE6-497B-A420-285FEC4CA73E" displayMode="iconOnly" sizeMode="small" id="Tbe-3z-Gsw">
@@ -128,6 +147,7 @@
                     <toolbarItem reference="a5W-c1-Nr2"/>
                 </defaultToolbarItems>
             </toolbar>
+            <contentBorderThickness minY="22"/>
             <connections>
                 <outlet property="delegate" destination="-2" id="17"/>
             </connections>

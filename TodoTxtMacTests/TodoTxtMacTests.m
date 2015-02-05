@@ -370,9 +370,23 @@
     XCTAssertEqualObjects(task.rawText, modifiedText);
 }
 
-- (void)testPrependTextWithCreationDate {
-    
+- (void)testPrependTextCreationDate {
+    NSString *rawText = @"2014-01-01 pick up groceries";
+    NSUInteger taskId = 0;
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
+    NSString *textToPrepend = @"t:2020-01-01";
+    NSString *modifiedText = @"2014-01-01 t:2020-01-01 pick up groceries";
+    [task prependText:textToPrepend];
+    XCTAssertEqualObjects(task.rawText, modifiedText);
 }
 
+- (void)testReplaceText {
+    NSString *rawText = @"(C) 2014-01-01 pick up groceries";
+    NSUInteger taskId = 0;
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
+    NSString *modifiedText = @"(C) 2014-01-01 pick up car";
+    [task replaceText:@"groceries" withText:@"car"];
+    XCTAssertEqualObjects(task.rawText, modifiedText);
+}
 
 @end

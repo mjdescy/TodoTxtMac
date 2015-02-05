@@ -49,6 +49,7 @@
 #import "TTMFiltersController.h"
 #import "TTMFilterPredicates.h"
 #import "TTMDocument.h"
+#import "TTMDocumentStatusBarText.h"
 
 // Default user preference values, including those for saved filters
 static NSDictionary *defaultValues() {
@@ -64,6 +65,7 @@ static NSDictionary *defaultValues() {
                 @NO, @"prependDateOnNewTasks",
                 @1, @"taskListSortType",
                 defaultPredicateData, @"activefilterPredicate",
+                @0, @"activefilterPreset",
                 defaultPredicateData, @"filterPredicate1",
                 defaultPredicateData, @"filterPredicate2",
                 defaultPredicateData, @"filterPredicate3",
@@ -95,6 +97,8 @@ static NSDictionary *defaultValues() {
                 @NO, @"escapeKeyCancelsAllTextChanges",
                 @NO, @"openDefaultTodoFileOnStartup",
                 @"", @"defaultTodoFilePath",
+                @YES, @"showStatusBar",
+                [TTMDocumentStatusBarText defaultFormat], @"statusBarFormat",
                 nil];
     }
     return dict;

@@ -333,6 +333,13 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     [self setRawText:[stringComponents componentsJoinedByString:separator]];
 }
 
+#pragma Find/replace Method
+
+- (void)replaceText:(NSString*)textToReplace withText:(NSString*)replacementText {
+    self.rawText = [self.rawText stringByReplacingOccurrencesOfString:textToReplace
+                                                           withString:replacementText];
+}
+
 #pragma mark - Due/Not Due Method
 
 - (TTMDueState)getDueState {

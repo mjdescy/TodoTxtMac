@@ -8,6 +8,8 @@
         <customObject id="-2" userLabel="File's Owner" customClass="TTMPreferencesController">
             <connections>
                 <outlet property="appController" destination="cda-0y-TXV" id="g2i-w3-ifB"/>
+                <outlet property="statusBarFormat" destination="dps-Ov-KIp" id="9Vn-07-bZb"/>
+                <outlet property="statusBarTags" destination="AAU-j7-nuS" id="Rjg-Yg-D5e"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="NDZ-dg-79d"/>
             </connections>
         </customObject>
@@ -26,7 +28,7 @@
                         <rect key="frame" x="13" y="10" width="520" height="249"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
-                            <tabViewItem label="General" identifier="1" id="L8o-bt-LMa">
+                            <tabViewItem label="General" identifier="0" id="L8o-bt-LMa">
                                 <view key="view" id="kDW-tT-Mxi">
                                     <rect key="frame" x="10" y="33" width="500" height="203"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,6 +203,83 @@
                                         <constraint firstItem="EbF-No-8Sl" firstAttribute="top" secondItem="Sr6-1i-PgC" secondAttribute="bottom" constant="15" id="ubQ-ii-JdG"/>
                                         <constraint firstItem="kLG-5x-TgF" firstAttribute="leading" secondItem="EbF-No-8Sl" secondAttribute="trailing" constant="8" symbolic="YES" id="xeP-9Y-qOe"/>
                                         <constraint firstItem="Sr6-1i-PgC" firstAttribute="top" secondItem="wFd-n2-OjV" secondAttribute="bottom" constant="8" id="yIM-Rv-9u3"/>
+                                    </constraints>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Startup" identifier="1" id="OIw-jK-Q91">
+                                <view key="view" id="gCJ-fs-wzk">
+                                    <rect key="frame" x="10" y="33" width="500" height="203"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="kiN-tj-bg5">
+                                            <rect key="frame" x="15" y="184" width="266" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="262" id="EQI-vA-nbm"/>
+                                                <constraint firstAttribute="height" constant="14" id="Yiy-Cd-fLv"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="check" title="Open default todo.txt file on startup" bezelStyle="regularSquare" imagePosition="left" inset="2" id="nBZ-8E-wmN">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.openDefaultTodoFileOnStartup" id="TGA-oe-nb7"/>
+                                                </connections>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.openDefaultTodoFileOnStartup" id="H6i-hS-Ep0"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ibn-uO-HXl">
+                                            <rect key="frame" x="15" y="161" width="134" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="130" id="Ozz-c8-8a6"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default file:" id="E9J-yc-K3H">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Tp-oa-L2w">
+                                            <rect key="frame" x="94" y="142" width="286" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="286" id="CeM-YN-FzW"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Default File" placeholderString="Default file (todo.txt)" drawsBackground="YES" id="mqs-ny-Nb9">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.defaultTodoFilePath" id="lWL-RG-nUz"/>
+                                            </connections>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tzr-c2-lHB">
+                                            <rect key="frame" x="382" y="143" width="107" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="95" id="7DF-6d-Ys6"/>
+                                                <constraint firstAttribute="height" constant="21" id="RFw-Tx-Sry"/>
+                                            </constraints>
+                                            <buttonCell key="cell" type="push" title="Browse..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1Od-IU-0xH">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                                <connections>
+                                                    <action selector="chooseDefaultTodoFile:" target="-2" id="Y5y-jY-fFR"/>
+                                                </connections>
+                                            </buttonCell>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Tzr-c2-lHB" firstAttribute="leading" secondItem="8Tp-oa-L2w" secondAttribute="trailing" constant="8" symbolic="YES" id="4RH-x5-G6T"/>
+                                        <constraint firstItem="Tzr-c2-lHB" firstAttribute="top" secondItem="gCJ-fs-wzk" secondAttribute="top" constant="32" id="Hrv-nv-ZNS"/>
+                                        <constraint firstItem="ibn-uO-HXl" firstAttribute="leading" secondItem="kiN-tj-bg5" secondAttribute="leading" id="Lkm-8c-Z7F"/>
+                                        <constraint firstItem="kiN-tj-bg5" firstAttribute="top" secondItem="gCJ-fs-wzk" secondAttribute="top" constant="3" id="cu5-lU-KGv"/>
+                                        <constraint firstItem="ibn-uO-HXl" firstAttribute="top" secondItem="kiN-tj-bg5" secondAttribute="bottom" constant="8" symbolic="YES" id="edv-L9-0hN"/>
+                                        <constraint firstAttribute="bottom" secondItem="ibn-uO-HXl" secondAttribute="bottom" constant="161" id="hXd-AJ-IHD"/>
+                                        <constraint firstItem="Tzr-c2-lHB" firstAttribute="centerY" secondItem="8Tp-oa-L2w" secondAttribute="centerY" id="j6B-KT-otF"/>
+                                        <constraint firstItem="8Tp-oa-L2w" firstAttribute="leading" secondItem="gCJ-fs-wzk" secondAttribute="leading" constant="94" id="lpZ-au-WaO"/>
+                                        <constraint firstAttribute="trailing" secondItem="Tzr-c2-lHB" secondAttribute="trailing" constant="17" id="nNC-tD-LOQ"/>
+                                        <constraint firstItem="kiN-tj-bg5" firstAttribute="leading" secondItem="gCJ-fs-wzk" secondAttribute="leading" constant="17" id="xOP-kR-kbh"/>
+                                        <constraint firstItem="8Tp-oa-L2w" firstAttribute="top" secondItem="ibn-uO-HXl" secondAttribute="top" id="yhs-aZ-Run"/>
                                     </constraints>
                                 </view>
                             </tabViewItem>
@@ -480,7 +559,95 @@
                                     </constraints>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label="Updates" identifier="3" id="tiU-nI-23F">
+                            <tabViewItem label="Status Bar" identifier="3" id="C0X-lJ-CYs">
+                                <view key="view" id="Xxm-Vu-L8l">
+                                    <rect key="frame" x="10" y="33" width="500" height="203"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dps-Ov-KIp">
+                                            <rect key="frame" x="69" y="46" width="414" height="132"/>
+                                            <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="gVh-qm-vE8">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.statusBarFormat" id="HZw-HB-hHy">
+                                                    <dictionary key="options">
+                                                        <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                    </dictionary>
+                                                </binding>
+                                                <outlet property="delegate" destination="-2" id="l0t-Ao-bU5"/>
+                                            </connections>
+                                        </textField>
+                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agZ-dD-T4T">
+                                            <rect key="frame" x="67" y="14" width="178" height="26"/>
+                                            <popUpButtonCell key="cell" type="push" title="Available Tags" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="iPq-ql-2e0" id="1lf-Rh-gST">
+                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="menu"/>
+                                                <menu key="menu" id="1O7-ru-rf0">
+                                                    <items>
+                                                        <menuItem title="Available Tags" state="on" id="iPq-ql-2e0"/>
+                                                        <menuItem title="Item 2" id="O8d-tt-HwN"/>
+                                                        <menuItem title="Item 3" id="fpc-Ts-O13"/>
+                                                    </items>
+                                                </menu>
+                                            </popUpButtonCell>
+                                            <connections>
+                                                <binding destination="AAU-j7-nuS" name="content" keyPath="arrangedObjects" id="KTJ-FU-Ngg"/>
+                                                <binding destination="AAU-j7-nuS" name="selectedIndex" keyPath="selectionIndex" previousBinding="KTJ-FU-Ngg" id="1iC-bK-zmj"/>
+                                            </connections>
+                                        </popUpButton>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VHD-8m-S6e">
+                                            <rect key="frame" x="10" y="19" width="38" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Tags" id="Bau-Dg-GwY">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhO-1z-q0Z">
+                                            <rect key="frame" x="345" y="10" width="144" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Reset to default..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ngM-XH-2Xx">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="resetStatusBarFormatToDefault:" target="-2" id="M3F-Lz-IaS"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zXM-Pf-HPd">
+                                            <rect key="frame" x="10" y="161" width="48" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Format" id="VFN-Xk-1aQ">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1w7-1m-yNC">
+                                            <rect key="frame" x="10" y="184" width="283" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Show status bar on next opened window" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="5Dj-4D-p9M">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.showStatusBar" id="Dda-11-Hlo"/>
+                                            </connections>
+                                        </button>
+                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JAg-G4-FBv">
+                                            <rect key="frame" x="244" y="10" width="101" height="32"/>
+                                            <buttonCell key="cell" type="push" title="Insert Tag" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TQZ-9N-nTD">
+                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="insertTagIntoStatusBarFormat:" target="-2" id="vdh-6U-sJf"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Updates" identifier="4" id="tiU-nI-23F">
                                 <view key="view" id="un9-sN-dpv">
                                     <rect key="frame" x="10" y="33" width="500" height="203"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -525,83 +692,6 @@
                                     </subviews>
                                 </view>
                             </tabViewItem>
-                            <tabViewItem label="Startup" identifier="4" id="OIw-jK-Q91">
-                                <view key="view" id="gCJ-fs-wzk">
-                                    <rect key="frame" x="10" y="33" width="500" height="203"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="kiN-tj-bg5">
-                                            <rect key="frame" x="15" y="184" width="266" height="18"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="262" id="EQI-vA-nbm"/>
-                                                <constraint firstAttribute="height" constant="14" id="Yiy-Cd-fLv"/>
-                                            </constraints>
-                                            <buttonCell key="cell" type="check" title="Open default todo.txt file on startup" bezelStyle="regularSquare" imagePosition="left" inset="2" id="nBZ-8E-wmN">
-                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                                <connections>
-                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.openDefaultTodoFileOnStartup" id="TGA-oe-nb7"/>
-                                                </connections>
-                                            </buttonCell>
-                                            <connections>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.openDefaultTodoFileOnStartup" id="H6i-hS-Ep0"/>
-                                            </connections>
-                                        </button>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ibn-uO-HXl">
-                                            <rect key="frame" x="15" y="161" width="134" height="17"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="130" id="Ozz-c8-8a6"/>
-                                            </constraints>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default file:" id="E9J-yc-K3H">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Tp-oa-L2w">
-                                            <rect key="frame" x="94" y="142" width="286" height="36"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="286" id="CeM-YN-FzW"/>
-                                            </constraints>
-                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Default File" placeholderString="Default file (todo.txt)" drawsBackground="YES" id="mqs-ny-Nb9">
-                                                <font key="font" metaFont="smallSystem"/>
-                                                <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                            <connections>
-                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.defaultTodoFilePath" id="lWL-RG-nUz"/>
-                                            </connections>
-                                        </textField>
-                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tzr-c2-lHB">
-                                            <rect key="frame" x="382" y="143" width="107" height="32"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="95" id="7DF-6d-Ys6"/>
-                                                <constraint firstAttribute="height" constant="21" id="RFw-Tx-Sry"/>
-                                            </constraints>
-                                            <buttonCell key="cell" type="push" title="Browse..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="1Od-IU-0xH">
-                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
-                                                <connections>
-                                                    <action selector="chooseDefaultTodoFile:" target="-2" id="Y5y-jY-fFR"/>
-                                                </connections>
-                                            </buttonCell>
-                                        </button>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="Tzr-c2-lHB" firstAttribute="leading" secondItem="8Tp-oa-L2w" secondAttribute="trailing" constant="8" symbolic="YES" id="4RH-x5-G6T"/>
-                                        <constraint firstItem="Tzr-c2-lHB" firstAttribute="top" secondItem="gCJ-fs-wzk" secondAttribute="top" constant="32" id="Hrv-nv-ZNS"/>
-                                        <constraint firstItem="ibn-uO-HXl" firstAttribute="leading" secondItem="kiN-tj-bg5" secondAttribute="leading" id="Lkm-8c-Z7F"/>
-                                        <constraint firstItem="kiN-tj-bg5" firstAttribute="top" secondItem="gCJ-fs-wzk" secondAttribute="top" constant="3" id="cu5-lU-KGv"/>
-                                        <constraint firstItem="ibn-uO-HXl" firstAttribute="top" secondItem="kiN-tj-bg5" secondAttribute="bottom" constant="8" symbolic="YES" id="edv-L9-0hN"/>
-                                        <constraint firstAttribute="bottom" secondItem="ibn-uO-HXl" secondAttribute="bottom" constant="161" id="hXd-AJ-IHD"/>
-                                        <constraint firstItem="Tzr-c2-lHB" firstAttribute="centerY" secondItem="8Tp-oa-L2w" secondAttribute="centerY" id="j6B-KT-otF"/>
-                                        <constraint firstItem="8Tp-oa-L2w" firstAttribute="leading" secondItem="gCJ-fs-wzk" secondAttribute="leading" constant="94" id="lpZ-au-WaO"/>
-                                        <constraint firstAttribute="trailing" secondItem="Tzr-c2-lHB" secondAttribute="trailing" constant="17" id="nNC-tD-LOQ"/>
-                                        <constraint firstItem="kiN-tj-bg5" firstAttribute="leading" secondItem="gCJ-fs-wzk" secondAttribute="leading" constant="17" id="xOP-kR-kbh"/>
-                                        <constraint firstItem="8Tp-oa-L2w" firstAttribute="top" secondItem="ibn-uO-HXl" secondAttribute="top" id="yhs-aZ-Run"/>
-                                    </constraints>
-                                </view>
-                            </tabViewItem>
                         </tabViewItems>
                     </tabView>
                 </subviews>
@@ -626,5 +716,10 @@
         </toolbar>
         <customObject id="oDD-Zm-tB0" customClass="SUUpdater"/>
         <customObject id="cda-0y-TXV" customClass="TTMAppController"/>
+        <arrayController id="AAU-j7-nuS">
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="self.availableStatusBarTags" id="Vg5-qT-n9F"/>
+            </connections>
+        </arrayController>
     </objects>
 </document>
