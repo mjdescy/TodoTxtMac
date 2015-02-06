@@ -4,7 +4,19 @@
         <title>TodoTxtMac Changelog</title>
         <link>http://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
         <language>en</language>
-                <item>
+        <item>
+            <title>Version 1.4.0</title>
+            <description>
+            Added new features, including status bar and find/replace text command. Fixes bugs related to context autocompletion and the prepend text command's keyboard shortcut.
+            </description>
+            <sparkle:releaseNotesLink>
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.4.0.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Thursday, 5 Feb 2015 14:10 +0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.4.0/TodoTxtMac.app.zip" sparkle:version="1.4.0" length="2638931" type="application/octet-stream" sparkle:dsaSignature="MCwCFGPbXHE9ifA9KwaeSBI7KizmdX5LAhQrsuJr2quuB+qiUl05Nb+XpsVPmg==" />
+            <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 1.3.0</title>
             <description>
             Added new features, including threshold date support, prepending text, reset button for user preferences, clear all filters button. New icon.

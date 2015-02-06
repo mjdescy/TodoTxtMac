@@ -95,32 +95,34 @@ TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X that conf
 <li>Filter task list.</li>
 <li>Quick filters: preset filters mapped to number keys.</li>
 <li>Search field for quick, ad-hoc filtering of the task list.</li>
-</ul><h2>
-<a name="due-dates" class="anchor" href="#due-dates"><span class="octicon octicon-link"></span></a>Due dates</h2>
+</ul>
 
+<h2><a name="due-dates" class="anchor" href="#due-dates"><span class="octicon octicon-link"></span></a>Due dates</h2>
 <ul>
 <li>Set arbitrary due dates on selected tasks.</li>
 <li>Increment, decrement, or remove due dates.</li>
 <li>Postpone tasks by X (user-entered) days.</li>
 <li>Supports relative due dates, such as "due:tomorrow" and "due:Saturday" for new tasks. These strings can be localized.</li>
-</ul><h2>
-<a name="fonts-and-colors" class="anchor" href="#fonts-and-colors"><span class="octicon octicon-link"></span></a>Fonts and colors</h2>
+</ul>
 
+<h2><a name="fonts-and-colors" class="anchor" href="#fonts-and-colors"><span class="octicon octicon-link"></span></a>Fonts and colors</h2>
 <ul>
 <li>User-customizable font for the task list.</li>
 <li>Bold priorities in task list.</li>
 <li>Colors completed tasks in light gray and applies strikethrough.</li>
 <li>Colors overdue tasks in purple and tasks due today in red. Both these colors are user customizable.</li>
 <li>Colors projects and contexts in dark gray in task list. Both these colors are user customizable.</li>
-</ul><h2>
-<a name="mac-specific-user-interface-features" class="anchor" href="#mac-specific-user-interface-features"><span class="octicon octicon-link"></span></a>Mac-specific user interface features</h2>
+<li>Colors threshold dates in the task list, with a user-customizable color.</li>
+</ul>
 
+<h2><a name="mac-specific-user-interface-features" class="anchor" href="#mac-specific-user-interface-features"><span class="octicon octicon-link"></span></a>Mac-specific user interface features</h2>
 <ul>
 <li>Autosave on change (Note that the title bar will say "Edited" even after autosaving, because this is the Mac's default behavior).</li>
 <li>Autocomplete project names.</li>
 <li>Autocomplete context names.</li>
 <li>Multiple document interface.</li>
 <li>Full screen mode.</li>
+<li>Customizable (and optional) bottom status bar.</li>
 <li>Open todo.txt files by dragging and dropping them onto the application icon.</li>
 </ul><h1>
 <a name="keyboard-shortcuts" class="anchor" href="#keyboard-shortcuts"><span class="octicon octicon-link"></span></a>Keyboard Shortcuts</h1>
@@ -139,7 +141,7 @@ TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X that conf
 <li>S: set due date</li>
 <li>I: set priority to user-entered value (A-Z)</li>
 <li>T: append text to end of selected tasks</li>
-<li>Option+T: prepend text to beginning of selected tasks (after priority and creation date)</li>
+<li>R: prepend text to beginning of selected tasks (after priority and creation date)</li>
 <li>A: archive completed tasks (archive file done.txt must be set)</li>
 <li>Command+Up: Increase priority</li>
 <li>Command+Down: Decrease priority</li>
@@ -242,7 +244,7 @@ $ open /Applications/TodoTxtMac.app --args -todo-file ~/Documents/todo.txt
 <h2>
 <a name="will-this-project-be-ported-from-objective-c-to-swift" class="anchor" href="#will-this-project-be-ported-from-objective-c-to-swift"><span class="octicon octicon-link"></span></a>Will this project be ported from Objective C to Swift?</h2>
 
-<p>At this time, there are no plans to move from Objective C to Swift.</p>
+<p>At this time, there are no concrete plans to move from Objective C to Swift. If Apple deprecates Objective C, this will change.</p>
 
 <h1>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
@@ -268,17 +270,21 @@ $ open /Applications/TodoTxtMac.app --args -todo-file ~/Documents/todo.txt
 
 <div><img src="./images/todotxtmac-screenshot-preferences-general.png" alt="TodoTxtMac General Preferences Screenshot"></div>
 
+<h2>Startup Preferences</h2>
+
+<div><img src="./images/todotxtmac-screenshot-preferences-startup.png" alt="TodoTxtMac Startup Preferences Screenshot"></div>
+
 <h2>Color Preferences</h2>
 
 <div><img src="./images/todotxtmac-screenshot-preferences-colors.png" alt="TodoTxtMac Color Preferences Screenshot"></div>
 
+<h2>Status Bar Preferences</h2>
+
+<div><img src="./images/todotxtmac-screenshot-preferences-status-bar.png" alt="TodoTxtMac Status Bar Preferences Screenshot"></div>
+
 <h2>Updates Preferences</h2>
 
 <div><img src="./images/todotxtmac-screenshot-preferences-updates.png" alt="TodoTxtMac Updates Preferences Screenshot"></div>
-
-<h2>Startup Preferences</h2>
-
-<div><img src="./images/todotxtmac-screenshot-preferences-startup.png" alt="TodoTxtMac Startup Preferences Screenshot"></div>
 
 <h2>Task List Filters</h2>
 
