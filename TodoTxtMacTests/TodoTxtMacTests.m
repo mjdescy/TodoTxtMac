@@ -133,6 +133,30 @@
     XCTAssertEqualObjects(task.creationDate, date);
 }
 
+- (void)testCreationDateCompleted {
+    NSString *rawText = @"x 2020-01-01 pick up groceries";
+    NSUInteger taskId = 0;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
+    NSDate *date = [dateFormatter dateFromString:@"2020-01-01 00:00:00 GMT"];
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId withPrependedDate:date];
+    NSLog(@"creationDate: %@", task.creationDate);
+    NSLog(@"date: %@", date);
+    XCTAssertEqualObjects(task.creationDate, date);
+}
+
+- (void)testCreationDatePrioritized {
+    NSString *rawText = @"(A) 2020-01-01 pick up groceries";
+    NSUInteger taskId = 0;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
+    NSDate *date = [dateFormatter dateFromString:@"2020-01-01 00:00:00 GMT"];
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId withPrependedDate:date];
+    NSLog(@"creationDate: %@", task.creationDate);
+    NSLog(@"date: %@", date);
+    XCTAssertEqualObjects(task.creationDate, date);
+}
+
 - (void)testThresholdDate {
     NSString *rawText = @"pick up groceries t:2020-01-01 due:2020-01-31";
     NSUInteger taskId = 0;
