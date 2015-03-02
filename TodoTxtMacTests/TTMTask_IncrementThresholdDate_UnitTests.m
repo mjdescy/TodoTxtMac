@@ -44,13 +44,48 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-@class TTMTask;
+#import <Cocoa/Cocoa.h>
+#import <XCTest/XCTest.h>
+#import "TTMTask.h"
+#import "TTMDateUtility.h"
 
-@interface TTMTableViewDelegate : NSObject <NSTableViewDelegate>
+@interface TTMTask_IncrementThresholdDate_UnitTests : XCTestCase
 
-#pragma mark - Properties
+@property NSUInteger taskId;
 
-@property (nonatomic, retain) IBOutlet NSArrayController *arrayController;
+@end
+
+@implementation TTMTask_IncrementThresholdDate_UnitTests
+
+- (void)setUp {
+    [super setUp];
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.taskId = 10;
+}
+
+- (void)tearDown {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
+}
+
+- (void)test_IncrementThresholdDate_WhenTaskHasNoThresholdDate_ShouldIncrementThresholdDateByOneDay {
+    NSString *rawText = @"pick up groceries t:2020-01-31";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    [task incrementThresholdDate:1];
+    NSString *expectedRawText = @"pick up groceries t:2020-02-01";
+    XCTAssertEqualObjects(expectedRawText, task.rawText);
+}
+
+- (void)test_IncrementThresholdDate_WhenTaskHasNoThresholdDate_ShouldAppendThresholdDateOfTomorrow {
+    NSString *rawText = @"pick up groceries";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    [task incrementThresholdDate:1];
+    NSDate *tomorrow = [TTMDateUtility addDays:1 toDate:[TTMDateUtility today]];
+    NSString *expectedRawText = [NSString stringWithFormat:@"%@%@%@",
+                                 rawText,
+                                 @" t:",
+                                 [TTMDateUtility convertDateToString:tomorrow]];
+    XCTAssertEqualObjects(expectedRawText, task.rawText);
+}
 
 @end

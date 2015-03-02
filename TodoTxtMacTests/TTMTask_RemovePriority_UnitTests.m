@@ -44,13 +44,42 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-@class TTMTask;
+#import <Cocoa/Cocoa.h>
+#import <XCTest/XCTest.h>
+#import "TTMTask.h"
 
-@interface TTMTableViewDelegate : NSObject <NSTableViewDelegate>
+@interface TTMTask_RemovePriority_UnitTests : XCTestCase
 
-#pragma mark - Properties
+@property NSUInteger taskId;
 
-@property (nonatomic, retain) IBOutlet NSArrayController *arrayController;
+@end
+
+@implementation TTMTask_RemovePriority_UnitTests
+
+- (void)setUp {
+    [super setUp];
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.taskId = 10;
+}
+
+- (void)tearDown {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
+}
+
+- (void)test_RemovePriority_WhenTaskHasPriority_ShouldRemovePriority {
+    NSString *rawText = @"(C) pick up groceries";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    [task removePriority];
+    NSString *expectedRawText = @"pick up groceries";
+    XCTAssertEqualObjects(expectedRawText, task.rawText);
+}
+
+- (void)testRemovePriority_WhenTaskHasNoPriority_ShouldDoNothing {
+    NSString *rawText = @"pick up groceries";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    [task removePriority];
+    XCTAssertEqualObjects(rawText, task.rawText);
+}
 
 @end

@@ -54,8 +54,10 @@
 static NSString * const ProjectPattern = @"(?<=^|\\s)(\\+[^\\s]+)";
 static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
 static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
-static NSString * const FullDueDatePattern = @"(\\sdue:)((\\d{4})-(\\d{2})-(\\d{2}))";
-static NSString * const FullThresholdDatePattern = @"((^|\\s)t:)((\\d{4})-(\\d{2})-(\\d{2}))";
+static NSString * const FullDueDatePatternMiddleOrEnd = @"((\\s)due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
+static NSString * const FullDueDatePatternBeginning = @"^due:((\\d{4})-(\\d{2})-(\\d{2}))\\s?|$";
+static NSString * const FullThresholdDatePatternMiddleOrEnd = @"((\\s)t:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
+static NSString * const FullThresholdDatePatternBeginning = @"^t:((\\d{4})-(\\d{2})-(\\d{2}))\\s?|$";
 
 #pragma mark - TableView Delegate Methods
 
@@ -65,128 +67,58 @@ static NSString * const FullThresholdDatePattern = @"((^|\\s)t:)((\\d{4})-(\\d{2
               row:(NSInteger)row {
     // Apply the task's display format to the rawText cell.
     if ([[tableColumn identifier] isEqualToString:@"rawText"]) {
-        BOOL selected = ([tableView.selectedRowIndexes containsIndex:row]);
         TTMTask *task = [[self.arrayController arrangedObjects] objectAtIndex:row];
-        if ([task.rawText length] > 0) {
-            [cell setAttributedStringValue:[self displayText:task isSelected:selected]];
+        if (nil == task || task.isBlank) {
+            return;
         }
-    }
-}
 
-#pragma mark - Attributed Text Methods
-
-- (NSAttributedString*)displayText:(TTMTask*)task
-                        isSelected:(BOOL)selected {
-    NSMutableAttributedString *as = [[NSMutableAttributedString alloc] initWithString:task.rawText];
-    NSRange fullStringRange = NSMakeRange(0, [as length]);
-    
-    // Apply strikethrough and light gray color to completed tasks when they are displayed
-    // in the tableView.
-    if (task.isCompleted) {
-        [as addAttribute:NSStrikethroughStyleAttributeName
-                   value:(NSNumber*)kCFBooleanTrue
-                   range:fullStringRange];
-        [as addAttribute:NSForegroundColorAttributeName
-                   value:[NSColor lightGrayColor]
-                   range:fullStringRange];
-        return as;
-    }
-    
-    // Apply boldface to the task priority.
-    if (task.isPrioritized) {
-        [as applyFontTraits:NSBoldFontMask range:NSMakeRange(0, 3)];
-    }
-    
-    // Only change colors if row is not selected and user wants to see highlight colors.
-    if (!selected && [[NSUserDefaults standardUserDefaults]
-                      boolForKey:@"useHighlightColorsInTaskList"]) {
-        
         // Get the user's preferred highlight colors or the defaults.
+        BOOL selected = ([tableView.selectedRowIndexes containsIndex:row]);
+        BOOL useHighlightColorsInTaskList = [[NSUserDefaults standardUserDefaults]
+                                             boolForKey:@"useHighlightColorsInTaskList"];
+        NSColor *completedColor = [NSColor lightGrayColor];
         NSColor *dueTodayColor = ([[NSUserDefaults standardUserDefaults]
                                    boolForKey:@"useCustomColorForDueTodayTasks"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"dueTodayColor"] :
             [NSColor redColor];
         NSColor *overdueColor = ([[NSUserDefaults standardUserDefaults]
-                                 boolForKey:@"useCustomColorForOverdueTasks"]) ?
+                                  boolForKey:@"useCustomColorForOverdueTasks"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"overdueColor"] :
             [NSColor purpleColor];
-        NSColor *projectsColor = ([[NSUserDefaults standardUserDefaults]
+        NSColor *projectColor = ([[NSUserDefaults standardUserDefaults]
                                   boolForKey:@"useCustomColorForProjects"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"projectColor"] :
             [NSColor darkGrayColor];
-        NSColor *contextsColor = ([[NSUserDefaults standardUserDefaults]
+        NSColor *contextColor = ([[NSUserDefaults standardUserDefaults]
                                   boolForKey:@"useCustomColorForContexts"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"contextColor"] :
             [NSColor darkGrayColor];
         NSColor *tagColor = ([[NSUserDefaults standardUserDefaults]
-                                  boolForKey:@"useCustomColorForTags"]) ?
+                              boolForKey:@"useCustomColorForTags"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"tagColor"] :
             [NSColor darkGrayColor];
         NSColor *dueDateColor = ([[NSUserDefaults standardUserDefaults]
-                                   boolForKey:@"useCustomColorForDueDates"]) ?
+                                  boolForKey:@"useCustomColorForDueDates"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"dueDateColor"] :
             [NSColor darkGrayColor];
         NSColor *thresholdDateColor = ([[NSUserDefaults standardUserDefaults]
-                                         boolForKey:@"useCustomColorForThresholdDates"]) ?
+                                        boolForKey:@"useCustomColorForThresholdDates"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"thresholdDateColor"] :
             [NSColor darkGrayColor];
-        
-        // Color due texts.
-        if (task.dueState == DueToday) {
-            [as addAttribute:NSForegroundColorAttributeName
-                       value:dueTodayColor
-                       range:fullStringRange];
-        }
-        
-        // Color overdue texts.
-        if (task.dueState == Overdue) {
-            [as addAttribute:NSForegroundColorAttributeName
-                       value:overdueColor
-                       range:fullStringRange];
-        }
 
-        // Color projects.
-        NSArray* matches = [task.rawText matchesWithDetails:RX(ProjectPattern)];
-        for (RxMatch *match in matches) {
-            [as addAttribute:NSForegroundColorAttributeName
-                       value:projectsColor
-                       range:match.range];
-        }
+        NSAttributedString *as = [task displayText:selected
+                      useHighlightColorsInTaskList:useHighlightColorsInTaskList
+                                    completedColor:completedColor
+                                     dueTodayColor:dueTodayColor
+                                      overdueColor:overdueColor
+                                      projectColor:projectColor
+                                      contextColor:contextColor
+                                          tagColor:tagColor
+                                      dueDateColor:dueDateColor
+                                thresholdDateColor:thresholdDateColor];
         
-        // Color contexts.
-        matches = [task.rawText matchesWithDetails:RX(ContextPattern)];
-        for (RxMatch *match in matches) {
-            [as addAttribute:NSForegroundColorAttributeName
-                       value:contextsColor
-                       range:match.range];
-        }
-        
-        // Color tags.
-        matches = [task.rawText matchesWithDetails:RX(TagPattern)];
-        for (RxMatch *match in matches) {
-            [as addAttribute:NSForegroundColorAttributeName
-                       value:tagColor
-                       range:match.range];
-        }
-        
-        // Color due dates.
-        matches = [task.rawText matchesWithDetails:RX(FullDueDatePattern)];
-        for (RxMatch *match in matches) {
-            [as addAttribute:NSForegroundColorAttributeName
-                       value:dueDateColor
-                       range:match.range];
-        }
-        
-        // Color threshold dates.
-        matches = [task.rawText matchesWithDetails:RX(FullThresholdDatePattern)];
-        for (RxMatch *match in matches) {
-            [as addAttribute:NSForegroundColorAttributeName
-                       value:thresholdDateColor
-                       range:match.range];
-        }
+        [cell setAttributedStringValue:as];
     }
-    
-    return as;
 }
 
 @end

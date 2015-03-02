@@ -44,13 +44,54 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-@class TTMTask;
+#import <Cocoa/Cocoa.h>
+#import <XCTest/XCTest.h>
+#import "TTMTask.h"
+#import "TTMDateUtility.h"
 
-@interface TTMTableViewDelegate : NSObject <NSTableViewDelegate>
+@interface TTMTask_DueState_UnitTests : XCTestCase
 
-#pragma mark - Properties
+@property NSUInteger taskId;
 
-@property (nonatomic, retain) IBOutlet NSArrayController *arrayController;
+@end
+
+@implementation TTMTask_DueState_UnitTests
+
+- (void)setUp {
+    [super setUp];
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.taskId = 10;
+}
+
+- (void)tearDown {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
+}
+
+- (void)test_DueState_WhenTaskContainsNoDueDate_ShouldBeNotDue {
+    NSString *rawText = @"(A) test task";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertEqual(NotDue, task.dueState);
+}
+
+- (void)test_DueState_WhenTaskContainsFutureDueDate_ShouldBeNotDue {
+    NSString *rawText = @"(A) pick up groceries due:9999-01-01";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertEqual(NotDue, task.dueState);
+}
+
+- (void)test_DueState_WhenTaskContainsTodayDueDate_ShouldBeDueToday {
+    NSString *rawTextPart1 = @"(A) pick up groceries due:";
+    NSString *rawTextPart2 = [TTMDateUtility todayAsString];
+    NSString *rawText = [rawTextPart1 stringByAppendingString:rawTextPart2];
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertEqual(DueToday, task.dueState);
+}
+
+- (void)test_DueState_WhenTaskContainsPastDueDate_ShouldBeOverdue {
+    NSString *rawText = @"(A) pick up groceries due:2001-01-01";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertEqual(Overdue, task.dueState);
+}
 
 @end

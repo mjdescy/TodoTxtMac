@@ -44,13 +44,49 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-@class TTMTask;
+#import <Cocoa/Cocoa.h>
+#import <XCTest/XCTest.h>
+#import "TTMTask.h"
+#import "TTMDateUtility.h"
 
-@interface TTMTableViewDelegate : NSObject <NSTableViewDelegate>
+@interface TTMTask_MarkComplete_UnitTests : XCTestCase
 
-#pragma mark - Properties
+@property NSUInteger taskId;
 
-@property (nonatomic, retain) IBOutlet NSArrayController *arrayController;
+@end
+
+@implementation TTMTask_MarkComplete_UnitTests
+
+- (void)setUp {
+    [super setUp];
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.taskId = 10;
+}
+
+- (void)tearDown {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
+}
+
+- (void)test_MarkComplete_WhenTaskIsNotComplete_ShouldMarkComplete {
+    NSString *rawText = @"(A) pick up groceries";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    [task markComplete];
+    XCTAssertTrue(task.isCompleted);
+}
+
+- (void)test_MarkComplete_WhenTaskIsNotComplete_ShouldSetCompletionDateToToday {
+    NSString *rawText = @"(A) pick up groceries";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    [task markComplete];
+    XCTAssertEqualObjects([TTMDateUtility today], task.completionDate);
+}
+
+- (void)test_MarkComplete_WhenTaskIsComplete_ShouldDoNothing {
+    NSString *rawText = @"x 2020-12-31 pick up groceries";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    [task markComplete];
+    XCTAssertTrue(task.isCompleted);
+}
 
 @end

@@ -44,13 +44,41 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-@class TTMTask;
+#import <Cocoa/Cocoa.h>
+#import <XCTest/XCTest.h>
+#import "TTMTask.h"
 
-@interface TTMTableViewDelegate : NSObject <NSTableViewDelegate>
+@interface TTMTask_MarkIncomplete_UnitTests : XCTestCase
 
-#pragma mark - Properties
+@property NSUInteger taskId;
 
-@property (nonatomic, retain) IBOutlet NSArrayController *arrayController;
+@end
+
+@implementation TTMTask_MarkIncomplete_UnitTests
+
+- (void)setUp {
+    [super setUp];
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.taskId = 10;
+}
+
+- (void)tearDown {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
+}
+
+- (void)test_MarkComplete_WhenTaskIsIncomplete_ShouldDoNothing {
+    NSString *rawText = @"(A) pick up groceries";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    [task markIncomplete];
+    XCTAssertFalse(task.isCompleted);
+}
+
+- (void)test_MarkComplete_WhenTaskIsComplete_ShouldMarkIncomplete {
+    NSString *rawText = @"x 2020-12-31 pick up groceries";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    [task markIncomplete];
+    XCTAssertFalse(task.isCompleted);
+}
 
 @end

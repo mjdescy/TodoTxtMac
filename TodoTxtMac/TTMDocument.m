@@ -76,10 +76,10 @@ TaskChangeBlock _removeTaskPriority   = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task removePriority];
 };
 TaskChangeBlock _increaseDueDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task postponeTask:1];
+    [(TTMTask*)task incrementDueDate:1];
 };
 TaskChangeBlock _decreaseDueDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task postponeTask:-1];
+    [(TTMTask*)task decrementDueDate:1];
 };
 TaskChangeBlock _removeDueDate = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task removeDueDate];
@@ -88,10 +88,10 @@ TaskChangeBlock _removeThresholdDate = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task removeThresholdDate];
 };
 TaskChangeBlock _increaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task incrementThresholdDay:1];
+    [(TTMTask*)task incrementThresholdDate:1];
 };
 TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task decrementThresholdDay:1];
+    [(TTMTask*)task decrementThresholdDate:1];
 };
 
 #pragma mark - init Methods
