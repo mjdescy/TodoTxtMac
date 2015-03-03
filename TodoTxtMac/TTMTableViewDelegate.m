@@ -51,14 +51,6 @@
 
 @implementation TTMTableViewDelegate
 
-static NSString * const ProjectPattern = @"(?<=^|\\s)(\\+[^\\s]+)";
-static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
-static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
-static NSString * const FullDueDatePatternMiddleOrEnd = @"((\\s)due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const FullDueDatePatternBeginning = @"^due:((\\d{4})-(\\d{2})-(\\d{2}))\\s?|$";
-static NSString * const FullThresholdDatePatternMiddleOrEnd = @"((\\s)t:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const FullThresholdDatePatternBeginning = @"^t:((\\d{4})-(\\d{2})-(\\d{2}))\\s?|$";
-
 #pragma mark - TableView Delegate Methods
 
 - (void)tableView:(NSTableView *)tableView
@@ -105,6 +97,10 @@ static NSString * const FullThresholdDatePatternBeginning = @"^t:((\\d{4})-(\\d{
                                         boolForKey:@"useCustomColorForThresholdDates"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"thresholdDateColor"] :
             [NSColor darkGrayColor];
+        NSColor *creationDateColor = ([[NSUserDefaults standardUserDefaults]
+                                        boolForKey:@"useCustomColorForCreationDates"]) ?
+            [[NSUserDefaults standardUserDefaults] colorForKey:@"creationDateColor"] :
+            [NSColor darkGrayColor];
 
         NSAttributedString *as = [task displayText:selected
                       useHighlightColorsInTaskList:useHighlightColorsInTaskList
@@ -115,7 +111,8 @@ static NSString * const FullThresholdDatePatternBeginning = @"^t:((\\d{4})-(\\d{
                                       contextColor:contextColor
                                           tagColor:tagColor
                                       dueDateColor:dueDateColor
-                                thresholdDateColor:thresholdDateColor];
+                                thresholdDateColor:thresholdDateColor
+                                 creationDateColor:creationDateColor];
         
         [cell setAttributedStringValue:as];
     }

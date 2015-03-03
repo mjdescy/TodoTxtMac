@@ -259,7 +259,8 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
                       contextColor:(NSColor*)contextColor
                           tagColor:(NSColor*)tagColor
                       dueDateColor:(NSColor*)dueDateColor
-                thresholdDateColor:(NSColor*)thresholdDateColor {
+                thresholdDateColor:(NSColor*)thresholdDateColor
+                 creationDateColor:(NSColor*)creationDateColor {
     NSMutableAttributedString *as = [[NSMutableAttributedString alloc] initWithString:self.rawText];
     NSRange fullStringRange = NSMakeRange(0, [as length]);
     
@@ -311,6 +312,9 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     // Color threshold dates.
     [as applyColor:thresholdDateColor toRegexPatternMatches:FullThresholdDatePatternBeginning];
     [as applyColor:thresholdDateColor toRegexPatternMatches:FullThresholdDatePatternMiddleOrEnd];
+
+    // Color creation dates (incomplete tasks only).
+    [as applyColor:creationDateColor toRegexPatternMatches:CreationDatePatternIncomplete];
     
     return as;
 }

@@ -174,7 +174,8 @@ typedef enum : NSUInteger {
                       contextColor:(NSColor*)contextColor
                           tagColor:(NSColor*)tagColor
                       dueDateColor:(NSColor*)dueDateColor
-                thresholdDateColor:(NSColor*)thresholdDateColor;
+                thresholdDateColor:(NSColor*)thresholdDateColor
+                 creationDateColor:(NSColor*)creationDateColor;
 
 #pragma mark - Append and Prepend Methods
 
