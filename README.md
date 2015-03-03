@@ -54,7 +54,7 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - Bold priorities in task list.
 - Colors completed tasks in light gray and applies strikethrough.
 - Colors overdue tasks in purple and tasks due today in red. Both these colors are user customizable.
-- User-customizable colors for projects, contexts, due dates, threshold dates, and arbitrary tags in task list.
+- User-customizable colors for projects, contexts, due dates, threshold dates, creation dates, and arbitrary tags in task list.
 
 ## Mac-specific user interface features
 
@@ -77,6 +77,7 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - U or Enter: update task
 - P: postpone task by X (user-entered) days
 - S: set due date
+- Option+S: set threshold date
 - I: set priority to user-entered value (A-Z)
 - T: append text to end of selected tasks
 - R: prepend text to beginning of selected tasks (after priority and creation date if they exist)
@@ -114,7 +115,7 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 
 ## Filtering the task list
 
-- Command+F: find (moves focus to the search field)
+- Command+F: find within displayed tasks (moves focus to the search field)
 - F: define quick filters
 - 1: apply quick filter 1
 - 2: apply quick filter 2
@@ -164,7 +165,7 @@ Your todo.txt file can get modified outside of TodoTxtMac, especially if you are
 
 ## Will this project be ported from Objective C to Swift?
 
-At this time, there are no plans to move from Objective C to Swift.
+When Apple officially deprecates Objective C, the plan is to migrate this project to Swift.
 
 # License
 
