@@ -76,10 +76,10 @@ TaskChangeBlock _removeTaskPriority   = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task removePriority];
 };
 TaskChangeBlock _increaseDueDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task postponeTask:1];
+    [(TTMTask*)task incrementDueDate:1];
 };
 TaskChangeBlock _decreaseDueDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task postponeTask:-1];
+    [(TTMTask*)task decrementDueDate:1];
 };
 TaskChangeBlock _removeDueDate = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task removeDueDate];
@@ -88,10 +88,10 @@ TaskChangeBlock _removeThresholdDate = ^(id task, NSUInteger idx, BOOL *stop) {
     [(TTMTask*)task removeThresholdDate];
 };
 TaskChangeBlock _increaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task incrementThresholdDay:1];
+    [(TTMTask*)task incrementThresholdDate:1];
 };
 TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task decrementThresholdDay:1];
+    [(TTMTask*)task decrementThresholdDate:1];
 };
 
 #pragma mark - init Methods
@@ -132,6 +132,9 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     
     // Observe array controller selection to update "selected tasks" count in status bar
     [self.arrayController addObserver:self forKeyPath:@"selection" options:NSKeyValueObservingOptionNew context:nil];
+    
+    // Observe self to update search field filter
+    [self addObserver:self forKeyPath:@"searchFieldPredicate" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (NSString *)windowNibName {
@@ -385,6 +388,7 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
                                componentsSeparatedByCharactersInSet:
                                [NSCharacterSet newlineCharacterSet]];
     [self addTasksFromArray:rawTextStrings removeAllTasksFirst:NO];
+    [self reapplyActiveFilterPredicate];
     [self refreshTaskListWithSave:YES];
 }
 
@@ -807,6 +811,26 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 
 #pragma mark - Filter Methods
 
+- (NSPredicate*)combineFilterPresetPredicate:(NSPredicate*)filterPresetPredicate
+                   withSearchFilterPredicate:(NSPredicate*)searchFilterPredicate {
+    if (searchFilterPredicate == nil && filterPresetPredicate == nil) {
+        return nil;
+    }
+    
+    if (searchFilterPredicate == nil && filterPresetPredicate != nil) {
+        return filterPresetPredicate;
+    }
+    
+    if (searchFilterPredicate != nil && filterPresetPredicate == nil) {
+        return searchFilterPredicate;
+    }
+    
+    // if (searchFilterPredicate != nil && filterPresetPredicate != nil)
+    NSCompoundPredicate *predicate = [NSCompoundPredicate andPredicateWithSubpredicates:
+                                      @[filterPresetPredicate, searchFilterPredicate]];
+    return predicate;
+}
+
 - (IBAction)filterTaskListUsingTagforPreset:(id)sender {
     [self changeActiveFilterPredicateToPreset:[sender tag]];
 }
@@ -816,12 +840,14 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 }
 
 - (void)reapplyActiveFilterPredicate {
-    self.activeFilterPredicate = [TTMFilterPredicates activeFilterPredicate];
+    [self changeActiveFilterPredicateToPreset:self.activeFilterPredicateNumber];
 }
 
 - (void)changeActiveFilterPredicateToPreset:(NSUInteger)presetNumber {
-    self.activeFilterPredicate = [TTMFilterPredicates
-                                  getFilterPredicateFromPresetNumber:presetNumber];
+    NSPredicate *filterPresetPredicate = [TTMFilterPredicates
+                                          getFilterPredicateFromPresetNumber:presetNumber];
+    self.activeFilterPredicate = [self combineFilterPresetPredicate:filterPresetPredicate
+                                          withSearchFilterPredicate:self.searchFieldPredicate];
     [TTMFilterPredicates setActiveFilterPredicate:self.activeFilterPredicate];
     [TTMFilterPredicates setActiveFilterPredicatePresetNumber:presetNumber];
     self.activeFilterPredicateNumber = presetNumber;
@@ -925,7 +951,7 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
         }
     }
     // Check active filter menu item.
-     if ([menuItem.parentItem tag] == FILTERMENUTAG) {
+    if ([menuItem.parentItem tag] == FILTERMENUTAG) {
         if (menuItem.tag == self.activeFilterPredicateNumber) {
             [menuItem setState:NSOnState];
         } else {
@@ -1002,6 +1028,10 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"selection"]) {
         [self updateStatusBarText];
+    }
+    
+    if ([keyPath isEqualToString:@"searchFieldPredicate"]) {
+        [self reapplyActiveFilterPredicate];
     }
 }
 

@@ -82,6 +82,7 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 // Window controls
 @property (nonatomic, retain) IBOutlet NSTextField *textField;
 @property (nonatomic, retain) IBOutlet NSSearchField *searchField;
+@property (nonatomic, retain) IBOutlet NSPredicate *searchFieldPredicate;
 @property (nonatomic, retain) IBOutlet TTMTableView *tableView;
 @property (nonatomic, retain) IBOutlet TTMTableViewDelegate *tableViewDelegate;
 @property (nonatomic, retain) IBOutlet NSArrayController *arrayController;
@@ -376,6 +377,14 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 - (IBAction)sortTaskListUsingTagforPreset:(id)sender;
 
 #pragma mark - Filter Methods
+
+/*!
+ * @method combineFilterPresetPredicate:withSearchFilterPredicate
+ * @abstract Combines the filter preset predicate applied to the task list with the search field 
+ * predicate in an "AND" fashion.
+ */
+- (NSPredicate*)combineFilterPresetPredicate:(NSPredicate*)filterPresetPredicate
+                   withSearchFilterPredicate:(NSPredicate*)searchFilterPredicate;
 
 /*!
  * @method filterTaskListUsingTagforPreset:

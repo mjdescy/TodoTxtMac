@@ -163,10 +163,19 @@ typedef enum : NSUInteger {
  * @abstact Returns the task's raw text as a formatted string for display.
  * @return Returns an attributed string to be used for display in the user interface.
  * @discussion For good MVC compartmentalization, this method does not access the application's
- * user defaults. To customize the display text's colors and styles based on user defaults, 
- * write a similar method to displayText: in a controller class and call that instead.
+ * user defaults. Therefore, all color options are passed to this method.
  */
-- (NSAttributedString*)displayText;
+- (NSAttributedString*)displayText:(BOOL)selected
+      useHighlightColorsInTaskList:(BOOL)useHighlightColorsInTaskList
+                    completedColor:(NSColor*)completedColor
+                     dueTodayColor:(NSColor*)dueTodayColor
+                      overdueColor:(NSColor*)overdueColor
+                      projectColor:(NSColor*)projectColor
+                      contextColor:(NSColor*)contextColor
+                          tagColor:(NSColor*)tagColor
+                      dueDateColor:(NSColor*)dueDateColor
+                thresholdDateColor:(NSColor*)thresholdDateColor
+                 creationDateColor:(NSColor*)creationDateColor;
 
 #pragma mark - Append and Prepend Methods
 
@@ -225,20 +234,20 @@ typedef enum : NSUInteger {
 - (void)removeThresholdDate;
 
 /*!
- * @method incrementThresholdDay;
+ * @method incrementThresholdDate:
  * @abstract Increases threshold day by a specified number of days.
- * Sets threshold date to today if there is no threshold date.
+ * Sets threshold date to tomorrow if there is no threshold date.
  * @param Number of days to add to the task threshold date.
  */
-- (void)incrementThresholdDay:(NSInteger)days;
+- (void)incrementThresholdDate:(NSInteger)days;
 
 /*!
- * @method decrementThresholdDay;
+ * @method decrementThresholdDate:
  * @abstract Decreases threshold day by a specified number of days.
- * Sets threshold date to today if there is no threshold date.
+ * Sets threshold date to yesterday if there is no threshold date.
  * @param Number of days to subtract to the task threshold date.
  */
-- (void)decrementThresholdDay:(NSInteger)days;
+- (void)decrementThresholdDate:(NSInteger)days;
 
 /*!
  * @method getThresholdState:
@@ -317,6 +326,22 @@ typedef enum : NSUInteger {
  * is passed to it, the due date will move up rather than back.
  */
 - (void)postponeTask:(NSInteger)days;
+
+/*!
+ * @method incrementDueDate:
+ * @abstract Increases due date by a specified number of days.
+ * Sets due date to tomorrow if there is no threshold date.
+ * @param Number of days to add to the task due date.
+ */
+- (void)incrementDueDate:(NSInteger)days;
+
+/*!
+ * @method decrementDueDate:
+ * @abstract Decreases due date by a specified number of days.
+ * Sets due date to yesterday if there is no threshold date.
+ * @param Number of days to subtract to the task due date.
+ */
+- (void)decrementDueDate:(NSInteger)days;
 
 /*!
  * @method setDueDate:

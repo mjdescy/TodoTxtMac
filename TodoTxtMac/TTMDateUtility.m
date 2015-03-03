@@ -60,7 +60,6 @@
     // Convert dateString to NSDate.
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
     return [dateFormatter dateFromString:dateTimeString];
 }
 
@@ -70,8 +69,7 @@
     }
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
-    return [dateFormatter stringFromDate:date];
+        return [dateFormatter stringFromDate:date];
 }
 
 + (NSDate*)today {
@@ -94,13 +92,8 @@
         return nil;
     }
     NSDateComponents *comps = [[NSCalendar currentCalendar]
-                               components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit|
-                               NSHourCalendarUnit|NSMinuteCalendarUnit|NSSecondCalendarUnit
+                               components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
                                fromDate:date];
-    [comps setHour:00];
-    [comps setMinute:00];
-    [comps setSecond:00];
-    [comps setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
     
     return [[NSCalendar currentCalendar] dateFromComponents:comps];
 }
@@ -182,7 +175,6 @@
     }
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"GMT"]];
     [dateFormatter setLocale:[NSLocale currentLocale]];
     [dateFormatter setDateFormat:dateFormat];
     

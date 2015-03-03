@@ -44,13 +44,24 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-@class TTMTask;
+#import "NSMutableAttributableString+ColorRegExMatches.h"
+#import "RegExCategories.h"
 
-@interface TTMTableViewDelegate : NSObject <NSTableViewDelegate>
+@implementation NSMutableAttributedString (ColorRegExMatches)
 
-#pragma mark - Properties
+- (void)applyColor:(NSColor*)color toRegexPatternMatches:(NSString*)regExPattern {
+    NSArray *matches = [self.string matchesWithDetails:RX(regExPattern)];
+    for (RxMatch *match in matches) {
+        [self addAttribute:NSForegroundColorAttributeName
+                   value:color
+                   range:match.range];
+    }
+}
 
-@property (nonatomic, retain) IBOutlet NSArrayController *arrayController;
+- (void)applyColorToFullStringRange:(NSColor*)color {
+    [self addAttribute:NSForegroundColorAttributeName
+           value:color
+           range:NSMakeRange(0, [self.string length])];
+}
 
 @end

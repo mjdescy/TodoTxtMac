@@ -8,10 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		00165B2618DBD1EC00E137B8 /* TTMFiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00165B2518DBD1EC00E137B8 /* TTMFiltersController.m */; };
+		002218D81AA0D80800D6F3A0 /* TTMTask_Init_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 002218D71AA0D80800D6F3A0 /* TTMTask_Init_UnitTests.m */; };
+		002218DA1AA0EB3200D6F3A0 /* TTMTask_IsCompleted_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 002218D91AA0EB3200D6F3A0 /* TTMTask_IsCompleted_UnitTests.m */; };
+		002218DC1AA0F48D00D6F3A0 /* TTMTask_DueDate_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 002218DB1AA0F48D00D6F3A0 /* TTMTask_DueDate_UnitTests.m */; };
+		002218DE1AA107F600D6F3A0 /* TTMTask_CompletionDate_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 002218DD1AA107F600D6F3A0 /* TTMTask_CompletionDate_UnitTests.m */; };
+		002218E01AA1387900D6F3A0 /* TTMTask_ThresholdDate_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 002218DF1AA1387900D6F3A0 /* TTMTask_ThresholdDate_UnitTests.m */; };
+		002218E21AA139EB00D6F3A0 /* TTMTask_CreationDate_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 002218E11AA139EB00D6F3A0 /* TTMTask_CreationDate_UnitTests.m */; };
+		002218E41AA1704B00D6F3A0 /* TTMTask_DueState_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 002218E31AA1704B00D6F3A0 /* TTMTask_DueState_UnitTests.m */; };
+		002218E61AA173D100D6F3A0 /* TTMTask_ThresholdState_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 002218E51AA173D100D6F3A0 /* TTMTask_ThresholdState_UnitTests.m */; };
+		002218E81AA179CD00D6F3A0 /* TTMTask_MarkComplete_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 002218E71AA179CD00D6F3A0 /* TTMTask_MarkComplete_UnitTests.m */; };
+		002218EA1AA17B9B00D6F3A0 /* TTMTask_MarkIncomplete_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 002218E91AA17B9B00D6F3A0 /* TTMTask_MarkIncomplete_UnitTests.m */; };
 		002EAE5918DBD24C008E7517 /* TTMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002EAE5818DBD24C008E7517 /* TTMAppController.m */; };
 		002EAE5E18DCAE5C008E7517 /* TTMFilterPredicates.m in Sources */ = {isa = PBXBuildFile; fileRef = 002EAE5D18DCAE5C008E7517 /* TTMFilterPredicates.m */; };
 		003647E1193D562900FDF67A /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 003647E0193D562900FDF67A /* dsa_pub.pem */; };
-		0050D6841996AA38008F349B /* TTMTasklistMetadataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0050D6831996AA38008F349B /* TTMTasklistMetadataTests.m */; };
+		003F958F1AA2948D00A1FF47 /* TTMTask_ToggleCompletion_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F958E1AA2948D00A1FF47 /* TTMTask_ToggleCompletion_UnitTests.m */; };
+		003F95911AA2965600A1FF47 /* TTMDateUtility_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95901AA2965600A1FF47 /* TTMDateUtility_UnitTests.m */; };
+		003F95931AA296F300A1FF47 /* TTMTask_Priority_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95921AA296F300A1FF47 /* TTMTask_Priority_UnitTests.m */; };
+		003F95951AA2A35A00A1FF47 /* TTMTask_Projects_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95941AA2A35A00A1FF47 /* TTMTask_Projects_UnitTests.m */; };
+		003F95971AA2A44800A1FF47 /* TTMTask_Contexts_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95961AA2A44800A1FF47 /* TTMTask_Contexts_UnitTests.m */; };
+		003F95991AA2A64100A1FF47 /* TTMTask_SetDueDate_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95981AA2A64100A1FF47 /* TTMTask_SetDueDate_UnitTests.m */; };
+		003F959B1AA2B7A600A1FF47 /* TTMTask_RemoveDueDate_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F959A1AA2B7A600A1FF47 /* TTMTask_RemoveDueDate_UnitTests.m */; };
+		003F959E1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F959D1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.m */; };
+		003F95A01AA3F04C00A1FF47 /* TTMTask_Postpone_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F959F1AA3F04C00A1FF47 /* TTMTask_Postpone_UnitTests.m */; };
+		003F95A21AA3F41400A1FF47 /* TTMTask_IncreasePriority_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95A11AA3F41400A1FF47 /* TTMTask_IncreasePriority_UnitTests.m */; };
+		003F95A41AA3F5DC00A1FF47 /* TTMTask_DecreasePriority_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95A31AA3F5DC00A1FF47 /* TTMTask_DecreasePriority_UnitTests.m */; };
+		003F95A61AA3F68200A1FF47 /* TTMTask_RemovePriority_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95A51AA3F68200A1FF47 /* TTMTask_RemovePriority_UnitTests.m */; };
+		003F95A81AA3F83D00A1FF47 /* TTMTask_SetThresholdDate_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95A71AA3F83D00A1FF47 /* TTMTask_SetThresholdDate_UnitTests.m */; };
+		003F95AA1AA3F9C700A1FF47 /* TTMTask_IncrementThresholdDate_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95A91AA3F9C700A1FF47 /* TTMTask_IncrementThresholdDate_UnitTests.m */; };
+		003F95AC1AA3FBDA00A1FF47 /* TTMTask_DecrementThresholdDate_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95AB1AA3FBDA00A1FF47 /* TTMTask_DecrementThresholdDate_UnitTests.m */; };
+		003F95AE1AA3FC9600A1FF47 /* TTMTask_RemoveThresholdDate_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95AD1AA3FC9600A1FF47 /* TTMTask_RemoveThresholdDate_UnitTests.m */; };
+		003F95B01AA3FE4400A1FF47 /* TTMTask_AppendText_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95AF1AA3FE4400A1FF47 /* TTMTask_AppendText_UnitTests.m */; };
+		003F95B21AA4016200A1FF47 /* TTMTask_PrependText_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95B11AA4016200A1FF47 /* TTMTask_PrependText_UnitTests.m */; };
+		003F95B41AA40EC700A1FF47 /* TTMTask_IncrementDueDate_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95B31AA40EC700A1FF47 /* TTMTask_IncrementDueDate_UnitTests.m */; };
+		003F95B61AA40FB400A1FF47 /* TTMTask_DecrementDueDate_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95B51AA40FB400A1FF47 /* TTMTask_DecrementDueDate_UnitTests.m */; };
+		0050D6841996AA38008F349B /* TTMTasklistMetadata_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0050D6831996AA38008F349B /* TTMTasklistMetadata_UnitTests.m */; };
 		006062D818EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */; };
 		006B26461A81C82D00B0E47A /* TTMFindReplace.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006B26451A81C82D00B0E47A /* TTMFindReplace.xib */; };
 		006BA79E19DB9CFD00C8F408 /* TTMTasklistMetadata.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006BA79D19DB9CFD00C8F408 /* TTMTasklistMetadata.xib */; };
@@ -20,9 +50,7 @@
 		0086C98518B54F1A00A427AA /* TTMTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0086C98418B54F1A00A427AA /* TTMTableViewDelegate.m */; };
 		00930EAA18B536B00064D41B /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EA918B536B00064D41B /* RegExCategories.m */; };
 		00930EAD18B5371B0064D41B /* TTMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EAC18B5371B0064D41B /* TTMTask.m */; };
-		00930EAE18B5371B0064D41B /* TTMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EAC18B5371B0064D41B /* TTMTask.m */; };
 		00930EB118B537C10064D41B /* TTMDateUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EB018B537C10064D41B /* TTMDateUtility.m */; };
-		00930EB218B537C10064D41B /* TTMDateUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EB018B537C10064D41B /* TTMDateUtility.m */; };
 		00A6058219E3733F00846B69 /* NSAlert+BlockMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A6058119E3733F00846B69 /* NSAlert+BlockMethods.m */; };
 		00B4CB9C18B43E8400313DAA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B4CB9B18B43E8400313DAA /* Cocoa.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		00B4CBA618B43E8400313DAA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B4CBA418B43E8400313DAA /* InfoPlist.strings */; };
@@ -35,10 +63,9 @@
 		00B4CBBE18B43E8500313DAA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B4CBBD18B43E8500313DAA /* XCTest.framework */; };
 		00B4CBBF18B43E8500313DAA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B4CB9B18B43E8400313DAA /* Cocoa.framework */; };
 		00B4CBC718B43E8500313DAA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B4CBC518B43E8500313DAA /* InfoPlist.strings */; };
-		00B4CBC918B43E8500313DAA /* TodoTxtMacTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B4CBC818B43E8500313DAA /* TodoTxtMacTests.m */; };
+		00B4CBC918B43E8500313DAA /* TTMTask_ReplaceText_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B4CBC818B43E8500313DAA /* TTMTask_ReplaceText_UnitTests.m */; };
 		00B8C82518E48FFF008D9E48 /* TTMFieldEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B8C82418E48FFF008D9E48 /* TTMFieldEditor.m */; };
 		00D102B61991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */; };
-		00D102B71991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */; };
 		00DE02EC19E37E340093338A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DE02EB19E37E340093338A /* Sparkle.framework */; };
 		00DE02ED19E37E650093338A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DE02EB19E37E340093338A /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		00EAAB9718E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9618E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m */; };
@@ -79,12 +106,43 @@
 /* Begin PBXFileReference section */
 		00165B2418DBD1EC00E137B8 /* TTMFiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMFiltersController.h; sourceTree = "<group>"; };
 		00165B2518DBD1EC00E137B8 /* TTMFiltersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFiltersController.m; sourceTree = "<group>"; };
+		002218D71AA0D80800D6F3A0 /* TTMTask_Init_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_Init_UnitTests.m; sourceTree = "<group>"; };
+		002218D91AA0EB3200D6F3A0 /* TTMTask_IsCompleted_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_IsCompleted_UnitTests.m; sourceTree = "<group>"; };
+		002218DB1AA0F48D00D6F3A0 /* TTMTask_DueDate_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_DueDate_UnitTests.m; sourceTree = "<group>"; };
+		002218DD1AA107F600D6F3A0 /* TTMTask_CompletionDate_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_CompletionDate_UnitTests.m; sourceTree = "<group>"; };
+		002218DF1AA1387900D6F3A0 /* TTMTask_ThresholdDate_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_ThresholdDate_UnitTests.m; sourceTree = "<group>"; };
+		002218E11AA139EB00D6F3A0 /* TTMTask_CreationDate_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_CreationDate_UnitTests.m; sourceTree = "<group>"; };
+		002218E31AA1704B00D6F3A0 /* TTMTask_DueState_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_DueState_UnitTests.m; sourceTree = "<group>"; };
+		002218E51AA173D100D6F3A0 /* TTMTask_ThresholdState_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_ThresholdState_UnitTests.m; sourceTree = "<group>"; };
+		002218E71AA179CD00D6F3A0 /* TTMTask_MarkComplete_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_MarkComplete_UnitTests.m; sourceTree = "<group>"; };
+		002218E91AA17B9B00D6F3A0 /* TTMTask_MarkIncomplete_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_MarkIncomplete_UnitTests.m; sourceTree = "<group>"; };
 		002EAE5718DBD24C008E7517 /* TTMAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMAppController.h; sourceTree = "<group>"; };
 		002EAE5818DBD24C008E7517 /* TTMAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAppController.m; sourceTree = "<group>"; };
 		002EAE5C18DCAE5C008E7517 /* TTMFilterPredicates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMFilterPredicates.h; sourceTree = "<group>"; };
 		002EAE5D18DCAE5C008E7517 /* TTMFilterPredicates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFilterPredicates.m; sourceTree = "<group>"; };
 		003647E0193D562900FDF67A /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
-		0050D6831996AA38008F349B /* TTMTasklistMetadataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTasklistMetadataTests.m; sourceTree = "<group>"; };
+		003F958E1AA2948D00A1FF47 /* TTMTask_ToggleCompletion_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_ToggleCompletion_UnitTests.m; sourceTree = "<group>"; };
+		003F95901AA2965600A1FF47 /* TTMDateUtility_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMDateUtility_UnitTests.m; sourceTree = "<group>"; };
+		003F95921AA296F300A1FF47 /* TTMTask_Priority_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_Priority_UnitTests.m; sourceTree = "<group>"; };
+		003F95941AA2A35A00A1FF47 /* TTMTask_Projects_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_Projects_UnitTests.m; sourceTree = "<group>"; };
+		003F95961AA2A44800A1FF47 /* TTMTask_Contexts_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_Contexts_UnitTests.m; sourceTree = "<group>"; };
+		003F95981AA2A64100A1FF47 /* TTMTask_SetDueDate_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_SetDueDate_UnitTests.m; sourceTree = "<group>"; };
+		003F959A1AA2B7A600A1FF47 /* TTMTask_RemoveDueDate_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_RemoveDueDate_UnitTests.m; sourceTree = "<group>"; };
+		003F959C1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributableString+ColorRegExMatches.h"; sourceTree = "<group>"; };
+		003F959D1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableAttributableString+ColorRegExMatches.m"; sourceTree = "<group>"; };
+		003F959F1AA3F04C00A1FF47 /* TTMTask_Postpone_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_Postpone_UnitTests.m; sourceTree = "<group>"; };
+		003F95A11AA3F41400A1FF47 /* TTMTask_IncreasePriority_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_IncreasePriority_UnitTests.m; sourceTree = "<group>"; };
+		003F95A31AA3F5DC00A1FF47 /* TTMTask_DecreasePriority_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_DecreasePriority_UnitTests.m; sourceTree = "<group>"; };
+		003F95A51AA3F68200A1FF47 /* TTMTask_RemovePriority_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_RemovePriority_UnitTests.m; sourceTree = "<group>"; };
+		003F95A71AA3F83D00A1FF47 /* TTMTask_SetThresholdDate_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_SetThresholdDate_UnitTests.m; sourceTree = "<group>"; };
+		003F95A91AA3F9C700A1FF47 /* TTMTask_IncrementThresholdDate_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_IncrementThresholdDate_UnitTests.m; sourceTree = "<group>"; };
+		003F95AB1AA3FBDA00A1FF47 /* TTMTask_DecrementThresholdDate_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_DecrementThresholdDate_UnitTests.m; sourceTree = "<group>"; };
+		003F95AD1AA3FC9600A1FF47 /* TTMTask_RemoveThresholdDate_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_RemoveThresholdDate_UnitTests.m; sourceTree = "<group>"; };
+		003F95AF1AA3FE4400A1FF47 /* TTMTask_AppendText_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_AppendText_UnitTests.m; sourceTree = "<group>"; };
+		003F95B11AA4016200A1FF47 /* TTMTask_PrependText_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_PrependText_UnitTests.m; sourceTree = "<group>"; };
+		003F95B31AA40EC700A1FF47 /* TTMTask_IncrementDueDate_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_IncrementDueDate_UnitTests.m; sourceTree = "<group>"; };
+		003F95B51AA40FB400A1FF47 /* TTMTask_DecrementDueDate_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_DecrementDueDate_UnitTests.m; sourceTree = "<group>"; };
+		0050D6831996AA38008F349B /* TTMTasklistMetadata_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTasklistMetadata_UnitTests.m; sourceTree = "<group>"; };
 		006062D618EC6B0800D147F2 /* NSUserDefaults+myColorSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+myColorSupport.h"; sourceTree = "<group>"; };
 		006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+myColorSupport.m"; sourceTree = "<group>"; };
 		006B26451A81C82D00B0E47A /* TTMFindReplace.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMFindReplace.xib; sourceTree = "<group>"; };
@@ -122,7 +180,7 @@
 		00B4CBBD18B43E8500313DAA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		00B4CBC418B43E8500313DAA /* TodoTxtMacTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TodoTxtMacTests-Info.plist"; sourceTree = "<group>"; };
 		00B4CBC618B43E8500313DAA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		00B4CBC818B43E8500313DAA /* TodoTxtMacTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodoTxtMacTests.m; sourceTree = "<group>"; };
+		00B4CBC818B43E8500313DAA /* TTMTask_ReplaceText_UnitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTMTask_ReplaceText_UnitTests.m; sourceTree = "<group>"; };
 		00B8C82318E48FFF008D9E48 /* TTMFieldEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMFieldEditor.h; sourceTree = "<group>"; };
 		00B8C82418E48FFF008D9E48 /* TTMFieldEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFieldEditor.m; sourceTree = "<group>"; };
 		00D102B41991ABBE00D30237 /* TTMTasklistMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMTasklistMetadata.h; sourceTree = "<group>"; };
@@ -221,6 +279,8 @@
 				006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */,
 				00A6058019E3733F00846B69 /* NSAlert+BlockMethods.h */,
 				00A6058119E3733F00846B69 /* NSAlert+BlockMethods.m */,
+				003F959C1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.h */,
+				003F959D1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -299,9 +359,38 @@
 		00B4CBC218B43E8500313DAA /* TodoTxtMacTests */ = {
 			isa = PBXGroup;
 			children = (
-				00B4CBC818B43E8500313DAA /* TodoTxtMacTests.m */,
 				00B4CBC318B43E8500313DAA /* Supporting Files */,
-				0050D6831996AA38008F349B /* TTMTasklistMetadataTests.m */,
+				003F95901AA2965600A1FF47 /* TTMDateUtility_UnitTests.m */,
+				0050D6831996AA38008F349B /* TTMTasklistMetadata_UnitTests.m */,
+				002218D71AA0D80800D6F3A0 /* TTMTask_Init_UnitTests.m */,
+				003F95921AA296F300A1FF47 /* TTMTask_Priority_UnitTests.m */,
+				002218DD1AA107F600D6F3A0 /* TTMTask_CompletionDate_UnitTests.m */,
+				002218E11AA139EB00D6F3A0 /* TTMTask_CreationDate_UnitTests.m */,
+				002218DB1AA0F48D00D6F3A0 /* TTMTask_DueDate_UnitTests.m */,
+				002218E31AA1704B00D6F3A0 /* TTMTask_DueState_UnitTests.m */,
+				002218DF1AA1387900D6F3A0 /* TTMTask_ThresholdDate_UnitTests.m */,
+				002218E51AA173D100D6F3A0 /* TTMTask_ThresholdState_UnitTests.m */,
+				002218D91AA0EB3200D6F3A0 /* TTMTask_IsCompleted_UnitTests.m */,
+				002218E71AA179CD00D6F3A0 /* TTMTask_MarkComplete_UnitTests.m */,
+				002218E91AA17B9B00D6F3A0 /* TTMTask_MarkIncomplete_UnitTests.m */,
+				003F958E1AA2948D00A1FF47 /* TTMTask_ToggleCompletion_UnitTests.m */,
+				003F95941AA2A35A00A1FF47 /* TTMTask_Projects_UnitTests.m */,
+				003F95961AA2A44800A1FF47 /* TTMTask_Contexts_UnitTests.m */,
+				003F95981AA2A64100A1FF47 /* TTMTask_SetDueDate_UnitTests.m */,
+				003F959F1AA3F04C00A1FF47 /* TTMTask_Postpone_UnitTests.m */,
+				003F95B31AA40EC700A1FF47 /* TTMTask_IncrementDueDate_UnitTests.m */,
+				003F95B51AA40FB400A1FF47 /* TTMTask_DecrementDueDate_UnitTests.m */,
+				003F959A1AA2B7A600A1FF47 /* TTMTask_RemoveDueDate_UnitTests.m */,
+				003F95A11AA3F41400A1FF47 /* TTMTask_IncreasePriority_UnitTests.m */,
+				003F95A31AA3F5DC00A1FF47 /* TTMTask_DecreasePriority_UnitTests.m */,
+				003F95A51AA3F68200A1FF47 /* TTMTask_RemovePriority_UnitTests.m */,
+				003F95A71AA3F83D00A1FF47 /* TTMTask_SetThresholdDate_UnitTests.m */,
+				003F95A91AA3F9C700A1FF47 /* TTMTask_IncrementThresholdDate_UnitTests.m */,
+				003F95AB1AA3FBDA00A1FF47 /* TTMTask_DecrementThresholdDate_UnitTests.m */,
+				003F95AD1AA3FC9600A1FF47 /* TTMTask_RemoveThresholdDate_UnitTests.m */,
+				003F95AF1AA3FE4400A1FF47 /* TTMTask_AppendText_UnitTests.m */,
+				003F95B11AA4016200A1FF47 /* TTMTask_PrependText_UnitTests.m */,
+				00B4CBC818B43E8500313DAA /* TTMTask_ReplaceText_UnitTests.m */,
 			);
 			path = TodoTxtMacTests;
 			sourceTree = "<group>";
@@ -494,6 +583,7 @@
 				00B4CBAF18B43E8400313DAA /* TTMDocument.m in Sources */,
 				00930EAA18B536B00064D41B /* RegExCategories.m in Sources */,
 				00B4CBA818B43E8400313DAA /* main.m in Sources */,
+				003F959E1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.m in Sources */,
 				00EAAB9718E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m in Sources */,
 				00EC5EA118E3BC920021242B /* TTMAppDelegate.m in Sources */,
 				00F811EF18D53F7300379B99 /* TTMPreferencesController.m in Sources */,
@@ -508,11 +598,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00930EAE18B5371B0064D41B /* TTMTask.m in Sources */,
-				00D102B71991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */,
-				00930EB218B537C10064D41B /* TTMDateUtility.m in Sources */,
-				00B4CBC918B43E8500313DAA /* TodoTxtMacTests.m in Sources */,
-				0050D6841996AA38008F349B /* TTMTasklistMetadataTests.m in Sources */,
+				003F95911AA2965600A1FF47 /* TTMDateUtility_UnitTests.m in Sources */,
+				002218DA1AA0EB3200D6F3A0 /* TTMTask_IsCompleted_UnitTests.m in Sources */,
+				003F95971AA2A44800A1FF47 /* TTMTask_Contexts_UnitTests.m in Sources */,
+				003F958F1AA2948D00A1FF47 /* TTMTask_ToggleCompletion_UnitTests.m in Sources */,
+				003F95A41AA3F5DC00A1FF47 /* TTMTask_DecreasePriority_UnitTests.m in Sources */,
+				002218EA1AA17B9B00D6F3A0 /* TTMTask_MarkIncomplete_UnitTests.m in Sources */,
+				002218E41AA1704B00D6F3A0 /* TTMTask_DueState_UnitTests.m in Sources */,
+				003F95A81AA3F83D00A1FF47 /* TTMTask_SetThresholdDate_UnitTests.m in Sources */,
+				003F95B61AA40FB400A1FF47 /* TTMTask_DecrementDueDate_UnitTests.m in Sources */,
+				002218DC1AA0F48D00D6F3A0 /* TTMTask_DueDate_UnitTests.m in Sources */,
+				002218E61AA173D100D6F3A0 /* TTMTask_ThresholdState_UnitTests.m in Sources */,
+				002218E21AA139EB00D6F3A0 /* TTMTask_CreationDate_UnitTests.m in Sources */,
+				002218E81AA179CD00D6F3A0 /* TTMTask_MarkComplete_UnitTests.m in Sources */,
+				00B4CBC918B43E8500313DAA /* TTMTask_ReplaceText_UnitTests.m in Sources */,
+				003F95A61AA3F68200A1FF47 /* TTMTask_RemovePriority_UnitTests.m in Sources */,
+				003F95AE1AA3FC9600A1FF47 /* TTMTask_RemoveThresholdDate_UnitTests.m in Sources */,
+				003F95A21AA3F41400A1FF47 /* TTMTask_IncreasePriority_UnitTests.m in Sources */,
+				003F95951AA2A35A00A1FF47 /* TTMTask_Projects_UnitTests.m in Sources */,
+				003F95B41AA40EC700A1FF47 /* TTMTask_IncrementDueDate_UnitTests.m in Sources */,
+				003F95AC1AA3FBDA00A1FF47 /* TTMTask_DecrementThresholdDate_UnitTests.m in Sources */,
+				0050D6841996AA38008F349B /* TTMTasklistMetadata_UnitTests.m in Sources */,
+				003F95B21AA4016200A1FF47 /* TTMTask_PrependText_UnitTests.m in Sources */,
+				003F959B1AA2B7A600A1FF47 /* TTMTask_RemoveDueDate_UnitTests.m in Sources */,
+				002218D81AA0D80800D6F3A0 /* TTMTask_Init_UnitTests.m in Sources */,
+				003F95AA1AA3F9C700A1FF47 /* TTMTask_IncrementThresholdDate_UnitTests.m in Sources */,
+				002218E01AA1387900D6F3A0 /* TTMTask_ThresholdDate_UnitTests.m in Sources */,
+				003F95B01AA3FE4400A1FF47 /* TTMTask_AppendText_UnitTests.m in Sources */,
+				002218DE1AA107F600D6F3A0 /* TTMTask_CompletionDate_UnitTests.m in Sources */,
+				003F95A01AA3F04C00A1FF47 /* TTMTask_Postpone_UnitTests.m in Sources */,
+				003F95991AA2A64100A1FF47 /* TTMTask_SetDueDate_UnitTests.m in Sources */,
+				003F95931AA296F300A1FF47 /* TTMTask_Priority_UnitTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,6 +760,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_LOADER = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -654,6 +771,7 @@
 				INFOPLIST_FILE = "TodoTxtMac/TodoTxtMac-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				TEST_HOST = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -672,6 +790,7 @@
 				INFOPLIST_FILE = "TodoTxtMac/TodoTxtMac-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

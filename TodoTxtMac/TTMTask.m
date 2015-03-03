@@ -47,6 +47,7 @@
 #import "TTMTask.h"
 #import "RegExCategories.h"
 #import "TTMDateUtility.h"
+#import "NSMutableAttributableString+ColorRegExMatches.h"
 
 @implementation TTMTask
 
@@ -55,16 +56,18 @@
 // define constants for regular expressions
 static NSString * const LineBreakPattern = @"(\\r|\\n)";
 static NSString * const CompletedPattern = @"^x\\s((\\d{4})-(\\d{2})-(\\d{2}))\\s";
-static NSString * const CompletionDatePattern = @"(?<=^x\\s)((\\d{4})-(\\d{2})-(\\d{2}))";
+static NSString * const CompletionDatePattern = @"(?<=^x\\s)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
 static NSString * const PriorityTextPattern = @"^(\\([A-Z]\\)\\s)";
 static NSString * const CreationDatePatternIncomplete =
-    @"(?<=^|\\([A-Z]\\)\\s)((\\d{4})-(\\d{2})-(\\d{2}))";
+    @"(?<=^|\\([A-Z]\\)\\s)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
 static NSString * const CreationDatePatternCompleted =
-    @"(?<=^x\\s((\\d{4})-(\\d{2})-(\\d{2}))\\s)((\\d{4})-(\\d{2})-(\\d{2}))";
-static NSString * const DueDatePattern = @"(?<=due:)((\\d{4})-(\\d{2})-(\\d{2}))";
-static NSString * const FullDueDatePattern = @"((^|\\s)due:)((\\d{4})-(\\d{2})-(\\d{2}))";
-static NSString * const ThresholdDatePattern = @"(?<=t:)((\\d{4})-(\\d{2})-(\\d{2}))";
-static NSString * const FullThresholdDatePattern = @"((^|\\s)t:)((\\d{4})-(\\d{2})-(\\d{2}))";
+    @"(?<=^x\\s((\\d{4})-(\\d{2})-(\\d{2}))\\s)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
+static NSString * const DueDatePattern = @"(?<=(^|\\s)due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
+static NSString * const FullDueDatePatternMiddleOrEnd = @"((\\s)due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
+static NSString * const FullDueDatePatternBeginning = @"^due:((\\d{4})-(\\d{2})-(\\d{2}))\\s?|$";
+static NSString * const ThresholdDatePattern = @"(?<=(^|\\s)t:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
+static NSString * const FullThresholdDatePatternMiddleOrEnd = @"((\\s)t:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
+static NSString * const FullThresholdDatePatternBeginning = @"^t:((\\d{4})-(\\d{2})-(\\d{2}))\\s?|$";
 static NSString * const ProjectPattern = @"(?<=^|\\s)(\\+[^\\s]+)";
 static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
 static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
@@ -137,7 +140,7 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
         _isCompleted = NO;
         _isPrioritized = NO;
         _priorityText = @"";
-        _priority = ' ';
+        _priority = '~';
         _contexts = @"";
         _contextsArray = nil;
         _projects = @"";
@@ -158,10 +161,21 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     
     // set properties for non-blank strings
     _isBlank = NO;
-    _isCompleted = [_rawText isMatch:RX(CompletedPattern)];
-    _isPrioritized = [_rawText isMatch:RX(PriorityTextPattern)];
+    
+    // completion date
+    _completionDateText = [_rawText firstMatch:RX(CompletionDatePattern)];
+    // Set completion date to the high date (9999-12-31) to ensure that tasks with no
+    // completion date are sorted after tasks with a due date.
+    NSDate *newCompletionDate = (_completionDateText == nil) ?
+        [TTMDateUtility convertStringToDate:@"9999-12-31"] :
+        [TTMDateUtility convertStringToDate:_completionDateText];
+    _completionDate = (newCompletionDate == nil) ?
+        [TTMDateUtility convertStringToDate:@"9999-12-31"] :
+        newCompletionDate;
+    _isCompleted = [_rawText isMatch:RX(CompletedPattern)] && (newCompletionDate != nil);
     
     // priority
+    _isPrioritized = [_rawText isMatch:RX(PriorityTextPattern)];
     _fullPriorityText = [_rawText firstMatch:RX(PriorityTextPattern)];
     NSRange range = {.location = 1, .length = 1};
     _priorityText = [_fullPriorityText substringWithRange:range];
@@ -181,39 +195,49 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     _contexts = [_contextsArray componentsJoinedByString:@", "];
     _hasContexts = (_contextsArray.count > 0);
     
-    // completion date
-    _completionDateText = [_rawText firstMatch:RX(CompletionDatePattern)];
-    // Set completion date to the high date (9999-12-31) to ensure that tasks with no
-    // completion date are sorted after tasks with a due date.
-    _completionDate = (_completionDateText == nil) ?
-        [TTMDateUtility convertStringToDate:@"9999-12-31"] :
-        [TTMDateUtility convertStringToDate:_completionDateText];
-    
     // due date
     _dueDateText = [_rawText firstMatch:RX(DueDatePattern)];
     // Set due date to the high date (9999-12-31) to ensure that tasks with no due date
     // are sorted after tasks with a due date.
-    _dueDate = (_dueDateText == nil) ?
+    NSDate *newDueDate = (_dueDateText == nil) ?
         [TTMDateUtility convertStringToDate:@"9999-12-31"] :
         [TTMDateUtility convertStringToDate:_dueDateText];
-    
+    if (newDueDate == nil) {
+        _dueDate = [TTMDateUtility convertStringToDate:@"9999-12-31"];
+        _dueDateText = @"";
+    } else {
+        _dueDate = newDueDate;
+    }
+
     // creation date
     _creationDateText = _isCompleted ?
         [_rawText firstMatch:RX(CreationDatePatternCompleted)] :
         [_rawText firstMatch:RX(CreationDatePatternIncomplete)];
     // Set creation date to the high date (9999-12-31) to ensure that tasks with no
     // creation date are sorted after tasks with a creation date.
-    _creationDate = (_creationDateText == nil) ?
+    NSDate *newCreationDate = (_creationDateText == nil) ?
         [TTMDateUtility convertStringToDate:@"9999-12-31"] :
         [TTMDateUtility convertStringToDate:_creationDateText];
+    if (newCreationDate == nil) {
+        _creationDate = [TTMDateUtility convertStringToDate:@"9999-12-31"];
+        _creationDateText = @"";
+    } else {
+        _creationDate = newCreationDate;
+    }
 
     // threshold date
     _thresholdDateText = [_rawText firstMatch:RX(ThresholdDatePattern)];
-    // Set threshold date to the high date (1900-01-01) to ensure that tasks with no
+    // Set threshold date to the low date (1900-01-01) to ensure that tasks with no
     // threshold date are properly sorted/displated when filtered.
-    _thresholdDate = (_thresholdDateText == nil) ?
+    NSDate *newThresholdDate = (_thresholdDateText == nil) ?
         [TTMDateUtility convertStringToDate:@"1900-01-01"] :
         [TTMDateUtility convertStringToDate:_thresholdDateText];
+    if (newThresholdDate == nil) {
+        _thresholdDate = [TTMDateUtility convertStringToDate:@"1900-01-01"];
+        _thresholdDateText = @"";
+    } else {
+        _thresholdDate = newThresholdDate;
+    }
     
     // due state (past due, due today, not due)
     _dueState = [self getDueState];
@@ -226,18 +250,30 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     return _rawText;
 }
 
-- (NSAttributedString*)displayText {
+- (NSAttributedString*)displayText:(BOOL)selected
+      useHighlightColorsInTaskList:(BOOL)useHighlightColorsInTaskList
+                    completedColor:(NSColor*)completedColor
+                     dueTodayColor:(NSColor*)dueTodayColor
+                      overdueColor:(NSColor*)overdueColor
+                      projectColor:(NSColor*)projectColor
+                      contextColor:(NSColor*)contextColor
+                          tagColor:(NSColor*)tagColor
+                      dueDateColor:(NSColor*)dueDateColor
+                thresholdDateColor:(NSColor*)thresholdDateColor
+                 creationDateColor:(NSColor*)creationDateColor {
     NSMutableAttributedString *as = [[NSMutableAttributedString alloc] initWithString:self.rawText];
     NSRange fullStringRange = NSMakeRange(0, [as length]);
+    
     // Apply strikethrough and light gray color to completed tasks when they are displayed
     // in the tableView.
     if (self.isCompleted) {
         [as addAttribute:NSStrikethroughStyleAttributeName
-                   value:(NSNumber *)kCFBooleanTrue
+                   value:(NSNumber*)kCFBooleanTrue
                    range:fullStringRange];
         [as addAttribute:NSForegroundColorAttributeName
                    value:[NSColor lightGrayColor]
                    range:fullStringRange];
+        return as;
     }
     
     // Apply boldface to the task priority.
@@ -245,59 +281,40 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
         [as applyFontTraits:NSBoldFontMask range:NSMakeRange(0, 3)];
     }
     
-    // Mark due texts in red.
+    // Only change colors if row is not selected and user wants to see highlight colors.
+    if (selected || !useHighlightColorsInTaskList) {
+        return as;
+    }
+    
+    // Color due texts.
     if (self.dueState == DueToday) {
-        [as addAttribute:NSForegroundColorAttributeName
-                   value:[NSColor redColor]
-                   range:fullStringRange];
+        [as applyColorToFullStringRange:dueTodayColor];
     }
     
-    // Mark overdue texts in purple.
+    // Color overdue texts.
     if (self.dueState == Overdue) {
-        [as addAttribute:NSForegroundColorAttributeName
-                   value:[NSColor purpleColor]
-                   range:fullStringRange];
+        [as applyColorToFullStringRange:overdueColor];
     }
     
-    // Highlight projects.
-    NSArray* matches = [self.rawText matchesWithDetails:RX(ProjectPattern)];
-    for (RxMatch *match in matches) {
-        [as addAttribute:NSForegroundColorAttributeName
-                   value:[NSColor darkGrayColor]
-                   range:match.range];
-    }
+    // Color projects.
+    [as applyColor:projectColor toRegexPatternMatches:ProjectPattern];
     
-    // Highlight contexts.
-    matches = [self.rawText matchesWithDetails:RX(ContextPattern)];
-    for (RxMatch *match in matches) {
-        [as addAttribute:NSForegroundColorAttributeName
-                   value:[NSColor darkGrayColor]
-                   range:match.range];
-    }
+    // Color contexts.
+    [as applyColor:contextColor toRegexPatternMatches:ContextPattern];
     
-    // Highlight tags.
-    matches = [self.rawText matchesWithDetails:RX(TagPattern)];
-    for (RxMatch *match in matches) {
-        [as addAttribute:NSForegroundColorAttributeName
-                   value:[NSColor darkGrayColor]
-                   range:match.range];
-    }
+    // Color tags.
+    [as applyColor:tagColor toRegexPatternMatches:TagPattern];
+    
+    // Color due dates.
+    [as applyColor:dueDateColor toRegexPatternMatches:FullDueDatePatternBeginning];
+    [as applyColor:dueDateColor toRegexPatternMatches:FullDueDatePatternMiddleOrEnd];
+    
+    // Color threshold dates.
+    [as applyColor:thresholdDateColor toRegexPatternMatches:FullThresholdDatePatternBeginning];
+    [as applyColor:thresholdDateColor toRegexPatternMatches:FullThresholdDatePatternMiddleOrEnd];
 
-    // Highlight due dates.
-    matches = [self.rawText matchesWithDetails:RX(FullDueDatePattern)];
-    for (RxMatch *match in matches) {
-        [as addAttribute:NSForegroundColorAttributeName
-                   value:[NSColor darkGrayColor]
-                   range:match.range];
-    }
-
-    // Highlight threshold dates.
-    matches = [self.rawText matchesWithDetails:RX(FullThresholdDatePattern)];
-    for (RxMatch *match in matches) {
-        [as addAttribute:NSForegroundColorAttributeName
-                   value:[NSColor darkGrayColor]
-                   range:match.range];
-    }
+    // Color creation dates (incomplete tasks only).
+    [as applyColor:creationDateColor toRegexPatternMatches:CreationDatePatternIncomplete];
     
     return as;
 }
@@ -305,32 +322,73 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
 #pragma mark - Append and Prepend Methods
 
 - (void)appendText:(NSString*)textToAppend {
-    NSString *newRawText = [self.rawText
-                            stringByAppendingFormat:@"%c%@", ' ', textToAppend];
-    [self setRawText:newRawText];
+    if (self.isBlank) {
+        self.rawText = textToAppend;
+        return;
+    }
+    
+    self.rawText = [self.rawText stringByAppendingFormat:@"%c%@", ' ', textToAppend];
 }
 
 - (void)prependText:(NSString*)textToPrepend {
-    NSString *separator = @" ";
-    NSString *rawTextRemainder = self.rawText;
-    NSArray *stringComponents = nil;
-    NSString *trimmedPriorityText = [self.fullPriorityText substringToIndex:3];
-
-    if (self.isPrioritized && self.creationDateText != nil) {
-        rawTextRemainder = [self.rawText substringFromIndex:15];
-        stringComponents = @[trimmedPriorityText, self.creationDateText,
-                             textToPrepend, rawTextRemainder  ];
-    } else if (self.isPrioritized && self.creationDateText == nil) {
-        rawTextRemainder = [self.rawText substringFromIndex:4];
-        stringComponents = @[trimmedPriorityText, textToPrepend, rawTextRemainder];
-    } else if (self.creationDateText != nil) {
-        rawTextRemainder = [self.rawText substringFromIndex:11];
-        stringComponents = @[self.creationDateText, textToPrepend, rawTextRemainder];
-    } else {
-        rawTextRemainder = self.rawText;
-        stringComponents = @[textToPrepend, rawTextRemainder];
+    if (self.isBlank) {
+        self.rawText = textToPrepend;
+        return;
     }
-    [self setRawText:[stringComponents componentsJoinedByString:separator]];
+
+    NSUInteger insertionIndex;
+    
+    if (self.isCompleted && [self.creationDateText length] > 0) {
+        // For completed tasks with creation date, prepend text after the completion date and creation date
+        insertionIndex = 24;
+    } else if (self.isCompleted && [self.creationDateText length] == 0) {
+        // For completed tasks with no creation date, prepend text after the completion date
+        insertionIndex = 13;
+    } else if (self.isPrioritized && [self.creationDateText length] > 0) {
+        // For incomplete tasks with a creation date, prepend text after priority and creation date.
+        insertionIndex = 15;
+    } else if (self.isPrioritized && [self.creationDateText length] == 0) {
+        // For incomplete tasks with a priority and no creation date, prepend text after priority.
+        insertionIndex = 4;
+    } else if ([self.creationDateText length] > 0) {
+        // For incomplete tasks with a creation date, prepend text after creation date.
+        insertionIndex = 11;
+    } else {
+        // For all other types of tasks, prepend text to the beginning of the task.
+        insertionIndex = 0;
+    }
+    
+    if (insertionIndex == 0)
+    {
+        self.rawText = [NSString stringWithFormat:@"%@%@%@", textToPrepend, @" ", self.rawText];
+        return;
+    }
+
+    NSString *rawTextPrefix = [self.rawText substringWithRange:NSMakeRange(0, insertionIndex - 1)];
+    NSString *rawTextRemainder = [self.rawText substringFromIndex:insertionIndex];
+    NSArray *rawTextComponents = @[rawTextPrefix, textToPrepend, rawTextRemainder];
+    self.RawText = [rawTextComponents componentsJoinedByString:@" "];
+
+//    NSString *separator = @" ";
+//    NSString *rawTextRemainder = self.rawText;
+//    NSArray *stringComponents = nil;
+//    NSString *trimmedPriorityText = [self.fullPriorityText substringToIndex:3];
+//
+//    if (self.isPrioritized && self.creationDateText != nil) {
+//        rawTextRemainder = [self.rawText substringFromIndex:15];
+//        stringComponents = @[trimmedPriorityText, self.creationDateText,
+//                             textToPrepend, rawTextRemainder  ];
+//    } else if (self.isPrioritized && self.creationDateText == nil) {
+//        rawTextRemainder = [self.rawText substringFromIndex:4];
+//        stringComponents = @[trimmedPriorityText, textToPrepend, rawTextRemainder];
+//    } else if (self.creationDateText != nil) {
+//        rawTextRemainder = [self.rawText substringFromIndex:11];
+//        stringComponents = @[self.creationDateText, textToPrepend, rawTextRemainder];
+//    } else {
+//        rawTextRemainder = self.rawText;
+//        stringComponents = @[textToPrepend, rawTextRemainder];
+//    }
+//    self.rawText = [stringComponents componentsJoinedByString:separator];
 }
 
 #pragma Find/replace Method
@@ -380,11 +438,11 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
         return;
     }
     
-    self.rawText = [[self.rawText replace:RX(FullThresholdDatePattern) with:@""]
-                    stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *newRawText = [self.rawText replace:RX(FullThresholdDatePatternBeginning) with:@""];
+    self.rawText = [newRawText replace:RX(FullThresholdDatePatternMiddleOrEnd) with:@""];
 }
 
-- (void)incrementThresholdDay:(NSInteger)days {
+- (void)incrementThresholdDate:(NSInteger)days {
     // Blank tasks don't get updated threshold dates.
     if (self.isBlank) {
         return;
@@ -403,11 +461,11 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     // Add days to that date to create the new due date.
     NSDate *newThresholdDate = [TTMDateUtility addDays:days toDate:oldThresholdDate];
     
-    [self setThresholdDate:newThresholdDate];
+    self.thresholdDate = newThresholdDate;
 }
 
-- (void)decrementThresholdDay:(NSInteger)days {
-    [self incrementThresholdDay:(-1 * days)];
+- (void)decrementThresholdDate:(NSInteger)days {
+    [self incrementThresholdDate:(-1 * days)];
 }
 
 - (TTMThresholdState)getThresholdState {
@@ -447,9 +505,9 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     if (self.isPrioritized) {
         NSRange oldPriority = [self.rawText rangeOfString:self.fullPriorityText];
         if (NSNotFound != oldPriority.location) {
-            self.rawText =
-             [self.rawText stringByReplacingCharactersInRange:oldPriority
-              withString:[NSString stringWithFormat:@"%c%c%c%c", '(', priority, ')', ' ']];
+            self.rawText = [self.rawText stringByReplacingCharactersInRange:oldPriority
+                            withString:[NSString stringWithFormat:
+                                        @"%c%c%c%c", '(', priority, ')', ' ']];
         }
     } else {
         self.rawText = [NSString stringWithFormat:@"%c%c%c %@", '(', priority, ')', self.rawText];
@@ -474,7 +532,6 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     
     // increase priority of task (e.g. 'B' - 1 = 'A')
     self.priority = self.priority - 1;
-//    [self setPriority:(self.priority - 1)];
 }
 
 - (void)decreasePriority {
@@ -496,7 +553,6 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     
     // decrease priority of task (e.g. 'A' + 1 = 'B')
     self.priority = self.priority + 1;
-//    [self setPriority:(self.priority + 1)];
 }
 
 - (void)removePriority {
@@ -530,7 +586,7 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
         [TTMDateUtility todayAsString], ' ', rawTextWithoutPriority];
     
     // Update the task's raw text.
-    [self setRawText:newRawText];
+    self.rawText = newRawText;
 }
 
 - (void)markIncomplete {
@@ -541,7 +597,7 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     }
     
     // Remove the completed task prepended substring and update all class properties.
-    [self setRawText:[RX(CompletedPattern) replace:self.rawText with:@""]];
+    self.rawText = [RX(CompletedPattern) replace:self.rawText with:@""];
 }
 
 - (void)toggleCompletionStatus {
@@ -570,11 +626,25 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
 
     // Add days to that date to create the new due date.
     NSDate *newDueDate = [TTMDateUtility addDays:daysToPostpone toDate:oldDueDate];
+    
+    self.dueDate = newDueDate;
+}
 
-    [self setDueDate:newDueDate];
+- (void)incrementDueDate:(NSInteger)days {
+    [self postponeTask:days];
+}
+
+- (void)decrementDueDate:(NSInteger)days {
+    [self postponeTask:(-1 * days)];
+
 }
 
 - (void)setDueDate:(NSDate *)dueDate {
+    // Blank tasks don't get due dates.
+    if (self.isBlank) {
+        return;
+    }
+    
     NSString *newDueDateText = [TTMDateUtility convertDateToString:dueDate];
     // If the item has a due date, exchange the current due date with the new.
     // Else if the item does not have a due date, append the new due date to the task.
@@ -588,9 +658,9 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     if (self.isBlank || !self.dueDate) {
         return;
     }
-
-    self.rawText = [[self.rawText replace:RX(FullDueDatePattern) with:@""]
-                    stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    
+    NSString *newRawText = [self.rawText replace:RX(FullDueDatePatternBeginning) with:@""];
+    self.rawText = [newRawText replace:RX(FullDueDatePatternMiddleOrEnd) with:@""];
 }
 
 @end

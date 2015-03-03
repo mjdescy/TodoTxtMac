@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
@@ -19,12 +19,12 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="546" height="265"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="546" height="265"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <tabView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y76-Kz-NYB">
+                    <tabView translatesAutoresizingMaskIntoConstraints="NO" id="y76-Kz-NYB">
                         <rect key="frame" x="13" y="10" width="520" height="249"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
@@ -290,6 +290,9 @@
                                     <subviews>
                                         <button translatesAutoresizingMaskIntoConstraints="NO" id="LFL-6w-UIX">
                                             <rect key="frame" x="15" y="184" width="470" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="466" id="kv5-qF-JmV"/>
+                                            </constraints>
                                             <buttonCell key="cell" type="check" title="Highlight due state, projects, contexts, due date, tags, etc." bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="g4E-76-FN1">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -300,262 +303,221 @@
                                             </connections>
                                         </button>
                                         <box autoresizesSubviews="NO" title="Customize colors for:" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="d7n-EI-WOY">
-                                            <rect key="frame" x="6" y="5" width="488" height="173"/>
+                                            <rect key="frame" x="14" y="11" width="480" height="167"/>
                                             <view key="contentView">
-                                                <rect key="frame" x="1" y="1" width="486" height="155"/>
+                                                <rect key="frame" x="1" y="1" width="478" height="149"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="LEW-wA-0dI">
-                                                        <rect key="frame" x="241" y="14" width="5" height="131"/>
-                                                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                                                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                        <font key="titleFont" metaFont="system"/>
-                                                    </box>
-                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="kOY-JE-iji">
-                                                        <rect key="frame" x="16" y="121" width="150" height="26"/>
-                                                        <buttonCell key="cell" type="check" title="Overdue tasks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Xwh-nn-Qfj">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="visualRefreshAll:" target="cda-0y-TXV" id="IiD-14-edE"/>
-                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForOverdueTasks" id="5oV-wB-2Uc"/>
-                                                        </connections>
-                                                    </button>
-                                                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="kyv-n7-gmA">
-                                                        <rect key="frame" x="176" y="122" width="44" height="23"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="44" id="hus-6Q-LVH"/>
-                                                            <constraint firstAttribute="height" constant="23" id="pH0-Bd-hQV"/>
-                                                        </constraints>
-                                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <connections>
-                                                            <action selector="colorChanged:" target="-1" id="dWA-Ou-2Ft"/>
-                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.overdueColor" id="QQo-sj-K0U">
-                                                                <dictionary key="options">
-                                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
-                                                                </dictionary>
-                                                            </binding>
-                                                        </connections>
-                                                    </colorWell>
-                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="id0-SQ-XPW">
-                                                        <rect key="frame" x="16" y="97" width="150" height="18"/>
-                                                        <buttonCell key="cell" type="check" title="Tasks due today" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LWD-r3-4iw">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="visualRefreshAll:" target="cda-0y-TXV" id="ltX-s4-peB"/>
-                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueTodayTasks" id="TZg-WU-88H"/>
-                                                        </connections>
-                                                    </button>
-                                                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="pJz-fI-VRc">
-                                                        <rect key="frame" x="176" y="95" width="44" height="23"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="23" id="7qj-8K-3YF"/>
-                                                        </constraints>
-                                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <connections>
-                                                            <action selector="colorChanged:" target="-1" id="OVe-hf-sT4"/>
-                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.dueTodayColor" id="rd3-79-doD">
-                                                                <dictionary key="options">
-                                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
-                                                                </dictionary>
-                                                            </binding>
-                                                        </connections>
-                                                    </colorWell>
-                                                    <button toolTip="Projects begin with &quot;+&quot;." translatesAutoresizingMaskIntoConstraints="NO" id="Qki-7l-2C2">
-                                                        <rect key="frame" x="16" y="70" width="150" height="18"/>
-                                                        <buttonCell key="cell" type="check" title="Projects" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="JvI-Nx-2UB">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="visualRefreshAll:" target="cda-0y-TXV" id="eD1-Ky-oca"/>
-                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForProjects" id="you-NU-vbR"/>
-                                                        </connections>
-                                                    </button>
-                                                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="zF2-3U-srK">
-                                                        <rect key="frame" x="176" y="68" width="44" height="23"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="23" id="KC4-23-4GI"/>
-                                                        </constraints>
-                                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <connections>
-                                                            <action selector="colorChanged:" target="-1" id="0rs-RG-Rsd"/>
-                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.projectColor" id="aif-bN-ASG">
-                                                                <dictionary key="options">
-                                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
-                                                                </dictionary>
-                                                            </binding>
-                                                        </connections>
-                                                    </colorWell>
-                                                    <button toolTip="Contexts begin with &quot;@&quot;." translatesAutoresizingMaskIntoConstraints="NO" id="IVK-oE-htE">
-                                                        <rect key="frame" x="16" y="43" width="150" height="18"/>
-                                                        <buttonCell key="cell" type="check" title="Contexts" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4EM-a2-8Xf">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="visualRefreshAll:" target="cda-0y-TXV" id="HGR-Od-RDI"/>
-                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForContexts" id="QkC-x2-e3E"/>
-                                                        </connections>
-                                                    </button>
-                                                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="Agi-nP-xDL">
-                                                        <rect key="frame" x="176" y="41" width="44" height="23"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="23" id="7xi-gk-Hvf"/>
-                                                        </constraints>
-                                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <connections>
-                                                            <action selector="colorChanged:" target="-1" id="rby-dk-hLN"/>
-                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.contextColor" id="bRT-l7-w6e">
-                                                                <dictionary key="options">
-                                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
-                                                                </dictionary>
-                                                            </binding>
-                                                        </connections>
-                                                    </colorWell>
-                                                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="BS6-EI-GId">
-                                                        <rect key="frame" x="407" y="122" width="44" height="23"/>
-                                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <connections>
-                                                            <action selector="colorChanged:" target="-1" id="7KG-g8-R1a"/>
-                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.tagColor" id="YnN-Mo-ilE">
-                                                                <dictionary key="options">
-                                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
-                                                                </dictionary>
-                                                            </binding>
-                                                        </connections>
-                                                    </colorWell>
-                                                    <button toolTip="Due dates must be in the format &quot;due:YYYY-MM-DD&quot;." translatesAutoresizingMaskIntoConstraints="NO" id="q5w-gK-nag">
-                                                        <rect key="frame" x="257" y="97" width="150" height="18"/>
-                                                        <buttonCell key="cell" type="check" title="Due dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yVB-1N-NGG">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="visualRefreshAll:" target="cda-0y-TXV" id="zat-ke-iCF"/>
-                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueDates" id="q7r-xQ-BAA"/>
-                                                        </connections>
-                                                    </button>
-                                                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="6MV-d7-Saz">
-                                                        <rect key="frame" x="407" y="95" width="44" height="23"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="44" id="cwV-N5-BIe"/>
-                                                        </constraints>
-                                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <connections>
-                                                            <action selector="colorChanged:" target="-1" id="p3L-12-rZx"/>
-                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.dueDateColor" id="m6b-LO-QB0">
-                                                                <dictionary key="options">
-                                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
-                                                                </dictionary>
-                                                            </binding>
-                                                        </connections>
-                                                    </colorWell>
-                                                    <button toolTip="Threshold dates must be in the format &quot;t:YYYY-MM-DD&quot;." translatesAutoresizingMaskIntoConstraints="NO" id="Dvn-44-EkF">
-                                                        <rect key="frame" x="257" y="70" width="150" height="18"/>
-                                                        <buttonCell key="cell" type="check" title="Threshold dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8Ot-rG-fIl">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="visualRefreshAll:" target="cda-0y-TXV" id="ptq-YZ-Mm8"/>
-                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForThresholdDates" id="sO9-uS-cCV"/>
-                                                        </connections>
-                                                    </button>
-                                                    <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="Hfg-JN-STm">
-                                                        <rect key="frame" x="407" y="68" width="44" height="23"/>
-                                                        <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <connections>
-                                                            <action selector="colorChanged:" target="-1" id="9jk-f8-OMt"/>
-                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.thresholdDateColor" id="3sb-jm-xUB">
-                                                                <dictionary key="options">
-                                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
-                                                                </dictionary>
-                                                            </binding>
-                                                        </connections>
-                                                    </colorWell>
-                                                    <button toolTip="Tags are &quot;key:value&quot; pairs." translatesAutoresizingMaskIntoConstraints="NO" id="H2T-43-uze">
-                                                        <rect key="frame" x="257" y="121" width="150" height="22"/>
-                                                        <buttonCell key="cell" type="check" title="Tags" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="oCR-Hh-sAn">
-                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="visualRefreshAll:" target="cda-0y-TXV" id="jNK-rb-ou7"/>
-                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForTags" id="FzB-PL-KNd"/>
-                                                        </connections>
-                                                    </button>
+                                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ema-Ug-7yq">
+                                                        <rect key="frame" x="18" y="9" width="217" height="130"/>
+                                                        <subviews>
+                                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="id0-SQ-XPW">
+                                                                <rect key="frame" x="0.0" y="82" width="124" height="23"/>
+                                                                <buttonCell key="cell" type="check" title="Tasks due today" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="LWD-r3-4iw">
+                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="visualRefreshAll:" target="cda-0y-TXV" id="ltX-s4-peB"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueTodayTasks" id="TZg-WU-88H"/>
+                                                                </connections>
+                                                            </button>
+                                                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zF2-3U-srK">
+                                                                <rect key="frame" x="130" y="57" width="87" height="23"/>
+                                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <action selector="colorChanged:" target="-1" id="0rs-RG-Rsd"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.projectColor" id="aif-bN-ASG">
+                                                                        <dictionary key="options">
+                                                                            <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                        </dictionary>
+                                                                    </binding>
+                                                                </connections>
+                                                            </colorWell>
+                                                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kyv-n7-gmA">
+                                                                <rect key="frame" x="130" y="107" width="87" height="23"/>
+                                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <action selector="colorChanged:" target="-1" id="dWA-Ou-2Ft"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.overdueColor" id="QQo-sj-K0U">
+                                                                        <dictionary key="options">
+                                                                            <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                        </dictionary>
+                                                                    </binding>
+                                                                </connections>
+                                                            </colorWell>
+                                                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Agi-nP-xDL">
+                                                                <rect key="frame" x="130" y="32" width="87" height="23"/>
+                                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <action selector="colorChanged:" target="-1" id="rby-dk-hLN"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.contextColor" id="bRT-l7-w6e">
+                                                                        <dictionary key="options">
+                                                                            <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                        </dictionary>
+                                                                    </binding>
+                                                                </connections>
+                                                            </colorWell>
+                                                            <button toolTip="Contexts begin with &quot;@&quot;." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVK-oE-htE">
+                                                                <rect key="frame" x="0.0" y="32" width="124" height="23"/>
+                                                                <buttonCell key="cell" type="check" title="Contexts" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="4EM-a2-8Xf">
+                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="visualRefreshAll:" target="cda-0y-TXV" id="HGR-Od-RDI"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForContexts" id="QkC-x2-e3E"/>
+                                                                </connections>
+                                                            </button>
+                                                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pJz-fI-VRc">
+                                                                <rect key="frame" x="130" y="82" width="87" height="23"/>
+                                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <action selector="colorChanged:" target="-1" id="OVe-hf-sT4"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.dueTodayColor" id="rd3-79-doD">
+                                                                        <dictionary key="options">
+                                                                            <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                        </dictionary>
+                                                                    </binding>
+                                                                </connections>
+                                                            </colorWell>
+                                                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kOY-JE-iji">
+                                                                <rect key="frame" x="0.0" y="107" width="124" height="23"/>
+                                                                <buttonCell key="cell" type="check" title="Overdue tasks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Xwh-nn-Qfj">
+                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="visualRefreshAll:" target="cda-0y-TXV" id="IiD-14-edE"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForOverdueTasks" id="5oV-wB-2Uc"/>
+                                                                </connections>
+                                                            </button>
+                                                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BS6-EI-GId">
+                                                                <rect key="frame" x="130" y="7" width="87" height="23"/>
+                                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <action selector="colorChanged:" target="-1" id="7KG-g8-R1a"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.tagColor" id="YnN-Mo-ilE">
+                                                                        <dictionary key="options">
+                                                                            <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                        </dictionary>
+                                                                    </binding>
+                                                                </connections>
+                                                            </colorWell>
+                                                            <button toolTip="Projects begin with &quot;+&quot;." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qki-7l-2C2">
+                                                                <rect key="frame" x="0.0" y="57" width="124" height="23"/>
+                                                                <buttonCell key="cell" type="check" title="Projects" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="JvI-Nx-2UB">
+                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="visualRefreshAll:" target="cda-0y-TXV" id="eD1-Ky-oca"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForProjects" id="you-NU-vbR"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button toolTip="Tags are &quot;key:value&quot; pairs." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H2T-43-uze">
+                                                                <rect key="frame" x="0.0" y="7" width="124" height="23"/>
+                                                                <buttonCell key="cell" type="check" title="Tags" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="oCR-Hh-sAn">
+                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="visualRefreshAll:" target="cda-0y-TXV" id="jNK-rb-ou7"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForTags" id="FzB-PL-KNd"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </customView>
+                                                    <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jcN-VV-WTh">
+                                                        <rect key="frame" x="238" y="9" width="222" height="130"/>
+                                                        <subviews>
+                                                            <button toolTip="Due dates must be in the format &quot;due:YYYY-MM-DD&quot;." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q5w-gK-nag">
+                                                                <rect key="frame" x="5" y="107" width="124" height="23"/>
+                                                                <buttonCell key="cell" type="check" title="Due dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yVB-1N-NGG">
+                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="visualRefreshAll:" target="cda-0y-TXV" id="zat-ke-iCF"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForDueDates" id="q7r-xQ-BAA"/>
+                                                                </connections>
+                                                            </button>
+                                                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6MV-d7-Saz">
+                                                                <rect key="frame" x="135" y="107" width="87" height="23"/>
+                                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <action selector="colorChanged:" target="-1" id="p3L-12-rZx"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.dueDateColor" id="m6b-LO-QB0">
+                                                                        <dictionary key="options">
+                                                                            <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                        </dictionary>
+                                                                    </binding>
+                                                                </connections>
+                                                            </colorWell>
+                                                            <button toolTip="Threshold dates must be in the format &quot;t:YYYY-MM-DD&quot;." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dvn-44-EkF">
+                                                                <rect key="frame" x="5" y="82" width="124" height="23"/>
+                                                                <buttonCell key="cell" type="check" title="Threshold dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8Ot-rG-fIl">
+                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="visualRefreshAll:" target="cda-0y-TXV" id="ptq-YZ-Mm8"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForThresholdDates" id="sO9-uS-cCV"/>
+                                                                </connections>
+                                                            </button>
+                                                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hfg-JN-STm">
+                                                                <rect key="frame" x="135" y="82" width="87" height="23"/>
+                                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <action selector="colorChanged:" target="-1" id="9jk-f8-OMt"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.thresholdDateColor" id="3sb-jm-xUB">
+                                                                        <dictionary key="options">
+                                                                            <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                        </dictionary>
+                                                                    </binding>
+                                                                </connections>
+                                                            </colorWell>
+                                                            <button toolTip="Threshold dates must be in the format &quot;t:YYYY-MM-DD&quot;." fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DCH-Hu-Ffj">
+                                                                <rect key="frame" x="5" y="57" width="124" height="23"/>
+                                                                <buttonCell key="cell" type="check" title="Creation dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yMp-g6-Vnj">
+                                                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                    <font key="font" metaFont="system"/>
+                                                                </buttonCell>
+                                                                <connections>
+                                                                    <action selector="visualRefreshAll:" target="cda-0y-TXV" id="Mv8-Th-k7G"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.useCustomColorForCreationDates" id="gkC-pN-gYP"/>
+                                                                </connections>
+                                                            </button>
+                                                            <colorWell fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G9o-nv-UAc">
+                                                                <rect key="frame" x="135" y="57" width="87" height="23"/>
+                                                                <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <connections>
+                                                                    <action selector="colorChanged:" target="-1" id="HTm-OO-flz"/>
+                                                                    <binding destination="p0U-mu-Cyy" name="value" keyPath="values.creationDateColor" id="LfF-qi-u0I">
+                                                                        <dictionary key="options">
+                                                                            <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                                        </dictionary>
+                                                                    </binding>
+                                                                </connections>
+                                                            </colorWell>
+                                                        </subviews>
+                                                    </customView>
                                                 </subviews>
                                             </view>
-                                            <constraints>
-                                                <constraint firstItem="pJz-fI-VRc" firstAttribute="leading" secondItem="kyv-n7-gmA" secondAttribute="leading" id="06s-sc-8Dz"/>
-                                                <constraint firstItem="H2T-43-uze" firstAttribute="trailing" secondItem="q5w-gK-nag" secondAttribute="trailing" id="0X4-SD-5Cf"/>
-                                                <constraint firstItem="6MV-d7-Saz" firstAttribute="trailing" secondItem="BS6-EI-GId" secondAttribute="trailing" id="1eP-Zp-YSp"/>
-                                                <constraint firstItem="pJz-fI-VRc" firstAttribute="leading" secondItem="id0-SQ-XPW" secondAttribute="trailing" constant="12" id="2J9-E9-l39"/>
-                                                <constraint firstItem="kyv-n7-gmA" firstAttribute="top" secondItem="LEW-wA-0dI" secondAttribute="top" id="326-Zx-Pqh"/>
-                                                <constraint firstItem="BS6-EI-GId" firstAttribute="centerY" secondItem="kyv-n7-gmA" secondAttribute="centerY" id="3ea-f0-hDw"/>
-                                                <constraint firstItem="pJz-fI-VRc" firstAttribute="top" secondItem="kyv-n7-gmA" secondAttribute="bottom" constant="4" id="5cA-Sw-3o1"/>
-                                                <constraint firstItem="Agi-nP-xDL" firstAttribute="leading" secondItem="zF2-3U-srK" secondAttribute="leading" id="61Y-4E-OXo"/>
-                                                <constraint firstItem="IVK-oE-htE" firstAttribute="centerY" secondItem="Agi-nP-xDL" secondAttribute="centerY" id="6Cm-BK-eZC"/>
-                                                <constraint firstItem="6MV-d7-Saz" firstAttribute="leading" secondItem="q5w-gK-nag" secondAttribute="trailing" constant="2" id="7Ev-Ej-uPQ"/>
-                                                <constraint firstItem="pJz-fI-VRc" firstAttribute="trailing" secondItem="kyv-n7-gmA" secondAttribute="trailing" id="9H1-Sa-r2L"/>
-                                                <constraint firstItem="Agi-nP-xDL" firstAttribute="trailing" secondItem="zF2-3U-srK" secondAttribute="trailing" id="9k2-Ay-bcH"/>
-                                                <constraint firstAttribute="centerX" secondItem="LEW-wA-0dI" secondAttribute="centerX" id="CHS-34-Dck"/>
-                                                <constraint firstItem="Agi-nP-xDL" firstAttribute="top" secondItem="zF2-3U-srK" secondAttribute="bottom" constant="4" id="CVz-O3-iC6"/>
-                                                <constraint firstItem="pJz-fI-VRc" firstAttribute="trailing" secondItem="zF2-3U-srK" secondAttribute="trailing" id="Cr3-Oc-Vdn"/>
-                                                <constraint firstItem="kyv-n7-gmA" firstAttribute="top" secondItem="d7n-EI-WOY" secondAttribute="top" constant="27" id="EUj-C1-JTz"/>
-                                                <constraint firstItem="zF2-3U-srK" firstAttribute="centerY" secondItem="LEW-wA-0dI" secondAttribute="centerY" id="EaS-iC-Lmd"/>
-                                                <constraint firstItem="pJz-fI-VRc" firstAttribute="leading" secondItem="zF2-3U-srK" secondAttribute="leading" id="HSP-Pe-rua"/>
-                                                <constraint firstItem="zF2-3U-srK" firstAttribute="top" secondItem="pJz-fI-VRc" secondAttribute="bottom" constant="4" id="JuN-ZW-O1z"/>
-                                                <constraint firstItem="6MV-d7-Saz" firstAttribute="top" secondItem="pJz-fI-VRc" secondAttribute="top" id="L5G-IJ-ECt"/>
-                                                <constraint firstItem="kyv-n7-gmA" firstAttribute="top" secondItem="kOY-JE-iji" secondAttribute="top" id="Lmw-4F-oih"/>
-                                                <constraint firstItem="Dvn-44-EkF" firstAttribute="leading" secondItem="LEW-wA-0dI" secondAttribute="trailing" constant="15" id="Mv2-jn-jO9"/>
-                                                <constraint firstItem="zF2-3U-srK" firstAttribute="centerY" secondItem="Qki-7l-2C2" secondAttribute="centerY" id="Prk-9i-31B"/>
-                                                <constraint firstItem="BS6-EI-GId" firstAttribute="centerY" secondItem="kOY-JE-iji" secondAttribute="centerY" id="SfG-eI-AQH"/>
-                                                <constraint firstItem="kyv-n7-gmA" firstAttribute="leading" secondItem="d7n-EI-WOY" secondAttribute="leading" constant="174" id="Siq-Z7-NgQ"/>
-                                                <constraint firstItem="Qki-7l-2C2" firstAttribute="leading" secondItem="kOY-JE-iji" secondAttribute="leading" id="UTy-9e-LzX"/>
-                                                <constraint firstItem="kyv-n7-gmA" firstAttribute="bottom" secondItem="BS6-EI-GId" secondAttribute="bottom" id="ZUm-xl-Bly"/>
-                                                <constraint firstItem="H2T-43-uze" firstAttribute="top" secondItem="d7n-EI-WOY" secondAttribute="top" constant="31" id="ZXv-Jp-7kP"/>
-                                                <constraint firstItem="kyv-n7-gmA" firstAttribute="top" secondItem="BS6-EI-GId" secondAttribute="top" id="ZvV-bH-gNc"/>
-                                                <constraint firstAttribute="bottom" secondItem="Agi-nP-xDL" secondAttribute="bottom" constant="38" id="aRe-U3-OTa"/>
-                                                <constraint firstItem="zF2-3U-srK" firstAttribute="leading" secondItem="Qki-7l-2C2" secondAttribute="trailing" constant="12" id="ads-rI-LuQ"/>
-                                                <constraint firstItem="Dvn-44-EkF" firstAttribute="baseline" secondItem="Qki-7l-2C2" secondAttribute="baseline" id="akd-7w-aJC"/>
-                                                <constraint firstItem="q5w-gK-nag" firstAttribute="trailing" secondItem="Dvn-44-EkF" secondAttribute="trailing" id="b6u-dO-rNj"/>
-                                                <constraint firstItem="q5w-gK-nag" firstAttribute="centerY" secondItem="pJz-fI-VRc" secondAttribute="centerY" id="bwJ-h3-5sk"/>
-                                                <constraint firstItem="Qki-7l-2C2" firstAttribute="leading" secondItem="id0-SQ-XPW" secondAttribute="leading" id="evn-TQ-f3I"/>
-                                                <constraint firstItem="q5w-gK-nag" firstAttribute="centerY" secondItem="6MV-d7-Saz" secondAttribute="centerY" id="fKP-Ym-Bf9"/>
-                                                <constraint firstItem="Qki-7l-2C2" firstAttribute="leading" secondItem="IVK-oE-htE" secondAttribute="leading" id="fWG-Ca-ZT7"/>
-                                                <constraint firstItem="Agi-nP-xDL" firstAttribute="leading" secondItem="IVK-oE-htE" secondAttribute="trailing" constant="12" id="gAk-hd-GIU"/>
-                                                <constraint firstAttribute="trailing" secondItem="6MV-d7-Saz" secondAttribute="trailing" constant="33" id="je1-zx-g1A"/>
-                                                <constraint firstItem="zF2-3U-srK" firstAttribute="bottom" secondItem="Hfg-JN-STm" secondAttribute="bottom" id="kaL-2W-vOt"/>
-                                                <constraint firstItem="q5w-gK-nag" firstAttribute="leading" secondItem="Dvn-44-EkF" secondAttribute="leading" id="nH7-wd-Dya"/>
-                                                <constraint firstItem="H2T-43-uze" firstAttribute="baseline" secondItem="kOY-JE-iji" secondAttribute="baseline" id="qTd-VE-akU"/>
-                                                <constraint firstItem="6MV-d7-Saz" firstAttribute="trailing" secondItem="Hfg-JN-STm" secondAttribute="trailing" id="qVm-7Q-ae6"/>
-                                                <constraint firstItem="q5w-gK-nag" firstAttribute="baseline" secondItem="id0-SQ-XPW" secondAttribute="baseline" id="tKt-HD-mDN"/>
-                                                <constraint firstItem="H2T-43-uze" firstAttribute="leading" secondItem="q5w-gK-nag" secondAttribute="leading" id="uUh-EX-MFB"/>
-                                                <constraint firstItem="6MV-d7-Saz" firstAttribute="leading" secondItem="BS6-EI-GId" secondAttribute="leading" id="uZi-QH-MyS"/>
-                                                <constraint firstItem="kyv-n7-gmA" firstAttribute="leading" secondItem="kOY-JE-iji" secondAttribute="trailing" constant="12" id="vcv-EP-XL7"/>
-                                                <constraint firstItem="6MV-d7-Saz" firstAttribute="leading" secondItem="Hfg-JN-STm" secondAttribute="leading" id="wrc-f1-fLB"/>
-                                                <constraint firstItem="LEW-wA-0dI" firstAttribute="leading" secondItem="kyv-n7-gmA" secondAttribute="trailing" constant="23" id="xPR-tL-8Q1"/>
-                                                <constraint firstItem="IVK-oE-htE" firstAttribute="leading" secondItem="d7n-EI-WOY" secondAttribute="leading" constant="16" id="xt3-oQ-UGU"/>
-                                                <constraint firstItem="zF2-3U-srK" firstAttribute="top" secondItem="Hfg-JN-STm" secondAttribute="top" id="yL5-ER-lhI"/>
-                                            </constraints>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <font key="titleFont" metaFont="cellTitle"/>
                                         </box>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="LFL-6w-UIX" firstAttribute="centerX" secondItem="d7n-EI-WOY" secondAttribute="centerX" id="8fv-fY-dRw"/>
-                                        <constraint firstAttribute="bottom" secondItem="d7n-EI-WOY" secondAttribute="bottom" constant="9" id="AX0-kS-n9f"/>
-                                        <constraint firstAttribute="trailing" secondItem="d7n-EI-WOY" secondAttribute="trailing" constant="9" id="D7n-UP-JQD"/>
-                                        <constraint firstItem="d7n-EI-WOY" firstAttribute="top" secondItem="LFL-6w-UIX" secondAttribute="bottom" constant="8" symbolic="YES" id="Omw-tR-zeu"/>
-                                        <constraint firstItem="d7n-EI-WOY" firstAttribute="leading" secondItem="mhP-oh-atP" secondAttribute="leading" constant="9" id="aTt-LL-OuC"/>
-                                        <constraint firstItem="d7n-EI-WOY" firstAttribute="top" secondItem="mhP-oh-atP" secondAttribute="top" constant="25" id="kWJ-2J-d1O"/>
-                                        <constraint firstItem="LFL-6w-UIX" firstAttribute="leading" secondItem="mhP-oh-atP" secondAttribute="leading" constant="17" id="pDE-Iy-q5K"/>
+                                        <constraint firstItem="LFL-6w-UIX" firstAttribute="leading" secondItem="d7n-EI-WOY" secondAttribute="leading" id="23g-Zp-Tx2"/>
+                                        <constraint firstAttribute="trailing" secondItem="d7n-EI-WOY" secondAttribute="trailing" constant="9" id="CYu-6d-ltn"/>
+                                        <constraint firstItem="d7n-EI-WOY" firstAttribute="top" secondItem="LFL-6w-UIX" secondAttribute="bottom" constant="8" symbolic="YES" id="K8f-oR-jMq"/>
+                                        <constraint firstItem="d7n-EI-WOY" firstAttribute="top" secondItem="mhP-oh-atP" secondAttribute="top" constant="25" id="Qf6-Fh-Qh1"/>
+                                        <constraint firstAttribute="trailing" secondItem="LFL-6w-UIX" secondAttribute="trailing" constant="17" id="VJU-ux-zVw"/>
+                                        <constraint firstAttribute="bottom" secondItem="LFL-6w-UIX" secondAttribute="bottom" constant="186" id="Xp6-mf-gdc"/>
+                                        <constraint firstItem="d7n-EI-WOY" firstAttribute="leading" secondItem="mhP-oh-atP" secondAttribute="leading" constant="17" id="ahb-Ly-DUb"/>
+                                        <constraint firstAttribute="bottom" secondItem="d7n-EI-WOY" secondAttribute="bottom" constant="15" id="fcI-oN-Zdh"/>
                                     </constraints>
                                 </view>
                             </tabViewItem>
@@ -564,8 +526,11 @@
                                     <rect key="frame" x="10" y="33" width="500" height="203"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dps-Ov-KIp">
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dps-Ov-KIp">
                                             <rect key="frame" x="69" y="46" width="414" height="132"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="132" id="eDP-Kk-RR3"/>
+                                            </constraints>
                                             <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="gVh-qm-vE8">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -580,8 +545,11 @@
                                                 <outlet property="delegate" destination="-2" id="l0t-Ao-bU5"/>
                                             </connections>
                                         </textField>
-                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="agZ-dD-T4T">
+                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="agZ-dD-T4T">
                                             <rect key="frame" x="67" y="14" width="178" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="173" id="wsW-eY-MHQ"/>
+                                            </constraints>
                                             <popUpButtonCell key="cell" type="push" title="Available Tags" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="iPq-ql-2e0" id="1lf-Rh-gST">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
@@ -598,16 +566,11 @@
                                                 <binding destination="AAU-j7-nuS" name="selectedIndex" keyPath="selectionIndex" previousBinding="KTJ-FU-Ngg" id="1iC-bK-zmj"/>
                                             </connections>
                                         </popUpButton>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VHD-8m-S6e">
-                                            <rect key="frame" x="10" y="19" width="38" height="17"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Tags" id="Bau-Dg-GwY">
-                                                <font key="font" metaFont="system"/>
-                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                            </textFieldCell>
-                                        </textField>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhO-1z-q0Z">
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uhO-1z-q0Z">
                                             <rect key="frame" x="345" y="10" width="144" height="32"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="132" id="kUv-1A-Km0"/>
+                                            </constraints>
                                             <buttonCell key="cell" type="push" title="Reset to default..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ngM-XH-2Xx">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -616,16 +579,19 @@
                                                 <action selector="resetStatusBarFormatToDefault:" target="-2" id="M3F-Lz-IaS"/>
                                             </connections>
                                         </button>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zXM-Pf-HPd">
-                                            <rect key="frame" x="10" y="161" width="48" height="17"/>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zXM-Pf-HPd">
+                                            <rect key="frame" x="15" y="161" width="48" height="17"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Format" id="VFN-Xk-1aQ">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
                                         </textField>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1w7-1m-yNC">
-                                            <rect key="frame" x="10" y="184" width="283" height="18"/>
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="1w7-1m-yNC">
+                                            <rect key="frame" x="15" y="184" width="283" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="279" id="Q0O-NP-WZ2"/>
+                                            </constraints>
                                             <buttonCell key="cell" type="check" title="Show status bar on next opened window" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="5Dj-4D-p9M">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -634,7 +600,7 @@
                                                 <binding destination="p0U-mu-Cyy" name="value" keyPath="values.showStatusBar" id="Dda-11-Hlo"/>
                                             </connections>
                                         </button>
-                                        <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JAg-G4-FBv">
+                                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JAg-G4-FBv">
                                             <rect key="frame" x="244" y="10" width="101" height="32"/>
                                             <buttonCell key="cell" type="push" title="Insert Tag" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TQZ-9N-nTD">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -644,7 +610,34 @@
                                                 <action selector="insertTagIntoStatusBarFormat:" target="-2" id="vdh-6U-sJf"/>
                                             </connections>
                                         </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VHD-8m-S6e">
+                                            <rect key="frame" x="15" y="20" width="38" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Tags" id="Bau-Dg-GwY">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="dps-Ov-KIp" firstAttribute="leading" secondItem="agZ-dD-T4T" secondAttribute="leading" id="1al-7g-HbQ"/>
+                                        <constraint firstItem="JAg-G4-FBv" firstAttribute="baseline" secondItem="uhO-1z-q0Z" secondAttribute="baseline" id="1tA-bS-uzn"/>
+                                        <constraint firstAttribute="trailing" secondItem="dps-Ov-KIp" secondAttribute="trailing" constant="17" id="C1r-PD-f8J"/>
+                                        <constraint firstItem="zXM-Pf-HPd" firstAttribute="leading" secondItem="VHD-8m-S6e" secondAttribute="leading" id="CzT-UA-mum"/>
+                                        <constraint firstItem="agZ-dD-T4T" firstAttribute="baseline" secondItem="JAg-G4-FBv" secondAttribute="baseline" id="GBq-Sg-g0V"/>
+                                        <constraint firstItem="agZ-dD-T4T" firstAttribute="leading" secondItem="VHD-8m-S6e" secondAttribute="trailing" constant="18" id="GOg-YB-gJ1"/>
+                                        <constraint firstAttribute="bottom" secondItem="agZ-dD-T4T" secondAttribute="bottom" constant="17" id="GeY-JK-71v"/>
+                                        <constraint firstItem="uhO-1z-q0Z" firstAttribute="trailing" secondItem="dps-Ov-KIp" secondAttribute="trailing" id="LP4-Vo-Py9"/>
+                                        <constraint firstItem="zXM-Pf-HPd" firstAttribute="top" secondItem="1w7-1m-yNC" secondAttribute="bottom" constant="8" symbolic="YES" id="ObR-Dd-bKz"/>
+                                        <constraint firstItem="zXM-Pf-HPd" firstAttribute="top" secondItem="dps-Ov-KIp" secondAttribute="top" id="Uqj-tt-rKw"/>
+                                        <constraint firstItem="1w7-1m-yNC" firstAttribute="top" secondItem="Xxm-Vu-L8l" secondAttribute="top" constant="3" id="cJD-7e-9Lx"/>
+                                        <constraint firstItem="JAg-G4-FBv" firstAttribute="leading" secondItem="agZ-dD-T4T" secondAttribute="trailing" constant="8" symbolic="YES" id="iwd-JR-i73"/>
+                                        <constraint firstItem="agZ-dD-T4T" firstAttribute="top" secondItem="dps-Ov-KIp" secondAttribute="bottom" constant="8" id="mHh-cH-xbL"/>
+                                        <constraint firstItem="dps-Ov-KIp" firstAttribute="leading" secondItem="zXM-Pf-HPd" secondAttribute="trailing" constant="8" symbolic="YES" id="neJ-Wf-6mT"/>
+                                        <constraint firstItem="uhO-1z-q0Z" firstAttribute="leading" secondItem="JAg-G4-FBv" secondAttribute="trailing" constant="12" symbolic="YES" id="qyI-wG-lkS"/>
+                                        <constraint firstItem="zXM-Pf-HPd" firstAttribute="leading" secondItem="1w7-1m-yNC" secondAttribute="leading" id="s1o-jQ-Okx"/>
+                                        <constraint firstItem="VHD-8m-S6e" firstAttribute="baseline" secondItem="agZ-dD-T4T" secondAttribute="baseline" id="utZ-hq-9pZ"/>
+                                    </constraints>
                                 </view>
                             </tabViewItem>
                             <tabViewItem label="Updates" identifier="4" id="tiU-nI-23F">
@@ -652,8 +645,11 @@
                                     <rect key="frame" x="10" y="33" width="500" height="203"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7BY-xZ-OO3">
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="7BY-xZ-OO3">
                                             <rect key="frame" x="15" y="184" width="321" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="317" id="Wud-aJ-XyV"/>
+                                            </constraints>
                                             <buttonCell key="cell" type="check" title="Automatically check for updates to TodoTxtMac" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="edr-78-Twz">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                 <font key="font" metaFont="system"/>
@@ -662,8 +658,11 @@
                                                 <binding destination="oDD-Zm-tB0" name="value" keyPath="automaticallyChecksForUpdates" id="9HO-U7-p5M"/>
                                             </connections>
                                         </button>
-                                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oCF-3b-RPC">
+                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oCF-3b-RPC">
                                             <rect key="frame" x="140" y="156" width="92" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="87" id="R9X-w3-c5J"/>
+                                            </constraints>
                                             <popUpButtonCell key="cell" type="push" title="Monthly" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="2629800" imageScaling="proportionallyDown" inset="2" selectedItem="WOZ-MM-TYD" id="jbA-uR-kFs">
                                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                 <font key="font" metaFont="menu"/>
@@ -681,8 +680,11 @@
                                                 <binding destination="oDD-Zm-tB0" name="selectedTag" keyPath="updateCheckInterval" id="Pug-z3-HRw"/>
                                             </connections>
                                         </popUpButton>
-                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rvl-oO-icc">
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rvl-oO-icc">
                                             <rect key="frame" x="17" y="161" width="119" height="17"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="115" id="vbb-Dg-Ew6"/>
+                                            </constraints>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Check for updates" id="eDq-3W-cEx">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -690,11 +692,25 @@
                                             </textFieldCell>
                                         </textField>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="oCF-3b-RPC" firstAttribute="centerY" secondItem="rvl-oO-icc" secondAttribute="centerY" id="152-1o-Dt6"/>
+                                        <constraint firstItem="7BY-xZ-OO3" firstAttribute="top" secondItem="un9-sN-dpv" secondAttribute="top" constant="3" id="4PC-co-x4p"/>
+                                        <constraint firstItem="rvl-oO-icc" firstAttribute="leading" secondItem="un9-sN-dpv" secondAttribute="leading" constant="19" id="GKl-vb-lNf"/>
+                                        <constraint firstItem="oCF-3b-RPC" firstAttribute="leading" secondItem="rvl-oO-icc" secondAttribute="trailing" constant="8" symbolic="YES" id="QcM-Ow-K5d"/>
+                                        <constraint firstItem="rvl-oO-icc" firstAttribute="top" secondItem="7BY-xZ-OO3" secondAttribute="bottom" constant="8" symbolic="YES" id="efM-XB-fqm"/>
+                                        <constraint firstItem="7BY-xZ-OO3" firstAttribute="leading" secondItem="un9-sN-dpv" secondAttribute="leading" constant="17" id="gUx-Ju-Vu4"/>
+                                        <constraint firstAttribute="bottom" secondItem="oCF-3b-RPC" secondAttribute="bottom" constant="159" id="u0U-L3-h9D"/>
+                                    </constraints>
                                 </view>
                             </tabViewItem>
                         </tabViewItems>
                     </tabView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="y76-Kz-NYB" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="17d-HI-809"/>
+                    <constraint firstItem="y76-Kz-NYB" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="12" symbolic="YES" id="BEc-j0-p6y"/>
+                    <constraint firstAttribute="trailing" secondItem="y76-Kz-NYB" secondAttribute="trailing" constant="20" symbolic="YES" id="ihJ-cE-HGt"/>
+                </constraints>
             </view>
             <point key="canvasLocation" x="82" y="296.5"/>
         </window>
@@ -721,5 +737,235 @@
                 <binding destination="-2" name="contentArray" keyPath="self.availableStatusBarTags" id="Vg5-qT-n9F"/>
             </connections>
         </arrayController>
+        <form verticalHuggingPriority="750" mode="track" allowsEmptySelection="NO" autorecalculatesCellSize="YES" id="yUg-Mh-FLe">
+            <rect key="frame" x="0.0" y="0.0" width="116" height="52"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+            <size key="cellSize" width="116" height="22"/>
+            <size key="intercellSpacing" width="1" height="8"/>
+            <formCell key="prototype" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Field:" id="6gr-k1-jQd">
+                <font key="font" metaFont="system"/>
+                <font key="titleFont" metaFont="system"/>
+            </formCell>
+            <cells>
+                <column>
+                    <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" title="Field 1:" id="BDd-qN-osv">
+                        <font key="font" metaFont="system"/>
+                        <font key="titleFont" metaFont="system"/>
+                    </formCell>
+                    <formCell scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="justified" tag="1" title="Field 2:" id="Q2f-t3-SUm">
+                        <font key="font" metaFont="system"/>
+                        <font key="titleFont" metaFont="system"/>
+                    </formCell>
+                </column>
+            </cells>
+            <point key="canvasLocation" x="132" y="526"/>
+        </form>
+        <colorWell id="lD7-1s-NTU">
+            <rect key="frame" x="0.0" y="0.0" width="127" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <point key="canvasLocation" x="194.5" y="597"/>
+        </colorWell>
+        <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="EyC-zm-rO1">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="135"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <clipView key="contentView" misplaced="YES" id="9MM-s4-fE7">
+                <rect key="frame" x="1" y="0.0" width="238" height="134"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="WaU-1O-huJ" viewBased="YES" id="cjP-wB-Wui">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <size key="intercellSpacing" width="3" height="2"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                        <tableColumns>
+                            <tableColumn width="116" minWidth="40" maxWidth="1000" id="hEc-he-GGe">
+                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                </tableHeaderCell>
+                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="z8Q-WN-otN">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                <prototypeCellViews>
+                                    <tableCellView id="Plv-fk-eJA">
+                                        <rect key="frame" x="1" y="1" width="116" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Trw-fx-JaR">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="4V1-cV-VCq">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <connections>
+                                            <outlet property="textField" destination="Trw-fx-JaR" id="W5e-Lc-v8T"/>
+                                        </connections>
+                                    </tableCellView>
+                                </prototypeCellViews>
+                            </tableColumn>
+                            <tableColumn width="116" minWidth="40" maxWidth="1000" id="ZYg-eG-Tsm">
+                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                </tableHeaderCell>
+                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Kry-kJ-p2H">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                <prototypeCellViews>
+                                    <tableCellView id="IK3-at-hx8">
+                                        <rect key="frame" x="120" y="1" width="116" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lg1-u1-ufy">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="yx5-QL-8VE">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <connections>
+                                            <outlet property="textField" destination="lg1-u1-ufy" id="fyH-U2-fhi"/>
+                                        </connections>
+                                    </tableCellView>
+                                </prototypeCellViews>
+                            </tableColumn>
+                        </tableColumns>
+                    </tableView>
+                </subviews>
+                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+            </clipView>
+            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="ZaQ-sE-ToR">
+                <rect key="frame" x="1" y="119" width="223" height="15"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="yE3-yR-81u">
+                <rect key="frame" x="224" y="17" width="15" height="102"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <tableHeaderView key="headerView" id="WaU-1O-huJ">
+                <rect key="frame" x="0.0" y="0.0" width="238" height="17"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </tableHeaderView>
+            <point key="canvasLocation" x="183" y="555.5"/>
+        </scrollView>
+        <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="YZB-as-dKy">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="135"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <clipView key="contentView" misplaced="YES" id="udK-WE-Ae0">
+                <rect key="frame" x="1" y="0.0" width="238" height="134"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="vgL-X6-edu" viewBased="YES" id="0Dg-GT-Vcb">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <size key="intercellSpacing" width="3" height="2"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                        <tableColumns>
+                            <tableColumn width="116" minWidth="40" maxWidth="1000" id="5wo-ov-Rgi">
+                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                </tableHeaderCell>
+                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="hXd-NT-s81">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                <prototypeCellViews>
+                                    <tableCellView id="KIQ-dr-RiU">
+                                        <rect key="frame" x="1" y="1" width="116" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0dE-jD-NI6">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="17"/>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="sDW-ZH-iVi">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <connections>
+                                            <outlet property="textField" destination="0dE-jD-NI6" id="HpG-M3-cVs"/>
+                                        </connections>
+                                    </tableCellView>
+                                </prototypeCellViews>
+                            </tableColumn>
+                            <tableColumn width="116" minWidth="40" maxWidth="1000" id="Zns-1G-HGJ">
+                                <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                </tableHeaderCell>
+                                <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="n9V-rp-dPG">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                            </tableColumn>
+                        </tableColumns>
+                    </tableView>
+                </subviews>
+                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+            </clipView>
+            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Pth-xd-5d0">
+                <rect key="frame" x="1" y="118.99642193317413" width="238" height="15"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="MsO-Gk-Mhv">
+                <rect key="frame" x="224" y="17" width="15" height="102"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </scroller>
+            <tableHeaderView key="headerView" id="vgL-X6-edu">
+                <rect key="frame" x="0.0" y="0.0" width="238" height="17"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </tableHeaderView>
+            <point key="canvasLocation" x="-12" y="561.5"/>
+        </scrollView>
+        <splitView vertical="YES" id="Bzw-8b-APU">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView fixedFrame="YES" id="JZI-Jt-L2h">
+                    <rect key="frame" x="0.0" y="0.0" width="77" height="96"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </customView>
+                <customView fixedFrame="YES" id="VUS-QT-ubd">
+                    <rect key="frame" x="87" y="0.0" width="76" height="96"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                </customView>
+            </subviews>
+            <holdingPriorities>
+                <real value="250"/>
+                <real value="250"/>
+            </holdingPriorities>
+            <point key="canvasLocation" x="58.5" y="596"/>
+        </splitView>
+        <box horizontalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" id="G0s-DN-zrO">
+            <rect key="frame" x="0.0" y="0.0" width="5" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+            <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <font key="titleFont" metaFont="system"/>
+            <point key="canvasLocation" x="60.5" y="582"/>
+        </box>
     </objects>
 </document>

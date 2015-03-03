@@ -45,12 +45,23 @@
  */
 
 #import <Foundation/Foundation.h>
-@class TTMTask;
 
-@interface TTMTableViewDelegate : NSObject <NSTableViewDelegate>
+@interface NSMutableAttributedString (ColorRegExMatches)
 
-#pragma mark - Properties
+/*!
+ * @method applyColor:toRegexPatternMatches:
+ * @abstract Adds foreground color attributes to a mutable attributed string based for all regular
+ * epxression matches.
+ * @param color Color to apply
+ * @param regExPattern Regular expression pattern to apply colors to matches
+ */
+- (void)applyColor:(NSColor*)color toRegexPatternMatches:(NSString*)regExPattern;
 
-@property (nonatomic, retain) IBOutlet NSArrayController *arrayController;
+/*!
+ * @method applyColorToFullStringRange:
+ * @abstract Adds foreground color attributes to the entire mutable attributed string.
+ * @param color Color to apply
+ */
+- (void)applyColorToFullStringRange:(NSColor*)color;
 
 @end

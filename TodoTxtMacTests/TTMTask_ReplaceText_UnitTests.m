@@ -44,13 +44,41 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-@class TTMTask;
+#import <XCTest/XCTest.h>
+#import "TTMTask.h"
 
-@interface TTMTableViewDelegate : NSObject <NSTableViewDelegate>
+@interface TTMTask_ReplaceText_UnitTests : XCTestCase
 
-#pragma mark - Properties
+@property NSUInteger taskId;
 
-@property (nonatomic, retain) IBOutlet NSArrayController *arrayController;
+@end
+
+@implementation TTMTask_ReplaceText_UnitTests
+
+- (void)setUp {
+    [super setUp];
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.taskId = 10;
+}
+
+- (void)tearDown {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
+}
+
+- (void)test_ReplaceText_WhenSearchTextIsFound_ShouldReplaceSearchText {
+    NSString *rawText = @"pick up groceries @Errands";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    NSString *expectedRawText = @"pick up car @Errands";
+    [task replaceText:@"groceries" withText:@"car"];
+    XCTAssertEqualObjects(expectedRawText, task.rawText);
+}
+
+- (void)test_ReplaceText_WhenSearchTextIsNotFound_ShouldDoNothing {
+    NSString *rawText = @"pick up groceries @Errands";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    [task replaceText:@"bananas" withText:@"car"];
+    XCTAssertEqualObjects(rawText, task.rawText);
+}
 
 @end

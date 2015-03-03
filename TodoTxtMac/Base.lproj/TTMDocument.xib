@@ -132,7 +132,7 @@
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </searchFieldCell>
                             <connections>
-                                <binding destination="z03-iY-Esn" name="predicate" keyPath="filterPredicate" id="BCD-jx-NVb">
+                                <binding destination="-2" name="predicate" keyPath="self.searchFieldPredicate" id="GIK-On-p5m">
                                     <dictionary key="options">
                                         <string key="NSDisplayName">predicate</string>
                                         <string key="NSPredicateFormat">rawText contains[cd] $value</string>

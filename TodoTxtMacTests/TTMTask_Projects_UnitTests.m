@@ -44,13 +44,51 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-@class TTMTask;
+#import <Cocoa/Cocoa.h>
+#import <XCTest/XCTest.h>
+#import "TTMTask.h"
 
-@interface TTMTableViewDelegate : NSObject <NSTableViewDelegate>
+@interface TTMTask_Projects_UnitTests : XCTestCase
 
-#pragma mark - Properties
+@property NSUInteger taskId;
 
-@property (nonatomic, retain) IBOutlet NSArrayController *arrayController;
+@end
+
+@implementation TTMTask_Projects_UnitTests
+
+- (void)setUp {
+    [super setUp];
+    // Put setup code here. This method is called before the invocation of each test method in the class.
+    self.taskId = 10;
+}
+
+- (void)tearDown {
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
+}
+
+- (void)test_Projects_WhenTaskHasOneProject_ShouldBeOneProject {
+    NSString *rawText = @"pick up groceries +Chores";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertEqualObjects(@"+Chores", task.projects);
+}
+
+- (void)test_Projects_WhenTaskHasMultipleProjects_ShouldBeAllProjectsAlphabetized {
+    NSString *rawText = @"pick up groceries +Shopping +Chores +Errands";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertEqualObjects(@"+Chores, +Errands, +Shopping", task.projects);
+}
+
+- (void)test_Projects_WhenTaskHasMultipleProjectsWithOddPunctuation_ShouldBeAllProjectsAlphabetized {
+    NSString *rawText = @"pick up groceries +Shopping; +Chores+Personal +-Errands-";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertEqualObjects(@"+-Errands-, +Chores+Personal, +Shopping;", task.projects);
+}
+
+- (void)test_Projects_WhenTaskHasNoProjects_ShouldBeEmptyString {
+    NSString *rawText = @"pick up groceries";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertEqualObjects(@"", task.projects);
+}
 
 @end
