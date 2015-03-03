@@ -5,6 +5,18 @@
         <link>http://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
         <language>en</language>
         <item>
+            <title>Version 1.5.0</title>
+            <description>
+            Improvemed filters. Added customizable color option to creation date. Improved todo.txt format parsing.
+            </description>
+            <sparkle:releaseNotesLink>
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.5.0.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Tuesday, 3 Feb 2015 01:17 +0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.5.0/TodoTxtMac.app.zip" sparkle:version="1.5.0" length="2659564" type="application/octet-stream" sparkle:dsaSignature="MCwCFGyzsODCSsQ8tE9fGg9Wz4w0J7NMAhRpsUSQnOFPI7Lx9txFbjqcyyE9wA==" />
+            <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 1.4.0</title>
             <description>
             Added new features, including status bar and find/replace text command. Fixes bugs related to context autocompletion and the prepend text command's keyboard shortcut.
