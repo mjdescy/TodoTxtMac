@@ -249,6 +249,7 @@ static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
 }
 
 - (NSAttributedString*)displayText:(BOOL)selected
+                              font:(NSFont*)font
       useHighlightColorsInTaskList:(BOOL)useHighlightColorsInTaskList
                     completedColor:(NSColor*)completedColor
                      dueTodayColor:(NSColor*)dueTodayColor
@@ -261,6 +262,13 @@ static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
                  creationDateColor:(NSColor*)creationDateColor {
     NSMutableAttributedString *as = [[NSMutableAttributedString alloc] initWithString:self.rawText];
     NSRange fullStringRange = NSMakeRange(0, [as length]);
+    
+    [as beginEditing];
+
+    // Apply font to the entire string.
+    // This was added because applying boldface to the task priority was resetting the font
+    // of the priority substring to the default font.
+    [as addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, as.length)];
     
     // Apply strikethrough and light gray color to completed tasks when they are displayed
     // in the tableView.
@@ -314,7 +322,8 @@ static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
     // Color creation dates (incomplete tasks only).
     [as applyColor:creationDateColor toRegexPatternMatches:CreationDatePatternIncomplete];
     
-    return as;
+    [as endEditing];
+    return [as copy];
 }
 
 #pragma mark - Append and Prepend Methods
