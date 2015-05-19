@@ -55,22 +55,20 @@
 
 // define constants for regular expressions
 static NSString * const LineBreakPattern = @"(\\r|\\n)";
-static NSString * const CompletedPattern = @"^x\\s((\\d{4})-(\\d{2})-(\\d{2}))\\s";
-static NSString * const CompletionDatePattern = @"(?<=^x\\s)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const PriorityTextPattern = @"^(\\([A-Z]\\)\\s)";
-static NSString * const CreationDatePatternIncomplete =
-    @"(?<=^|\\([A-Z]\\)\\s)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const CreationDatePatternCompleted =
-    @"(?<=^x\\s((\\d{4})-(\\d{2})-(\\d{2}))\\s)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const DueDatePattern = @"(?<=(^|\\s)due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const FullDueDatePatternMiddleOrEnd = @"((\\s)due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const FullDueDatePatternBeginning = @"^due:((\\d{4})-(\\d{2})-(\\d{2}))\\s?|$";
-static NSString * const ThresholdDatePattern = @"(?<=(^|\\s)t:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const FullThresholdDatePatternMiddleOrEnd = @"((\\s)t:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const FullThresholdDatePatternBeginning = @"^t:((\\d{4})-(\\d{2})-(\\d{2}))\\s?|$";
-static NSString * const ProjectPattern = @"(?<=^|\\s)(\\+[^\\s]+)";
-static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
-static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
+static NSString * const CompletedPattern = @"^x[ ]((\\d{4})-(\\d{2})-(\\d{2}))[ ]";
+static NSString * const CompletionDatePattern = @"(?<=^x[ ])((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const PriorityTextPattern = @"^(\\([A-Z]\\)[ ])";
+static NSString * const CreationDatePatternIncomplete = @"(?<=^|\\([A-Z]\\)[ ])((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const CreationDatePatternCompleted = @"(?<=^x[ ]((\\d{4})-(\\d{2})-(\\d{2}))[ ])((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const DueDatePattern = @"(?<=(^|[ ])due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const FullDueDatePatternMiddleOrEnd = @"(([ ])due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const FullDueDatePatternBeginning = @"^due:((\\d{4})-(\\d{2})-(\\d{2}))[ ]?|$";
+static NSString * const ThresholdDatePattern = @"(?<=(^|[ ])t:)((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const FullThresholdDatePatternMiddleOrEnd = @"(([ ])t:)((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const FullThresholdDatePatternBeginning = @"^t:((\\d{4})-(\\d{2})-(\\d{2}))[ ]?|$";
+static NSString * const ProjectPattern = @"(?<=^|[ ])(\\+[^[ ]]+)";
+static NSString * const ContextPattern = @"(?<=^|[ ])(\\@[^[ ]]+)";
+static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
 
 #pragma mark - Init Methods
 
