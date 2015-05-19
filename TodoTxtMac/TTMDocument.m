@@ -601,7 +601,6 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
                          informativeTextWithFormat:@"Set the due date:"];
     NSDatePicker *input = [[NSDatePicker alloc] initWithFrame:NSMakeRect(0, 0, 110, 24)];
     [input setDatePickerElements:NSYearMonthDayDatePickerElementFlag];
-    [input setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
     [input setDateValue:[TTMDateUtility today]];
     [alert setAccessoryView:input];
     [alert compatibleBeginSheetModalForWindow:self.windowForSheet
