@@ -930,6 +930,14 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     [[NSPasteboard generalPasteboard] setString:clipboardTextString forType:NSStringPboardType];
 }
 
+// Override normal cut handler to cut selected tasks from the task list.
+// This does not get called when the field editor is active.
+- (IBAction)cut:(id)sender {
+    [self copy:sender];
+    [self.arrayController removeObjectsAtArrangedObjectIndexes:[self.tableView selectedRowIndexes]];
+    [self refreshTaskListWithSave:YES];
+}
+
 - (IBAction)paste:(id)sender {
     [self addNewTasksFromClipboard:self];
 }
