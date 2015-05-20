@@ -55,22 +55,20 @@
 
 // define constants for regular expressions
 static NSString * const LineBreakPattern = @"(\\r|\\n)";
-static NSString * const CompletedPattern = @"^x\\s((\\d{4})-(\\d{2})-(\\d{2}))\\s";
-static NSString * const CompletionDatePattern = @"(?<=^x\\s)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const PriorityTextPattern = @"^(\\([A-Z]\\)\\s)";
-static NSString * const CreationDatePatternIncomplete =
-    @"(?<=^|\\([A-Z]\\)\\s)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const CreationDatePatternCompleted =
-    @"(?<=^x\\s((\\d{4})-(\\d{2})-(\\d{2}))\\s)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const DueDatePattern = @"(?<=(^|\\s)due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const FullDueDatePatternMiddleOrEnd = @"((\\s)due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const FullDueDatePatternBeginning = @"^due:((\\d{4})-(\\d{2})-(\\d{2}))\\s?|$";
-static NSString * const ThresholdDatePattern = @"(?<=(^|\\s)t:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const FullThresholdDatePatternMiddleOrEnd = @"((\\s)t:)((\\d{4})-(\\d{2})-(\\d{2}))(?=\\s|$)";
-static NSString * const FullThresholdDatePatternBeginning = @"^t:((\\d{4})-(\\d{2})-(\\d{2}))\\s?|$";
-static NSString * const ProjectPattern = @"(?<=^|\\s)(\\+[^\\s]+)";
-static NSString * const ContextPattern = @"(?<=^|\\s)(\\@[^\\s]+)";
-static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
+static NSString * const CompletedPattern = @"^x[ ]((\\d{4})-(\\d{2})-(\\d{2}))[ ]";
+static NSString * const CompletionDatePattern = @"(?<=^x[ ])((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const PriorityTextPattern = @"^(\\([A-Z]\\)[ ])";
+static NSString * const CreationDatePatternIncomplete = @"(?<=^|\\([A-Z]\\)[ ])((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const CreationDatePatternCompleted = @"(?<=^x[ ]((\\d{4})-(\\d{2})-(\\d{2}))[ ])((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const DueDatePattern = @"(?<=(^|[ ])due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const FullDueDatePatternMiddleOrEnd = @"(([ ])due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const FullDueDatePatternBeginning = @"^due:((\\d{4})-(\\d{2})-(\\d{2}))[ ]?|$";
+static NSString * const ThresholdDatePattern = @"(?<=(^|[ ])t:)((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const FullThresholdDatePatternMiddleOrEnd = @"(([ ])t:)((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const FullThresholdDatePatternBeginning = @"^t:((\\d{4})-(\\d{2})-(\\d{2}))[ ]?|$";
+static NSString * const ProjectPattern = @"(?<=^|[ ])(\\+[^[ ]]+)";
+static NSString * const ContextPattern = @"(?<=^|[ ])(\\@[^[ ]]+)";
+static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
 
 #pragma mark - Init Methods
 
@@ -251,6 +249,7 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
 }
 
 - (NSAttributedString*)displayText:(BOOL)selected
+                              font:(NSFont*)font
       useHighlightColorsInTaskList:(BOOL)useHighlightColorsInTaskList
                     completedColor:(NSColor*)completedColor
                      dueTodayColor:(NSColor*)dueTodayColor
@@ -263,6 +262,13 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
                  creationDateColor:(NSColor*)creationDateColor {
     NSMutableAttributedString *as = [[NSMutableAttributedString alloc] initWithString:self.rawText];
     NSRange fullStringRange = NSMakeRange(0, [as length]);
+    
+    [as beginEditing];
+
+    // Apply font to the entire string.
+    // This was added because applying boldface to the task priority was resetting the font
+    // of the priority substring to the default font.
+    [as addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, as.length)];
     
     // Apply strikethrough and light gray color to completed tasks when they are displayed
     // in the tableView.
@@ -316,7 +322,8 @@ static NSString * const TagPattern = @"(?<=^|\\s)([:graph:]+:[:graph:]+)";
     // Color creation dates (incomplete tasks only).
     [as applyColor:creationDateColor toRegexPatternMatches:CreationDatePatternIncomplete];
     
-    return as;
+    [as endEditing];
+    return [as copy];
 }
 
 #pragma mark - Append and Prepend Methods

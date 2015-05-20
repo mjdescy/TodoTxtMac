@@ -99,10 +99,16 @@
         return;
     }
     
+    // handle option + key shortcuts
+    // This fixes a bug in which Option+s jumps to the first task starting with the letter 's'.
+    if (flags & NSAlternateKeyMask) {
+        [self translateKeyDownEvent:theEvent toKeyDown:keyChar sendToControl:[self window]];
+        return;
+    }
+    
     // do not override the super for other special key combinations
     if ((flags & NSCommandKeyMask) ||
-        (flags & NSControlKeyMask) ||
-        (flags & NSAlternateKeyMask)) {
+        (flags & NSControlKeyMask)) {
         [super keyDown:theEvent];
         return;
     }

@@ -103,6 +103,7 @@
             [NSColor darkGrayColor];
 
         NSAttributedString *as = [task displayText:selected
+                                              font:[cell font]
                       useHighlightColorsInTaskList:useHighlightColorsInTaskList
                                     completedColor:completedColor
                                      dueTodayColor:dueTodayColor

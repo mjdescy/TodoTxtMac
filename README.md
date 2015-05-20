@@ -32,6 +32,7 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - Import one or more tasks into the task list via drag-and-drop.
 - Optionally prepend the task creation task on newly created tasks (including those pasted in from the clipboard).
 - Copy selected tasks to the clipboard.
+- Cut selected tasks to the clipboard.
 - Reload file on command.
 
 ## Sorting and filtering
@@ -86,6 +87,7 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - Command+Down: Decrease priority
 - Command+Left or Command+Right: Remove priority
 - Command+C: Copy selected tasks to the clipboard
+- Command+X: Cut selected tasks (copy to the clipboard and delete from task list)
 - Command+Shift+V: Paste tasks into the task list from the clipboard
 - Command+Option+Up: Increase due date by 1 day
 - Command+Option+Down: Decrease due date by 1 day

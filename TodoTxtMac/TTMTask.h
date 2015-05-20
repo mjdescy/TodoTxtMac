@@ -166,6 +166,7 @@ typedef enum : NSUInteger {
  * user defaults. Therefore, all color options are passed to this method.
  */
 - (NSAttributedString*)displayText:(BOOL)selected
+                              font:(NSFont*)font
       useHighlightColorsInTaskList:(BOOL)useHighlightColorsInTaskList
                     completedColor:(NSColor*)completedColor
                      dueTodayColor:(NSColor*)dueTodayColor
