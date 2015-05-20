@@ -5,6 +5,18 @@
         <link>http://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
         <language>en</language>
         <item>
+            <title>Version 1.5.1</title>
+            <description>
+            Added Cut command to task list. Various bug fixes.
+            </description>
+            <sparkle:releaseNotesLink>
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.5.1.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Wednesday, 20 May 2015 10:19 +0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.5.1/TodoTxtMac.app.zip" sparkle:version="1.5.1" length="2653275" type="application/octet-stream" sparkle:dsaSignature="MCwCFH5+5Ar8Zoat6kRFuwBtJJxnsJCVAhRIvji5y8QKzIrTLp4ZkMaBlwwXXg==" />
+            <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 1.5.0</title>
             <description>
             Improvemed filters. Added customizable color option to creation date. Improved todo.txt format parsing.
