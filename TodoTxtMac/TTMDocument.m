@@ -858,6 +858,15 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     NSString *archiveFilePath = [[NSUserDefaults standardUserDefaults]
                                  objectForKey:@"archiveFilePath"];
     if ([archiveFilePath length] == 0) {
+        NSAlert *noArchiveFilePrompt = [NSAlert alertWithMessageText:@"No archive file set"
+                                                       defaultButton:@"Dismiss"
+                                                     alternateButton:nil
+                                                         otherButton:nil
+                                           informativeTextWithFormat:@"No archive file is set. Assign an archive file in Preferences and try again."];
+        [noArchiveFilePrompt compatibleBeginSheetModalForWindow:self.windowForSheet
+                                              completionHandler:^(NSModalResponse returnCode) {
+                                                  // do nothing
+                                              }];
         return;
     }
     
