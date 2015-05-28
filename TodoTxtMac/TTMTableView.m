@@ -134,8 +134,8 @@
     }
     
     // update task (send Enter/Return to super)
-    if (keyChar == 'u') {
-        [self translateKeyDownEvent:theEvent toKeyDown:NSEnterCharacter sendToControl:self];
+    if (keyChar == NSEnterCharacter || keyChar == '\r' || keyChar == 'u') {
+        [self translateKeyDownEvent:theEvent toKeyDown:'u' sendToControl:self];
         return;
     }
     
