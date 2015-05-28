@@ -101,6 +101,8 @@ static NSDictionary *defaultValues() {
                 @"", @"defaultTodoFilePath",
                 @YES, @"showStatusBar",
                 [TTMDocumentStatusBarText defaultFormat], @"statusBarFormat",
+                @0, @"levelsOfUndo",
+                @YES, @"allowUndoOfArchiveCommand",
                 nil];
     }
     return dict;

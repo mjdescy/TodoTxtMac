@@ -177,12 +177,13 @@
 
 #pragma mark - Respond to Changes Methods
 
-- (void)textDidBeginEditing:(NSNotification *)notification {
+- (void)textDidBeginEditing:(NSNotification*)notification {
+    [self.parentDocument initializeUpdateSelectedTask];
     [super textDidBeginEditing:notification];
     self.selectedRawText = [[notification object] string];
 }
 
-- (void)textDidEndEditing:(NSNotification *)notification {
+- (void)textDidEndEditing:(NSNotification*)notification {
     [super textDidEndEditing:notification];
     NSString *newValue = [[notification object] string];
     
@@ -192,7 +193,7 @@
         return;
     }
     
-    [self.parentDocument refreshTaskListWithSave:YES];
+    [self.parentDocument finalizeUpdateSelectedTask:newValue];
     self.selectedRawText = nil;
 }
 

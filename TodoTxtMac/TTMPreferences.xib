@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6254"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7706"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTMPreferencesController">
@@ -19,7 +19,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="546" height="265"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="546" height="265"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -203,6 +203,70 @@
                                         <constraint firstItem="EbF-No-8Sl" firstAttribute="top" secondItem="Sr6-1i-PgC" secondAttribute="bottom" constant="15" id="ubQ-ii-JdG"/>
                                         <constraint firstItem="kLG-5x-TgF" firstAttribute="leading" secondItem="EbF-No-8Sl" secondAttribute="trailing" constant="8" symbolic="YES" id="xeP-9Y-qOe"/>
                                         <constraint firstItem="Sr6-1i-PgC" firstAttribute="top" secondItem="wFd-n2-OjV" secondAttribute="bottom" constant="8" id="yIM-Rv-9u3"/>
+                                    </constraints>
+                                </view>
+                            </tabViewItem>
+                            <tabViewItem label="Undo" identifier="6" id="QYf-9f-Vd3">
+                                <view key="view" id="ADq-m3-TeV">
+                                    <rect key="frame" x="10" y="33" width="500" height="203"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button translatesAutoresizingMaskIntoConstraints="NO" id="wgS-xI-5cd">
+                                            <rect key="frame" x="15" y="159" width="253" height="18"/>
+                                            <buttonCell key="cell" type="check" title="Allow undo/redo of archive command" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="JuW-76-crX">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.allowUndoOfArchiveCommand" id="3lX-BT-6cp"/>
+                                            </connections>
+                                        </button>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TEF-JO-4hj">
+                                            <rect key="frame" x="15" y="183" width="233" height="17"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Levels of undo (set to 0 for unlimited)" id="m8O-p6-FPJ">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S5J-Yg-kVX">
+                                            <rect key="frame" x="254" y="181" width="55" height="22"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="55" id="R4d-ey-oWr"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Mc7-8S-Hcy">
+                                                <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="Q3m-6b-8RL"/>
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="p0U-mu-Cyy" name="value" keyPath="values.levelsOfUndo" id="XDI-Ol-U21"/>
+                                            </connections>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVj-7Y-CJo">
+                                            <rect key="frame" x="15" y="68" width="470" height="85"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="85" id="8Kh-pL-WMc"/>
+                                            </constraints>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="IP4-sr-FV9">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <string key="title">"Allow undo/redo of archive command" allows TodoTxtMac to remove previously archived tasks from your archive file. TodoTxtMac makes the best effort to remove the archived tasks from the end of the archive file. Uncheck this option to prevent TodoTxtMac from deleting any lines from the archive file.</string>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="S5J-Yg-kVX" secondAttribute="trailing" constant="191" id="Etl-K8-1d6"/>
+                                        <constraint firstItem="S5J-Yg-kVX" firstAttribute="leading" secondItem="TEF-JO-4hj" secondAttribute="trailing" constant="8" symbolic="YES" id="HPN-F5-lmt"/>
+                                        <constraint firstItem="ZVj-7Y-CJo" firstAttribute="top" secondItem="wgS-xI-5cd" secondAttribute="bottom" constant="8" symbolic="YES" id="HQ7-66-Kzh"/>
+                                        <constraint firstItem="S5J-Yg-kVX" firstAttribute="baseline" secondItem="TEF-JO-4hj" secondAttribute="baseline" id="Y45-qQ-JYZ"/>
+                                        <constraint firstItem="wgS-xI-5cd" firstAttribute="leading" secondItem="TEF-JO-4hj" secondAttribute="leading" id="bAx-AY-6sr"/>
+                                        <constraint firstItem="S5J-Yg-kVX" firstAttribute="top" secondItem="ADq-m3-TeV" secondAttribute="top" id="eOc-bZ-Ncy"/>
+                                        <constraint firstItem="ZVj-7Y-CJo" firstAttribute="leading" secondItem="wgS-xI-5cd" secondAttribute="leading" id="fm2-MP-jig"/>
+                                        <constraint firstItem="wgS-xI-5cd" firstAttribute="top" secondItem="S5J-Yg-kVX" secondAttribute="bottom" constant="6" id="h8O-JU-aIx"/>
+                                        <constraint firstAttribute="trailing" secondItem="ZVj-7Y-CJo" secondAttribute="trailing" constant="17" id="lif-nS-s53"/>
                                     </constraints>
                                 </view>
                             </tabViewItem>
@@ -709,6 +773,7 @@
                 <constraints>
                     <constraint firstItem="y76-Kz-NYB" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="17d-HI-809"/>
                     <constraint firstItem="y76-Kz-NYB" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="12" symbolic="YES" id="BEc-j0-p6y"/>
+                    <constraint firstAttribute="bottom" secondItem="y76-Kz-NYB" secondAttribute="bottom" constant="20" symbolic="YES" id="Leh-dI-qsL"/>
                     <constraint firstAttribute="trailing" secondItem="y76-Kz-NYB" secondAttribute="trailing" constant="20" symbolic="YES" id="ihJ-cE-HGt"/>
                 </constraints>
             </view>
@@ -770,14 +835,15 @@
         <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="EyC-zm-rO1">
             <rect key="frame" x="0.0" y="0.0" width="240" height="135"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <clipView key="contentView" misplaced="YES" id="9MM-s4-fE7">
+            <clipView key="contentView" id="9MM-s4-fE7">
                 <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="WaU-1O-huJ" viewBased="YES" id="cjP-wB-Wui">
+                        <rect key="frame" x="0.0" y="0.0" width="238" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <size key="intercellSpacing" width="3" height="2"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                         <tableColumns>
                             <tableColumn width="116" minWidth="40" maxWidth="1000" id="hEc-he-GGe">
@@ -866,14 +932,15 @@
         <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="YZB-as-dKy">
             <rect key="frame" x="0.0" y="0.0" width="240" height="135"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <clipView key="contentView" misplaced="YES" id="udK-WE-Ae0">
+            <clipView key="contentView" id="udK-WE-Ae0">
                 <rect key="frame" x="1" y="0.0" width="238" height="134"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" headerView="vgL-X6-edu" viewBased="YES" id="0Dg-GT-Vcb">
+                        <rect key="frame" x="0.0" y="0.0" width="238" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <size key="intercellSpacing" width="3" height="2"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                         <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                         <tableColumns>
                             <tableColumn width="116" minWidth="40" maxWidth="1000" id="5wo-ov-Rgi">
