@@ -670,4 +670,42 @@ static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
     self.rawText = [newRawText replace:RX(FullDueDatePatternMiddleOrEnd) with:@""];
 }
 
+#pragma mark - NSCopying Methods
+
+- (TTMTask*)copyWithZone:(NSZone *)zone {
+    TTMTask *copy = [[self class] allocWithZone:zone];
+    
+    if (copy) {
+        return [copy initWithRawText:self.rawText withTaskId:self.taskId];
+    }
+    
+    return copy;
+}
+
+#pragma mark - IsEqual Methods
+
+-(BOOL)isEqual:(id)object {
+    if (object == self) {
+        return YES;
+    }
+    if (!object || ![object isKindOfClass:[self class]]) {
+        return NO;
+    }
+    return [self isEqualToTTMTask:object];
+}
+
+- (BOOL)isEqualToTTMTask:(TTMTask*)otherTask {
+    if (!otherTask) {
+        return NO;
+    }
+    
+    BOOL haveEqualRawText = [self.rawText isEqualToString:otherTask.rawText];
+    BOOL haveEqualTaskId = (self.taskId == otherTask.taskId);
+    return haveEqualRawText && haveEqualTaskId;
+}
+
+- (NSUInteger)hash {
+    return [self.rawText hash] ^ [@(self.taskId) hash];
+}
+
 @end
