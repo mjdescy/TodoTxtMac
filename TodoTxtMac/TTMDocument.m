@@ -195,6 +195,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (IBAction)reloadFile:(id)sender {
+    [[self.undoManager prepareWithInvocationTarget:self] replaceAllTasks:[self.taskList copy]];
+    [self.undoManager setActionName:NSLocalizedString(@"Reload File", @"Undo Reload File")];
+    
     // retain selected items, because selection is lost when the file/arrayController is reloaded
     NSArray *taskListSelectedItemsList = [self getTaskListSelections];
     
@@ -249,6 +252,36 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 #pragma mark - Undo/Redo Methods
+
+- (void)replaceAllTasks:(NSArray*)newTasks {
+    [[self.undoManager prepareWithInvocationTarget:self] replaceAllTasks:[[self.arrayController arrangedObjects] copy]];
+    NSRange range = NSMakeRange(0, [[self.arrayController arrangedObjects] count]);
+    
+    // retain selected items, because selection is lost when the file/arrayController is reloaded
+    NSArray *taskListSelectedItemsList = [self getTaskListSelections];
+    
+    // Save the current filter number.
+    NSUInteger filterNumber = self.activeFilterPredicateNumber;
+    
+    // Remove the current filter.
+    [self removeTaskListFilter];
+    
+    // remove all tasks
+    [self.arrayController removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+    
+    // add new tasks
+    [self.arrayController addObjects:newTasks];
+    
+    // Refresh the task list.
+    [self refreshTaskListWithSave:NO];
+    
+    // Re-apply the filter active before the file was reloaded.
+    [self changeActiveFilterPredicateToPreset:filterNumber];
+    
+    // re-set selected items
+    [self setTaskListSelections:taskListSelectedItemsList];
+}
+
 
 - (void)replaceTasks:(NSArray*)oldTasks withTasks:(NSArray*)newTasks {
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];

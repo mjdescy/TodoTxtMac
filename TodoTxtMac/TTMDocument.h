@@ -145,6 +145,14 @@ typedef enum : NSUInteger {
 
 /*!
  * @method replaceTasks:withTasks:
+ * @abstract This method replaces one array of tasks with another in the task list.
+ * It is used for undo/redo operations, namely to undo the reload file command.
+ */
+
+- (void)replaceAllTasks:(NSArray*)newTasks;
+
+/*!
+ * @method replaceTasks:withTasks:
  * @abstract This method replaces one array of tasks with another in the task list. 
  * It is used for undo/redo operations.
  */
