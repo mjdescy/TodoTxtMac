@@ -5,6 +5,19 @@
         <link>http://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
         <language>en</language>
         <item>
+            <title>Version 1.6.0</title>
+            <description>
+            Added full undo/redo support (Command+Z, Command+Shift+Z).
+            </description>
+            <sparkle:releaseNotesLink>
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.6.0.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Wednesday, 17 Jun 2015 20:00 -0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.6.0/TodoTxtMac.app.zip" sparkle:version="1.6.0" length="2670180" type="application/octet-stream" sparkle:dsaSignature="MC0CFGVW9OHlhwl48LqyxIwQGmZdkiWwAhUAh33R5ASzX1gYhDUnBG072WUc94Y=" />
+            <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
+        </item>
+
+        <item>
             <title>Version 1.5.1</title>
             <description>
             Added Cut command to task list. Various bug fixes.
@@ -12,7 +25,7 @@
             <sparkle:releaseNotesLink>
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.5.1.html
             </sparkle:releaseNotesLink>
-            <pubDate>Wednesday, 20 May 2015 10:19 +0500</pubDate>
+            <pubDate>Wednesday, 20 May 2015 10:19 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.5.1/TodoTxtMac.app.zip" sparkle:version="1.5.1" length="2653275" type="application/octet-stream" sparkle:dsaSignature="MCwCFH5+5Ar8Zoat6kRFuwBtJJxnsJCVAhRIvji5y8QKzIrTLp4ZkMaBlwwXXg==" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
@@ -24,7 +37,7 @@
             <sparkle:releaseNotesLink>
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.5.0.html
             </sparkle:releaseNotesLink>
-            <pubDate>Tuesday, 3 Feb 2015 01:17 +0500</pubDate>
+            <pubDate>Tuesday, 3 Feb 2015 01:17 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.5.0/TodoTxtMac.app.zip" sparkle:version="1.5.0" length="2659564" type="application/octet-stream" sparkle:dsaSignature="MCwCFGyzsODCSsQ8tE9fGg9Wz4w0J7NMAhRpsUSQnOFPI7Lx9txFbjqcyyE9wA==" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
@@ -36,7 +49,7 @@
             <sparkle:releaseNotesLink>
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.4.0.html
             </sparkle:releaseNotesLink>
-            <pubDate>Thursday, 5 Feb 2015 14:10 +0500</pubDate>
+            <pubDate>Thursday, 5 Feb 2015 14:10 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.4.0/TodoTxtMac.app.zip" sparkle:version="1.4.0" length="2638931" type="application/octet-stream" sparkle:dsaSignature="MCwCFGPbXHE9ifA9KwaeSBI7KizmdX5LAhQrsuJr2quuB+qiUl05Nb+XpsVPmg==" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
@@ -48,7 +61,7 @@
             <sparkle:releaseNotesLink>
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.3.0.html
             </sparkle:releaseNotesLink>
-            <pubDate>Monday, 19 Jan 2015 22:17:00 +0500</pubDate>
+            <pubDate>Monday, 19 Jan 2015 22:17:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.3.0/TodoTxtMac.app.zip" sparkle:version="1.3.0" length="2627069" type="application/octet-stream" sparkle:dsaSignature="MCwCFGHkYNLjoYgK7RBPY4PtLXEELd3WAhQmhsmLKSKt3C9UdWUCiJkt1EgjFA==" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
@@ -60,7 +73,7 @@
             <sparkle:releaseNotesLink>
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.8.html
             </sparkle:releaseNotesLink>
-            <pubDate>Mon, 15 Dec 2014 14:11:00 +0500</pubDate>
+            <pubDate>Mon, 15 Dec 2014 14:11:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.8/TodoTxtMac.app.zip" sparkle:version="1.2.8" length="1955296" type="application/octet-stream" sparkle:dsaSignature="MC4CFQC/Mn2xob/yDmzmLnEo1jwC3ZCWIQIVAJvuAUTP1ld8jvdqj/YeRdnn1+ze" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
@@ -72,7 +85,7 @@
             <sparkle:releaseNotesLink>
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.7.html
             </sparkle:releaseNotesLink>
-            <pubDate>Mon, 8 Dec 2014 19:45:00 +0500</pubDate>
+            <pubDate>Mon, 8 Dec 2014 19:45:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.7/TodoTxtMac.app.zip" sparkle:version="1.2.7" length="1834067" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCVSka93stepYgwnnkfGSiw2IGN4QIVAJmvzUJYvsEZTMsafKqcaT27Wx9L" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
@@ -84,7 +97,7 @@
             <sparkle:releaseNotesLink>
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.6.html
             </sparkle:releaseNotesLink>
-            <pubDate>Fri, 5 Dec 2014 19:45:00 +0500</pubDate>
+            <pubDate>Fri, 5 Dec 2014 19:45:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.6/TodoTxtMac.app.zip" sparkle:version="1.2.6" length="1831518" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCAHiTQkNrkkJiU+xDe/WcBu0zULgIVAK5lk+E3GOgncdnPVOvoYTYQzh8E" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
@@ -96,7 +109,7 @@
             <sparkle:releaseNotesLink>
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.5.html
             </sparkle:releaseNotesLink>
-            <pubDate>Wed, 26 Nov 2014 20:30:00 +0500</pubDate>
+            <pubDate>Wed, 26 Nov 2014 20:30:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.5/TodoTxtMac.app.zip" sparkle:version="1.2.5" length="1830868" type="application/octet-stream" sparkle:dsaSignature="MC0CFGb3ooVV4nWw2Gs7dO2ZTwux3bSgAhUAia4jB57P2kZ+LG0hwg/DGA7Bzz0=" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
@@ -108,7 +121,7 @@
             <sparkle:releaseNotesLink>
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.4.html
             </sparkle:releaseNotesLink>
-            <pubDate>Sun, 26 Oct 2014 17:00:00 +0500</pubDate>
+            <pubDate>Sun, 26 Oct 2014 17:00:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.4/TodoTxtMac.app.zip" sparkle:version="1.2.4" length="1830351" type="application/octet-stream" sparkle:dsaSignature="MCwCFE/X9tYRrLid0wOIHa8PvVpNukOdAhRagtaWJUkDJth5IWAjxv+077yxXg==" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
@@ -120,7 +133,7 @@
             <sparkle:releaseNotesLink>
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.3.html
             </sparkle:releaseNotesLink>
-            <pubDate>Mon, 13 Oct 2014 15:25:00 +0500</pubDate>
+            <pubDate>Mon, 13 Oct 2014 15:25:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.3/TodoTxtMac.app.zip" sparkle:version="1.2.3" length="1844121" type="application/octet-stream" sparkle:dsaSignature="MCwCFFuRG7XObTyWbf5gGPBtlCOtUeBgAhQFLtZZWZNNclvv9wbUsgtWHRpp+A==" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
@@ -132,7 +145,7 @@
             <sparkle:releaseNotesLink>
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.2.html
             </sparkle:releaseNotesLink>
-            <pubDate>Tue, 6 Oct 2014 22:00:00 +0500</pubDate>
+            <pubDate>Tue, 6 Oct 2014 22:00:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.2/TodoTxtMac.app.zip" sparkle:version="1.2.2" length="1834688" type="application/octet-stream" sparkle:dsaSignature="MC0CFBHigxsIy2YlA1BNuJO9ue+DRNp3AhUAq+VqkXCBB4hcyOxAD5eF7cb7PnE=" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
@@ -144,7 +157,7 @@
             <sparkle:releaseNotesLink>
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.1.html
             </sparkle:releaseNotesLink>
-            <pubDate>Sun, 29 Jun 2014 22:39:00 +0500</pubDate>
+            <pubDate>Sun, 29 Jun 2014 22:39:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.1/TodoTxtMac.app.zip" sparkle:version="1.2.1" length="1122148" type="application/octet-stream" sparkle:dsaSignature="MCwCFFCJxCTdgdCVmS6Ln5ODrNspGlgwAhQK7I3ng9gj0OPX6+227zm60PKNDw==" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
@@ -156,7 +169,7 @@
             <sparkle:releaseNotesLink>
             http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.0.html
             </sparkle:releaseNotesLink>
-            <pubDate>Sun, 29 Jun 2014 22:07:00 +0500</pubDate>
+            <pubDate>Sun, 29 Jun 2014 22:07:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.0/TodoTxtMac.app.zip" sparkle:version="1.2.0" length="1122304" type="application/octet-stream" sparkle:dsaSignature="MCwCFDkUGEJ4qVa58mYSQtWVIzoCADJ3AhQZrMtFxC+71KYBT4vH0mnQrMqSsg==" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
