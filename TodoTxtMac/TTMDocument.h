@@ -68,8 +68,6 @@ typedef enum : NSUInteger {
     TTMSortAlphabetical
 } TTMTaskListSortType;
 
-typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
-
 @interface TTMDocument : NSDocument
 
 #pragma mark - Properties
@@ -111,6 +109,9 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 @property (nonatomic, retain) TTMTasklistMetadata *filteredTasklistMetadata;
 @property (nonatomic, retain) IBOutlet NSWindow *tasklistMetadataSheet;
 
+// Task objects for undo/redo of task edits
+@property (nonatomic, copy) NSArray *originalTasks;
+
 #pragma mark - File Loading and Saving Methods
 
 /*!
@@ -140,6 +141,44 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
  */
 - (void)setTaskListSelections:(NSArray*)taskListSelectedItems;
 
+#pragma mark - Undo/Redo Methods
+
+/*!
+ * @method replaceTasks:withTasks:
+ * @abstract This method replaces one array of tasks with another in the task list.
+ * It is used for undo/redo operations, namely to undo the reload file command.
+ */
+
+- (void)replaceAllTasks:(NSArray*)newTasks;
+
+/*!
+ * @method replaceTasks:withTasks:
+ * @abstract This method replaces one array of tasks with another in the task list. 
+ * It is used for undo/redo operations.
+ */
+- (void)replaceTasks:(NSArray*)oldTasks withTasks:(NSArray*)newTasks;
+
+/*!
+ * @method addTasks:
+ * @abstract This method adds an array of tasks to the task list.
+ * It is used for undo/redo operations.
+ */
+- (void)addTasks:(NSArray*)newTasks;
+
+/*!
+ * @method addTasks:
+ * @abstract This method removes an array of tasks from the task list.
+ * It is used for undo/redo operations.
+ */
+- (void)removeTasks:(NSArray*)oldTasks;
+
+/*!
+ * @method addTasks:
+ * @abstract This method performs and undo for the archive command.
+ * It is used for undo/redo operations.
+ */
+- (void)undoArchiveTasks:(NSArray*)archivedTasks fromArchiveFile:(NSString*)archiveFilePath;
+
 #pragma mark - Add/Remove Task(s) methods
 
 /*!
@@ -164,12 +203,15 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 - (void)removeAllTasks;
 
 /*!
- * @method addTasksFromArray:removeAllTasksFirst:
+ * @method addTasksFromArray:removeAllTasksFirst:undoActionName
  * @abstract Add tasks from an array to the task list.
  * @param rawTextStrings The array of tasks' raw text strings.
  * @param removeAllRecordsFirst Set to YES if all records should be removed prior to adding tasks.
+ * @param undoActionName Set to undo action name; blank if operation is not undoable
  */
-- (void)addTasksFromArray:(NSArray*)rawTextStrings removeAllTasksFirst:(BOOL)removeAllRecordsFirst;
+- (void)addTasksFromArray:(NSArray*)rawTextStrings
+      removeAllTasksFirst:(BOOL)removeAllRecordsFirst
+           undoActionName:(NSString*)undoActionName;
 
 /*!
  * @method addNewTask:
@@ -236,12 +278,17 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
 - (IBAction)updateSelectedTask:(id)sender;
 
 /*!
- * @method forEachSelectedTaskExecuteBlock:
- * @abstract Executes a block for each selected task in the task list.
- * @param block A TaskChangeBlock that performs an action on a TTMTask object.
- * @discussion This method is called by various other methods in this class.
+ * @method initializeUpdateSelectedTask:
+ * @abstract Captures undo data for the update task list command, prior to the update being made.
  */
-- (void)forEachSelectedTaskExecuteBlock:(TaskChangeBlock)block;
+- (void)initializeUpdateSelectedTask;
+
+/*!
+ * @method finalizeUpdateSelectedTask:rawText
+ * @abstract Finalizes preparation of undo data for the update task list command, 
+ * after the update is made.
+ */
+- (void)finalizeUpdateSelectedTask:(NSString*)rawText;
 
 /*!
  * @method toggleTaskCompletion:
@@ -431,6 +478,8 @@ typedef void (^TaskChangeBlock)(id, NSUInteger, BOOL*);
  * @discussion This is a convenience method called by the archiveCompletedTasks: method.
  */
 - (void)appendString:(NSString*)content toArchiveFile:(NSString*)archiveFilePath;
+
+- (void)removeTasks:(NSArray*)tasksToRemove fromArchiveFile:(NSString*)archiveFilePath;
 
 #pragma mark - Find Methods
 

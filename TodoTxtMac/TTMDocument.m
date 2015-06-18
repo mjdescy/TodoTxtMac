@@ -58,41 +58,9 @@
 
 @implementation TTMDocument
 
-#pragma mark - Instance Variables and Blocks
+#pragma mark - Instance Variables
 
 static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
-
-// The following code blocks are called on all selected tasks in the table/arrayController.
-TaskChangeBlock _toggleTaskCompletion = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task toggleCompletionStatus];
-};
-TaskChangeBlock _increaseTaskPriority = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task increasePriority];
-};
-TaskChangeBlock _decreaseTaskPriority = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task decreasePriority];
-};
-TaskChangeBlock _removeTaskPriority   = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task removePriority];
-};
-TaskChangeBlock _increaseDueDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task incrementDueDate:1];
-};
-TaskChangeBlock _decreaseDueDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task decrementDueDate:1];
-};
-TaskChangeBlock _removeDueDate = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task removeDueDate];
-};
-TaskChangeBlock _removeThresholdDate = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task removeThresholdDate];
-};
-TaskChangeBlock _increaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task incrementThresholdDate:1];
-};
-TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL *stop) {
-    [(TTMTask*)task decrementThresholdDate:1];
-};
 
 #pragma mark - init Methods
 
@@ -106,6 +74,8 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
         _preferredLineEnding = @"\n";
         _usesWindowsLineEndings = NO;
         _activeFilterPredicateNumber = [TTMFilterPredicates activeFilterPredicatePresetNumber];
+        [self.undoManager setLevelsOfUndo:[[NSUserDefaults standardUserDefaults]
+                                           integerForKey:@"levelsOfUndo"]];
         [[self undoManager] enableUndoRegistration];
     }
     return self;
@@ -135,6 +105,12 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     
     // Observe self to update search field filter
     [self addObserver:self forKeyPath:@"searchFieldPredicate" options:NSKeyValueObservingOptionNew context:nil];
+    
+    // Observe NSUserDefaults to update undo-related preferences
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:@"levelsOfUndo"
+                                               options:NSKeyValueObservingOptionNew
+                                               context:nil];
 }
 
 - (NSString *)windowNibName {
@@ -210,7 +186,7 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
         [fileContents componentsSeparatedByString:@"\n"];
 
     // Refresh the arrayController and tableView
-    [self addTasksFromArray:rawTextStrings removeAllTasksFirst:YES];
+    [self addTasksFromArray:rawTextStrings removeAllTasksFirst:YES undoActionName:@""];
     
     // Clear the document modified flag.
     [self updateChangeCount:NSChangeCleared];
@@ -219,6 +195,9 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 }
 
 - (IBAction)reloadFile:(id)sender {
+    [[self.undoManager prepareWithInvocationTarget:self] replaceAllTasks:[self.taskList copy]];
+    [self.undoManager setActionName:NSLocalizedString(@"Reload File", @"Undo Reload File")];
+    
     // retain selected items, because selection is lost when the file/arrayController is reloaded
     NSArray *taskListSelectedItemsList = [self getTaskListSelections];
     
@@ -272,6 +251,62 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     [self.arrayController setSelectedObjects:itemsToSelect];
 }
 
+#pragma mark - Undo/Redo Methods
+
+- (void)replaceAllTasks:(NSArray*)newTasks {
+    [[self.undoManager prepareWithInvocationTarget:self] replaceAllTasks:[[self.arrayController arrangedObjects] copy]];
+    NSRange range = NSMakeRange(0, [[self.arrayController arrangedObjects] count]);
+    
+    // retain selected items, because selection is lost when the file/arrayController is reloaded
+    NSArray *taskListSelectedItemsList = [self getTaskListSelections];
+    
+    // Save the current filter number.
+    NSUInteger filterNumber = self.activeFilterPredicateNumber;
+    
+    // Remove the current filter.
+    [self removeTaskListFilter];
+    
+    // remove all tasks
+    [self.arrayController removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+    
+    // add new tasks
+    [self.arrayController addObjects:newTasks];
+    
+    // Refresh the task list.
+    [self refreshTaskListWithSave:NO];
+    
+    // Re-apply the filter active before the file was reloaded.
+    [self changeActiveFilterPredicateToPreset:filterNumber];
+    
+    // re-set selected items
+    [self setTaskListSelections:taskListSelectedItemsList];
+}
+
+
+- (void)replaceTasks:(NSArray*)oldTasks withTasks:(NSArray*)newTasks {
+    [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+    [self.arrayController removeObjects:oldTasks];
+    [self.arrayController addObjects:newTasks];
+    [self refreshTaskListWithSave:YES];
+}
+
+- (void)addTasks:(NSArray*)newTasks {
+    [[self.undoManager prepareWithInvocationTarget:self] removeTasks:newTasks];
+    [self.arrayController addObjects:newTasks];
+    [self refreshTaskListWithSave:YES];
+}
+
+- (void)removeTasks:(NSArray*)oldTasks {
+    [[self.undoManager prepareWithInvocationTarget:self] addTasks:oldTasks];
+    [self.arrayController removeObjects:oldTasks];
+    [self refreshTaskListWithSave:YES];
+}
+
+- (void)undoArchiveTasks:(NSArray*)archivedTasks fromArchiveFile:(NSString*)archiveFilePath {
+    [self addTasks:archivedTasks];
+    [self removeTasks:archivedTasks fromArchiveFile:archiveFilePath];
+}
+
 #pragma mark - Add/Remove Task Methods
 
 - (TTMTask*)createWorkingTaskWithRawText:(NSString*)rawText withTaskId:(NSUInteger)newTaskId {
@@ -306,28 +341,39 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     }
 }
 
-- (void)addTasksFromArray:(NSArray*)rawTextStrings removeAllTasksFirst:(BOOL)removeAllTasksFirst {
+- (void)addTasksFromArray:(NSArray*)rawTextStrings
+      removeAllTasksFirst:(BOOL)removeAllTasksFirst
+     undoActionName:(NSString*)undoActionName {
     if (removeAllTasksFirst) {
         [self removeAllTasks];
     }
     
+    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
     NSUInteger newTaskId = (self.arrayController == nil) ?
                             [self.taskList count] :
                             [[self.arrayController arrangedObjects] count];
     for (NSString *rawTextString in rawTextStrings) {
         if ([rawTextString length] > 0) {
+            TTMTask *newTask;
             if (removeAllTasksFirst) {
-                TTMTask *newTask = [[TTMTask alloc]
-                                    initWithRawText:(NSString*)rawTextString
-                                    withTaskId:newTaskId++];
+                newTask = [[TTMTask alloc]
+                           initWithRawText:(NSString*)rawTextString
+                           withTaskId:newTaskId++];
                 [self.arrayController addObject:newTask];
             } else {
-                [self.arrayController
-                 addObject:[self createWorkingTaskWithRawText:(NSString*)rawTextString
-                                                       withTaskId:newTaskId++]];
+                newTask = [self createWorkingTaskWithRawText:(NSString*)rawTextString
+                                                  withTaskId:newTaskId++];
+                [self.arrayController addObject:newTask];
             }
+            [newTasks addObject:[newTask copy]];
         }
     }
+    
+    if ([undoActionName length] > 0) {
+        [self.undoManager setActionName:undoActionName];
+        [[self.undoManager prepareWithInvocationTarget:self] removeTasks:newTasks];
+    }
+    
     [self updateTaskListMetadata];
 }
 
@@ -340,8 +386,15 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     }
     
     NSUInteger newTaskId = [[self.arrayController arrangedObjects] count];
-    [self.arrayController addObject:[self createWorkingTaskWithRawText:newTaskText
-                                                            withTaskId:newTaskId]];
+    TTMTask *newTask = [self createWorkingTaskWithRawText:newTaskText
+                                               withTaskId:newTaskId];
+    
+    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    [newTasks addObject:[newTask copy]];
+    [[self.undoManager prepareWithInvocationTarget:self] removeTasks:newTasks];
+    [self.undoManager setActionName:NSLocalizedString(@"Add New Task", @"Undo Add New Task")];
+    
+    [self.arrayController addObject:newTask];
     [self reapplyActiveFilterPredicate];
     [self refreshTaskListWithSave:YES];
     [self.textField setStringValue:@""];
@@ -375,6 +428,7 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 }
 
 - (void)addNewTasksFromDragAndDrop:(id)sender {
+    [self.undoManager setActionName:NSLocalizedString(@"Drag and Drop", @"Undo Drag and Drop")];
     [self addNewTasksFromPasteBoard:[sender draggingPasteboard]];
 }
 
@@ -387,7 +441,9 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     NSArray *rawTextStrings = [pasteboardText
                                componentsSeparatedByCharactersInSet:
                                [NSCharacterSet newlineCharacterSet]];
-    [self addTasksFromArray:rawTextStrings removeAllTasksFirst:NO];
+    
+    [self addTasksFromArray:rawTextStrings
+        removeAllTasksFirst:NO undoActionName:NSLocalizedString(@"Paste", @"Undo Paste")];
     [self reapplyActiveFilterPredicate];
     [self refreshTaskListWithSave:YES];
 }
@@ -395,14 +451,21 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 #pragma mark - Update Task Methods
 
 - (void)refreshTaskListWithSave:(BOOL)saveToFile {
+    // retain selected items, because selection is lost when the file/arrayController is reloaded
+    NSArray *taskListSelectedItemsList = [self getTaskListSelections];
+
     // Optionally save the file.
     if (saveToFile) {
-        [self updateChangeCount:NSChangeDone];
+        [self saveDocument:self];
     }
     // Re-sort the table.
     [self.arrayController rearrangeObjects];
     // Reload table.
     [self.tableView reloadData];
+    
+    // re-set selected items
+    [self setTaskListSelections:taskListSelectedItemsList];
+    
     // Update the lists of projects and contexts.
     [self updateTaskListMetadata];
 }
@@ -425,25 +488,46 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 
 - (IBAction)updateSelectedTask:(id)sender {
     // cancel if multiple rows are selected
-    if ([[self.tableView selectedRowIndexes] count]!=1) {
+    if ([[self.arrayController selectedObjects] count] != 1) {
         return;
     }
     
     [self.tableView editColumn:0 row:[self.tableView selectedRow] withEvent:nil select:YES];
 }
 
-- (void)forEachSelectedTaskExecuteBlock:(TaskChangeBlock)block {
-    [[self.arrayController arrangedObjects]
-     enumerateObjectsAtIndexes:[self.arrayController selectionIndexes]
-                       options:0
-                    usingBlock:block];
+- (void)initializeUpdateSelectedTask {
+    self.originalTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                              copyItems:YES];
+}
+
+- (void)finalizeUpdateSelectedTask:(NSString*)rawText {
+    NSArray *newTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                             copyItems:YES];
+    
+    [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks
+                                                            withTasks:self.originalTasks];
+    [self.undoManager setActionName:NSLocalizedString(@"Edit Task", @"Undo Edit Task")];
+    self.originalTasks = nil;
     [self refreshTaskListWithSave:YES];
 }
 
 - (IBAction)toggleTaskCompletion:(id)sender {
-    [self forEachSelectedTaskExecuteBlock:_toggleTaskCompletion];
+    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                             copyItems:YES];
+    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+
+    for (TTMTask *task in [self.arrayController selectedObjects]) {
+        [task toggleCompletionStatus];
+        [newTasks addObject:[task copy]];
+    }
+    
+    [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+    [self.undoManager setActionName:NSLocalizedString(@"Toggle Completion", @"Undo Toggle Completion")];
+    
     if ([[NSUserDefaults standardUserDefaults] integerForKey:@"archiveTasksUponCompletion"]) {
         [self archiveCompletedTasks:self];
+    } else {
+        [self refreshTaskListWithSave:YES];
     }
 }
 
@@ -456,13 +540,19 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
         informativeTextWithFormat:@"Are you sure you want to delete all selected tasks?"];
     [deletePrompt compatibleBeginSheetModalForWindow:self.windowForSheet
                          completionHandler:^(NSModalResponse returnCode) {
-                             if (returnCode == NSAlertDefaultReturn) {
-                                 [self.arrayController
-                                  removeObjectsAtArrangedObjectIndexes:[self.tableView
-                                                                        selectedRowIndexes]];
-                                 [self refreshTaskListWithSave:YES];
-                             }
-                         }];
+         if (returnCode == NSAlertDefaultReturn) {
+             NSArray *oldTasks = [[NSArray alloc]
+                                  initWithArray:[self.arrayController selectedObjects]
+                                  copyItems:YES];
+             [[self.undoManager prepareWithInvocationTarget:self] addTasks:oldTasks];
+             [self.undoManager setActionName:NSLocalizedString(@"Delete Tasks", @"Undo Delete Tasks")];
+
+             [self.arrayController
+              removeObjectsAtArrangedObjectIndexes:[self.tableView
+                                                    selectedRowIndexes]];
+             [self refreshTaskListWithSave:YES];
+         }
+     }];
 }
 
 - (IBAction)appendText:(id)sender {
@@ -480,11 +570,18 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
         if (returnCode != NSAlertDefaultReturn || [[input stringValue] length] == 0) {
             return;
         }
+
+        NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                                 copyItems:YES];
+        NSMutableArray *newTasks = [[NSMutableArray alloc] init];
         
-        TaskChangeBlock appendTextTaskBlock = ^(id task, NSUInteger idx, BOOL *stop) {
-            [(TTMTask*)task appendText:[input stringValue]];
-        };
-        [self forEachSelectedTaskExecuteBlock:appendTextTaskBlock];
+        for (TTMTask *task in [self.arrayController selectedObjects]) {
+            [task appendText:[input stringValue]];
+            [newTasks addObject:[task copy]];
+        }
+        
+        [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+        [self.undoManager setActionName:NSLocalizedString(@"Append Text", @"Undo Append Text")];
     };
     
     [alert compatibleBeginSheetModalForWindow:self.windowForSheet
@@ -507,10 +604,17 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
             return;
         }
         
-        TaskChangeBlock prependTextTaskBlock = ^(id task, NSUInteger idx, BOOL *stop) {
-            [(TTMTask*)task prependText:[input stringValue]];
-        };
-        [self forEachSelectedTaskExecuteBlock:prependTextTaskBlock];
+        NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                                 copyItems:YES];
+        NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+        
+        for (TTMTask *task in [self.arrayController selectedObjects]) {
+            [task prependText:[input stringValue]];
+            [newTasks addObject:[task copy]];
+        }
+        
+        [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+        [self.undoManager setActionName:NSLocalizedString(@"Prepend Text", @"Undo Prepend Text")];
     };
     
     [alert compatibleBeginSheetModalForWindow:self.windowForSheet
@@ -531,12 +635,18 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
         if (returnCode != NSAlertDefaultReturn || [[self.findText stringValue] length] == 0) {
             return;
         }
+
+        NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                                 copyItems:YES];
+        NSMutableArray *newTasks = [[NSMutableArray alloc] init];
         
-        TaskChangeBlock replaceTextTaskBlock = ^(id task, NSUInteger idx, BOOL *stop) {
-            [(TTMTask*)task replaceText:[self.findText stringValue]
-                               withText:[self.replaceText stringValue]];
-        };
-        [self forEachSelectedTaskExecuteBlock:replaceTextTaskBlock];
+        for (TTMTask *task in [self.arrayController selectedObjects]) {
+            [task replaceText:[self.findText stringValue] withText:[self.replaceText stringValue]];
+            [newTasks addObject:[task copy]];
+        }
+        
+        [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+        [self.undoManager setActionName:NSLocalizedString(@"Replace Text", @"Undo Replace Text")];
     };
     
     [alert compatibleBeginSheetModalForWindow:self.windowForSheet
@@ -568,11 +678,17 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
             return;
         }
 
-        TaskChangeBlock setPriorityTaskBlock = ^(id task, NSUInteger idx, BOOL *stop) {
-            [(TTMTask*)task setPriority:priority];
-        };
-        [self forEachSelectedTaskExecuteBlock:setPriorityTaskBlock];
+        NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                                 copyItems:YES];
+        NSMutableArray *newTasks = [[NSMutableArray alloc] init];
         
+        for (TTMTask *task in [self.arrayController selectedObjects]) {
+            [task setPriority:priority];
+            [newTasks addObject:[task copy]];
+        }
+        
+        [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+        [self.undoManager setActionName:NSLocalizedString(@"Set Priority", @"Undo Set Priority")];
     };
 
     [alert compatibleBeginSheetModalForWindow:self.windowForSheet
@@ -580,15 +696,45 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 }
 
 - (IBAction)increasePriority:(id)sender {
-    [self forEachSelectedTaskExecuteBlock:_increaseTaskPriority];
+    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                             copyItems:YES];
+    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    
+    for (TTMTask *task in [self.arrayController selectedObjects]) {
+        [task increasePriority];
+        [newTasks addObject:[task copy]];
+    }
+    
+    [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+    [self.undoManager setActionName:NSLocalizedString(@"Increase Priority", @"Undo Increase Priority")];
 }
 
 - (IBAction)decreasePriority:(id)sender {
-    [self forEachSelectedTaskExecuteBlock:_decreaseTaskPriority];
+    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                             copyItems:YES];
+    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    
+    for (TTMTask *task in [self.arrayController selectedObjects]) {
+        [task decreasePriority];
+        [newTasks addObject:[task copy]];
+    }
+    
+    [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+    [self.undoManager setActionName:NSLocalizedString(@"Decrease Priority", @"Undo Decrease Priority")];
 }
 
 - (IBAction)removePriority:(id)sender {
-    [self forEachSelectedTaskExecuteBlock:_removeTaskPriority];
+    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                             copyItems:YES];
+    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    
+    for (TTMTask *task in [self.arrayController selectedObjects]) {
+        [task removePriority];
+        [newTasks addObject:[task copy]];
+    }
+    
+    [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+    [self.undoManager setActionName:NSLocalizedString(@"Remove Priority", @"Undo Remove Priority")];
 }
 
 # pragma mark - Postpone/Due Date Methods
@@ -605,27 +751,62 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     [alert setAccessoryView:input];
     [alert compatibleBeginSheetModalForWindow:self.windowForSheet
                   completionHandler:^(NSModalResponse returnCode) {
-                      if (returnCode == NSAlertDefaultReturn) {
-                          TaskChangeBlock setDueDateTaskBlock = ^(id task,
-                                                                NSUInteger idx,
-                                                                BOOL *stop) {
-                              [(TTMTask*)task setDueDate:[input dateValue]];
-                          };
-                          [self forEachSelectedTaskExecuteBlock:setDueDateTaskBlock];
-                      }
-                  }];
+        if (returnCode == NSAlertDefaultReturn) {
+            NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                                     copyItems:YES];
+            NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+            
+            for (TTMTask *task in [self.arrayController selectedObjects]) {
+                [task setDueDate:[input dateValue]];
+                [newTasks addObject:[task copy]];
+            }
+            
+            [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+            [self.undoManager setActionName:NSLocalizedString(@"Set Due Date", @"Undo Set Due Date")];
+        }
+    }];
 }
 
 - (IBAction)increaseDueDateByOneDay:(id)sender {
-    [self forEachSelectedTaskExecuteBlock:_increaseDueDateByOneDay];
+    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                             copyItems:YES];
+    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    
+    for (TTMTask *task in [self.arrayController selectedObjects]) {
+        [task incrementDueDate:1];
+        [newTasks addObject:[task copy]];
+    }
+    
+    [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+    [self.undoManager setActionName:NSLocalizedString(@"Increase Due Date", @"Undo Increase Due Date")];
 }
 
 - (IBAction)decreaseDueDateByOneDay:(id)sender {
-    [self forEachSelectedTaskExecuteBlock:_decreaseDueDateByOneDay];
+    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                             copyItems:YES];
+    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    
+    for (TTMTask *task in [self.arrayController selectedObjects]) {
+        [task decrementDueDate:1];
+        [newTasks addObject:[task copy]];
+    }
+    
+    [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+    [self.undoManager setActionName:NSLocalizedString(@"Decrease Due Date", @"Undo Decrease Due Date")];
 }
 
 - (IBAction)removeDueDate:(id)sender {
-    [self forEachSelectedTaskExecuteBlock:_removeDueDate];
+    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                             copyItems:YES];
+    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    
+    for (TTMTask *task in [self.arrayController selectedObjects]) {
+        [task removeDueDate];
+        [newTasks addObject:[task copy]];
+    }
+    
+    [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+    [self.undoManager setActionName:NSLocalizedString(@"Remove Due Date", @"Undo Remove Due Date")];
 }
 
 - (IBAction)postpone:(id)sender {
@@ -639,16 +820,21 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     [alert setAccessoryView:input];
     [alert compatibleBeginSheetModalForWindow:self.windowForSheet
                   completionHandler:^(NSModalResponse returnCode) {
-                         if (returnCode == NSAlertDefaultReturn &&
-                             [[input stringValue] length] != 0 &&
-                             [input integerValue] != 0) {
-                             TaskChangeBlock postponeTaskBlock = ^(id task,
-                                                                   NSUInteger idx,
-                                                                   BOOL *stop) {
-                                 [(TTMTask*)task postponeTask:[input integerValue]];
-                         };
-                         [self forEachSelectedTaskExecuteBlock:postponeTaskBlock];
-                  }
+        if (returnCode == NSAlertDefaultReturn &&
+            [[input stringValue] length] != 0 &&
+            [input integerValue] != 0) {
+            NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                                     copyItems:YES];
+            NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+            
+            for (TTMTask *task in [self.arrayController selectedObjects]) {
+                [task postponeTask:[input integerValue]];
+                [newTasks addObject:[task copy]];
+            }
+            
+            [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+            [self.undoManager setActionName:NSLocalizedString(@"Postpone", @"Undo Postpone")];
+        }
     }];
 }
 
@@ -666,29 +852,63 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     [alert setAccessoryView:input];
     [alert compatibleBeginSheetModalForWindow:self.windowForSheet
                             completionHandler:^(NSModalResponse returnCode) {
-                                if (returnCode == NSAlertDefaultReturn) {
-                                    TaskChangeBlock setThresholdDateTaskBlock = ^(id task,
-                                                                                  NSUInteger idx,
-                                                                                  BOOL *stop) {
-                                        [(TTMTask*)task setThresholdDate:[input dateValue]];
-                                    };
-                                    [self forEachSelectedTaskExecuteBlock:setThresholdDateTaskBlock];
-                                }
-                            }];
-
+        if (returnCode == NSAlertDefaultReturn) {
+            NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                                     copyItems:YES];
+            NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+            
+            for (TTMTask *task in [self.arrayController selectedObjects]) {
+                [task setThresholdDate:[input dateValue]];
+                [newTasks addObject:[task copy]];
+            }
+            
+            [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+            [self.undoManager setActionName:NSLocalizedString(@"Set Threshold Date", @"Undo Set Threshold Date")];
+        }
+    }];
 }
 
 
 - (IBAction)increaseThresholdDateByOneDay:(id)sender {
-    [self forEachSelectedTaskExecuteBlock:_increaseThresholdDateByOneDay];
+    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                             copyItems:YES];
+    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    
+    for (TTMTask *task in [self.arrayController selectedObjects]) {
+        [task incrementThresholdDate:1];
+        [newTasks addObject:[task copy]];
+    }
+    
+    [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+    [self.undoManager setActionName:NSLocalizedString(@"Increase Threshold Date", @"Undo Increase Threshold Date")];
 }
 
 - (IBAction)decreaseThresholdDateByOneDay:(id)sender {
-    [self forEachSelectedTaskExecuteBlock:_decreaseThresholdDateByOneDay];
+    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                             copyItems:YES];
+    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    
+    for (TTMTask *task in [self.arrayController selectedObjects]) {
+        [task decrementThresholdDate:1];
+        [newTasks addObject:[task copy]];
+    }
+    
+    [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+    [self.undoManager setActionName:NSLocalizedString(@"Decrease Threshold Date", @"Undo Decrease Threshold Date")];
 }
 
 - (IBAction)removeThresholdDate:(id)sender {
-    [self forEachSelectedTaskExecuteBlock:_removeThresholdDate];
+    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                             copyItems:YES];
+    NSMutableArray *newTasks = [[NSMutableArray alloc] init];
+    
+    for (TTMTask *task in [self.arrayController selectedObjects]) {
+        [task removeThresholdDate];
+        [newTasks addObject:[task copy]];
+    }
+    
+    [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
+    [self.undoManager setActionName:NSLocalizedString(@"Remove Threshold Date", @"Undo Remove Threshold Date")];
 }
 
 #pragma mark - Sorting Methods
@@ -858,24 +1078,41 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     NSString *archiveFilePath = [[NSUserDefaults standardUserDefaults]
                                  objectForKey:@"archiveFilePath"];
     if ([archiveFilePath length] == 0) {
+        NSAlert *noArchiveFilePrompt = [NSAlert alertWithMessageText:@"No archive file set"
+                                                       defaultButton:@"Dismiss"
+                                                     alternateButton:nil
+                                                         otherButton:nil
+                                           informativeTextWithFormat:@"No archive file is set. Assign an archive file in Preferences and try again."];
+        [noArchiveFilePrompt compatibleBeginSheetModalForWindow:self.windowForSheet
+                                              completionHandler:^(NSModalResponse returnCode) {
+                                                  // do nothing
+                                              }];
         return;
     }
     
     // Collect indexes of all completed tasks, and build string containing all completed tasks.
     NSMutableIndexSet *completedTasksIndexSet = [[NSMutableIndexSet alloc] init];
     NSMutableString *completedTasksString = [[NSMutableString alloc] init];
+    NSMutableArray *archivedTasks = [[NSMutableArray alloc] init];
     for (NSUInteger i = 0; i < [[self.arrayController arrangedObjects] count]; i++) {
         TTMTask *task = [[self.arrayController arrangedObjects] objectAtIndex:i];
         if (task.isCompleted) {
             [completedTasksIndexSet addIndex:i];
             [completedTasksString appendString:self.preferredLineEnding]; // assumption may be wrong
             [completedTasksString appendString:task.rawText];
+            [archivedTasks addObject:[task copy]];
         }
     }
     
     // Abort if no completed tasks were found.
     if ([completedTasksIndexSet count] == 0) {
         return;
+    }
+
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"allowUndoOfArchiveCommand"]) {
+        [self.undoManager setActionName:NSLocalizedString(@"Archive Tasks", @"Undo Archive Tasks")];
+        [[self.undoManager prepareWithInvocationTarget:self] undoArchiveTasks:archivedTasks
+                                                              fromArchiveFile:archiveFilePath];
     }
     
     @try {
@@ -909,6 +1146,38 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     }
 }
 
+- (void)removeTasks:(NSArray*)tasksToRemove fromArchiveFile:(NSString*)archiveFilePath {
+    NSURL *archiveFileURL = [[NSURL alloc] initFileURLWithPath:archiveFilePath];
+    NSError *err = [[NSError alloc] init];
+    NSString *fileContents = [[NSString alloc] initWithContentsOfURL:archiveFileURL
+                                                            encoding:NSUTF8StringEncoding
+                                                               error:&err];
+    
+    BOOL usesWindowsLineEndings = ([fileContents rangeOfString:@"\r\n"].location != NSNotFound);
+    NSString *preferredLineEnding = (usesWindowsLineEndings) ? @"\r\n" : @"\n";
+    NSMutableArray *rawTextStrings = [[NSMutableArray alloc] initWithArray:[fileContents componentsSeparatedByString:preferredLineEnding]];
+
+    for (TTMTask *task in tasksToRemove) {
+        for (long j = [rawTextStrings count] - 1; j > 0; j--) {
+            if ([[rawTextStrings objectAtIndex:j] isEqualToString:task.rawText]) {
+                [rawTextStrings removeObjectAtIndex:j];
+                break;
+            }
+        }
+    }
+
+    [self.undoManager setActionName:NSLocalizedString(@"Remove Tasks From Archive",
+                                                      @"Undo Remove Tasks From Archive")];
+    [[self.undoManager prepareWithInvocationTarget:self] archiveCompletedTasks:self];
+    
+    NSString *content = [rawTextStrings componentsJoinedByString:preferredLineEnding];
+    [content writeToFile:archiveFilePath
+              atomically:YES
+                encoding:NSUTF8StringEncoding
+                   error:nil];
+}
+
+
 #pragma mark - NSDocument Method Overrides
 
 // Override normal copy handler to copy selected tasks from the task list.
@@ -933,12 +1202,18 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
 // Override normal cut handler to cut selected tasks from the task list.
 // This does not get called when the field editor is active.
 - (IBAction)cut:(id)sender {
+    NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
+                                             copyItems:YES];
+    [[self.undoManager prepareWithInvocationTarget:self] addTasks:oldTasks];
+    [self.undoManager setActionName:NSLocalizedString(@"Cut", @"Undo Cut")];
+
     [self copy:sender];
     [self.arrayController removeObjectsAtArrangedObjectIndexes:[self.tableView selectedRowIndexes]];
     [self refreshTaskListWithSave:YES];
 }
 
 - (IBAction)paste:(id)sender {
+    [self.undoManager setActionName:NSLocalizedString(@"Paste", @"Undo Paste")];
     [self addNewTasksFromClipboard:self];
 }
 
@@ -1038,6 +1313,10 @@ TaskChangeBlock _decreaseThresholdDateByOneDay = ^(id task, NSUInteger idx, BOOL
     
     if ([keyPath isEqualToString:@"searchFieldPredicate"]) {
         [self reapplyActiveFilterPredicate];
+    }
+    
+    if ([keyPath isEqualToString:@"levelsOfUndo"]) {
+        [self.undoManager setLevelsOfUndo:[[NSUserDefaults standardUserDefaults] integerForKey:@"levelsOfUndo"]];
     }
 }
 

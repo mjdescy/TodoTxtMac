@@ -25,6 +25,7 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - Preserves Windows or Unix line endings in the todo.txt file for cross-platform compatability.
 - Automatic update checking.
 - Displays general metadata (task counts, etc.) about the task list.
+- Undo/redo support.
 
 ## Adding/removing tasks
 
@@ -92,6 +93,11 @@ From a design perspective the goal is to be the fastest, simplest, and cleanest 
 - Command+Option+Up: Increase due date by 1 day
 - Command+Option+Down: Decrease due date by 1 day
 - Command+Option+Left or Command+Option+Right: Remove due date
+
+## Undo/redo
+
+- Command+Z: Undo
+- Command+Shift+Z: Redo
 
 ## Working with files
 

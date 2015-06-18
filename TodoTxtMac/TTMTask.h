@@ -53,7 +53,7 @@
  * @seealso Todo.txt format specification: 
  * https://github.com/ginatrapani/todo.txt-cli/wiki/The-Todo.txt-Format
  */
-@interface TTMTask : NSObject
+@interface TTMTask : NSObject <NSCopying>
 
 /*! Defines the three due states of a task: Overdue, Due Today, and Not Due */
 typedef enum : NSUInteger {
