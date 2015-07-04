@@ -54,6 +54,7 @@
 @property (nonatomic, retain) NSArray *contextsArray;
 @property (nonatomic, retain) NSTimer *completionTimer;
 @property (nonatomic) NSUInteger nextInsertionIndex;
+@property (nonatomic) NSString *originalValue;
 
 #pragma mark - Autocompletion Timer Methods
 

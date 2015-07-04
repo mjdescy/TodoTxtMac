@@ -61,6 +61,11 @@
     return self;
 }
 
+- (BOOL)becomeFirstResponder {
+    self.originalValue = [self.string copy]; // retain value for cancelOperation method
+    return ([super becomeFirstResponder]);
+}
+
 - (void)drawRect:(NSRect)dirtyRect
 {
     [super drawRect:dirtyRect];
@@ -168,13 +173,8 @@
 - (void)cancelOperation:(id)sender {
     // How the Esc key behaves is dependent on a user setting.
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"escapeKeyCancelsAllTextChanges"]) {
-        // Undo all events on the undoManager's stack. Autocompletion triggers additional undo
-        // groups to be created, so one undo or undoNestedGroup call is not enough to undo all
-        // changes.
-        NSUndoManager *undoManager = [self undoManager];
-        while ([undoManager canUndo]) {
-            [undoManager undoNestedGroup];
-        }
+        [self.undoManager removeAllActions];
+        self.string = self.originalValue;
     } else {
         // Trigger autocompletion (default behavior).
         [self complete:nil];
