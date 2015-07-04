@@ -5,6 +5,18 @@
         <link>http://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
         <language>en</language>
         <item>
+            <title>Version 1.6.1</title>
+            <description>
+            Fixed an infinite loop/hang that was caused by using Esc to cancel edits.
+            </description>
+            <sparkle:releaseNotesLink>
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.6.1.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Friday, 3 Jul 2015 20:00 -0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.6.1/TodoTxtMac.app.zip" sparkle:version="1.6.1" length="2670360" type="application/octet-stream" sparkle:dsaSignature="MCwCFB/1U6kWmjugEVDR0qAQDyzqPRmDAhRsFZNbQYneN/tHn9+WnCD/LkrwPQ==" />
+            <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
+        </item>
+        <item>
             <title>Version 1.6.0</title>
             <description>
             Added full undo/redo support (Command+Z, Command+Shift+Z).
@@ -16,7 +28,6 @@
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.6.0/TodoTxtMac.app.zip" sparkle:version="1.6.0" length="2670180" type="application/octet-stream" sparkle:dsaSignature="MC0CFGVW9OHlhwl48LqyxIwQGmZdkiWwAhUAh33R5ASzX1gYhDUnBG072WUc94Y=" />
             <sparkle:minimumSystemVersion>10.8</sparkle:minimumSystemVersion>
         </item>
-
         <item>
             <title>Version 1.5.1</title>
             <description>
