@@ -1292,11 +1292,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     if (!self.tasklistMetadataSheet) {
         [[NSBundle mainBundle] loadNibNamed:@"TTMTasklistMetadata" owner:self topLevelObjects:nil];
     }
-    [NSApp beginSheet:self.tasklistMetadataSheet
-       modalForWindow:[self windowForSheet]
-        modalDelegate:self
-       didEndSelector:NULL
-          contextInfo:NULL];
+    [self.windowForSheet beginSheet:self.tasklistMetadataSheet completionHandler:nil];
 }
 
 - (IBAction)hideTasklistMetadata:(id)sender {
