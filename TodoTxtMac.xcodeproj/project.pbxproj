@@ -51,7 +51,6 @@
 		00930EAA18B536B00064D41B /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EA918B536B00064D41B /* RegExCategories.m */; };
 		00930EAD18B5371B0064D41B /* TTMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EAC18B5371B0064D41B /* TTMTask.m */; };
 		00930EB118B537C10064D41B /* TTMDateUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EB018B537C10064D41B /* TTMDateUtility.m */; };
-		00A6058219E3733F00846B69 /* NSAlert+BlockMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A6058119E3733F00846B69 /* NSAlert+BlockMethods.m */; };
 		00B4CB9C18B43E8400313DAA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B4CB9B18B43E8400313DAA /* Cocoa.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		00B4CBA618B43E8400313DAA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B4CBA418B43E8400313DAA /* InfoPlist.strings */; };
 		00B4CBA818B43E8400313DAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B4CBA718B43E8400313DAA /* main.m */; };
@@ -159,8 +158,6 @@
 		00930EAF18B537C10064D41B /* TTMDateUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMDateUtility.h; sourceTree = "<group>"; };
 		00930EB018B537C10064D41B /* TTMDateUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMDateUtility.m; sourceTree = "<group>"; };
 		00A4E02E18D1569700CEE0A8 /* TodoTxtMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodoTxtMac.entitlements; sourceTree = "<group>"; };
-		00A6058019E3733F00846B69 /* NSAlert+BlockMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+BlockMethods.h"; sourceTree = "<group>"; };
-		00A6058119E3733F00846B69 /* NSAlert+BlockMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+BlockMethods.m"; sourceTree = "<group>"; };
 		00B4CB9818B43E8400313DAA /* TodoTxtMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoTxtMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00B4CB9B18B43E8400313DAA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		00B4CB9E18B43E8400313DAA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -277,8 +274,6 @@
 				00930EA918B536B00064D41B /* RegExCategories.m */,
 				006062D618EC6B0800D147F2 /* NSUserDefaults+myColorSupport.h */,
 				006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */,
-				00A6058019E3733F00846B69 /* NSAlert+BlockMethods.h */,
-				00A6058119E3733F00846B69 /* NSAlert+BlockMethods.m */,
 				003F959C1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.h */,
 				003F959D1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.m */,
 			);
@@ -568,7 +563,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00A6058219E3733F00846B69 /* NSAlert+BlockMethods.m in Sources */,
 				002EAE5918DBD24C008E7517 /* TTMAppController.m in Sources */,
 				00EAAB9A18E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m in Sources */,
 				002EAE5E18DCAE5C008E7517 /* TTMFilterPredicates.m in Sources */,

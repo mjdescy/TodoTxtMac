@@ -46,7 +46,6 @@
 
 #import "TTMFiltersController.h"
 #import "TTMFilterPredicates.h"
-#import "NSAlert+BlockMethods.h"
 
 @implementation TTMFiltersController
 
@@ -66,7 +65,7 @@
                       otherButton:nil
         informativeTextWithFormat:
      @"Are you sure you want to do this? You will lose all filter customizations."];
-    [resetPrompt compatibleBeginSheetModalForWindow:self.window
+    [resetPrompt beginSheetModalForWindow:self.window
                                   completionHandler:^(NSModalResponse returnCode) {
                                       if (returnCode == NSAlertDefaultReturn) {
                                           [TTMFilterPredicates resetAllFilterPredicates];

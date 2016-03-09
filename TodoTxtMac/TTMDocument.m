@@ -53,7 +53,6 @@
 #import "TTMFieldEditor.h"
 #import "RegExCategories.h"
 #import "TTMTasklistMetadata.h"
-#import "NSAlert+BlockMethods.h"
 #import "TTMDocumentStatusBarText.h"
 
 @implementation TTMDocument
@@ -540,7 +539,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
                   alternateButton:@"Cancel"
                       otherButton:nil
         informativeTextWithFormat:@"Are you sure you want to delete all selected tasks?"];
-    [deletePrompt compatibleBeginSheetModalForWindow:self.windowForSheet
+    [deletePrompt beginSheetModalForWindow:self.windowForSheet
                          completionHandler:^(NSModalResponse returnCode) {
          if (returnCode == NSAlertDefaultReturn) {
              NSArray *oldTasks = [[NSArray alloc]
@@ -586,7 +585,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [self.undoManager setActionName:NSLocalizedString(@"Append Text", @"Undo Append Text")];
     };
     
-    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+    [alert beginSheetModalForWindow:self.windowForSheet
                             completionHandler:appendTextHandler];
 }
 
@@ -619,7 +618,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [self.undoManager setActionName:NSLocalizedString(@"Prepend Text", @"Undo Prepend Text")];
     };
     
-    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+    [alert beginSheetModalForWindow:self.windowForSheet
                             completionHandler:prependTextHandler];
 }
 
@@ -651,7 +650,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [self.undoManager setActionName:NSLocalizedString(@"Replace Text", @"Undo Replace Text")];
     };
     
-    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+    [alert beginSheetModalForWindow:self.windowForSheet
                             completionHandler:replaceTextHandler];
 }
 
@@ -693,7 +692,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [self.undoManager setActionName:NSLocalizedString(@"Set Priority", @"Undo Set Priority")];
     };
 
-    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+    [alert beginSheetModalForWindow:self.windowForSheet
                             completionHandler:priorityHandler];
 }
 
@@ -751,7 +750,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [input setDatePickerElements:NSYearMonthDayDatePickerElementFlag];
     [input setDateValue:[TTMDateUtility today]];
     [alert setAccessoryView:input];
-    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+    [alert beginSheetModalForWindow:self.windowForSheet
                   completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSAlertDefaultReturn) {
             NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
@@ -820,7 +819,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 50, 24)];
     [input setStringValue:@""];
     [alert setAccessoryView:input];
-    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+    [alert beginSheetModalForWindow:self.windowForSheet
                   completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSAlertDefaultReturn &&
             [[input stringValue] length] != 0 &&
@@ -852,7 +851,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [input setDatePickerElements:NSYearMonthDayDatePickerElementFlag];
     [input setDateValue:[TTMDateUtility today]];
     [alert setAccessoryView:input];
-    [alert compatibleBeginSheetModalForWindow:self.windowForSheet
+    [alert beginSheetModalForWindow:self.windowForSheet
                             completionHandler:^(NSModalResponse returnCode) {
         if (returnCode == NSAlertDefaultReturn) {
             NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
@@ -1085,7 +1084,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
                                                      alternateButton:nil
                                                          otherButton:nil
                                            informativeTextWithFormat:@"No archive file is set. Assign an archive file in Preferences and try again."];
-        [noArchiveFilePrompt compatibleBeginSheetModalForWindow:self.windowForSheet
+        [noArchiveFilePrompt beginSheetModalForWindow:self.windowForSheet
                                               completionHandler:^(NSModalResponse returnCode) {
                                                   // do nothing
                                               }];

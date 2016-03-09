@@ -46,7 +46,6 @@
 
 #import "TTMPreferencesController.h"
 #import "TTMAppController.h"
-#import "NSAlert+BlockMethods.h"
 #import "TTMDocumentStatusBarText.h"
 
 @implementation TTMPreferencesController
@@ -87,7 +86,7 @@
                           otherButton:nil
             informativeTextWithFormat:
          @"Are you sure you want to do this? You will lose all settings and customizations."];
-    [resetPrompt compatibleBeginSheetModalForWindow:self.window
+    [resetPrompt beginSheetModalForWindow:self.window
                                    completionHandler:^(NSModalResponse returnCode) {
                                        if (returnCode == NSAlertDefaultReturn) {
                                            [self.appController resetUserDefaults:self];
@@ -164,7 +163,7 @@
                       otherButton:nil
         informativeTextWithFormat:
      @"Are you sure you want to do this? You will lose all status bar customizations."];
-    [resetPrompt compatibleBeginSheetModalForWindow:self.window
+    [resetPrompt beginSheetModalForWindow:self.window
                                   completionHandler:^(NSModalResponse returnCode) {
                                       if (returnCode == NSAlertDefaultReturn) {
                                           [[NSUserDefaults standardUserDefaults]
