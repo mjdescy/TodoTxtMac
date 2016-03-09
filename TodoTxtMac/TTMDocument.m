@@ -533,42 +533,38 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (IBAction)deleteSelectedTasks:(id)sender {
-    NSAlert *deletePrompt =
-    [NSAlert alertWithMessageText:@"Delete"
-                    defaultButton:@"OK"
-                  alternateButton:@"Cancel"
-                      otherButton:nil
-        informativeTextWithFormat:@"Are you sure you want to delete all selected tasks?"];
-    [deletePrompt beginSheetModalForWindow:self.windowForSheet
-                         completionHandler:^(NSModalResponse returnCode) {
-         if (returnCode == NSAlertDefaultReturn) {
-             NSArray *oldTasks = [[NSArray alloc]
-                                  initWithArray:[self.arrayController selectedObjects]
-                                  copyItems:YES];
-             [[self.undoManager prepareWithInvocationTarget:self] addTasks:oldTasks];
-             [self.undoManager setActionName:NSLocalizedString(@"Delete Tasks", @"Undo Delete Tasks")];
-
-             [self.arrayController
-              removeObjectsAtArrangedObjectIndexes:[self.tableView
-                                                    selectedRowIndexes]];
-             [self refreshTaskListWithSave:YES];
-         }
-     }];
+    NSAlert *deletePrompt = [[NSAlert alloc] init];
+    deletePrompt.messageText = @"Delete";
+    deletePrompt.informativeText = @"Are you sure you want to delete all selected tasks?";
+    [deletePrompt addButtonWithTitle:@"OK"];
+    [deletePrompt addButtonWithTitle:@"Cancel"];
+    [deletePrompt beginSheetModalForWindow:self.windowForSheet completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            NSArray *oldTasks = [[NSArray alloc]
+                                 initWithArray:[self.arrayController selectedObjects]
+                                 copyItems:YES];
+            [[self.undoManager prepareWithInvocationTarget:self] addTasks:oldTasks];
+            [self.undoManager setActionName:NSLocalizedString(@"Delete Tasks", @"Undo Delete Tasks")];
+            
+            [self.arrayController removeObjectsAtArrangedObjectIndexes:[self.tableView selectedRowIndexes]];
+            [self refreshTaskListWithSave:YES];
+        }
+    }];
 }
 
 - (IBAction)appendText:(id)sender {
-    NSAlert *alert = [NSAlert alertWithMessageText:@"Append Text"
-                                     defaultButton:@"OK"
-                                   alternateButton:@"Cancel"
-                                       otherButton:nil
-                         informativeTextWithFormat:@"Text to append to each selected task:"];
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.messageText = @"Append Text";
+    alert.informativeText = @"Text to append to each selected task:";
+    [alert addButtonWithTitle:@"OK"];
+    [alert addButtonWithTitle:@"Cancel"];
     NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 295, 24)];
     [input setStringValue:@""];
     [alert setAccessoryView:input];
     
     // Define the completion handler for the modal sheet.
-    void (^appendTextHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
-        if (returnCode != NSAlertDefaultReturn || [[input stringValue] length] == 0) {
+    void (^completionHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
+        if (returnCode != NSAlertFirstButtonReturn || [[input stringValue] length] == 0) {
             return;
         }
 
@@ -585,23 +581,22 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [self.undoManager setActionName:NSLocalizedString(@"Append Text", @"Undo Append Text")];
     };
     
-    [alert beginSheetModalForWindow:self.windowForSheet
-                            completionHandler:appendTextHandler];
+    [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
 }
 
 - (IBAction)prependText:(id)sender {
-    NSAlert *alert = [NSAlert alertWithMessageText:@"Prepend Text"
-                                     defaultButton:@"OK"
-                                   alternateButton:@"Cancel"
-                                       otherButton:nil
-                         informativeTextWithFormat:@"Text to prepend to each selected task:"];
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.messageText = @"Prepend Text";
+    alert.informativeText = @"Text to prepend to each selected task:";
+    [alert addButtonWithTitle:@"OK"];
+    [alert addButtonWithTitle:@"Cancel"];
     NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 295, 24)];
     [input setStringValue:@""];
     [alert setAccessoryView:input];
     
     // Define the completion handler for the modal sheet.
-    void (^prependTextHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
-        if (returnCode != NSAlertDefaultReturn || [[input stringValue] length] == 0) {
+    void (^completionHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
+        if (returnCode != NSAlertFirstButtonReturn || [[input stringValue] length] == 0) {
             return;
         }
         
@@ -618,25 +613,25 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [self.undoManager setActionName:NSLocalizedString(@"Prepend Text", @"Undo Prepend Text")];
     };
     
-    [alert beginSheetModalForWindow:self.windowForSheet
-                            completionHandler:prependTextHandler];
+    [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
 }
 
 - (IBAction)replaceText:(id)sender {
-    NSAlert *alert = [NSAlert alertWithMessageText:@"Replace Text"
-                                     defaultButton:@"OK"
-                                   alternateButton:@"Cancel"
-                                       otherButton:nil
-                         informativeTextWithFormat:@"Text to prepend to each selected task:"];
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.messageText = @"Replace Text";
+    alert.informativeText = @"Text to find and replace in each selected task:";
+    [alert addButtonWithTitle:@"OK"];
+    [alert addButtonWithTitle:@"Cancel"];
     [NSBundle.mainBundle loadNibNamed:@"TTMFindReplace" owner:self topLevelObjects:nil];
     [alert setAccessoryView:self.findReplaceView];
     
+    
     // Define the completion handler for the modal sheet.
-    void (^replaceTextHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
-        if (returnCode != NSAlertDefaultReturn || [[self.findText stringValue] length] == 0) {
+    void (^completionHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
+        if (returnCode != NSAlertFirstButtonReturn || [[self.findText stringValue] length] == 0) {
             return;
         }
-
+        
         NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                                  copyItems:YES];
         NSMutableArray *newTasks = [[NSMutableArray alloc] init];
@@ -650,25 +645,24 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [self.undoManager setActionName:NSLocalizedString(@"Replace Text", @"Undo Replace Text")];
     };
     
-    [alert beginSheetModalForWindow:self.windowForSheet
-                            completionHandler:replaceTextHandler];
+    [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
 }
 
 #pragma mark - Priority Methods
 
 - (IBAction)setPriority:(id)sender {
-    NSAlert *alert = [NSAlert alertWithMessageText:@"Set Priority"
-                                     defaultButton:@"OK"
-                                   alternateButton:@"Cancel"
-                                       otherButton:nil
-                         informativeTextWithFormat:@"Priority:"];
-    NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 50, 24)];
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.messageText = @"Set Priority";
+    alert.informativeText = @"Priority:";
+    [alert addButtonWithTitle:@"OK"];
+    [alert addButtonWithTitle:@"Cancel"];
+    NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 295, 24)];
     [input setStringValue:@""];
     [alert setAccessoryView:input];
-
+    
     // Define the completion handler for the modal sheet.
-    void (^priorityHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
-        if (returnCode != NSAlertDefaultReturn || [[input stringValue] length] == 0) {
+    void (^completionHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
+        if (returnCode != NSAlertFirstButtonReturn || [[input stringValue] length] == 0) {
             return;
         }
         
@@ -678,7 +672,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         if (![validPriorityCharacters characterIsMember:priority]) {
             return;
         }
-
+        
         NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                                  copyItems:YES];
         NSMutableArray *newTasks = [[NSMutableArray alloc] init];
@@ -691,9 +685,8 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
         [self.undoManager setActionName:NSLocalizedString(@"Set Priority", @"Undo Set Priority")];
     };
-
-    [alert beginSheetModalForWindow:self.windowForSheet
-                            completionHandler:priorityHandler];
+    
+    [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
 }
 
 - (IBAction)increasePriority:(id)sender {
@@ -741,18 +734,19 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 # pragma mark - Postpone/Due Date Methods
 
 - (IBAction)setDueDate:(id)sender {
-    NSAlert *alert = [NSAlert alertWithMessageText:@"Due Date"
-                                     defaultButton:@"OK"
-                                   alternateButton:@"Cancel"
-                                       otherButton:nil
-                         informativeTextWithFormat:@"Set the due date:"];
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.messageText = @"Due date";
+    alert.informativeText = @"Set the due date:";
+    [alert addButtonWithTitle:@"OK"];
+    [alert addButtonWithTitle:@"Cancel"];
     NSDatePicker *input = [[NSDatePicker alloc] initWithFrame:NSMakeRect(0, 0, 110, 24)];
     [input setDatePickerElements:NSYearMonthDayDatePickerElementFlag];
     [input setDateValue:[TTMDateUtility today]];
     [alert setAccessoryView:input];
-    [alert beginSheetModalForWindow:self.windowForSheet
-                  completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode == NSAlertDefaultReturn) {
+    
+    // Define the completion handler for the modal sheet.
+    void (^completionHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
             NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                                      copyItems:YES];
             NSMutableArray *newTasks = [[NSMutableArray alloc] init];
@@ -765,7 +759,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
             [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
             [self.undoManager setActionName:NSLocalizedString(@"Set Due Date", @"Undo Set Due Date")];
         }
-    }];
+    };
+    
+    [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
 }
 
 - (IBAction)increaseDueDateByOneDay:(id)sender {
@@ -811,17 +807,18 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (IBAction)postpone:(id)sender {
-    NSAlert *alert = [NSAlert alertWithMessageText:@"Postpone"
-                                     defaultButton:@"OK"
-                                   alternateButton:@"Cancel"
-                                       otherButton:nil
-                         informativeTextWithFormat:@"Days to postpone task:"];
-    NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 50, 24)];
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.messageText = @"Postpone";
+    alert.informativeText = @"Days to postpone task:";
+    [alert addButtonWithTitle:@"OK"];
+    [alert addButtonWithTitle:@"Cancel"];
+    NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 295, 24)];
     [input setStringValue:@""];
     [alert setAccessoryView:input];
-    [alert beginSheetModalForWindow:self.windowForSheet
-                  completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode == NSAlertDefaultReturn &&
+    
+    // Define the completion handler for the modal sheet.
+    void (^completionHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn &&
             [[input stringValue] length] != 0 &&
             [input integerValue] != 0) {
             NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
@@ -836,24 +833,27 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
             [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
             [self.undoManager setActionName:NSLocalizedString(@"Postpone", @"Undo Postpone")];
         }
-    }];
+    };
+    
+    [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
 }
 
 #pragma mark - Threshold Date Methods
 
 - (IBAction)setThresholdDate:(id)sender {
-    NSAlert *alert = [NSAlert alertWithMessageText:@"Threshold Date"
-                                     defaultButton:@"OK"
-                                   alternateButton:@"Cancel"
-                                       otherButton:nil
-                         informativeTextWithFormat:@"Set the threshold date:"];
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.messageText = @"Threshold Date";
+    alert.informativeText = @"Set the threshold date:";
+    [alert addButtonWithTitle:@"OK"];
+    [alert addButtonWithTitle:@"Cancel"];
     NSDatePicker *input = [[NSDatePicker alloc] initWithFrame:NSMakeRect(0, 0, 110, 24)];
     [input setDatePickerElements:NSYearMonthDayDatePickerElementFlag];
     [input setDateValue:[TTMDateUtility today]];
     [alert setAccessoryView:input];
-    [alert beginSheetModalForWindow:self.windowForSheet
-                            completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode == NSAlertDefaultReturn) {
+    
+    // Define the completion handler for the modal sheet.
+    void (^completionHandler)(NSModalResponse returnCode) = ^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
             NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                                      copyItems:YES];
             NSMutableArray *newTasks = [[NSMutableArray alloc] init];
@@ -866,7 +866,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
             [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
             [self.undoManager setActionName:NSLocalizedString(@"Set Threshold Date", @"Undo Set Threshold Date")];
         }
-    }];
+    };
+    
+    [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
 }
 
 
@@ -1079,15 +1081,13 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     NSString *archiveFilePath = [[NSUserDefaults standardUserDefaults]
                                  objectForKey:@"archiveFilePath"];
     if ([archiveFilePath length] == 0) {
-        NSAlert *noArchiveFilePrompt = [NSAlert alertWithMessageText:@"No archive file set"
-                                                       defaultButton:@"Dismiss"
-                                                     alternateButton:nil
-                                                         otherButton:nil
-                                           informativeTextWithFormat:@"No archive file is set. Assign an archive file in Preferences and try again."];
-        [noArchiveFilePrompt beginSheetModalForWindow:self.windowForSheet
-                                              completionHandler:^(NSModalResponse returnCode) {
-                                                  // do nothing
-                                              }];
+        NSAlert *noArchiveFilePrompt = [[NSAlert alloc] init];
+        noArchiveFilePrompt.messageText = @"No archive file set";
+        noArchiveFilePrompt.informativeText = @"No archive file is set. Assign an archive file in Preferences and try again.";
+        [noArchiveFilePrompt addButtonWithTitle:@"Dismiss"];
+        [noArchiveFilePrompt beginSheetModalForWindow:self.windowForSheet completionHandler:^(NSModalResponse returnCode) {
+            // do nothing
+        }];
         return;
     }
     

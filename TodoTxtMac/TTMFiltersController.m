@@ -58,32 +58,29 @@
 }
 
 - (IBAction)resetAllFilters:(id)sender {
-    NSAlert *resetPrompt =
-    [NSAlert alertWithMessageText:@"Clear all filters"
-                    defaultButton:@"OK"
-                  alternateButton:@"Cancel"
-                      otherButton:nil
-        informativeTextWithFormat:
-     @"Are you sure you want to do this? You will lose all filter customizations."];
-    [resetPrompt beginSheetModalForWindow:self.window
-                                  completionHandler:^(NSModalResponse returnCode) {
-                                      if (returnCode == NSAlertDefaultReturn) {
-                                          [TTMFilterPredicates resetAllFilterPredicates];
-                                          // Reload all the filter predicate editors because
-                                          // the one with focus at the time this method is executed
-                                          // will not be cleared. This is only really necessary to
-                                          // call on the predicate editor with focus.
-                                          [self.filter1PredicateEditor reloadCriteria];
-                                          [self.filter2PredicateEditor reloadCriteria];
-                                          [self.filter3PredicateEditor reloadCriteria];
-                                          [self.filter4PredicateEditor reloadCriteria];
-                                          [self.filter5PredicateEditor reloadCriteria];
-                                          [self.filter6PredicateEditor reloadCriteria];
-                                          [self.filter7PredicateEditor reloadCriteria];
-                                          [self.filter8PredicateEditor reloadCriteria];
-                                          [self.filter9PredicateEditor reloadCriteria];
-                                      }
-                                  }];
+    NSAlert *resetPrompt = [[NSAlert alloc] init];
+    resetPrompt.messageText = @"Clear all filters";
+    resetPrompt.informativeText = @"Are you sure you want to do this? You will lose all filter customizations.";
+    [resetPrompt addButtonWithTitle:@"OK"];
+    [resetPrompt addButtonWithTitle:@"Cancel"];
+    [resetPrompt beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            [TTMFilterPredicates resetAllFilterPredicates];
+            // Reload all the filter predicate editors because
+            // the one with focus at the time this method is executed
+            // will not be cleared. This is only really necessary to
+            // call on the predicate editor with focus.
+            [self.filter1PredicateEditor reloadCriteria];
+            [self.filter2PredicateEditor reloadCriteria];
+            [self.filter3PredicateEditor reloadCriteria];
+            [self.filter4PredicateEditor reloadCriteria];
+            [self.filter5PredicateEditor reloadCriteria];
+            [self.filter6PredicateEditor reloadCriteria];
+            [self.filter7PredicateEditor reloadCriteria];
+            [self.filter8PredicateEditor reloadCriteria];
+            [self.filter9PredicateEditor reloadCriteria];
+        }
+    }];
 }
 
 #pragma mark - Window Delegate Methods
