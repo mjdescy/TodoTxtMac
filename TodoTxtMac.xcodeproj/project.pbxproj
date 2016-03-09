@@ -500,7 +500,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TTM;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Michael Descy";
 				TargetAttributes = {
 					00B4CB9718B43E8400313DAA = {
@@ -703,6 +703,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -769,6 +770,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TodoTxtMac/TodoTxtMac-Prefix.pch";
 				INFOPLIST_FILE = "TodoTxtMac/TodoTxtMac-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.descy.michael.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				TEST_HOST = "";
@@ -788,6 +790,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TodoTxtMac/TodoTxtMac-Prefix.pch";
 				INFOPLIST_FILE = "TodoTxtMac/TodoTxtMac-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.descy.michael.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -811,6 +814,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "TodoTxtMacTests/TodoTxtMacTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.descy.michael.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -829,6 +833,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TodoTxtMac/TodoTxtMac-Prefix.pch";
 				INFOPLIST_FILE = "TodoTxtMacTests/TodoTxtMacTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.descy.michael.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
