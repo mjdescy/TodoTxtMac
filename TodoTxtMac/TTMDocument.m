@@ -206,6 +206,8 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     NSUInteger filterNumber = self.activeFilterPredicateNumber;
     
     // Remove the current filter.
+    NSPredicate *tempPredicate = self.searchFieldPredicate;
+    self.searchFieldPredicate = nil;
     [self removeTaskListFilter];
     
     // Reload the file.
@@ -216,6 +218,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self refreshTaskListWithSave:NO];
     
     // Re-apply the filter active before the file was reloaded.
+    self.searchFieldPredicate = tempPredicate;
     [self changeActiveFilterPredicateToPreset:filterNumber];
     
     // re-set selected items
