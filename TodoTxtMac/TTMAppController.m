@@ -190,9 +190,12 @@ NSString *const TodoFileArgument = @"todo-file";
 }
 
 - (void)openDocumentFromFileURL:(NSURL*)fileURL {
-    [[NSDocumentController sharedDocumentController] openDocumentWithContentsOfURL:fileURL
-                                                                           display:YES
-                                                                 completionHandler:NULL];
+    [[NSDocumentController sharedDocumentController]
+     openDocumentWithContentsOfURL:fileURL
+     display:YES
+     completionHandler:^(NSDocument *document, BOOL alreadyOpen, NSError *error){
+         // NSLog(@"%@",document);
+     }];
 }
 
 #pragma mark - Open Default Todo.txt File Methods

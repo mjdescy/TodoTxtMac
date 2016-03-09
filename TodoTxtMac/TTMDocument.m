@@ -122,7 +122,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     
     // Add any code here that needs to be executed once the windowController
     // has loaded the document's window.
-    self.statusBarVisable = [[NSUserDefaults standardUserDefaults] boolForKey:@"showStatusBar"];
+    [self setStatusBarVisable:[[NSUserDefaults standardUserDefaults] boolForKey:@"showStatusBar"]];
 }
 
 - (id)windowWillReturnFieldEditor:(NSWindow *)sender toObject:(id)client {
@@ -134,6 +134,8 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     self.customFieldEditor.contextsArray = self.tasklistMetadata.contextsArray;
     return self.customFieldEditor;
 }
+
+
 
 #pragma mark - File Loading and Saving Methods
 
