@@ -2,15 +2,19 @@
 
 # Overview
 
-TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X that conforms to the todo.txt format spec. Official support and testing are only done on Mac OS X 10.10 (Yosemite) at this time, though the application is built to run on Mac OS X 10.8 (Mountain Lion) and higher.
+TodoTxtMac is a minimalist, keyboard-driven to-do manager for Mac OS X that conforms to the todo.txt format spec. Version 2.0.0 and up are supported only on Mac OS X 10.11 (El Capitan). Version 1.6.1 can be used on lower versions of Mac OS X, down to Mac OS X 10.8, though support is not guaranteed.
 
 # Goals
 
-This application is inspired by the [todotxt.net][] application for Microsoft Windows with numerous improvements and modifications specific to the Mac OS X platform.
+This application is inspired by the [Todotxt.net][] application for Microsoft Windows with numerous improvements and modifications specific to the Mac OS X platform. It is designed to pair well with other todo.txt applications, such as [SwiftoDo][], [Todotxt.net][], [SimpleTask][], [topydo][], and [many others][].
 
 From a design perspective the goal is to be the fastest, simplest, and cleanest implementation possible.
 
 [todotxt.net]: http://benrhughes.github.io/todotxt.net/
+[SwiftoDo]: https://itunes.apple.com/us/app/swiftodo-task-list-for-todo.txt/id1073798440?ls=1&mt=8
+[SimpleTask]: https://play.google.com/store/apps/details?id=nl.mpcjanssen.todotxtholo
+[topydo]: https://github.com/bram85/topydo
+[many others]: http://todotxt.com
 
 # Features
 
