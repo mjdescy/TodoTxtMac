@@ -53,7 +53,7 @@
 
 - (NSPopUpButton*)keypathPopUp {
 	if(!_keypathPopUp) {
-		NSMenu *keypathMenu = [[NSMenu allocWithZone:[NSMenu menuZone]]
+		NSMenu *keypathMenu = [[NSMenu alloc]
                                initWithTitle:@"due state menu"];
         
 		NSMenuItem *menuItem = [[NSMenuItem alloc]
@@ -94,7 +94,7 @@
 		[notDueItem setEnabled:YES];
 		[notDueItem setTag:(long)NotDue];
         
-        NSMenu *dueStateMenu = [[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:@"Due State"];
+        NSMenu *dueStateMenu = [[NSMenu alloc] initWithTitle:@"Due State"];
 		[dueStateMenu addItem:dueTodayItem];
 		[dueStateMenu addItem:overdueItem];
         [dueStateMenu addItem:notDueItem];

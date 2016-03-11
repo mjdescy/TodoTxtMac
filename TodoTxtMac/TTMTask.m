@@ -415,7 +415,7 @@ static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
     // If there is a due date, compare it to today's date to determine
     // if the task is overdue, not due, or due today.
     NSDate *todaysDate = [TTMDateUtility today];
-    NSInteger interval = [[[NSCalendar currentCalendar] components:NSDayCalendarUnit
+    NSInteger interval = [[[NSCalendar currentCalendar] components:NSCalendarUnitDay
                                                           fromDate:todaysDate
                                                             toDate:self.dueDate
                                                            options:0] day];
@@ -479,7 +479,7 @@ static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
     // If there is a threshold date, compare it to today's date to determine
     // if the task is overdue, not due, or due today.
     NSDate *todaysDate = [TTMDateUtility today];
-    NSInteger interval = [[[NSCalendar currentCalendar] components:NSDayCalendarUnit
+    NSInteger interval = [[[NSCalendar currentCalendar] components:NSCalendarUnitDay
                                                           fromDate:todaysDate
                                                             toDate:self.thresholdDate
                                                            options:0] day];

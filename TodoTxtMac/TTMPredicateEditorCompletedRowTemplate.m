@@ -52,7 +52,7 @@
 
 - (NSPopUpButton*)keypathPopUp {
 	if(!_keypathPopUp) {
-		NSMenu *keypathMenu = [[NSMenu allocWithZone:[NSMenu menuZone]]
+		NSMenu *keypathMenu = [[NSMenu alloc]
                                initWithTitle:@"completed menu"];
         
 		NSMenuItem *menuItem = [[NSMenuItem alloc]
@@ -82,7 +82,7 @@
 		[noItem setEnabled:YES];
 		[noItem setTag:0];
         
-        NSMenu *boolMenu = [[NSMenu allocWithZone:[NSMenu menuZone]] initWithTitle:@"Yes/No"];
+        NSMenu *boolMenu = [[NSMenu alloc] initWithTitle:@"Yes/No"];
 		[boolMenu addItem:yesItem];
 		[boolMenu addItem:noItem];
         

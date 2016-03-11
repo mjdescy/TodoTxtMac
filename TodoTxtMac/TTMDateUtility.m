@@ -92,7 +92,7 @@
         return nil;
     }
     NSDateComponents *comps = [[NSCalendar currentCalendar]
-                               components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
+                               components:NSCalendarUnitYear|NSCalendarUnitMonth|NSCalendarUnitDay
                                fromDate:date];
     
     return [[NSCalendar currentCalendar] dateFromComponents:comps];

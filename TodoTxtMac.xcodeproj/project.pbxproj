@@ -20,6 +20,8 @@
 		002218EA1AA17B9B00D6F3A0 /* TTMTask_MarkIncomplete_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 002218E91AA17B9B00D6F3A0 /* TTMTask_MarkIncomplete_UnitTests.m */; };
 		002EAE5918DBD24C008E7517 /* TTMAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 002EAE5818DBD24C008E7517 /* TTMAppController.m */; };
 		002EAE5E18DCAE5C008E7517 /* TTMFilterPredicates.m in Sources */ = {isa = PBXBuildFile; fileRef = 002EAE5D18DCAE5C008E7517 /* TTMFilterPredicates.m */; };
+		00308E161C90FD260007681C /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00308E131C90FD120007681C /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		00308E171C90FD390007681C /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00308E131C90FD120007681C /* Sparkle.framework */; };
 		003647E1193D562900FDF67A /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 003647E0193D562900FDF67A /* dsa_pub.pem */; };
 		003F958F1AA2948D00A1FF47 /* TTMTask_ToggleCompletion_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F958E1AA2948D00A1FF47 /* TTMTask_ToggleCompletion_UnitTests.m */; };
 		003F95911AA2965600A1FF47 /* TTMDateUtility_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95901AA2965600A1FF47 /* TTMDateUtility_UnitTests.m */; };
@@ -51,7 +53,6 @@
 		00930EAA18B536B00064D41B /* RegExCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EA918B536B00064D41B /* RegExCategories.m */; };
 		00930EAD18B5371B0064D41B /* TTMTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EAC18B5371B0064D41B /* TTMTask.m */; };
 		00930EB118B537C10064D41B /* TTMDateUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 00930EB018B537C10064D41B /* TTMDateUtility.m */; };
-		00A6058219E3733F00846B69 /* NSAlert+BlockMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 00A6058119E3733F00846B69 /* NSAlert+BlockMethods.m */; };
 		00B4CB9C18B43E8400313DAA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B4CB9B18B43E8400313DAA /* Cocoa.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		00B4CBA618B43E8400313DAA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00B4CBA418B43E8400313DAA /* InfoPlist.strings */; };
 		00B4CBA818B43E8400313DAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B4CBA718B43E8400313DAA /* main.m */; };
@@ -66,8 +67,6 @@
 		00B4CBC918B43E8500313DAA /* TTMTask_ReplaceText_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B4CBC818B43E8500313DAA /* TTMTask_ReplaceText_UnitTests.m */; };
 		00B8C82518E48FFF008D9E48 /* TTMFieldEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B8C82418E48FFF008D9E48 /* TTMFieldEditor.m */; };
 		00D102B61991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */; };
-		00DE02EC19E37E340093338A /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00DE02EB19E37E340093338A /* Sparkle.framework */; };
-		00DE02ED19E37E650093338A /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 00DE02EB19E37E340093338A /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		00EAAB9718E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9618E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m */; };
 		00EAAB9A18E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9918E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m */; };
 		00EAAB9D18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9C18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m */; };
@@ -97,7 +96,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				00DE02ED19E37E650093338A /* Sparkle.framework in CopyFiles */,
+				00308E161C90FD260007681C /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +119,7 @@
 		002EAE5818DBD24C008E7517 /* TTMAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMAppController.m; sourceTree = "<group>"; };
 		002EAE5C18DCAE5C008E7517 /* TTMFilterPredicates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMFilterPredicates.h; sourceTree = "<group>"; };
 		002EAE5D18DCAE5C008E7517 /* TTMFilterPredicates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFilterPredicates.m; sourceTree = "<group>"; };
+		00308E131C90FD120007681C /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		003647E0193D562900FDF67A /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		003F958E1AA2948D00A1FF47 /* TTMTask_ToggleCompletion_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_ToggleCompletion_UnitTests.m; sourceTree = "<group>"; };
 		003F95901AA2965600A1FF47 /* TTMDateUtility_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMDateUtility_UnitTests.m; sourceTree = "<group>"; };
@@ -159,8 +159,6 @@
 		00930EAF18B537C10064D41B /* TTMDateUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMDateUtility.h; sourceTree = "<group>"; };
 		00930EB018B537C10064D41B /* TTMDateUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMDateUtility.m; sourceTree = "<group>"; };
 		00A4E02E18D1569700CEE0A8 /* TodoTxtMac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodoTxtMac.entitlements; sourceTree = "<group>"; };
-		00A6058019E3733F00846B69 /* NSAlert+BlockMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAlert+BlockMethods.h"; sourceTree = "<group>"; };
-		00A6058119E3733F00846B69 /* NSAlert+BlockMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAlert+BlockMethods.m"; sourceTree = "<group>"; };
 		00B4CB9818B43E8400313DAA /* TodoTxtMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TodoTxtMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00B4CB9B18B43E8400313DAA /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		00B4CB9E18B43E8400313DAA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -185,7 +183,6 @@
 		00B8C82418E48FFF008D9E48 /* TTMFieldEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFieldEditor.m; sourceTree = "<group>"; };
 		00D102B41991ABBE00D30237 /* TTMTasklistMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMTasklistMetadata.h; sourceTree = "<group>"; };
 		00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTasklistMetadata.m; sourceTree = "<group>"; };
-		00DE02EB19E37E340093338A /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		00EAAB9518E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorDateRowTemplate.h; sourceTree = "<group>"; };
 		00EAAB9618E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPredicateEditorDateRowTemplate.m; sourceTree = "<group>"; };
 		00EAAB9818E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorDueRowTemplate.h; sourceTree = "<group>"; };
@@ -212,7 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00B4CB9C18B43E8400313DAA /* Cocoa.framework in Frameworks */,
-				00DE02EC19E37E340093338A /* Sparkle.framework in Frameworks */,
+				00308E171C90FD390007681C /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,8 +274,6 @@
 				00930EA918B536B00064D41B /* RegExCategories.m */,
 				006062D618EC6B0800D147F2 /* NSUserDefaults+myColorSupport.h */,
 				006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */,
-				00A6058019E3733F00846B69 /* NSAlert+BlockMethods.h */,
-				00A6058119E3733F00846B69 /* NSAlert+BlockMethods.m */,
 				003F959C1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.h */,
 				003F959D1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.m */,
 			);
@@ -308,7 +303,7 @@
 		00B4CB9A18B43E8400313DAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				00DE02EB19E37E340093338A /* Sparkle.framework */,
+				00308E131C90FD120007681C /* Sparkle.framework */,
 				00B4CB9B18B43E8400313DAA /* Cocoa.framework */,
 				00B4CBBD18B43E8500313DAA /* XCTest.framework */,
 				00B4CB9D18B43E8400313DAA /* Other Frameworks */,
@@ -500,7 +495,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TTM;
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Michael Descy";
 				TargetAttributes = {
 					00B4CB9718B43E8400313DAA = {
@@ -568,7 +563,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00A6058219E3733F00846B69 /* NSAlert+BlockMethods.m in Sources */,
 				002EAE5918DBD24C008E7517 /* TTMAppController.m in Sources */,
 				00EAAB9A18E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m in Sources */,
 				002EAE5E18DCAE5C008E7517 /* TTMFilterPredicates.m in Sources */,
@@ -703,6 +697,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -718,8 +713,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "-Wl,-rpath,@loader_path/../Frameworks";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -750,8 +746,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "-Wl,-rpath,@loader_path/../Frameworks";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -769,6 +766,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TodoTxtMac/TodoTxtMac-Prefix.pch";
 				INFOPLIST_FILE = "TodoTxtMac/TodoTxtMac-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.descy.michael.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				TEST_HOST = "";
@@ -788,6 +786,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TodoTxtMac/TodoTxtMac-Prefix.pch";
 				INFOPLIST_FILE = "TodoTxtMac/TodoTxtMac-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.descy.michael.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -811,6 +810,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "TodoTxtMacTests/TodoTxtMacTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.descy.michael.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -829,6 +829,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TodoTxtMac/TodoTxtMac-Prefix.pch";
 				INFOPLIST_FILE = "TodoTxtMacTests/TodoTxtMacTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.descy.michael.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

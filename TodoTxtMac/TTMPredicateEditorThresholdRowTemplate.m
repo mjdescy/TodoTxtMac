@@ -53,7 +53,7 @@
 
 - (NSPopUpButton*)keypathPopUp {
     if(!_keypathPopUp) {
-        NSMenu *keypathMenu = [[NSMenu allocWithZone:[NSMenu menuZone]]
+        NSMenu *keypathMenu = [[NSMenu alloc]
                                initWithTitle:@"threshold state menu"];
         
         NSMenuItem *menuItem = [[NSMenuItem alloc]
@@ -101,7 +101,7 @@
         [thresholdFutureItem setEnabled:YES];
         [thresholdFutureItem setTag:(long)BeforeThresholdDate];
         
-        NSMenu *thresholdStateMenu = [[NSMenu allocWithZone:[NSMenu menuZone]]
+        NSMenu *thresholdStateMenu = [[NSMenu alloc]
                                       initWithTitle:@"Threshold State"];
         [thresholdStateMenu addItem:thresholdPastItem];
         [thresholdStateMenu addItem:thresholdTodayItem];

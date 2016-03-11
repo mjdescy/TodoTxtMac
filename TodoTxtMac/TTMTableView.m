@@ -231,7 +231,6 @@
     
     NSLayoutManager *layoutManager = [[NSLayoutManager alloc] init];
     [layoutManager setTypesetterBehavior:NSTypesetterBehavior_10_2_WithCompatibility];
-    [layoutManager setUsesScreenFonts:YES];
     return [layoutManager defaultLineHeightForFont:font];
 }
 

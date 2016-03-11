@@ -46,7 +46,6 @@
 
 #import "TTMPreferencesController.h"
 #import "TTMAppController.h"
-#import "NSAlert+BlockMethods.h"
 #import "TTMDocumentStatusBarText.h"
 
 @implementation TTMPreferencesController
@@ -80,20 +79,17 @@
 #pragma mark - General Prefererences Methods
 
 - (IBAction)resetAllUserPreferencesToDefaults:(id)sender {
-    NSAlert *resetPrompt =
-        [NSAlert alertWithMessageText:@"Reset user preferences"
-                        defaultButton:@"OK"
-                      alternateButton:@"Cancel"
-                          otherButton:nil
-            informativeTextWithFormat:
-         @"Are you sure you want to do this? You will lose all settings and customizations."];
-    [resetPrompt compatibleBeginSheetModalForWindow:self.window
-                                   completionHandler:^(NSModalResponse returnCode) {
-                                       if (returnCode == NSAlertDefaultReturn) {
-                                           [self.appController resetUserDefaults:self];
-                                           [self.appController visualRefreshAll:self];
-                                       }
-                                   }];
+    NSAlert *resetPrompt = [[NSAlert alloc] init];
+    resetPrompt.messageText = @"Reset user preferences";
+    resetPrompt.informativeText = @"Are you sure you want to do this? You will lose all settings and customizations.";
+    [resetPrompt addButtonWithTitle:@"OK"];
+    [resetPrompt addButtonWithTitle:@"Cancel"];
+    [resetPrompt beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            [self.appController resetUserDefaults:self];
+            [self.appController visualRefreshAll:self];
+        }
+    }];
 }
 
 #pragma mark - Choose File Methods
@@ -157,22 +153,18 @@
 }
 
 - (IBAction)resetStatusBarFormatToDefault:(id)sender {
-    NSAlert *resetPrompt =
-    [NSAlert alertWithMessageText:@"Reset status bar format to default?"
-                    defaultButton:@"OK"
-                  alternateButton:@"Cancel"
-                      otherButton:nil
-        informativeTextWithFormat:
-     @"Are you sure you want to do this? You will lose all status bar customizations."];
-    [resetPrompt compatibleBeginSheetModalForWindow:self.window
-                                  completionHandler:^(NSModalResponse returnCode) {
-                                      if (returnCode == NSAlertDefaultReturn) {
-                                          [[NSUserDefaults standardUserDefaults]
-                                           setValue:[TTMDocumentStatusBarText defaultFormat]
-                                             forKey:@"statusBarFormat"];
-                                          [self.appController visualRefreshAll:self];
-                                      }
-                                  }];
+    NSAlert *resetPrompt = [[NSAlert alloc] init];
+    resetPrompt.messageText = @"Reset status bar format to default?";
+    resetPrompt.informativeText = @"Are you sure you want to do this? You will lose all status bar customizations.";
+    [resetPrompt addButtonWithTitle:@"OK"];
+    [resetPrompt addButtonWithTitle:@"Cancel"];
+    [resetPrompt beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn) {
+            [[NSUserDefaults standardUserDefaults] setValue:[TTMDocumentStatusBarText defaultFormat]
+                                                     forKey:@"statusBarFormat"];
+            [self.appController visualRefreshAll:self];
+        }
+    }];
 }
 
 - (void)controlTextDidChange:(NSNotification *)aNotification {
