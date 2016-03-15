@@ -72,7 +72,7 @@
     NSString *rawText = @"(A) pick up groceries t:2020-01-31 due:2020-01-31";
     NSUInteger taskId = 0;
     TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
-    XCTAssertEqual(task.thresholdState, BeforeThresholdDate);
+    XCTAssertEqual(ThresholdAfterToday, task.thresholdState);
 }
 
 - (void)testThresholdStateOn {
@@ -81,40 +81,40 @@
     NSString *rawText = [rawTextPart1 stringByAppendingString:rawTextPart2];
     NSUInteger taskId = 0;
     TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
-    XCTAssertEqual(task.thresholdState, OnThresholdDate);
+    XCTAssertEqual(ThresholdIsToday, task.thresholdState);
 }
 
 - (void)testThresholdStateAfter {
     NSString *rawText = @"(A) pick up groceries t:2001-01-01 due:2020-01-31";
     NSUInteger taskId = 0;
     TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:taskId];
-    XCTAssertEqual(task.thresholdState, AfterThresholdDate);
+    XCTAssertEqual(ThresholdBeforeToday, task.thresholdState);
 }
 
-- (void)test_ThresholdState_WhenTaskContainsNoThresholdDate_ShouldBeAfterThresholdDate {
+- (void)test_ThresholdState_WhenTaskContainsNoThresholdDate_ShouldBeNoThresholdDate {
     NSString *rawText = @"(A) test task";
     TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
-    XCTAssertEqual(AfterThresholdDate, task.thresholdState);
+    XCTAssertEqual(NoThresholdDate, task.thresholdState);
 }
 
-- (void)test_ThresholdState_WhenTaskContainsFutureThresholdDate_ShouldBeBeforeThreshold {
+- (void)test_ThresholdState_WhenTaskContainsFutureThresholdDate_ShouldBeThresholdAfterToday {
     NSString *rawText = @"(A) pick up groceries t:9999-01-01";
     TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
-    XCTAssertEqual(BeforeThresholdDate, task.thresholdState);
+    XCTAssertEqual(ThresholdAfterToday, task.thresholdState);
 }
 
-- (void)test_ThresholdState_WhenTaskContainsTodayThresholdDate_ShouldBeOnThresholdDate {
+- (void)test_ThresholdState_WhenTaskContainsTodayThresholdDate_ShouldBeThresholdIsToday {
     NSString *rawTextPart1 = @"(A) pick up groceries t:";
     NSString *rawTextPart2 = [TTMDateUtility todayAsString];
     NSString *rawText = [rawTextPart1 stringByAppendingString:rawTextPart2];
     TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
-    XCTAssertEqual(OnThresholdDate, task.thresholdState);
+    XCTAssertEqual(ThresholdIsToday, task.thresholdState);
 }
 
-- (void)test_ThresholdState_WhenTaskContainsPastThresholdDate_ShouldBeAfterThresholdDate {
+- (void)test_ThresholdState_WhenTaskContainsPastThresholdDate_ShouldBeThresholdBeforeToday {
     NSString *rawText = @"(A) pick up groceries t:2001-01-01";
     TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
-    XCTAssertEqual(AfterThresholdDate, task.thresholdState);
+    XCTAssertEqual(ThresholdBeforeToday, task.thresholdState);
 }
 
 @end

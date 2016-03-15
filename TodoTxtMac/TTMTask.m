@@ -240,7 +240,7 @@ static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
     // due state (past due, due today, not due)
     _dueState = [self getDueState];
     
-    // threshold state (before, on, after threshold date)
+    // threshold state (no threshold date, before, on, after threshold date)
     _thresholdState = [self getThresholdState];
 }
 
@@ -476,6 +476,10 @@ static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
 }
 
 - (TTMThresholdState)getThresholdState {
+    if (_thresholdDateText == nil) {
+        return NoThresholdDate;
+    }
+    
     // If there is a threshold date, compare it to today's date to determine
     // if the task is overdue, not due, or due today.
     NSDate *todaysDate = [TTMDateUtility today];
@@ -484,11 +488,11 @@ static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
                                                             toDate:self.thresholdDate
                                                            options:0] day];
     if (interval < 0) {
-        return AfterThresholdDate;
+        return ThresholdBeforeToday;
     } else if (interval > 0) {
-        return BeforeThresholdDate;
+        return ThresholdAfterToday;
     } else {
-        return OnThresholdDate;
+        return ThresholdIsToday;
     }
 }
 

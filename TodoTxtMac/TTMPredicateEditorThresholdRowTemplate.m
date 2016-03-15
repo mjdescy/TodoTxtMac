@@ -73,39 +73,49 @@
 
 - (NSPopUpButton*)thresholdStatePopUp {
     if (!_thresholdStatePopUp) {
-        NSMenuItem *thresholdPastItem = [[NSMenuItem alloc]
-                                         initWithTitle:@"in the past"
+        NSMenuItem *noThresholdDateItem = [[NSMenuItem alloc]
+                                         initWithTitle:@"no threshold date"
                                          action:nil
                                          keyEquivalent:@""];
-        [thresholdPastItem setRepresentedObject:[NSExpression
-                                                 expressionForConstantValue:@(AfterThresholdDate)]];
-        [thresholdPastItem setEnabled:YES];
-        [thresholdPastItem setTag:(long)AfterThresholdDate];
+        [noThresholdDateItem setRepresentedObject:[NSExpression
+                                                 expressionForConstantValue:@(NoThresholdDate)]];
+        [noThresholdDateItem setEnabled:YES];
+        [noThresholdDateItem setTag:(long)NoThresholdDate];
+
+        NSMenuItem *thresholdBeforeToday = [[NSMenuItem alloc]
+                                           initWithTitle:@"threshold before today"
+                                           action:nil
+                                           keyEquivalent:@""];
+        [thresholdBeforeToday setRepresentedObject:[NSExpression
+                                                   expressionForConstantValue:@(ThresholdBeforeToday)]];
+        [thresholdBeforeToday setEnabled:YES];
+        [thresholdBeforeToday setTag:(long)ThresholdBeforeToday];
         
-        NSMenuItem *thresholdTodayItem = [[NSMenuItem alloc]
-                                          initWithTitle:@"today"
+        NSMenuItem *thresholdIsTodayItem = [[NSMenuItem alloc]
+                                          initWithTitle:@"threshold is today"
                                                  action:nil
                                           keyEquivalent:@""];
-        [thresholdTodayItem setRepresentedObject:[NSExpression
-                                                  expressionForConstantValue:@(OnThresholdDate)]];
-        [thresholdTodayItem setEnabled:YES];
-        [thresholdTodayItem setTag:(long)OnThresholdDate];
+        [thresholdIsTodayItem setRepresentedObject:[NSExpression
+                                                  expressionForConstantValue:@(ThresholdIsToday)]];
+        [thresholdIsTodayItem setEnabled:YES];
+        [thresholdIsTodayItem setTag:(long)ThresholdIsToday];
         
-        NSMenuItem *thresholdFutureItem = [[NSMenuItem alloc]
-                                           initWithTitle:@"in the future"
+        NSMenuItem *thresholdAfterTodayItem = [[NSMenuItem alloc]
+                                           initWithTitle:@"threshold after today"
                                                   action:nil
                                            keyEquivalent:@""];
-        [thresholdFutureItem setRepresentedObject:[NSExpression
+        [thresholdAfterTodayItem setRepresentedObject:[NSExpression
                                                    expressionForConstantValue:@(
-                                                   BeforeThresholdDate)]];
-        [thresholdFutureItem setEnabled:YES];
-        [thresholdFutureItem setTag:(long)BeforeThresholdDate];
+                                                   ThresholdAfterToday)]];
+        [thresholdAfterTodayItem setEnabled:YES];
+        [thresholdAfterTodayItem setTag:(long)ThresholdAfterToday];
         
         NSMenu *thresholdStateMenu = [[NSMenu alloc]
                                       initWithTitle:@"Threshold State"];
-        [thresholdStateMenu addItem:thresholdPastItem];
-        [thresholdStateMenu addItem:thresholdTodayItem];
-        [thresholdStateMenu addItem:thresholdFutureItem];
+        [thresholdStateMenu addItem:noThresholdDateItem];
+        [thresholdStateMenu addItem:thresholdBeforeToday];
+        [thresholdStateMenu addItem:thresholdIsTodayItem];
+        [thresholdStateMenu addItem:thresholdAfterTodayItem];
         
         _thresholdStatePopUp = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO];
         [_thresholdStatePopUp setMenu:thresholdStateMenu];
