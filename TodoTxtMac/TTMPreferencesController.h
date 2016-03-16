@@ -55,15 +55,6 @@
 @property (nonatomic, retain) NSArray *availableStatusBarTags;
 @property (nonatomic, retain) IBOutlet NSArrayController *statusBarTags;
 
-#pragma mark - General Prefererences Methods
-
-/*!
- * @method resetAllUserPreferencesToDefaults:
- * @abstract This method allows the user to reset all user preferences and 
- * filters to the defaults defined in TTMAppDelegate.
- */
-- (IBAction)resetAllUserPreferencesToDefaults:(id)sender;
-
 #pragma mark - Choose File Methods
 
 /*!
