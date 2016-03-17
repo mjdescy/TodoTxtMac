@@ -73,6 +73,7 @@ NSString* const TTMActiveFilterNumber = @"{Filter Preset}";
 NSString* const TTMActiveSortNumber = @"{Sort Preset}";
 NSString* const TTMActiveSortName = @"{Sort Name}";
 NSString* const TTMSelectedTaskCount = @"{Selected}";
+NSString* const TTMHideFutureTasks = @"{Hide Future Tasks}";
 
 #pragma mark - Init Method
 
@@ -98,7 +99,7 @@ NSString* const TTMSelectedTaskCount = @"{Selected}";
                                 @(TTMSortThresholdDate) : @"Threshold Date",
                                 @(TTMSortAlphabetical) : @"Alphabetical"
                                 };
-
+    
     return @{TTMAllStatusBarAllTaskCountTag : @(self.document.tasklistMetadata.allTaskCount),
              TTMAllCompletedTaskCount : @(self.document.tasklistMetadata.completedTaskCount),
              TTMAllIncompleteTaskCount : @(self.document.tasklistMetadata.incompleteTaskCount),
@@ -120,8 +121,17 @@ NSString* const TTMSelectedTaskCount = @"{Selected}";
              TTMActiveFilterNumber : @(self.document.activeFilterPredicateNumber),
              TTMActiveSortNumber : @(self.document.activeSortType),
              TTMActiveSortName : [sortNames objectForKey:@(self.document.activeSortType)],
-             TTMSelectedTaskCount : @(self.document.arrayController.selectionIndexes.count)
+             TTMSelectedTaskCount : @(self.document.arrayController.selectionIndexes.count),
+             TTMHideFutureTasks : [self hideFutureTasks]
              };
+}
+
+- (NSString*)hideFutureTasks {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hideFutureTasks"]) {
+        return NSLocalizedString(@"Yes", "");
+    } else {
+        return NSLocalizedString(@"No", "");
+    }
 }
 
 #pragma mark - Output/Property Methods
@@ -161,12 +171,13 @@ NSString* const TTMSelectedTaskCount = @"{Selected}";
              TTMActiveFilterNumber,
              TTMActiveSortNumber,
              TTMActiveSortName,
-             TTMSelectedTaskCount
+             TTMSelectedTaskCount,
+             TTMHideFutureTasks
              ];
 }
 
 + (NSString*)defaultFormat {
-    return @"Filter #: {Filter Preset} | Sort: {Sort Name} | Tasks: {Shown Tasks} of {All Tasks} | Incomplete: {Shown Incomplete} | Due Today: {Shown Due Today} | Overdue: {Shown Overdue}";
+    return @"Filter #: {Filter Preset} | Sort: {Sort Name} | Tasks: {Shown Tasks} of {All Tasks} | Incomplete: {Shown Incomplete} | Due Today: {Shown Due Today} | Overdue: {Shown Overdue} | Hide Future Tasks: {Hide Future Tasks}";
 }
 
 @end
