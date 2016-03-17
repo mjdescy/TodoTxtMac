@@ -77,6 +77,14 @@
  */
 - (void)chooseFileForUserDefaultsKey:(NSString*)userDefaultsKey withPrompt:(NSString*)prompt;
 
+#pragma mark - Behavior Change Methods
+
+/*!
+ * @method hideFutureTasksPreferenceChanged:
+ * @abstract This method is called when the "hide future tasks" settings is changed.
+ */
+- (IBAction)hideFutureTasksPreferenceChanged:(id)sender;
+
 #pragma mark - Font Change Methods
 
 /*!

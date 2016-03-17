@@ -378,7 +378,11 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [[self.undoManager prepareWithInvocationTarget:self] removeTasks:newTasks];
     }
     
-    [self updateTaskListMetadata];
+    if (removeAllTasksFirst) {
+        [self visualRefreshOnly:self];
+    } else {
+        [self updateTaskListMetadata];
+    }    
 }
 
 - (IBAction)addNewTask:(id)sender {
@@ -476,6 +480,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 
 - (IBAction)visualRefreshOnly:(id)sender {
     [self setTaskListFont];
+    [self reapplyActiveFilterPredicate];
     [self.tableView reloadData];
     [self updateTaskListMetadata];
 }

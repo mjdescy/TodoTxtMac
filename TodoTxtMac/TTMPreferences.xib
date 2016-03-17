@@ -50,8 +50,8 @@
                                                                     <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QEV-IA-Nkb" userLabel="Default File Stack View">
                                                                         <rect key="frame" x="0.0" y="22" width="548" height="42"/>
                                                                         <beginningViews>
-                                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ibn-uO-HXl">
-                                                                                <rect key="frame" x="-2" y="12" width="76" height="17"/>
+                                                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ibn-uO-HXl">
+                                                                                <rect key="frame" x="-2" y="12.5" width="74" height="17"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="72" id="Mdu-XM-INb"/>
                                                                                 </constraints>
@@ -63,8 +63,11 @@
                                                                             </textField>
                                                                         </beginningViews>
                                                                         <middleViews>
-                                                                            <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Tp-oa-L2w">
-                                                                                <rect key="frame" x="92" y="0.0" width="364" height="42"/>
+                                                                            <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Tp-oa-L2w">
+                                                                                <rect key="frame" x="92" y="11.5" width="364" height="19"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="42" id="tpc-B7-pDs"/>
+                                                                                </constraints>
                                                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Default File" placeholderString="Default file (todo.txt)" drawsBackground="YES" id="mqs-ny-Nb9">
                                                                                     <font key="font" metaFont="smallSystem"/>
                                                                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -148,13 +151,13 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfr-8a-zUH">
-                                                                <rect key="frame" x="10" y="112" width="548" height="62"/>
+                                                                <rect key="frame" x="10" y="110" width="548" height="64"/>
                                                                 <subviews>
                                                                     <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3oP-vL-K4R" userLabel="Archive File Stack View">
-                                                                        <rect key="frame" x="0.0" y="22" width="548" height="40"/>
+                                                                        <rect key="frame" x="0.0" y="22" width="548" height="42"/>
                                                                         <beginningViews>
                                                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EbF-No-8Sl">
-                                                                                <rect key="frame" x="-2" y="11" width="76" height="17"/>
+                                                                                <rect key="frame" x="-2" y="12.5" width="76" height="17"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="width" constant="72" id="ipS-TD-5uu"/>
                                                                                 </constraints>
@@ -166,8 +169,11 @@
                                                                             </textField>
                                                                         </beginningViews>
                                                                         <middleViews>
-                                                                            <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="kLG-5x-TgF">
-                                                                                <rect key="frame" x="92" y="0.0" width="364" height="40"/>
+                                                                            <textField horizontalHuggingPriority="1" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kLG-5x-TgF">
+                                                                                <rect key="frame" x="92" y="11.5" width="364" height="19"/>
+                                                                                <constraints>
+                                                                                    <constraint firstAttribute="height" constant="42" id="hcI-Nb-Xph"/>
+                                                                                </constraints>
                                                                                 <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" borderStyle="bezel" title="Archive file" placeholderString="Archive file (done.txt)" drawsBackground="YES" id="ER5-Fw-tUr">
                                                                                     <font key="font" metaFont="smallSystem"/>
                                                                                     <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
@@ -180,7 +186,7 @@
                                                                         </middleViews>
                                                                         <endViews>
                                                                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Xb-Wn-oSq">
-                                                                                <rect key="frame" x="458" y="2.5" width="96" height="32"/>
+                                                                                <rect key="frame" x="458" y="3.5" width="96" height="32"/>
                                                                                 <buttonCell key="cell" type="push" title="Browse..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Hif-CU-wHj">
                                                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                                     <font key="font" metaFont="system"/>
@@ -192,7 +198,7 @@
                                                                         </endViews>
                                                                         <constraints>
                                                                             <constraint firstItem="kLG-5x-TgF" firstAttribute="top" secondItem="3oP-vL-K4R" secondAttribute="top" id="9hK-rh-lNF"/>
-                                                                            <constraint firstAttribute="height" constant="40" id="JiB-sh-Gzk"/>
+                                                                            <constraint firstAttribute="height" constant="42" id="JiB-sh-Gzk"/>
                                                                             <constraint firstAttribute="bottom" secondItem="kLG-5x-TgF" secondAttribute="bottom" id="bEg-Vf-BHP"/>
                                                                         </constraints>
                                                                         <visibilityPriorities>
@@ -275,13 +281,13 @@
                                             <rect key="frame" x="10" y="10" width="584" height="403"/>
                                             <subviews>
                                                 <box title="Application behaviors" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="yed-2J-abW" userLabel="Application Behaviors Box">
-                                                    <rect key="frame" x="7" y="272.5" width="570" height="130.5"/>
+                                                    <rect key="frame" x="7" y="250" width="570" height="153"/>
                                                     <view key="contentView" id="9wR-vg-DnJ">
-                                                        <rect key="frame" x="1" y="1" width="568" height="114.5"/>
+                                                        <rect key="frame" x="1" y="1" width="568" height="137"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="shz-AI-b3R">
-                                                                <rect key="frame" x="10" y="12.5" width="548" height="92"/>
+                                                                <rect key="frame" x="10" y="35" width="548" height="92"/>
                                                                 <subviews>
                                                                     <button verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="jj2-Ob-EWZ">
                                                                         <rect key="frame" x="-2" y="76" width="246" height="18"/>
@@ -319,6 +325,10 @@
                                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                             <font key="font" metaFont="system"/>
                                                                         </buttonCell>
+                                                                        <connections>
+                                                                            <action selector="hideFutureTasksPreferenceChanged:" target="-2" id="BWm-Mf-eiD"/>
+                                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.hideFutureTasks" id="bNT-CM-Drw"/>
+                                                                        </connections>
                                                                     </button>
                                                                 </subviews>
                                                                 <visibilityPriorities>
@@ -346,13 +356,13 @@
                                                     <font key="titleFont" metaFont="message" size="11"/>
                                                 </box>
                                                 <box autoresizesSubviews="NO" title="Undo" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="eZp-tq-4Jf" userLabel="Undo Box">
-                                                    <rect key="frame" x="7" y="134.5" width="570" height="130"/>
+                                                    <rect key="frame" x="7" y="108" width="570" height="134"/>
                                                     <view key="contentView" id="5fV-w0-EwJ">
-                                                        <rect key="frame" x="1" y="1" width="568" height="114"/>
+                                                        <rect key="frame" x="1" y="1" width="568" height="118"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rLY-gS-htN">
-                                                                <rect key="frame" x="10" y="24" width="548" height="80"/>
+                                                                <rect key="frame" x="10" y="28" width="548" height="80"/>
                                                                 <subviews>
                                                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xqz-un-BWi">
                                                                         <rect key="frame" x="0.0" y="58" width="290" height="22"/>
@@ -434,18 +444,21 @@
                                                             <constraint firstAttribute="trailing" secondItem="rLY-gS-htN" secondAttribute="trailing" constant="10" id="wQJ-1g-EEt"/>
                                                         </constraints>
                                                     </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="130" id="U8d-uz-qYo"/>
+                                                    </constraints>
                                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <font key="titleFont" metaFont="message" size="11"/>
                                                 </box>
                                                 <box autoresizesSubviews="NO" title="Updates" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="0l4-KA-rkx" userLabel="Updates Box">
-                                                    <rect key="frame" x="7" y="-4" width="570" height="130.5"/>
+                                                    <rect key="frame" x="7" y="-4" width="570" height="104"/>
                                                     <view key="contentView" id="nS2-eK-lnO">
-                                                        <rect key="frame" x="1" y="1" width="568" height="114.5"/>
+                                                        <rect key="frame" x="1" y="1" width="568" height="88"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i86-pj-NM3">
-                                                                <rect key="frame" x="10" y="59.5" width="548" height="45"/>
+                                                                <rect key="frame" x="10" y="33" width="548" height="45"/>
                                                                 <subviews>
                                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="7BY-xZ-OO3">
                                                                         <rect key="frame" x="-2" y="29" width="310" height="18"/>
@@ -517,6 +530,9 @@
                                                             <constraint firstItem="i86-pj-NM3" firstAttribute="top" secondItem="nS2-eK-lnO" secondAttribute="top" constant="10" id="bAo-dr-8ei"/>
                                                         </constraints>
                                                     </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="9Bn-Cq-egK"/>
+                                                    </constraints>
                                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <font key="titleFont" metaFont="message" size="11"/>

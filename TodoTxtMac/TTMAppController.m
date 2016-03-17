@@ -103,6 +103,7 @@ static NSDictionary *defaultValues() {
                 [TTMDocumentStatusBarText defaultFormat], @"statusBarFormat",
                 @0, @"levelsOfUndo",
                 @YES, @"allowUndoOfArchiveCommand",
+                @NO, @"hideFutureTasks",
                 nil];
     }
     return dict;

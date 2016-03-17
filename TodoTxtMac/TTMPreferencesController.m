@@ -101,6 +101,12 @@
     }
 }
 
+#pragma mark - Behavior Change Methods
+
+- (IBAction)hideFutureTasksPreferenceChanged:(id)sender {
+    [self.appController visualRefreshAll:self];
+}
+
 #pragma mark - Font Change Methods
 
 - (IBAction)openFontPanel:(id)sender {
