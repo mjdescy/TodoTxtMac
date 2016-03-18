@@ -4,7 +4,21 @@
         <title>TodoTxtMac Changelog</title>
         <link>http://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
         <language>en</language>
-            <item>
+
+        <item>
+            <title>Version 2.1.0</title>
+            <description>
+            Changes to threshold state. Added "hide future tasks (threshold filter)" option. Added links to Plaintext Productivity web site.            
+            </description>
+            <sparkle:releaseNotesLink>
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.1.0.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Thursday, 17 Mar 2016 22:00 -0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.1.0/TodoTxtMac.app.zip" sparkle:version="2.1.0" length="2585752" type="application/octet-stream" sparkle:dsaSignature="MCwCFATF5wAM1faVpzqXGx4+/Aqqlx8dAhQVGydjGnpMRJU0VFLpmB5YLcBmnw==" />
+            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+        </item>
+
+        <item>
             <title>Version 2.0.0</title>
             <description>
             UI update. Updated Sparkle framework to fix possible security issue. Fixed a bug that could duplicate the task list. Changed minimum supported OS X version to 10.11 El Capitan. 
