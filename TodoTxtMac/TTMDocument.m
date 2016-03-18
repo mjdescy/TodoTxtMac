@@ -1304,7 +1304,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (IBAction)hideTasklistMetadata:(id)sender {
-    [NSApp endSheet:self.tasklistMetadataSheet];
+    [self.windowForSheet endSheet:self.tasklistMetadataSheet];
     [self.tasklistMetadataSheet close];
     self.tasklistMetadataSheet = nil;
 }
