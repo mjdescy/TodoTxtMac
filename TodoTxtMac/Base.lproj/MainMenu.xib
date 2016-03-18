@@ -547,6 +547,19 @@ CA
                                     <action selector="openWebSite:" target="7QU-ZR-XSK" id="9Ag-Y1-CGm"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="lRU-6h-IH1"/>
+                            <menuItem title="Plaintext Productivity Web Site" id="9hp-z8-KLG">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openPlaintextProductivityWebSite:" target="7QU-ZR-XSK" id="ECP-z5-0Cu"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Todo.txt Tips from Plaintext Productivity" id="MgF-xZ-I3A">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openTodoTxtTipsPlaintextProductivityWebSite:" target="7QU-ZR-XSK" id="tYj-xu-zQ4"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>

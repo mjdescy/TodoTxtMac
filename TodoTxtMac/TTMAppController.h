@@ -59,6 +59,8 @@ extern NSString *const TodoFileArgument;
 - (IBAction)openPreferencesWindow:(id)sender;
 - (IBAction)openFiltersWindow:(id)sender;
 - (IBAction)openWebSite:(id)sender;
+- (IBAction)openPlaintextProductivityWebSite:(id)sender;
+- (IBAction)openTodoTxtTipsPlaintextProductivityWebSite:(id)sender;
 
 #pragma mark - User Defaults-related Methods
 

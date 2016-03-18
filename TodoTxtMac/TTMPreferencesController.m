@@ -76,22 +76,6 @@
     return [window makeFirstResponder:nil]; // validate editing
 }
 
-#pragma mark - General Prefererences Methods
-
-- (IBAction)resetAllUserPreferencesToDefaults:(id)sender {
-    NSAlert *resetPrompt = [[NSAlert alloc] init];
-    resetPrompt.messageText = @"Reset user preferences";
-    resetPrompt.informativeText = @"Are you sure you want to do this? You will lose all settings and customizations.";
-    [resetPrompt addButtonWithTitle:@"OK"];
-    [resetPrompt addButtonWithTitle:@"Cancel"];
-    [resetPrompt beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
-        if (returnCode == NSAlertFirstButtonReturn) {
-            [self.appController resetUserDefaults:self];
-            [self.appController visualRefreshAll:self];
-        }
-    }];
-}
-
 #pragma mark - Choose File Methods
 
 - (IBAction)chooseArchiveFile:(id)sender {
@@ -115,6 +99,12 @@
             [[NSUserDefaults standardUserDefaults] setValue:[fileURL path] forKey:userDefaultsKey];
         }
     }
+}
+
+#pragma mark - Behavior Change Methods
+
+- (IBAction)hideFutureTasksPreferenceChanged:(id)sender {
+    [self.appController visualRefreshAll:self];
 }
 
 #pragma mark - Font Change Methods

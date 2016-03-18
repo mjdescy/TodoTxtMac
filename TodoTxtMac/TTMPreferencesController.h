@@ -55,15 +55,6 @@
 @property (nonatomic, retain) NSArray *availableStatusBarTags;
 @property (nonatomic, retain) IBOutlet NSArrayController *statusBarTags;
 
-#pragma mark - General Prefererences Methods
-
-/*!
- * @method resetAllUserPreferencesToDefaults:
- * @abstract This method allows the user to reset all user preferences and 
- * filters to the defaults defined in TTMAppDelegate.
- */
-- (IBAction)resetAllUserPreferencesToDefaults:(id)sender;
-
 #pragma mark - Choose File Methods
 
 /*!
@@ -85,6 +76,14 @@
  * @discussion This is a helper method called by chooseArchiveFile: and chooseDefaultTodoFile:.
  */
 - (void)chooseFileForUserDefaultsKey:(NSString*)userDefaultsKey withPrompt:(NSString*)prompt;
+
+#pragma mark - Behavior Change Methods
+
+/*!
+ * @method hideFutureTasksPreferenceChanged:
+ * @abstract This method is called when the "hide future tasks" settings is changed.
+ */
+- (IBAction)hideFutureTasksPreferenceChanged:(id)sender;
 
 #pragma mark - Font Change Methods
 

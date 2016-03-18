@@ -103,6 +103,7 @@ static NSDictionary *defaultValues() {
                 [TTMDocumentStatusBarText defaultFormat], @"statusBarFormat",
                 @0, @"levelsOfUndo",
                 @YES, @"allowUndoOfArchiveCommand",
+                @NO, @"hideFutureTasks",
                 nil];
     }
     return dict;
@@ -150,10 +151,23 @@ NSString *const TodoFileArgument = @"todo-file";
     [self.filtersController showWindow:self];
 }
 
-- (IBAction)openWebSite:(id)sender {
-    NSURL *helpURL = [NSURL URLWithString:@"http://mjdescy.github.io/TodoTxtMac/"];
-    [[NSWorkspace sharedWorkspace] openURL:helpURL];
+- (void)launchURLFromString:(NSString*)urlString {
+    NSURL *url = [NSURL URLWithString:urlString];
+    [[NSWorkspace sharedWorkspace] openURL:url];
 }
+
+- (IBAction)openWebSite:(id)sender {
+    [self launchURLFromString:@"http://mjdescy.github.io/TodoTxtMac/"];
+}
+
+- (IBAction)openPlaintextProductivityWebSite:(id)sender {
+    [self launchURLFromString:@"http://plaintext-productivity.net"];
+}
+
+- (IBAction)openTodoTxtTipsPlaintextProductivityWebSite:(id)sender {
+    [self launchURLFromString:@"http://plaintext-productivity.net/1-00-tasks-introduction.html"];
+}
+
 
 #pragma mark - User Defaults-related Methods
 

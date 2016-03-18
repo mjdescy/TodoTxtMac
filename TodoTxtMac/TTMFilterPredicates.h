@@ -64,6 +64,19 @@
 + (NSData*)defaultFilterPredicateData;
 
 /*!
+ * @method hideFutureTasksFilterPredicate:
+ * @abstract This method returns a filter predicate for use with the "hide future tasks" option.
+ */
++ (NSPredicate*)hideFutureTasksFilterPredicate;
+
+/*!
+ * @method hideFutureTasksFilterSubPredicate:
+ * @abstract This method returns a filter predicate for use with the "hide future tasks" option.
+ */
++ (NSPredicate*)hideFutureTasksFilterSubPredicate;
+
+
+/*!
  * @method noFilterPredicate:
  * @abstract This method returns a filter predicate for use when the filter is disabled.
  */

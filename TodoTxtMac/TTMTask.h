@@ -62,12 +62,12 @@ typedef enum : NSUInteger {
     NotDue
 } TTMDueState;
 
-/*! Defines the three threshold date-related states of a task: before, after, 
-    and on the threshold date */
+/*! Defines the threshold date-related state of a task */
 typedef enum : NSUInteger {
-    BeforeThresholdDate,
-    OnThresholdDate,
-    AfterThresholdDate
+    NoThresholdDate,
+    ThresholdBeforeToday,
+    ThresholdIsToday,
+    ThresholdAfterToday
 } TTMThresholdState;
 
 #pragma mark - Properties
