@@ -111,8 +111,9 @@
     NSString *partialRange = [[self string] substringWithRange:self.rangeForUserCompletion];
     if ([partialRange hasPrefix:@"@"] || [partialRange hasPrefix:@"+"]) {
         
-        // Don't trigger autocompletion if user is deleting...
-        if (![self keyCharFromEventIsPerformingDeletion:event]) {
+        // Don't trigger autocompletion time if user is pressing a deletion key or pressing Enter
+        unichar keyChar = [self keyCharFromEvent:event];
+        if (![self keyCharIsADeletionKey:keyChar] && ![self keyCharIsEnterKey:keyChar]) {
             [self startCompletionTimer];
         }
     }
@@ -121,10 +122,18 @@
     [super keyUp:event];
 }
 
-- (BOOL)keyCharFromEventIsPerformingDeletion:(NSEvent*)event {
+- (BOOL)keyCharIsADeletionKey:(unichar)keyChar {
+    return (keyChar == NSBackspaceCharacter || keyChar == NSDeleteCharacter);
+}
+
+- (BOOL)keyCharIsEnterKey:(unichar)keyChar {
+    return (keyChar == NSEnterCharacter || keyChar == '\r');
+}
+
+- (unichar)keyCharFromEvent:(NSEvent*)event {
     NSString *passedChar = [event charactersIgnoringModifiers];
     unichar keyChar = [passedChar characterAtIndex:0];
-    return (keyChar == NSBackspaceCharacter || keyChar == NSDeleteCharacter);
+    return keyChar;
 }
 
 /*!
@@ -157,7 +166,7 @@
     
     NSMutableArray *returnArray = [[NSMutableArray alloc] init];
     for (NSString *str in sourceArray) {
-        if ([str hasPrefix:partialString]) {
+        if ([[str uppercaseString] hasPrefix:[partialString uppercaseString]]) {
             [returnArray addObject:str];
         }
     }
