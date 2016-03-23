@@ -107,15 +107,33 @@
  * addresses (with "@").
  */
 - (void)keyUp:(NSEvent*)event {
-    // Start the completion timer if the user types an "@" or "+".
-    if ([[event characters] isEqualToString:@"@"] || [[event characters] isEqualToString:@"+"]) {
-        [self startCompletionTimer];
-    } else {
-        [self stopCompletionTimer];
+    // Start the completion timer if the range for user completion starts with "@" or "+".
+    NSString *partialRange = [[self string] substringWithRange:self.rangeForUserCompletion];
+    if ([partialRange hasPrefix:@"@"] || [partialRange hasPrefix:@"+"]) {
+        
+        // Don't trigger autocompletion time if user is pressing a deletion key or pressing Enter
+        unichar keyChar = [self keyCharFromEvent:event];
+        if (![self keyCharIsADeletionKey:keyChar] && ![self keyCharIsEnterKey:keyChar]) {
+            [self startCompletionTimer];
+        }
     }
     
     // Call the super so we don't override any other behaviors.
     [super keyUp:event];
+}
+
+- (BOOL)keyCharIsADeletionKey:(unichar)keyChar {
+    return (keyChar == NSBackspaceCharacter || keyChar == NSDeleteCharacter);
+}
+
+- (BOOL)keyCharIsEnterKey:(unichar)keyChar {
+    return (keyChar == NSEnterCharacter || keyChar == '\r');
+}
+
+- (unichar)keyCharFromEvent:(NSEvent*)event {
+    NSString *passedChar = [event charactersIgnoringModifiers];
+    unichar keyChar = [passedChar characterAtIndex:0];
+    return keyChar;
 }
 
 /*!
@@ -130,14 +148,29 @@
     NSString *partialString = [[self string] substringWithRange:charRange];
     
     if ([partialString hasPrefix:@"+"]) {
-        return self.projectsArray;
+        return [self partialCompletionsFromSourceArray:self.projectsArray partialString:partialString];
     } else if ([partialString hasPrefix:@"@"]) {
-        return self.contextsArray;
+        return [self partialCompletionsFromSourceArray:self.contextsArray partialString:partialString];
     } else {
         // Call the super method to get the default behavior.
         // This allows for the user to type Esc and still trigger autocompletion.
         return [super completionsForPartialWordRange:charRange indexOfSelectedItem:index];
     }
+}
+
+- (NSArray*)partialCompletionsFromSourceArray:(NSArray*)sourceArray
+                                partialString:(NSString*)partialString{
+    if (sourceArray == nil) {
+        return nil;
+    }
+    
+    NSMutableArray *returnArray = [[NSMutableArray alloc] init];
+    for (NSString *str in sourceArray) {
+        if ([[str uppercaseString] hasPrefix:[partialString uppercaseString]]) {
+            [returnArray addObject:str];
+        }
+    }
+    return returnArray;
 }
 
 /*!
@@ -161,7 +194,36 @@
         superRange.length = 1;
     }
     
+    // Look 1 character back from the superRange.
+    // If it is a "@" or "+", extend the superRange back to include that character.
+    // This is necessary for autocompletion to work properly for contexts and projects.
+    NSString *leadingCharacter = [self leadingCharacterToLeftOfRange:superRange];
+    if ([leadingCharacter isEqualToString:@"@"] || [leadingCharacter isEqualToString:@"+"]) {
+        if (superRange.location > 0) {
+            superRange.location -= 1;
+            superRange.length += 1;
+        }
+    }
+    
     return superRange;
+}
+
+- (NSString*)leadingCharacterToLeftOfRange:(NSRange)range {
+    if (range.location == 0) {
+        return [[self string] substringWithRange:range];
+    }
+    
+    NSRange newRange = NSMakeRange(range.location - 1, 1);
+    return [[self string] substringWithRange:newRange];
+}
+
+- (NSString*)stringForRangeWithAdditionalLeadingCharacter:(NSRange)range {
+    if (range.location == 0) {
+        return [[self string] substringWithRange:range];
+    }
+    
+    NSRange newRange = NSMakeRange(range.location - 1, range.length + 1);
+    return [[self string] substringWithRange:newRange];
 }
 
 /*!
