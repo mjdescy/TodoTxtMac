@@ -6,6 +6,19 @@
         <language>en</language>
 
         <item>
+            <title>Version 2.1.1</title>
+            <description>
+            Vast improvements to autocompletion of projects and contexts. Fixed an intermittent problem in which Enter or "U" would not edit a task but would instead make the selection jump to another task.
+            </description>
+            <sparkle:releaseNotesLink>
+            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.1.1.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Thursday, 22 Mar 2016 22:00 -0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.1.1/TodoTxtMac.app.zip" sparkle:version="2.1.1" length="2731532" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCrUzmDoTDVCVNSa4q97UDL2m1fkAIUD316c3hqA6vgTjGHOslZnv+KjnM=" />
+            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+        </item>
+
+        <item>
             <title>Version 2.1.0</title>
             <description>
             Changes to threshold state. Added "hide future tasks (threshold filter)" option. Added links to Plaintext Productivity web site.            
