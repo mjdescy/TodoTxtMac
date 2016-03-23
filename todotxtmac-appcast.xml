@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<rss version="2.0" xmlns:sparkle="https://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="https://purl.org/dc/elements/1.1/">
     <channel>
         <title>TodoTxtMac Changelog</title>
-        <link>http://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
+        <link>https://mjdescy.github.io/TodoTxtMac/todotxtmac-appcast.xml</link>
         <language>en</language>
 
         <item>
@@ -11,7 +11,7 @@
             Vast improvements to autocompletion of projects and contexts. Fixed an intermittent problem in which Enter or "U" would not edit a task but would instead make the selection jump to another task.
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.1.1.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.1.1.html
             </sparkle:releaseNotesLink>
             <pubDate>Tuesday, 22 Mar 2016 22:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.1.1/TodoTxtMac.app.zip" sparkle:version="2.1.1" length="2731532" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCrUzmDoTDVCVNSa4q97UDL2m1fkAIUD316c3hqA6vgTjGHOslZnv+KjnM=" />
@@ -24,7 +24,7 @@
             Changes to threshold state. Added "hide future tasks (threshold filter)" option. Added links to Plaintext Productivity web site.            
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.1.0.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.1.0.html
             </sparkle:releaseNotesLink>
             <pubDate>Thursday, 17 Mar 2016 22:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.1.0/TodoTxtMac.app.zip" sparkle:version="2.1.0" length="2585752" type="application/octet-stream" sparkle:dsaSignature="MCwCFATF5wAM1faVpzqXGx4+/Aqqlx8dAhQVGydjGnpMRJU0VFLpmB5YLcBmnw==" />
@@ -37,7 +37,7 @@
             UI update. Updated Sparkle framework to fix possible security issue. Fixed a bug that could duplicate the task list. Changed minimum supported OS X version to 10.11 El Capitan. 
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.0.0.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.0.0.html
             </sparkle:releaseNotesLink>
             <pubDate>Friday, 11 Mar 2016 22:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.0.0/TodoTxtMac.app.zip" sparkle:version="2.0.0" length="2728330" type="application/octet-stream" sparkle:dsaSignature="MC0CFBGmETCKSSYVTkU4ycEcW/I7I34sAhUAo3oNnErHszVyAx0d2EakFEgT9zI=" />
@@ -50,7 +50,7 @@
             Fixed an infinite loop/hang that was caused by using Esc to cancel edits.
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.6.1.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.6.1.html
             </sparkle:releaseNotesLink>
             <pubDate>Friday, 3 Jul 2015 21:23 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.6.1/TodoTxtMac.app.zip" sparkle:version="1.6.1" length="2670360" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCa3TetzJmBjibJuzNDB9VezrPH8wIUL3wSfhg3jZU3ESs+bT0+S7bnrtU=" />
@@ -62,7 +62,7 @@
             Added full undo/redo support (Command+Z, Command+Shift+Z).
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.6.0.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.6.0.html
             </sparkle:releaseNotesLink>
             <pubDate>Wednesday, 17 Jun 2015 20:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.6.0/TodoTxtMac.app.zip" sparkle:version="1.6.0" length="2670180" type="application/octet-stream" sparkle:dsaSignature="MC0CFGVW9OHlhwl48LqyxIwQGmZdkiWwAhUAh33R5ASzX1gYhDUnBG072WUc94Y=" />
@@ -74,7 +74,7 @@
             Added Cut command to task list. Various bug fixes.
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.5.1.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.5.1.html
             </sparkle:releaseNotesLink>
             <pubDate>Wednesday, 20 May 2015 10:19 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.5.1/TodoTxtMac.app.zip" sparkle:version="1.5.1" length="2653275" type="application/octet-stream" sparkle:dsaSignature="MCwCFH5+5Ar8Zoat6kRFuwBtJJxnsJCVAhRIvji5y8QKzIrTLp4ZkMaBlwwXXg==" />
@@ -86,7 +86,7 @@
             Improvemed filters. Added customizable color option to creation date. Improved todo.txt format parsing.
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.5.0.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.5.0.html
             </sparkle:releaseNotesLink>
             <pubDate>Tuesday, 3 Feb 2015 01:17 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.5.0/TodoTxtMac.app.zip" sparkle:version="1.5.0" length="2659564" type="application/octet-stream" sparkle:dsaSignature="MCwCFGyzsODCSsQ8tE9fGg9Wz4w0J7NMAhRpsUSQnOFPI7Lx9txFbjqcyyE9wA==" />
@@ -98,7 +98,7 @@
             Added new features, including status bar and find/replace text command. Fixes bugs related to context autocompletion and the prepend text command's keyboard shortcut.
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.4.0.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.4.0.html
             </sparkle:releaseNotesLink>
             <pubDate>Thursday, 5 Feb 2015 14:10 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.4.0/TodoTxtMac.app.zip" sparkle:version="1.4.0" length="2638931" type="application/octet-stream" sparkle:dsaSignature="MCwCFGPbXHE9ifA9KwaeSBI7KizmdX5LAhQrsuJr2quuB+qiUl05Nb+XpsVPmg==" />
@@ -110,7 +110,7 @@
             Added new features, including threshold date support, prepending text, reset button for user preferences, clear all filters button. New icon.
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.3.0.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.3.0.html
             </sparkle:releaseNotesLink>
             <pubDate>Monday, 19 Jan 2015 22:17:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.3.0/TodoTxtMac.app.zip" sparkle:version="1.3.0" length="2627069" type="application/octet-stream" sparkle:dsaSignature="MCwCFGHkYNLjoYgK7RBPY4PtLXEELd3WAhQmhsmLKSKt3C9UdWUCiJkt1EgjFA==" />
@@ -122,7 +122,7 @@
             Task selections are now retained, as much as possible, when reloading a file from disk. Color and font preferences are now live-updating for all open windows. Added a "Reload All" command (Option+.).
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.8.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.8.html
             </sparkle:releaseNotesLink>
             <pubDate>Mon, 15 Dec 2014 14:11:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.8/TodoTxtMac.app.zip" sparkle:version="1.2.8" length="1955296" type="application/octet-stream" sparkle:dsaSignature="MC4CFQC/Mn2xob/yDmzmLnEo1jwC3ZCWIQIVAJvuAUTP1ld8jvdqj/YeRdnn1+ze" />
@@ -134,7 +134,7 @@
             Added feature, found in Preferences > Startup, to open a default todo.txt file on launch.
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.7.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.7.html
             </sparkle:releaseNotesLink>
             <pubDate>Mon, 8 Dec 2014 19:45:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.7/TodoTxtMac.app.zip" sparkle:version="1.2.7" length="1834067" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCVSka93stepYgwnnkfGSiw2IGN4QIVAJmvzUJYvsEZTMsafKqcaT27Wx9L" />
@@ -146,7 +146,7 @@
             TodoTxtMac can now open a todo file specified on the command line on launch.
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.6.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.6.html
             </sparkle:releaseNotesLink>
             <pubDate>Fri, 5 Dec 2014 19:45:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.6/TodoTxtMac.app.zip" sparkle:version="1.2.6" length="1831518" type="application/octet-stream" sparkle:dsaSignature="MC4CFQCAHiTQkNrkkJiU+xDe/WcBu0zULgIVAK5lk+E3GOgncdnPVOvoYTYQzh8E" />
@@ -158,7 +158,7 @@
             Fixes a crash that appears to affect Yosemite only.
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.5.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.5.html
             </sparkle:releaseNotesLink>
             <pubDate>Wed, 26 Nov 2014 20:30:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.5/TodoTxtMac.app.zip" sparkle:version="1.2.5" length="1830868" type="application/octet-stream" sparkle:dsaSignature="MC0CFGb3ooVV4nWw2Gs7dO2ZTwux3bSgAhUAia4jB57P2kZ+LG0hwg/DGA7Bzz0=" />
@@ -170,7 +170,7 @@
             Bug fixes for Yosemite.
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.4.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.4.html
             </sparkle:releaseNotesLink>
             <pubDate>Sun, 26 Oct 2014 17:00:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.4/TodoTxtMac.app.zip" sparkle:version="1.2.4" length="1830351" type="application/octet-stream" sparkle:dsaSignature="MCwCFE/X9tYRrLid0wOIHa8PvVpNukOdAhRagtaWJUkDJth5IWAjxv+077yxXg==" />
@@ -182,7 +182,7 @@
             Added "As Displayed" and "Unfiltered" options to task list metadata view.
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.3.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.3.html
             </sparkle:releaseNotesLink>
             <pubDate>Mon, 13 Oct 2014 15:25:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.3/TodoTxtMac.app.zip" sparkle:version="1.2.3" length="1844121" type="application/octet-stream" sparkle:dsaSignature="MCwCFFuRG7XObTyWbf5gGPBtlCOtUeBgAhQFLtZZWZNNclvv9wbUsgtWHRpp+A==" />
@@ -194,7 +194,7 @@
             Added task list metadata sheet (Command+I). Fixed OS X 10.8 (Mountain Lion) compatibility for the following commands: delete task, postpone task, set due date, set priority.
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.2.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.2.html
             </sparkle:releaseNotesLink>
             <pubDate>Tue, 6 Oct 2014 22:00:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.2/TodoTxtMac.app.zip" sparkle:version="1.2.2" length="1834688" type="application/octet-stream" sparkle:dsaSignature="MC0CFBHigxsIy2YlA1BNuJO9ue+DRNp3AhUAq+VqkXCBB4hcyOxAD5eF7cb7PnE=" />
@@ -206,7 +206,7 @@
             Added automatic update checking and "none of the following" filter option. Improved organization of Preferences window.
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.1.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.1.html
             </sparkle:releaseNotesLink>
             <pubDate>Sun, 29 Jun 2014 22:39:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.1/TodoTxtMac.app.zip" sparkle:version="1.2.1" length="1122148" type="application/octet-stream" sparkle:dsaSignature="MCwCFFCJxCTdgdCVmS6Ln5ODrNspGlgwAhQK7I3ng9gj0OPX6+227zm60PKNDw==" />
@@ -218,7 +218,7 @@
             Added automatic update checking and "none of the following" filter option. Improved organization of Preferences window.
             </description>
             <sparkle:releaseNotesLink>
-            http://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.0.html
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v1.2.0.html
             </sparkle:releaseNotesLink>
             <pubDate>Sun, 29 Jun 2014 22:07:00 -0500</pubDate>
             <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/1.2.0/TodoTxtMac.app.zip" sparkle:version="1.2.0" length="1122304" type="application/octet-stream" sparkle:dsaSignature="MCwCFDkUGEJ4qVa58mYSQtWVIzoCADJ3AhQZrMtFxC+71KYBT4vH0mnQrMqSsg==" />
