@@ -100,6 +100,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, readonly) BOOL isCompleted;
 @property (nonatomic, readonly) BOOL isPrioritized;
 @property (nonatomic, readonly) BOOL isBlank;
+@property (nonatomic, readonly) BOOL isRecurring;
+@property (nonatomic, readonly) NSString *recurrencePattern;
 
 #pragma mark - Init Methods
 
@@ -358,5 +360,9 @@ typedef enum : NSUInteger {
  * @abstract Removes the due date from the task's raw text.
  */
 - (void)removeDueDate;
+
+- (TTMTask*)newRecurringTask;
+
+- (void)removeCreationDate;
 
 @end

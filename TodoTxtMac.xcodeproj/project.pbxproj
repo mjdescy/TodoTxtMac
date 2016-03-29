@@ -45,6 +45,7 @@
 		003F95B61AA40FB400A1FF47 /* TTMTask_DecrementDueDate_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003F95B51AA40FB400A1FF47 /* TTMTask_DecrementDueDate_UnitTests.m */; };
 		0050D6841996AA38008F349B /* TTMTasklistMetadata_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0050D6831996AA38008F349B /* TTMTasklistMetadata_UnitTests.m */; };
 		006062D818EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */; };
+		0064E6441C9CEE6600B9A6C0 /* NSDate+RelativeDates.m in Sources */ = {isa = PBXBuildFile; fileRef = 0064E6431C9CEE6600B9A6C0 /* NSDate+RelativeDates.m */; };
 		006B26461A81C82D00B0E47A /* TTMFindReplace.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006B26451A81C82D00B0E47A /* TTMFindReplace.xib */; };
 		006BA79E19DB9CFD00C8F408 /* TTMTasklistMetadata.xib in Resources */ = {isa = PBXBuildFile; fileRef = 006BA79D19DB9CFD00C8F408 /* TTMTasklistMetadata.xib */; };
 		007B835F1A5A415300A4D5F7 /* TTMPredicateEditorThresholdRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 007B835E1A5A415300A4D5F7 /* TTMPredicateEditorThresholdRowTemplate.m */; };
@@ -145,6 +146,8 @@
 		0050D6831996AA38008F349B /* TTMTasklistMetadata_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTasklistMetadata_UnitTests.m; sourceTree = "<group>"; };
 		006062D618EC6B0800D147F2 /* NSUserDefaults+myColorSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+myColorSupport.h"; sourceTree = "<group>"; };
 		006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+myColorSupport.m"; sourceTree = "<group>"; };
+		0064E6421C9CEE6600B9A6C0 /* NSDate+RelativeDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+RelativeDates.h"; sourceTree = "<group>"; };
+		0064E6431C9CEE6600B9A6C0 /* NSDate+RelativeDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+RelativeDates.m"; sourceTree = "<group>"; };
 		006B26451A81C82D00B0E47A /* TTMFindReplace.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMFindReplace.xib; sourceTree = "<group>"; };
 		006BA79D19DB9CFD00C8F408 /* TTMTasklistMetadata.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TTMTasklistMetadata.xib; sourceTree = "<group>"; };
 		007B835D1A5A415300A4D5F7 /* TTMPredicateEditorThresholdRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorThresholdRowTemplate.h; sourceTree = "<group>"; };
@@ -276,6 +279,8 @@
 				006062D718EC6B0800D147F2 /* NSUserDefaults+myColorSupport.m */,
 				003F959C1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.h */,
 				003F959D1AA2C42700A1FF47 /* NSMutableAttributableString+ColorRegExMatches.m */,
+				0064E6421C9CEE6600B9A6C0 /* NSDate+RelativeDates.h */,
+				0064E6431C9CEE6600B9A6C0 /* NSDate+RelativeDates.m */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -563,6 +568,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0064E6441C9CEE6600B9A6C0 /* NSDate+RelativeDates.m in Sources */,
 				002EAE5918DBD24C008E7517 /* TTMAppController.m in Sources */,
 				00EAAB9A18E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m in Sources */,
 				002EAE5E18DCAE5C008E7517 /* TTMFilterPredicates.m in Sources */,

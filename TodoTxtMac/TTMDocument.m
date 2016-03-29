@@ -357,7 +357,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
                             [self.taskList count] :
                             [[self.arrayController arrangedObjects] count];
     for (NSString *rawTextString in rawTextStrings) {
-        if ([rawTextString length] > 0) {
+        if (rawTextString.length > 0) {
             TTMTask *newTask;
             if (removeAllTasksFirst) {
                 newTask = [[TTMTask alloc]
@@ -513,30 +513,77 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     NSArray *newTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
     
+    NSMutableArray *newTaskStrings = [[NSMutableArray alloc] init];
+    BOOL recurringTasksWereCreated = NO;
+    BOOL prependDate = [[NSUserDefaults standardUserDefaults] boolForKey:@"prependDateOnNewTasks"];
+    
+    for (TTMTask *task in newTasks) {
+        // if task is being marked complete...
+        if (task.isCompleted && task.isRecurring) {
+            TTMTask *newTaskBase = [task copy];
+            [newTaskBase markIncomplete];
+            TTMTask *newTask = [newTaskBase newRecurringTask];
+            if (newTask != nil) {
+                recurringTasksWereCreated = YES;
+                if (prependDate) {
+                    [newTask removeCreationDate];
+                }
+                [newTaskStrings addObject:newTask.rawText];
+            }
+        }
+    }
+    
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks
                                                             withTasks:self.originalTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Edit Task", @"Undo Edit Task")];
     self.originalTasks = nil;
+    
     [self refreshTaskListWithSave:YES];
+    
+    if (recurringTasksWereCreated) {
+        [self addTasksFromArray:newTaskStrings removeAllTasksFirst:NO undoActionName:NSLocalizedString(@"Add Recurring Task", @"")];
+    }
 }
 
 - (IBAction)toggleTaskCompletion:(id)sender {
     NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
     NSMutableArray *newTasks = [[NSMutableArray alloc] init];
-
+    NSMutableArray *newTaskStrings = [[NSMutableArray alloc] init];
+    
+    BOOL recurringTasksWereCreated = NO;
+    BOOL prependDate = [[NSUserDefaults standardUserDefaults] boolForKey:@"prependDateOnNewTasks"];
+    
     for (TTMTask *task in [self.arrayController selectedObjects]) {
+        // if task is being marked complete...
+        if (!task.isCompleted) {
+            if (task.isRecurring) {
+                TTMTask *newTask = [task newRecurringTask];
+                if (newTask != nil) {
+                    if (prependDate) {
+                        [newTask removeCreationDate];
+                    }
+                    [newTaskStrings addObject:newTask.rawText];
+                    recurringTasksWereCreated = YES;
+                }
+            }
+        }
+        
         [task toggleCompletionStatus];
         [newTasks addObject:[task copy]];
     }
     
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Toggle Completion", @"Undo Toggle Completion")];
-    
+
     if ([[NSUserDefaults standardUserDefaults] integerForKey:@"archiveTasksUponCompletion"]) {
         [self archiveCompletedTasks:self];
     } else {
         [self refreshTaskListWithSave:YES];
+    }
+
+    if (recurringTasksWereCreated) {
+        [self addTasksFromArray:newTaskStrings removeAllTasksFirst:NO undoActionName:NSLocalizedString(@"Add Recurring Tasks", @"")];
     }
 }
 

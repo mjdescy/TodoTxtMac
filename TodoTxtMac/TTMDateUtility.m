@@ -45,6 +45,7 @@
  */
 
 #import "TTMDateUtility.h"
+#import "NSDate+RelativeDates.h"
 
 @implementation TTMDateUtility
 
@@ -198,6 +199,13 @@
     } else {
         return [self convertDateToString:date];
     }
+}
+
++ (NSInteger)daysBetweenDate:(NSDate*)startDate andEndDate:(NSDate*)endDate {
+    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [currentCalendar components:NSCalendarUnitDay fromDate:startDate toDate:endDate options:NSCalendarMatchFirst];
+    
+    return components.day;
 }
 
 @end
