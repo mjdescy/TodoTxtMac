@@ -104,6 +104,7 @@ static NSDictionary *defaultValues() {
                 @0, @"levelsOfUndo",
                 @YES, @"allowUndoOfArchiveCommand",
                 @NO, @"hideFutureTasks",
+                @NO, @"closingLastWindowClosesApplication",
                 nil];
     }
     return dict;

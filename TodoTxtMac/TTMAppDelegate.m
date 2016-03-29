@@ -70,4 +70,8 @@
             ![[NSUserDefaults standardUserDefaults] boolForKey:@"openDefaultTodoFileOnStartup"]);
 }
 
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"closingLastWindowClosesApplication"];
+}
+
 @end

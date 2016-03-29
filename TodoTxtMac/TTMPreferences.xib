@@ -285,10 +285,10 @@
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="shz-AI-b3R">
-                                                                <rect key="frame" x="10" y="35" width="548" height="92"/>
+                                                                <rect key="frame" x="10" y="9" width="548" height="118"/>
                                                                 <subviews>
                                                                     <button verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="jj2-Ob-EWZ">
-                                                                        <rect key="frame" x="-2" y="76" width="246" height="18"/>
+                                                                        <rect key="frame" x="-2" y="102" width="246" height="18"/>
                                                                         <buttonCell key="cell" type="check" title="Prepend date on newly created tasks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Io7-mh-1Cc">
                                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                             <font key="font" metaFont="system"/>
@@ -298,7 +298,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="wFd-n2-OjV">
-                                                                        <rect key="frame" x="-2" y="50" width="399" height="18"/>
+                                                                        <rect key="frame" x="-2" y="76" width="399" height="18"/>
                                                                         <buttonCell key="cell" type="check" title="Move to newly added task after creation (if new task is visible)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7VI-d0-pcv">
                                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                             <font key="font" metaFont="system"/>
@@ -308,7 +308,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="Sr6-1i-PgC">
-                                                                        <rect key="frame" x="-2" y="24" width="220" height="18"/>
+                                                                        <rect key="frame" x="-2" y="50" width="220" height="18"/>
                                                                         <buttonCell key="cell" type="check" title="Esc key cancels all edits to tasks" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="wmG-4W-WRo">
                                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                             <font key="font" metaFont="system"/>
@@ -318,7 +318,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="3Td-66-ijl">
-                                                                        <rect key="frame" x="-2" y="-2" width="227" height="18"/>
+                                                                        <rect key="frame" x="-2" y="24" width="227" height="18"/>
                                                                         <buttonCell key="cell" type="check" title="Hide future tasks (threshold filter)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="3NK-EN-ooU">
                                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                             <font key="font" metaFont="system"/>
@@ -328,14 +328,26 @@
                                                                             <binding destination="p0U-mu-Cyy" name="value" keyPath="values.hideFutureTasks" id="bNT-CM-Drw"/>
                                                                         </connections>
                                                                     </button>
+                                                                    <button translatesAutoresizingMaskIntoConstraints="NO" id="fbN-xb-H8S">
+                                                                        <rect key="frame" x="-2" y="-2" width="255" height="18"/>
+                                                                        <buttonCell key="cell" type="check" title="Closing last window closes application" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7OP-hN-eJ8">
+                                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                            <font key="font" metaFont="system"/>
+                                                                        </buttonCell>
+                                                                        <connections>
+                                                                            <binding destination="p0U-mu-Cyy" name="value" keyPath="values.closingLastWindowClosesApplication" id="XFD-qp-FDF"/>
+                                                                        </connections>
+                                                                    </button>
                                                                 </subviews>
                                                                 <visibilityPriorities>
                                                                     <integer value="1000"/>
                                                                     <integer value="1000"/>
                                                                     <integer value="1000"/>
                                                                     <integer value="1000"/>
+                                                                    <integer value="1000"/>
                                                                 </visibilityPriorities>
                                                                 <customSpacing>
+                                                                    <real value="3.4028234663852886e+38"/>
                                                                     <real value="3.4028234663852886e+38"/>
                                                                     <real value="3.4028234663852886e+38"/>
                                                                     <real value="3.4028234663852886e+38"/>
