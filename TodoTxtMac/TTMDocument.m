@@ -514,11 +514,15 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
                                              copyItems:YES];
     
     NSMutableArray *newTaskStrings = [[NSMutableArray alloc] init];
+    BOOL taskWasCompleted = NO;
     BOOL recurringTasksWereCreated = NO;
     BOOL prependDate = [[NSUserDefaults standardUserDefaults] boolForKey:@"prependDateOnNewTasks"];
     
     for (TTMTask *task in newTasks) {
         // if task is being marked complete...
+        if (task.isCompleted) {
+            taskWasCompleted = YES;
+        }
         if (task.isCompleted && task.isRecurring) {
             TTMTask *newTaskBase = [task copy];
             [newTaskBase markIncomplete];
@@ -538,7 +542,11 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self.undoManager setActionName:NSLocalizedString(@"Edit Task", @"Undo Edit Task")];
     self.originalTasks = nil;
     
-    [self refreshTaskListWithSave:YES];
+    if (taskWasCompleted && [[NSUserDefaults standardUserDefaults] integerForKey:@"archiveTasksUponCompletion"]) {
+        [self archiveCompletedTasks:self];
+    } else {
+        [self refreshTaskListWithSave:YES];
+    }
     
     if (recurringTasksWereCreated) {
         [self addTasksFromArray:newTaskStrings removeAllTasksFirst:NO undoActionName:NSLocalizedString(@"Add Recurring Task", @"")];
