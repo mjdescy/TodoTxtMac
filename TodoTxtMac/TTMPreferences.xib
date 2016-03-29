@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
@@ -142,7 +142,6 @@
                                                     </view>
                                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <font key="titleFont" metaFont="message" size="11"/>
                                                 </box>
                                                 <box title="Archive file (done.txt)" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="BF2-7M-dnr" userLabel="Archive file (done.txt) Box">
                                                     <rect key="frame" x="7" y="-4" width="570" height="200"/>
@@ -245,7 +244,6 @@
                                                     </view>
                                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <font key="titleFont" metaFont="message" size="11"/>
                                                 </box>
                                             </subviews>
                                             <constraints>
@@ -300,8 +298,8 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="wFd-n2-OjV">
-                                                                        <rect key="frame" x="-2" y="50" width="265" height="18"/>
-                                                                        <buttonCell key="cell" type="check" title="Move to newly added task after creation" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7VI-d0-pcv">
+                                                                        <rect key="frame" x="-2" y="50" width="399" height="18"/>
+                                                                        <buttonCell key="cell" type="check" title="Move to newly added task after creation (if new task is visible)" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7VI-d0-pcv">
                                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                             <font key="font" metaFont="system"/>
                                                                         </buttonCell>
@@ -353,7 +351,6 @@
                                                     </view>
                                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <font key="titleFont" metaFont="message" size="11"/>
                                                 </box>
                                                 <box autoresizesSubviews="NO" title="Undo" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="eZp-tq-4Jf" userLabel="Undo Box">
                                                     <rect key="frame" x="7" y="108" width="570" height="134"/>
@@ -449,7 +446,6 @@
                                                     </constraints>
                                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <font key="titleFont" metaFont="message" size="11"/>
                                                 </box>
                                                 <box autoresizesSubviews="NO" title="Updates" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="0l4-KA-rkx" userLabel="Updates Box">
                                                     <rect key="frame" x="7" y="-4" width="570" height="104"/>
@@ -535,7 +531,6 @@
                                                     </constraints>
                                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <font key="titleFont" metaFont="message" size="11"/>
                                                 </box>
                                             </subviews>
                                             <constraints>
@@ -669,7 +664,6 @@
                                                     </constraints>
                                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <font key="titleFont" metaFont="message" size="11"/>
                                                 </box>
                                                 <box title="Colors" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="d7n-EI-WOY" userLabel="Colors Box">
                                                     <rect key="frame" x="7" y="-4" width="570" height="270"/>
@@ -803,7 +797,7 @@
                                                                                                     <rect key="frame" x="0.0" y="41" width="256" height="33"/>
                                                                                                     <subviews>
                                                                                                         <button toolTip="Tags are &quot;key:value&quot; pairs." translatesAutoresizingMaskIntoConstraints="NO" id="H2T-43-uze">
-                                                                                                            <rect key="frame" x="-2" y="7.5" width="127" height="18"/>
+                                                                                                            <rect key="frame" x="-2" y="7" width="127" height="18"/>
                                                                                                             <buttonCell key="cell" type="check" title="Tags" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="oCR-Hh-sAn">
                                                                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                                                 <font key="font" metaFont="system"/>
@@ -969,7 +963,7 @@
                                                                                                     <rect key="frame" x="0.0" y="82" width="256" height="33"/>
                                                                                                     <subviews>
                                                                                                         <button toolTip="Threshold dates must be in the format &quot;t:YYYY-MM-DD&quot;." translatesAutoresizingMaskIntoConstraints="NO" id="Dvn-44-EkF">
-                                                                                                            <rect key="frame" x="-2" y="7.5" width="127" height="18"/>
+                                                                                                            <rect key="frame" x="-2" y="7" width="127" height="18"/>
                                                                                                             <buttonCell key="cell" type="check" title="Threshold dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8Ot-rG-fIl">
                                                                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                                                 <font key="font" metaFont="system"/>
@@ -1012,7 +1006,7 @@
                                                                                                     <rect key="frame" x="0.0" y="41" width="256" height="33"/>
                                                                                                     <subviews>
                                                                                                         <button toolTip="Threshold dates must be in the format &quot;t:YYYY-MM-DD&quot;." translatesAutoresizingMaskIntoConstraints="NO" id="DCH-Hu-Ffj">
-                                                                                                            <rect key="frame" x="-2" y="7.5" width="127" height="18"/>
+                                                                                                            <rect key="frame" x="-2" y="7" width="127" height="18"/>
                                                                                                             <buttonCell key="cell" type="check" title="Creation dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yMp-g6-Vnj">
                                                                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                                                 <font key="font" metaFont="system"/>
@@ -1147,7 +1141,6 @@
                                                                         </constraints>
                                                                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                        <font key="titleFont" metaFont="smallSystem"/>
                                                                     </box>
                                                                 </subviews>
                                                                 <constraints>
@@ -1363,7 +1356,6 @@
                                             </constraints>
                                             <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                             <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <font key="titleFont" metaFont="smallSystem"/>
                                         </box>
                                     </subviews>
                                     <constraints>

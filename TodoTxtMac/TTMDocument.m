@@ -407,7 +407,10 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     
     // Optionally move focus to the task list depending on the user setting.
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"moveToTaskListAfterTaskCreation"]) {
-        [self tabFromTextFieldToTaskList];
+        if ([self.arrayController.selectedObjects containsObject:newTask]) {
+            [self tabFromTextFieldToTaskList];
+            [self.tableView scrollRowToVisible:self.tableView.selectedRow];
+        }
     }
 }
 
