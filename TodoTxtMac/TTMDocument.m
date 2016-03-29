@@ -134,8 +134,6 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     return self.customFieldEditor;
 }
 
-
-
 #pragma mark - File Loading and Saving Methods
 
 + (BOOL)autosavesInPlace {
@@ -215,7 +213,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self readFromURL:[self fileURL] ofType:@"TTMDocument" error:&error];
 
     // Refresh the task list.
-    [self refreshTaskListWithSave:NO];
+    [self refreshTaskListWithSave:YES];
     
     // Re-apply the filter active before the file was reloaded.
     self.searchFieldPredicate = tempPredicate;
