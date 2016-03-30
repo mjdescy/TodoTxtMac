@@ -20,7 +20,7 @@
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="443" height="441"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ods-Bg-YkA">
                         <rect key="frame" x="10" y="10" width="423" height="421"/>
@@ -46,13 +46,13 @@
                                                     <rect key="frame" x="10" y="33" width="397" height="294"/>
                                                     <subviews>
                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qjH-vh-0cQ" userLabel="Filtered Left Stack View">
-                                                            <rect key="frame" x="0.0" y="0.0" width="189" height="294"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="188.5" height="294"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bh9-cY-3uU" userLabel="Filtered Total Tasks Stack View">
-                                                                    <rect key="frame" x="0.0" y="277" width="189" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="277" width="188.5" height="17"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c5U-IF-T8w">
-                                                                            <rect key="frame" x="-2" y="0.0" width="152" height="17"/>
+                                                                            <rect key="frame" x="-2" y="0.0" width="151.5" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Total Tasks:" id="JF5-90-32g">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -60,7 +60,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="n2r-Pw-Wz5">
-                                                                            <rect key="frame" x="154" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="97A-by-cRu">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="Yyd-RB-8Qc"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -88,10 +88,10 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Xr-JK-9gL" userLabel="Filtered Projects Stack View">
-                                                                    <rect key="frame" x="0.0" y="250" width="189" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="250" width="188.5" height="17"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SFV-3a-PCn">
-                                                                            <rect key="frame" x="-2" y="0.0" width="152" height="17"/>
+                                                                            <rect key="frame" x="-2" y="0.0" width="151.5" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Projects:" id="gS7-Ut-mgr">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -99,7 +99,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="woL-jw-tTG">
-                                                                            <rect key="frame" x="154" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="a4o-Hb-dc6">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="ak4-sr-U2f"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -125,10 +125,10 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SuQ-fT-aY7" userLabel="Filtered Contexts Stack View">
-                                                                    <rect key="frame" x="0.0" y="223" width="189" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="223" width="188.5" height="17"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MBb-7y-mFa">
-                                                                            <rect key="frame" x="-2" y="0.0" width="152" height="17"/>
+                                                                            <rect key="frame" x="-2" y="0.0" width="151.5" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Contexts:" id="TMP-PV-MLQ">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -136,7 +136,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Bjx-u6-j3z">
-                                                                            <rect key="frame" x="154" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="5B6-bO-er5">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="14w-fV-jeA"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -162,10 +162,10 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bPM-LO-HtQ" userLabel="Filtered Priorities Stack View">
-                                                                    <rect key="frame" x="0.0" y="196" width="189" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="196" width="188.5" height="17"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nJ9-Kg-1OU">
-                                                                            <rect key="frame" x="-2" y="0.0" width="152" height="17"/>
+                                                                            <rect key="frame" x="-2" y="0.0" width="151.5" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Priorities:" id="Tup-Qj-Ii5">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -173,7 +173,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BFV-pb-Fwj">
-                                                                            <rect key="frame" x="154" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="WCb-kg-xiW">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="0p5-8n-PO0"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -199,10 +199,10 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lwB-Nk-Kvo" userLabel="Filtered Incomplete Stack View">
-                                                                    <rect key="frame" x="0.0" y="169" width="189" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="169" width="188.5" height="17"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ktz-d9-Hjw">
-                                                                            <rect key="frame" x="-2" y="0.0" width="152" height="17"/>
+                                                                            <rect key="frame" x="-2" y="0.0" width="151.5" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Incomplete:" id="O9G-zA-bil">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -210,7 +210,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cZc-Rd-P1x">
-                                                                            <rect key="frame" x="154" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="BF7-tm-Noq">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="v9E-tI-Y52"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -236,10 +236,10 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="429-QG-cCx" userLabel="Filtered Projects List Stack View">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="189" height="159"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="188.5" height="159"/>
                                                                     <subviews>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Oa1-2Z-lWh">
-                                                                            <rect key="frame" x="-2" y="142" width="193" height="17"/>
+                                                                            <rect key="frame" x="-2" y="142" width="192.5" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Projects:" id="ZVm-Cp-3a3">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -247,7 +247,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uxf-zC-vTd" userLabel="Filtered Projects Text Field">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="189" height="140"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="188.5" height="140"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="140" id="DhZ-vD-7ZO"/>
                                                                             </constraints>
@@ -309,13 +309,13 @@
                                                             </customSpacing>
                                                         </stackView>
                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="16U-vD-9jY" userLabel="Filtered Right Stack View">
-                                                            <rect key="frame" x="209" y="0.0" width="189" height="294"/>
+                                                            <rect key="frame" x="208" y="0.0" width="188.5" height="294"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LiH-Kt-nLI" userLabel="Filtered Due Today Stack View">
-                                                                    <rect key="frame" x="0.0" y="277" width="189" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="277" width="188.5" height="17"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="As6-Vo-wrg">
-                                                                            <rect key="frame" x="-2" y="0.0" width="152" height="17"/>
+                                                                            <rect key="frame" x="-2" y="0.0" width="151.5" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Due Today:" id="45h-cj-qiK">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -323,7 +323,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uKp-um-mob">
-                                                                            <rect key="frame" x="154" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="wD4-Is-g8S">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="7Fd-MU-q8d"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -349,10 +349,10 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nTi-Fr-O2T" userLabel="Filtered Overdue Stack View">
-                                                                    <rect key="frame" x="0.0" y="250" width="189" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="250" width="188.5" height="17"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZEm-Fm-ddj">
-                                                                            <rect key="frame" x="-2" y="0.0" width="152" height="17"/>
+                                                                            <rect key="frame" x="-2" y="0.0" width="151.5" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Overdue:" id="pDn-bH-gJZ">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -360,7 +360,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fdT-Hm-zp9">
-                                                                            <rect key="frame" x="154" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="2uu-0T-Axc">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="aKi-LB-sHu"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -386,7 +386,7 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C4K-MM-kic" userLabel="Filtered Not Due Stack View">
-                                                                    <rect key="frame" x="0.0" y="223" width="189" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="223" width="188.5" height="17"/>
                                                                     <subviews>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2o8-84-Pfl">
                                                                             <rect key="frame" x="-2" y="0.0" width="60" height="17"/>
@@ -400,7 +400,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1qX-o8-HFn">
-                                                                            <rect key="frame" x="62" y="0.0" width="129" height="17"/>
+                                                                            <rect key="frame" x="62" y="0.0" width="128.5" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="w5W-RB-Z3K">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="CVB-fV-jLe"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -426,10 +426,10 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DDH-ZX-txY" userLabel="Filtered No Due Date Stack View">
-                                                                    <rect key="frame" x="0.0" y="196" width="189" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="196" width="188.5" height="17"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oo7-CT-4Xv" userLabel="No Due Date:">
-                                                                            <rect key="frame" x="-2" y="0.0" width="152" height="17"/>
+                                                                            <rect key="frame" x="-2" y="0.0" width="151.5" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="No Due Date:" id="Dol-qJ-Xeh">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -437,7 +437,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8Vu-QC-nRe">
-                                                                            <rect key="frame" x="154" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="xmh-g6-XOK">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="Bid-4c-Z6j"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -463,10 +463,10 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lvr-d5-pcz" userLabel="Filtered Completed Stack View">
-                                                                    <rect key="frame" x="0.0" y="169" width="189" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="169" width="188.5" height="17"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a0p-Sb-9ah">
-                                                                            <rect key="frame" x="-2" y="0.0" width="152" height="17"/>
+                                                                            <rect key="frame" x="-2" y="0.0" width="151.5" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Completed:" id="cqB-et-Id4">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -474,7 +474,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WT9-sQ-M2c">
-                                                                            <rect key="frame" x="154" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="DqV-ml-AU7">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="UMq-j7-Qi7"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -496,10 +496,10 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qwo-Hs-lGF" userLabel="Filtered Contexts List Stack View">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="189" height="159"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="188.5" height="159"/>
                                                                     <subviews>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Oln-jO-yPX">
-                                                                            <rect key="frame" x="-2" y="142" width="193" height="17"/>
+                                                                            <rect key="frame" x="-2" y="142" width="192.5" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Contexts:" id="TwD-go-e7I">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -507,7 +507,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mqo-gp-gYV">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="189" height="140"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="188.5" height="140"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="140" id="oXV-ly-kWI"/>
                                                                             </constraints>
@@ -609,7 +609,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bF2-1u-FKg">
-                                                                            <rect key="frame" x="153.5" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="ug9-MU-fvQ">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="6x8-1c-pSp"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -648,7 +648,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="N0d-dV-A8z">
-                                                                            <rect key="frame" x="153.5" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="4gB-xZ-Qpt">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="84p-A8-gWw"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -685,7 +685,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qav-rX-V31">
-                                                                            <rect key="frame" x="153.5" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="l8E-ku-8CR">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="Ybf-mh-fb6"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -722,7 +722,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mpn-0B-D9D">
-                                                                            <rect key="frame" x="153.5" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="3tU-ti-nff">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="Pzn-aJ-GAG"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -759,7 +759,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hrs-jf-bYs">
-                                                                            <rect key="frame" x="153.5" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="F9C-OW-d2t">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="cHz-X4-gw0"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -858,7 +858,7 @@
                                                             </customSpacing>
                                                         </stackView>
                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PzO-6o-qlT" userLabel="Filtered Right Stack View">
-                                                            <rect key="frame" x="208.5" y="0.0" width="188.5" height="294"/>
+                                                            <rect key="frame" x="208" y="0.0" width="188.5" height="294"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Lb-cY-aFy" userLabel="Unfiltered Due Today Stack View">
                                                                     <rect key="frame" x="0.0" y="277" width="188.5" height="17"/>
@@ -872,7 +872,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sKB-VN-hxF">
-                                                                            <rect key="frame" x="153.5" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="xXL-sM-mhQ">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="o5E-Hu-Cat"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -909,7 +909,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fNk-PL-MDD">
-                                                                            <rect key="frame" x="153.5" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="hsM-nh-NWt">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="JJV-bM-8cH"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -986,7 +986,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eVe-h8-Pjd">
-                                                                            <rect key="frame" x="153.5" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="qR1-oB-ao6">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="cRn-iB-xq3"/>
                                                                                 <font key="font" metaFont="system"/>
@@ -1023,7 +1023,7 @@
                                                                             </textFieldCell>
                                                                         </textField>
                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BRw-Kl-0SS">
-                                                                            <rect key="frame" x="153.5" y="0.0" width="37" height="17"/>
+                                                                            <rect key="frame" x="153" y="0.0" width="37" height="17"/>
                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Label" id="6aP-Qq-mlg">
                                                                                 <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="309" maximumFractionDigits="3" id="6Op-tD-Bfb"/>
                                                                                 <font key="font" metaFont="system"/>
