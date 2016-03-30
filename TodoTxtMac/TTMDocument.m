@@ -457,6 +457,17 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self refreshTaskListWithSave:YES];
 }
 
+- (IBAction)copyTaskToNewTask:(id)sender {
+    // cancel if multiple rows are selected
+    if ([[self.arrayController selectedObjects] count] != 1) {
+        return;
+    }
+    
+    TTMTask *task = [[self.arrayController selectedObjects] objectAtIndex:0];
+    [self.textField setStringValue:task.rawText];
+    [self moveFocusToNewTaskTextField:self];
+}
+
 #pragma mark - Update Task Methods
 
 - (void)refreshTaskListWithSave:(BOOL)saveToFile {
@@ -1312,6 +1323,14 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
             [menuItem setTitle:@"Show Status Bar"];
         }
     }
+    // Toggle copy task to new task menu item.
+    if (menuItem.tag == COPYTASKTONEWTASKMENUTAG) {
+        NSInteger selectedCount = [[self.arrayController selectedObjects] count];
+        BOOL enabled = (selectedCount == 1);
+        [menuItem setEnabled:enabled];
+        return enabled;
+    }
+    
     return [super validateMenuItem:menuItem];
 }
 
