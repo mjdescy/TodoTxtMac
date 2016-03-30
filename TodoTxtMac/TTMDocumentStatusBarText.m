@@ -57,6 +57,7 @@ NSString* const TTMAllIncompleteTaskCount = @"{All Incomplete}";
 NSString* const TTMAllDueTodayTaskCount = @"{All Due Today}";
 NSString* const TTMAllOverdueTaskCount = @"{All Overdue}";
 NSString* const TTMAllNotDueTaskCount = @"{All Not Due}";
+NSString* const TTMAllNoDueDateTaskCount = @"{All No Due Date}";
 NSString* const TTMAllProjectsCount = @"{All Projects}";
 NSString* const TTMAllContextsCount = @"{All Contexts}";
 NSString* const TTMAllPrioritiesCount = @"{All Priorities}";
@@ -66,6 +67,7 @@ NSString* const TTMShownIncompleteTaskCount = @"{Shown Incomplete}";
 NSString* const TTMShownDueTodayTaskCount = @"{Shown Due Today}";
 NSString* const TTMShownOverdueTaskCount = @"{Shown Overdue}";
 NSString* const TTMShownNotDueTaskCount = @"{Shown Not Due}";
+NSString* const TTMShownNoDueDateTaskCount = @"{Shown No Due Date}";
 NSString* const TTMShownProjectsCount = @"{Shown Projects}";
 NSString* const TTMShownContextsCount = @"{Shown Contexts}";
 NSString* const TTMShownPrioritiesCount = @"{Shown Priorities}";
@@ -106,6 +108,7 @@ NSString* const TTMHideFutureTasks = @"{Hide Future Tasks}";
              TTMAllDueTodayTaskCount : @(self.document.tasklistMetadata.dueTodayTaskCount),
              TTMAllOverdueTaskCount : @(self.document.tasklistMetadata.overdueTaskCount),
              TTMAllNotDueTaskCount : @(self.document.tasklistMetadata.notDueTaskCount),
+             TTMAllNoDueDateTaskCount : @(self.document.tasklistMetadata.noDueDateTaskCount),
              TTMAllPrioritiesCount : @(self.document.tasklistMetadata.projectsCount),
              TTMAllProjectsCount : @(self.document.tasklistMetadata.projectsCount),
              TTMAllContextsCount : @(self.document.tasklistMetadata.contextsCount),
@@ -115,6 +118,7 @@ NSString* const TTMHideFutureTasks = @"{Hide Future Tasks}";
              TTMShownDueTodayTaskCount : @(self.document.filteredTasklistMetadata.dueTodayTaskCount),
              TTMShownOverdueTaskCount : @(self.document.filteredTasklistMetadata.overdueTaskCount),
              TTMShownNotDueTaskCount : @(self.document.filteredTasklistMetadata.notDueTaskCount),
+             TTMShownNoDueDateTaskCount : @(self.document.filteredTasklistMetadata.noDueDateTaskCount),
              TTMShownPrioritiesCount : @(self.document.filteredTasklistMetadata.projectsCount),
              TTMShownProjectsCount : @(self.document.filteredTasklistMetadata.projectsCount),
              TTMShownContextsCount : @(self.document.filteredTasklistMetadata.contextsCount),
@@ -156,6 +160,7 @@ NSString* const TTMHideFutureTasks = @"{Hide Future Tasks}";
              TTMAllDueTodayTaskCount,
              TTMAllOverdueTaskCount,
              TTMAllNotDueTaskCount,
+             TTMAllNoDueDateTaskCount,
              TTMAllPrioritiesCount,
              TTMAllProjectsCount,
              TTMAllContextsCount,
@@ -165,6 +170,7 @@ NSString* const TTMHideFutureTasks = @"{Hide Future Tasks}";
              TTMShownDueTodayTaskCount,
              TTMShownOverdueTaskCount,
              TTMShownNotDueTaskCount,
+             TTMShownNoDueDateTaskCount,
              TTMShownPrioritiesCount,
              TTMShownProjectsCount,
              TTMShownContextsCount,

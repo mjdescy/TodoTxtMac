@@ -59,7 +59,8 @@
 typedef enum : NSUInteger {
     Overdue,
     DueToday,
-    NotDue
+    NotDue,
+    NoDueDate
 } TTMDueState;
 
 /*! Defines the threshold date-related state of a task */

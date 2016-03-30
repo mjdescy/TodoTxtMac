@@ -418,9 +418,12 @@ static NSString * const RecurrencePattern = @"(?<=(^|[ ])rec:)((\\+?)\\d+[dDwWmM
 #pragma mark - Due/Not Due Method
 
 - (TTMDueState)getDueState {
-    // completed tasks and those with no due dates are automatically not due
-    if (nil == self.dueDate || self.isCompleted || [self.dueDateText isEqual:[NSNull null]])
-        return NotDue;
+    // tasks with no due dates
+    if (nil == _dueDateText ||
+        ([_dueDate isEqualToDate:[TTMDateUtility convertStringToDate:@"9999-12-31"]] &&
+        [_dueDateText isEqualToString:@""])) {
+        return NoDueDate;        
+    }
     
     // If there is a due date, compare it to today's date to determine
     // if the task is overdue, not due, or due today.

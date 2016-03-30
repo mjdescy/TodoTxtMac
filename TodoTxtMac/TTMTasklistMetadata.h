@@ -68,6 +68,7 @@
 @property (nonatomic) NSInteger dueTodayTaskCount;
 @property (nonatomic) NSInteger overdueTaskCount;
 @property (nonatomic) NSInteger notDueTaskCount;
+@property (nonatomic) NSInteger noDueDateTaskCount;
 @property (nonatomic) NSInteger projectsCount;
 @property (nonatomic) NSInteger contextsCount;
 @property (nonatomic) NSInteger prioritiesCount;

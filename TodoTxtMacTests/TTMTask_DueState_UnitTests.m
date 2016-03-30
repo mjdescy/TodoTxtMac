@@ -68,10 +68,10 @@
     [super tearDown];
 }
 
-- (void)test_DueState_WhenTaskContainsNoDueDate_ShouldBeNotDue {
+- (void)test_DueState_WhenTaskContainsNoDueDate_ShouldBeNoDueDate {
     NSString *rawText = @"(A) test task";
     TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
-    XCTAssertEqual(NotDue, task.dueState);
+    XCTAssertEqual(NoDueDate, task.dueState);
 }
 
 - (void)test_DueState_WhenTaskContainsFutureDueDate_ShouldBeNotDue {

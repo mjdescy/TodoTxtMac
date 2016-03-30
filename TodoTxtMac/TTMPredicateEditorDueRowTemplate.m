@@ -93,11 +93,19 @@
 		[notDueItem setRepresentedObject:[NSExpression expressionForConstantValue:@(NotDue)]];
 		[notDueItem setEnabled:YES];
 		[notDueItem setTag:(long)NotDue];
+
+        NSMenuItem *noDueDateItem = [[NSMenuItem alloc] initWithTitle:@"no due date"
+                                                            action:nil
+                                                     keyEquivalent:@""];
+        [noDueDateItem setRepresentedObject:[NSExpression expressionForConstantValue:@(NoDueDate)]];
+        [noDueDateItem setEnabled:YES];
+        [noDueDateItem setTag:(long)NoDueDate];
         
         NSMenu *dueStateMenu = [[NSMenu alloc] initWithTitle:@"Due State"];
 		[dueStateMenu addItem:dueTodayItem];
 		[dueStateMenu addItem:overdueItem];
         [dueStateMenu addItem:notDueItem];
+        [dueStateMenu addItem:noDueDateItem];
         
 		_dueStatePopUp = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO];
 		[_dueStatePopUp setMenu:dueStateMenu];

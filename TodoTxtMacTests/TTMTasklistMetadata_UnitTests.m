@@ -71,12 +71,17 @@
 
 - (void)testOverdueTaskCount
 {
-    XCTAssertEqual(self.tasklistMetadata.overdueTaskCount, 1);
+    XCTAssertEqual(self.tasklistMetadata.overdueTaskCount, 2);
 }
 
 - (void)testNotDueTaskCount
 {
-    XCTAssertEqual(self.tasklistMetadata.notDueTaskCount, 4);
+    XCTAssertEqual(self.tasklistMetadata.notDueTaskCount, 2);
+}
+
+- (void)testNoDueDateTaskCount
+{
+    XCTAssertEqual(self.tasklistMetadata.noDueDateTaskCount, 1);
 }
 
 - (void)testProjectsArray
