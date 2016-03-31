@@ -44,60 +44,52 @@
  * THE SOFTWARE.
  */
 
-#import "TTMPredicateEditorCompletedRowTemplate.h"
+#import "TTMPredicateEditorHiddenRowTemplate.h"
 
-@implementation TTMPredicateEditorCompletedRowTemplate
+@implementation TTMPredicateEditorHiddenRowTemplate
 
 #pragma mark - Class Property Getters
 
 - (NSPopUpButton*)keypathPopUp {
-	if(!_keypathPopUp) {
-		NSMenu *keypathMenu = [[NSMenu alloc]
-                               initWithTitle:@"completed menu"];
-        
-		NSMenuItem *menuItem = [[NSMenuItem alloc]
-                                initWithTitle:@"completed"
-                                action:nil
-                                keyEquivalent:@""];
-		[menuItem setRepresentedObject:[NSExpression expressionForKeyPath:@"completed"]];
-		[menuItem setEnabled:YES];
+    if(!_keypathPopUp) {
+        NSMenu *keypathMenu = [[NSMenu alloc]
+                               initWithTitle:@"hidden menu"];
 
-        NSMenuItem *menuItem2 = [[NSMenuItem alloc]
-                                initWithTitle:@"hidden"
-                                action:nil
-                                keyEquivalent:@""];
-        [menuItem2 setRepresentedObject:[NSExpression expressionForKeyPath:@"isHidden"]];
-        [menuItem2 setEnabled:YES];
-
-		[keypathMenu addItem:menuItem];
-        [keypathMenu addItem:menuItem2];
+        NSMenuItem *menuItem = [[NSMenuItem alloc]
+                                 initWithTitle:@"hidden"
+                                 action:nil
+                                 keyEquivalent:@""];
+        [menuItem setRepresentedObject:[NSExpression expressionForKeyPath:@"isHidden"]];
+        [menuItem setEnabled:YES];
         
-		_keypathPopUp = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO];
-		[_keypathPopUp setMenu:keypathMenu];
-	}
-	return _keypathPopUp;
+        [keypathMenu addItem:menuItem];
+        
+        _keypathPopUp = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO];
+        [_keypathPopUp setMenu:keypathMenu];
+    }
+    return _keypathPopUp;
 }
 
 - (NSPopUpButton*)boolPopUp {
-	if (!_boolPopUp) {
-		NSMenuItem *yesItem = [[NSMenuItem alloc] initWithTitle:@"Yes" action:nil keyEquivalent:@""];
-		[yesItem setRepresentedObject:[NSExpression expressionForConstantValue:@YES]];
-		[yesItem setEnabled:YES];
-		[yesItem setTag:1];
+    if (!_boolPopUp) {
+        NSMenuItem *yesItem = [[NSMenuItem alloc] initWithTitle:@"Yes" action:nil keyEquivalent:@""];
+        [yesItem setRepresentedObject:[NSExpression expressionForConstantValue:@YES]];
+        [yesItem setEnabled:YES];
+        [yesItem setTag:1];
         
-		NSMenuItem *noItem = [[NSMenuItem alloc] initWithTitle:@"No" action:nil keyEquivalent:@""];
-		[noItem setRepresentedObject:[NSExpression expressionForConstantValue:@NO]];
-		[noItem setEnabled:YES];
-		[noItem setTag:0];
+        NSMenuItem *noItem = [[NSMenuItem alloc] initWithTitle:@"No" action:nil keyEquivalent:@""];
+        [noItem setRepresentedObject:[NSExpression expressionForConstantValue:@NO]];
+        [noItem setEnabled:YES];
+        [noItem setTag:0];
         
         NSMenu *boolMenu = [[NSMenu alloc] initWithTitle:@"Yes/No"];
-		[boolMenu addItem:yesItem];
-		[boolMenu addItem:noItem];
+        [boolMenu addItem:yesItem];
+        [boolMenu addItem:noItem];
         
-		_boolPopUp = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO];
-		[_boolPopUp setMenu:boolMenu];
-	}
-	return _boolPopUp;
+        _boolPopUp = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO];
+        [_boolPopUp setMenu:boolMenu];
+    }
+    return _boolPopUp;
 }
 
 #pragma mark - NSPredicateEditorRowTemplate Method Overrides
@@ -117,14 +109,14 @@
 }
 
 - (NSPredicate*)predicateWithSubpredicates:(NSArray*)subpredicates {
-	NSPredicate *newPredicate =
-        [NSComparisonPredicate
-         predicateWithLeftExpression:[[self.keypathPopUp selectedItem] representedObject]
-         rightExpression:[[self.boolPopUp selectedItem] representedObject]
-         modifier:NSDirectPredicateModifier
-         type:NSEqualToPredicateOperatorType
-         options:0];
-	return newPredicate;
+    NSPredicate *newPredicate =
+    [NSComparisonPredicate
+     predicateWithLeftExpression:[[self.keypathPopUp selectedItem] representedObject]
+     rightExpression:[[self.boolPopUp selectedItem] representedObject]
+     modifier:NSDirectPredicateModifier
+     type:NSEqualToPredicateOperatorType
+     options:0];
+    return newPredicate;
 }
 
 @end

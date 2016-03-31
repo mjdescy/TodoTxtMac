@@ -25,7 +25,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="573" height="406"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="573" height="406"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,7 +57,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="kyY-lA-F0K">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="325"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="jH5-WL-wUc">
@@ -507,6 +507,32 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="vtg-bV-lEu" customClass="TTMPredicateEditorHiddenRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">isHidden</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="700"/>
+                                                                <popUpMenus>
+                                                                    <menu id="Bus-eg-kqE">
+                                                                        <items>
+                                                                            <menuItem title="isHidden" state="on" id="YSh-sJ-Q19">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">isHidden</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="QQx-CU-VUv">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="jSc-c9-yo9">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
                                                             <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate1" id="nNL-eP-zci">
@@ -549,7 +575,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="Ymr-Te-Jsu">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="325"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="4K2-dy-Irs">
@@ -999,6 +1025,32 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="Dla-Wu-Q0o" customClass="TTMPredicateEditorHiddenRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">isHidden</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="700"/>
+                                                                <popUpMenus>
+                                                                    <menu id="dFr-5v-Az2">
+                                                                        <items>
+                                                                            <menuItem title="isHidden" state="on" id="7iY-Z5-5yZ">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">isHidden</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="ro1-Mc-1B1">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="ZNT-dc-1bx">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
                                                             <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate2" id="xSl-H6-No6">
@@ -1041,7 +1093,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="6q7-hn-dBp">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="325"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="xh2-WQ-Iok">
@@ -1491,6 +1543,32 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="0hq-Ac-ffe" customClass="TTMPredicateEditorHiddenRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">isHidden</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="700"/>
+                                                                <popUpMenus>
+                                                                    <menu id="ZAH-M3-07U">
+                                                                        <items>
+                                                                            <menuItem title="isHidden" state="on" id="0Vj-Oj-jNN">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">isHidden</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="yTj-of-EGN">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="Oaq-hX-rEr">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
                                                             <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate3" id="mxZ-7U-OEE">
@@ -1533,7 +1611,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="dqt-SY-XL3">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="325"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="RVr-y6-3Au">
@@ -1983,6 +2061,32 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="XWo-u4-5gV" customClass="TTMPredicateEditorHiddenRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">isHidden</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="700"/>
+                                                                <popUpMenus>
+                                                                    <menu id="NAK-7P-d6d">
+                                                                        <items>
+                                                                            <menuItem title="isHidden" state="on" id="CF7-CT-4PO">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">isHidden</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="Pdp-Jt-qv9">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="ZQ9-ET-TLy">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
                                                             <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate4" id="dcI-bd-T3G">
@@ -2025,7 +2129,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="Kic-py-fTP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="325"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="dFn-PY-Alr">
@@ -2475,6 +2579,32 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="hpA-Sf-2eo" customClass="TTMPredicateEditorHiddenRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">isHidden</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="700"/>
+                                                                <popUpMenus>
+                                                                    <menu id="A9P-cH-Pok">
+                                                                        <items>
+                                                                            <menuItem title="isHidden" state="on" id="uko-yS-0wU">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">isHidden</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="XoE-8s-3rf">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="LhA-3v-8fC">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
                                                             <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate5" id="Q1e-in-vhO">
@@ -2517,7 +2647,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="Fft-UT-LWs">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="325"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="wFo-ei-zAn">
@@ -2967,6 +3097,32 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="tmd-jv-HC4" customClass="TTMPredicateEditorHiddenRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">isHidden</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="700"/>
+                                                                <popUpMenus>
+                                                                    <menu id="2CD-Tn-Yk9">
+                                                                        <items>
+                                                                            <menuItem title="isHidden" state="on" id="1BT-rD-IRJ">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">isHidden</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="x5F-Sa-7cO">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="zfi-at-19d">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
                                                             <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate6" id="Lk0-wU-BwF">
@@ -3009,7 +3165,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="abs-37-qFl">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="325"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="lgC-Ia-v3w">
@@ -3459,6 +3615,32 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="B5h-km-mvg" customClass="TTMPredicateEditorHiddenRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">isHidden</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="700"/>
+                                                                <popUpMenus>
+                                                                    <menu id="Luk-0i-DIl">
+                                                                        <items>
+                                                                            <menuItem title="isHidden" state="on" id="6mq-Ea-ReL">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">isHidden</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="cVu-KT-L4c">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="tCr-xk-cc9">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
                                                             <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate7" id="zOI-8I-1Pk">
@@ -3501,7 +3683,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="m5a-mt-V4E">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="325"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="UOZ-Wg-dsx">
@@ -3951,6 +4133,32 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="CsE-Tc-St4" customClass="TTMPredicateEditorHiddenRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">isHidden</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="700"/>
+                                                                <popUpMenus>
+                                                                    <menu id="mkl-hM-Ll0">
+                                                                        <items>
+                                                                            <menuItem title="isHidden" state="on" id="sYP-Og-J7y">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">isHidden</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="kss-96-8xa">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="XyH-Ed-NKp">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
                                                             <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate8" id="ydF-u1-heh">
@@ -3993,7 +4201,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="XsA-Sd-hjN">
-                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="300"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="491" height="325"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                         <rowTemplates>
                                                             <predicateEditorRowTemplate rowType="compound" id="1xb-nc-bj6">
@@ -4443,6 +4651,32 @@
                                                                     </menu>
                                                                 </popUpMenus>
                                                             </predicateEditorRowTemplate>
+                                                            <predicateEditorRowTemplate rowType="simple" id="mE2-BW-5Kp" customClass="TTMPredicateEditorHiddenRowTemplate">
+                                                                <array key="leftExpressionObject">
+                                                                    <expression type="keyPath">
+                                                                        <string key="keyPath">isHidden</string>
+                                                                    </expression>
+                                                                </array>
+                                                                <integer key="rightExpressionObject" value="700"/>
+                                                                <popUpMenus>
+                                                                    <menu id="wLY-7H-ZGF">
+                                                                        <items>
+                                                                            <menuItem title="isHidden" state="on" id="ibV-xQ-uor">
+                                                                                <expression key="representedObject" type="keyPath">
+                                                                                    <string key="keyPath">isHidden</string>
+                                                                                </expression>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                    <menu id="Rym-E7-dGi">
+                                                                        <items>
+                                                                            <menuItem title="is" state="on" id="YTC-UN-FLC">
+                                                                                <integer key="representedObject" value="4"/>
+                                                                            </menuItem>
+                                                                        </items>
+                                                                    </menu>
+                                                                </popUpMenus>
+                                                            </predicateEditorRowTemplate>
                                                         </rowTemplates>
                                                         <connections>
                                                             <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate9" id="yYm-0Y-a5Q">
@@ -4514,10 +4748,6 @@
                 <outlet property="delegate" destination="-2" id="fGU-n7-Clk"/>
             </connections>
         </window>
-        <view id="8RL-wX-3fj">
-            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-            <autoresizingMask key="autoresizingMask"/>
-        </view>
         <userDefaultsController representsSharedInstance="YES" id="VIO-0n-UUv"/>
     </objects>
 </document>

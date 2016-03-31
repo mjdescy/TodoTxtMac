@@ -85,6 +85,12 @@
  */
 - (IBAction)hideFutureTasksPreferenceChanged:(id)sender;
 
+/*!
+ * @method hideHiddenTasksPreferenceChanged:
+ * @abstract This method is called when the "hide hidden tasks" settings is changed.
+ */
+- (IBAction)hideHiddenTasksPreferenceChanged:(id)sender;
+
 #pragma mark - Font Change Methods
 
 /*!

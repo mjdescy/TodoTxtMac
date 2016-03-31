@@ -1,6 +1,6 @@
 /**
  * @author Michael Descy
- * @copyright 2014-2015 Michael Descy
+ * @copyright 2014-2016 Michael Descy
  * @discussion Dual-licensed under the GNU General Public License and the MIT License
  *
  *
@@ -44,55 +44,58 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-@class TTMTask;
+#import <Cocoa/Cocoa.h>
+#import <XCTest/XCTest.h>
+#import "TTMTask.h"
 
-@interface TTMTasklistMetadata : NSObject
+@interface TTMTask_IsHidden_UnitTests : XCTestCase
 
-#pragma mark - Properties
-
-@property (nonatomic) NSMutableSet *projectsSet;
-@property (nonatomic) NSMutableSet *contextsSet;
-@property (nonatomic) NSMutableSet *prioritiesSet;
-@property (nonatomic) NSArray *contextsArray;
-@property (nonatomic) NSArray *projectsArray;
-@property (nonatomic) NSArray *prioritiesArray;
-@property (nonatomic) NSMutableDictionary *projectTaskCounts;
-@property (nonatomic) NSMutableDictionary *contextTaskCounts;
-@property (nonatomic) NSMutableDictionary *priorityTaskCounts;
-@property (readonly) NSString *projects;
-@property (readonly) NSString *contexts;
-@property (nonatomic) NSInteger allTaskCount;
-@property (nonatomic) NSInteger completedTaskCount;
-@property (nonatomic) NSInteger incompleteTaskCount;
-@property (nonatomic) NSInteger dueTodayTaskCount;
-@property (nonatomic) NSInteger overdueTaskCount;
-@property (nonatomic) NSInteger notDueTaskCount;
-@property (nonatomic) NSInteger noDueDateTaskCount;
-@property (nonatomic) NSInteger projectsCount;
-@property (nonatomic) NSInteger contextsCount;
-@property (nonatomic) NSInteger prioritiesCount;
-@property (nonatomic) NSInteger hiddenCount;
-
-
-/*!
- * @method updateMetadataFromTaskArray:
- * @abstract Generates metadata from a list of tasks.
- * @param taskArray An array of TTMTask objects.
- */
-- (void)updateMetadataFromTaskArray:(NSArray*)taskArray;
-
-/*!
- * @method initialize:
- * @abstract Initializes the class. Called in method updateMetadataFromTaskArray:.
- */
-- (void)initialize;
-
-/*!
- * @method initialize:
- * @abstract Helper function to populate task counts in the properties projectTaskCounts,
- * contextTaskCounts, and priorityTaskCounts. Called in method updateMetadataFromTaskArray:.
- */
-- (void)incrementCountsInDictionary:(NSMutableDictionary*)dictionary FromArray:(NSArray*)array;
+@property NSString *rawText;
+@property NSUInteger taskId;
 
 @end
+
+@implementation TTMTask_IsHidden_UnitTests
+
+- (void)setUp {
+    [super setUp];
+    self.taskId = 10;
+}
+
+- (void)tearDown {
+    [super tearDown];
+}
+
+- (void)test_IsHidden_WhenHidden_ShouldBeTrue_Case1 {
+    NSString *rawText = @"h:1 x 2020-01-31 pick up groceries due:2020-01-31";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertTrue(task.isHidden);
+}
+
+- (void)test_IsHidden_WhenHidden_ShouldBeTrue_Case2 {
+    NSString *rawText = @"x 2020-01-31 h:1 pick up groceries due:2020-01-31";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertTrue(task.isHidden);
+}
+
+- (void)test_IsHidden_WhenHidden_ShouldBeTrue_Case3 {
+    NSString *rawText = @"h:1 x 2020-01-31 pick up groceries due:2020-01-31 h:1";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertTrue(task.isHidden);
+}
+
+- (void)test_IsHidden_WhenHidden_ShouldBeFalse_Case1 {
+    NSString *rawText = @"x 2020-01-31 pick up groceries due:2020-01-31";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertFalse(task.isHidden);
+}
+
+- (void)test_IsHidden_WhenHidden_ShouldBeFalse_Case2 {
+    NSString *rawText = @"h:1x 2020-01-31 pick up groceries due:2020-01-31";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertFalse(task.isHidden);
+}
+
+@end
+
+

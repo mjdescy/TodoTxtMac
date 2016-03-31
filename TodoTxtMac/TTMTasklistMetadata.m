@@ -62,6 +62,7 @@
         self.overdueTaskCount += (task.dueState == Overdue ? 1 : 0);
         self.notDueTaskCount += (task.dueState == NotDue ? 1 : 0);
         self.noDueDateTaskCount += (task.dueState == NoDueDate ? 1 : 0);
+        self.hiddenCount += (task.isHidden ? 1 : 0);
 
         // update task counts by project and context
         [self incrementCountsInDictionary:self.projectTaskCounts FromArray:task.projectsArray];
@@ -103,6 +104,7 @@
     self.overdueTaskCount = 0;
     self.notDueTaskCount = 0;
     self.noDueDateTaskCount = 0;
+    self.hiddenCount = 0;
     
     self.projectTaskCounts = [NSMutableDictionary dictionary];
     self.contextTaskCounts = [NSMutableDictionary dictionary];

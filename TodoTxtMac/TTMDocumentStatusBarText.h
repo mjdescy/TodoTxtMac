@@ -77,6 +77,7 @@ extern NSString* const TTMActiveSortNumber;
 extern NSString* const TTMActiveSortName;
 extern NSString* const TTMSelectedTaskCount;
 extern NSString* const TTMHideFutureTasks;
+extern NSString* const TTMHideHiddenTasks;
 
 @property (nonatomic, retain) TTMDocument *document;
 @property (nonatomic) NSString *format;

@@ -81,27 +81,36 @@
 }
 
 + (NSPredicate*)noFilterPredicate {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hideFutureTasks"]) {
-        return [self hideFutureTasksFilterPredicate];
-    } else {
-        return nil;
-    }
+    return [self filterPredicateWithHideOptions];
 }
 
-+ (NSPredicate*)hideFutureTasksFilterPredicate {
-    static NSPredicate *defaultPredicate = nil;
-    if (defaultPredicate == nil) {
-        NSPredicate *defaultSubPredicate = [self hideFutureTasksFilterSubPredicate];
-        
-        NSArray *subPredicates = @[defaultSubPredicate];
-        defaultPredicate = [NSCompoundPredicate
-                            andPredicateWithSubpredicates:subPredicates];
++ (BOOL)hideFutureTasks {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideFutureTasks"];
+}
+
++ (BOOL)hideHiddenTasks {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hideHiddenTasks"];
+}
+
+
++ (NSPredicate*)filterPredicateWithHideOptions {
+    NSMutableArray *subPredicates = [[NSMutableArray alloc] init];
+    if ([self hideFutureTasks]) {
+        [subPredicates addObject:[self hideFutureTasksFilterSubPredicate]];
     }
-    return defaultPredicate;
+    if ([self hideHiddenTasks]) {
+        [subPredicates addObject:[self hideHiddenTasksFilterSubPredicate]];
+    }
+    
+    return [NSCompoundPredicate andPredicateWithSubpredicates:subPredicates];
 }
 
 + (NSPredicate*)hideFutureTasksFilterSubPredicate {
     return [NSPredicate predicateWithFormat:@"thresholdState != %d", (int)ThresholdAfterToday];
+}
+
++ (NSPredicate*)hideHiddenTasksFilterSubPredicate {
+    return [NSPredicate predicateWithFormat:@"isHidden == 0"];
 }
 
 #pragma mark - Set Filter Predicate Methods
@@ -127,20 +136,19 @@
 }
 
 + (NSPredicate*)getFilterPredicateFromPresetNumber:(NSUInteger)presetNumber {
-    if (presetNumber == 0) {
-        return [self noFilterPredicate];
-    }
-    if (presetNumber > 9) {
+    if (presetNumber < 1 || presetNumber > 9) {
         return [self noFilterPredicate];
     }
     
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hideFutureTasks"]) {
-        NSPredicate *filterPresetSubPredicate = [self getFilterPredicateFromUserDefaultsKey:[self keyFromPresetNumber:presetNumber]];
-        NSPredicate *hideFutureTasksSubPredicate = [self hideFutureTasksFilterSubPredicate];
-        NSArray *subPredicates = @[filterPresetSubPredicate, hideFutureTasksSubPredicate];
+    NSPredicate *defaultPredicate = [self filterPredicateWithHideOptions];
+    
+    NSPredicate *filterPresetSubPredicate = [self getFilterPredicateFromUserDefaultsKey:[self keyFromPresetNumber:presetNumber]];
+
+    if ([self hideFutureTasks] || [self hideHiddenTasks]) {
+        NSArray *subPredicates = @[defaultPredicate, filterPresetSubPredicate];
         return [NSCompoundPredicate andPredicateWithSubpredicates:subPredicates];
     } else {
-        return [self getFilterPredicateFromUserDefaultsKey:[self keyFromPresetNumber:presetNumber]];
+        return filterPresetSubPredicate;
     }
 }
 
@@ -152,14 +160,7 @@
 }
 
 + (NSPredicate*)activeFilterPredicate {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hideFutureTasks"]) {
-        NSPredicate *filterPresetSubPredicate = [self getFilterPredicateFromUserDefaultsKey:@"activeFilterPredicate"];
-        NSPredicate *hideFutureTasksSubPredicate = [self hideFutureTasksFilterSubPredicate];
-        NSArray *subPredicates = @[filterPresetSubPredicate, hideFutureTasksSubPredicate];
-        return [NSCompoundPredicate andPredicateWithSubpredicates:subPredicates];
-    } else {
-        return [self getFilterPredicateFromUserDefaultsKey:@"activeFilterPredicate"];
-    }
+    return [self getFilterPredicateFromPresetNumber:[self activeFilterPredicatePresetNumber]];
 }
 
 + (void)setActiveFilterPredicatePresetNumber:(NSUInteger)presetNumber {

@@ -68,6 +68,8 @@
 		00B4CBC918B43E8500313DAA /* TTMTask_ReplaceText_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B4CBC818B43E8500313DAA /* TTMTask_ReplaceText_UnitTests.m */; };
 		00B8C82518E48FFF008D9E48 /* TTMFieldEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B8C82418E48FFF008D9E48 /* TTMFieldEditor.m */; };
 		00D102B61991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */; };
+		00D531271CACA285007EF487 /* TTMTask_IsHidden_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D531261CACA285007EF487 /* TTMTask_IsHidden_UnitTests.m */; };
+		00D5312A1CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D531291CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.m */; };
 		00EAAB9718E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9618E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m */; };
 		00EAAB9A18E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9918E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m */; };
 		00EAAB9D18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9C18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m */; };
@@ -186,6 +188,9 @@
 		00B8C82418E48FFF008D9E48 /* TTMFieldEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMFieldEditor.m; sourceTree = "<group>"; };
 		00D102B41991ABBE00D30237 /* TTMTasklistMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMTasklistMetadata.h; sourceTree = "<group>"; };
 		00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTasklistMetadata.m; sourceTree = "<group>"; };
+		00D531261CACA285007EF487 /* TTMTask_IsHidden_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_IsHidden_UnitTests.m; sourceTree = "<group>"; };
+		00D531281CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorHiddenRowTemplate.h; sourceTree = "<group>"; };
+		00D531291CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPredicateEditorHiddenRowTemplate.m; sourceTree = "<group>"; };
 		00EAAB9518E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorDateRowTemplate.h; sourceTree = "<group>"; };
 		00EAAB9618E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPredicateEditorDateRowTemplate.m; sourceTree = "<group>"; };
 		00EAAB9818E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorDueRowTemplate.h; sourceTree = "<group>"; };
@@ -254,6 +259,8 @@
 				00EAAB9918E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m */,
 				007B835D1A5A415300A4D5F7 /* TTMPredicateEditorThresholdRowTemplate.h */,
 				007B835E1A5A415300A4D5F7 /* TTMPredicateEditorThresholdRowTemplate.m */,
+				00D531281CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.h */,
+				00D531291CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.m */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -391,6 +398,7 @@
 				003F95AF1AA3FE4400A1FF47 /* TTMTask_AppendText_UnitTests.m */,
 				003F95B11AA4016200A1FF47 /* TTMTask_PrependText_UnitTests.m */,
 				00B4CBC818B43E8500313DAA /* TTMTask_ReplaceText_UnitTests.m */,
+				00D531261CACA285007EF487 /* TTMTask_IsHidden_UnitTests.m */,
 			);
 			path = TodoTxtMacTests;
 			sourceTree = "<group>";
@@ -589,6 +597,7 @@
 				00F811EF18D53F7300379B99 /* TTMPreferencesController.m in Sources */,
 				00165B2618DBD1EC00E137B8 /* TTMFiltersController.m in Sources */,
 				00FB47861A733E6100F8D2B3 /* TTMDocumentStatusBarText.m in Sources */,
+				00D5312A1CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.m in Sources */,
 				00B8C82518E48FFF008D9E48 /* TTMFieldEditor.m in Sources */,
 				00EAAB9D18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m in Sources */,
 			);
@@ -622,6 +631,7 @@
 				003F95B21AA4016200A1FF47 /* TTMTask_PrependText_UnitTests.m in Sources */,
 				003F959B1AA2B7A600A1FF47 /* TTMTask_RemoveDueDate_UnitTests.m in Sources */,
 				002218D81AA0D80800D6F3A0 /* TTMTask_Init_UnitTests.m in Sources */,
+				00D531271CACA285007EF487 /* TTMTask_IsHidden_UnitTests.m in Sources */,
 				003F95AA1AA3F9C700A1FF47 /* TTMTask_IncrementThresholdDate_UnitTests.m in Sources */,
 				002218E01AA1387900D6F3A0 /* TTMTask_ThresholdDate_UnitTests.m in Sources */,
 				003F95B01AA3FE4400A1FF47 /* TTMTask_AppendText_UnitTests.m in Sources */,

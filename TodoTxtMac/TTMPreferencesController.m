@@ -107,6 +107,10 @@
     [self.appController visualRefreshAll:self];
 }
 
+- (IBAction)hideHiddenTasksPreferenceChanged:(id)sender {
+    [self.appController visualRefreshAll:self];
+}
+
 #pragma mark - Font Change Methods
 
 - (IBAction)openFontPanel:(id)sender {

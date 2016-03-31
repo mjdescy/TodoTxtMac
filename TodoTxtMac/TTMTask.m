@@ -71,6 +71,8 @@ static NSString * const ProjectPattern = @"(?<=^|[ ])(\\+[^[ ]]+)";
 static NSString * const ContextPattern = @"(?<=^|[ ])(\\@[^[ ]]+)";
 static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
 static NSString * const RecurrencePattern = @"(?<=(^|[ ])rec:)((\\+?)\\d+[dDwWmMyYbB])";
+static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
+
 
 #pragma mark - Init Methods
 
@@ -158,6 +160,7 @@ static NSString * const RecurrencePattern = @"(?<=(^|[ ])rec:)((\\+?)\\d+[dDwWmM
         _hasProjects = NO;
         _isRecurring = NO;
         _recurrencePattern = nil;
+        _isHidden = NO;
         return;
     }
     
@@ -252,6 +255,9 @@ static NSString * const RecurrencePattern = @"(?<=(^|[ ])rec:)((\\+?)\\d+[dDwWmM
     if (_isRecurring) {
         _recurrencePattern = [rawText firstMatch:RX(RecurrencePattern)];
     }
+    
+    // is hidden
+    _isHidden = [_rawText isMatch:RX(HiddenPattern)];
 }
 
 - (NSString*)rawText {

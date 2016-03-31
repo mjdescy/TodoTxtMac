@@ -44,55 +44,11 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
-@class TTMTask;
+#import <Cocoa/Cocoa.h>
 
-@interface TTMTasklistMetadata : NSObject
+@interface TTMPredicateEditorHiddenRowTemplate : NSPredicateEditorRowTemplate
 
-#pragma mark - Properties
-
-@property (nonatomic) NSMutableSet *projectsSet;
-@property (nonatomic) NSMutableSet *contextsSet;
-@property (nonatomic) NSMutableSet *prioritiesSet;
-@property (nonatomic) NSArray *contextsArray;
-@property (nonatomic) NSArray *projectsArray;
-@property (nonatomic) NSArray *prioritiesArray;
-@property (nonatomic) NSMutableDictionary *projectTaskCounts;
-@property (nonatomic) NSMutableDictionary *contextTaskCounts;
-@property (nonatomic) NSMutableDictionary *priorityTaskCounts;
-@property (readonly) NSString *projects;
-@property (readonly) NSString *contexts;
-@property (nonatomic) NSInteger allTaskCount;
-@property (nonatomic) NSInteger completedTaskCount;
-@property (nonatomic) NSInteger incompleteTaskCount;
-@property (nonatomic) NSInteger dueTodayTaskCount;
-@property (nonatomic) NSInteger overdueTaskCount;
-@property (nonatomic) NSInteger notDueTaskCount;
-@property (nonatomic) NSInteger noDueDateTaskCount;
-@property (nonatomic) NSInteger projectsCount;
-@property (nonatomic) NSInteger contextsCount;
-@property (nonatomic) NSInteger prioritiesCount;
-@property (nonatomic) NSInteger hiddenCount;
-
-
-/*!
- * @method updateMetadataFromTaskArray:
- * @abstract Generates metadata from a list of tasks.
- * @param taskArray An array of TTMTask objects.
- */
-- (void)updateMetadataFromTaskArray:(NSArray*)taskArray;
-
-/*!
- * @method initialize:
- * @abstract Initializes the class. Called in method updateMetadataFromTaskArray:.
- */
-- (void)initialize;
-
-/*!
- * @method initialize:
- * @abstract Helper function to populate task counts in the properties projectTaskCounts,
- * contextTaskCounts, and priorityTaskCounts. Called in method updateMetadataFromTaskArray:.
- */
-- (void)incrementCountsInDictionary:(NSMutableDictionary*)dictionary FromArray:(NSArray*)array;
+@property (nonatomic, retain) NSPopUpButton *keypathPopUp;
+@property (nonatomic, retain) NSPopUpButton *boolPopUp;
 
 @end

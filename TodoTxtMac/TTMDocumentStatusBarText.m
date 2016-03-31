@@ -76,6 +76,7 @@ NSString* const TTMActiveSortNumber = @"{Sort Preset}";
 NSString* const TTMActiveSortName = @"{Sort Name}";
 NSString* const TTMSelectedTaskCount = @"{Selected}";
 NSString* const TTMHideFutureTasks = @"{Hide Future Tasks}";
+NSString* const TTMHideHiddenTasks = @"{Hide Hidden Tasks}";
 
 #pragma mark - Init Method
 
@@ -126,12 +127,21 @@ NSString* const TTMHideFutureTasks = @"{Hide Future Tasks}";
              TTMActiveSortNumber : @(self.document.activeSortType),
              TTMActiveSortName : [sortNames objectForKey:@(self.document.activeSortType)],
              TTMSelectedTaskCount : @(self.document.arrayController.selectionIndexes.count),
-             TTMHideFutureTasks : [self hideFutureTasks]
+             TTMHideFutureTasks : [self hideFutureTasks],
+             TTMHideHiddenTasks : [self hideHiddenTasks]
              };
 }
 
 - (NSString*)hideFutureTasks {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hideFutureTasks"]) {
+        return NSLocalizedString(@"Yes", "");
+    } else {
+        return NSLocalizedString(@"No", "");
+    }
+}
+
+- (NSString*)hideHiddenTasks {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"hideHiddenTasks"]) {
         return NSLocalizedString(@"Yes", "");
     } else {
         return NSLocalizedString(@"No", "");
@@ -178,7 +188,8 @@ NSString* const TTMHideFutureTasks = @"{Hide Future Tasks}";
              TTMActiveSortNumber,
              TTMActiveSortName,
              TTMSelectedTaskCount,
-             TTMHideFutureTasks
+             TTMHideFutureTasks,
+             TTMHideHiddenTasks
              ];
 }
 

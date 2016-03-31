@@ -103,6 +103,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, readonly) BOOL isBlank;
 @property (nonatomic, readonly) BOOL isRecurring;
 @property (nonatomic, readonly) NSString *recurrencePattern;
+@property (nonatomic, readonly) BOOL isHidden;
 
 #pragma mark - Init Methods
 
