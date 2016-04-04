@@ -14,7 +14,7 @@
             https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.1.1.html
             </sparkle:releaseNotesLink>
             <pubDate>Tuesday, 22 Mar 2016 22:00 -0500</pubDate>
-            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.1.1/TodoTxtMac.app.zip" sparkle:version="2.1.1" length="2731532" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCrUzmDoTDVCVNSa4q97UDL2m1fkAIUD316c3hqA6vgTjGHOslZnv+KjnM=" />
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.1.1/TodoTxtMac.app.zip" sparkle:version="2010" sparkle:shortVersionString="2.1.1" length="2731532" type="application/octet-stream" sparkle:dsaSignature="MC0CFQCrUzmDoTDVCVNSa4q97UDL2m1fkAIUD316c3hqA6vgTjGHOslZnv+KjnM=" />
             <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
         </item>
 
@@ -27,7 +27,7 @@
             https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.1.0.html
             </sparkle:releaseNotesLink>
             <pubDate>Thursday, 17 Mar 2016 22:00 -0500</pubDate>
-            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.1.0/TodoTxtMac.app.zip" sparkle:version="2.1.0" length="2585752" type="application/octet-stream" sparkle:dsaSignature="MCwCFATF5wAM1faVpzqXGx4+/Aqqlx8dAhQVGydjGnpMRJU0VFLpmB5YLcBmnw==" />
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.1.0/TodoTxtMac.app.zip" sparkle:version="2006" sparkle:shortVersionString="2.1.0" length="2585752" type="application/octet-stream" sparkle:dsaSignature="MCwCFATF5wAM1faVpzqXGx4+/Aqqlx8dAhQVGydjGnpMRJU0VFLpmB5YLcBmnw==" />
             <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
         </item>
 
@@ -40,7 +40,7 @@
             https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.0.0.html
             </sparkle:releaseNotesLink>
             <pubDate>Friday, 11 Mar 2016 22:00 -0500</pubDate>
-            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.0.0/TodoTxtMac.app.zip" sparkle:version="2.0.0" length="2728330" type="application/octet-stream" sparkle:dsaSignature="MC0CFBGmETCKSSYVTkU4ycEcW/I7I34sAhUAo3oNnErHszVyAx0d2EakFEgT9zI=" />
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.0.0/TodoTxtMac.app.zip" sparkle:version="2000" sparkle:shortVersionString="2.0.0" length="2728330" type="application/octet-stream" sparkle:dsaSignature="MC0CFBGmETCKSSYVTkU4ycEcW/I7I34sAhUAo3oNnErHszVyAx0d2EakFEgT9zI=" />
             <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
         </item>
 
