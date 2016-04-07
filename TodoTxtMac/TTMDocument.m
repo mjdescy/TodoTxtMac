@@ -200,27 +200,20 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     // retain selected items, because selection is lost when the file/arrayController is reloaded
     NSArray *taskListSelectedItemsList = [self getTaskListSelections];
     
-    // Save the current filter number.
-    NSUInteger filterNumber = self.activeFilterPredicateNumber;
-    
-    // Remove the current filter.
-    NSPredicate *tempPredicate = self.searchFieldPredicate;
-    self.searchFieldPredicate = nil;
-    [self removeTaskListFilter];
-    
     // Reload the file.
     NSError *error;
     [self readFromURL:[self fileURL] ofType:@"TTMDocument" error:&error];
 
-    // Refresh the task list.
-    [self refreshTaskListWithSave:YES];
-    
-    // Re-apply the filter active before the file was reloaded.
-    self.searchFieldPredicate = tempPredicate;
-    [self changeActiveFilterPredicateToPreset:filterNumber];
-    
     // re-set selected items
     [self setTaskListSelections:taskListSelectedItemsList];
+    
+    [self updateTaskListMetadata];
+
+    // this section helps suppress messages about the file being modified outside the application
+    [self updateChangeCount:NSChangeDone];
+    [self autosaveWithImplicitCancellability:NO completionHandler:^(NSError *errorOrNil){
+        [self updateChangeCount:NSChangeCleared];
+    }];
 }
 
 - (NSArray*)getTaskListSelections {
@@ -336,10 +329,8 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (void)removeAllTasks {
-    if ([[self.arrayController arrangedObjects] count] > 0) {
-        NSRange range = NSMakeRange(0, [[self.arrayController arrangedObjects] count]);
-        [self.arrayController
-         removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+    for (TTMTask *task in self.taskList) {
+        [self.arrayController removeObject:task];
     }
 }
 
