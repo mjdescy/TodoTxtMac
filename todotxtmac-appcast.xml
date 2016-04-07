@@ -13,8 +13,8 @@
             <sparkle:releaseNotesLink>
             https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.2.1.html
             </sparkle:releaseNotesLink>
-            <pubDate>Wednesday, 7 Apr 2016 12:00 -0500</pubDate>
-            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.2.1/TodoTxtMac.app.zip" sparkle:version="2021" sparkle:shortVersionString="2.2.1" length="2755269" type="application/octet-stream" sparkle:dsaSignature="MCwCFC0/l64HK8JoDLCkQ39Nj8TtpbsmAhRgIhmZNjjnKUsMkwEaJ2H3vINvvg==" />
+            <pubDate>Wednesday, 7 Apr 2016 12:25 -0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.2.1/TodoTxtMac.app.zip" sparkle:version="2021" sparkle:shortVersionString="2.2.1" length="2755404" type="application/octet-stream" sparkle:dsaSignature="MC0CFEImTVXfD8+CG2gaA8w+fi8APN54AhUAvDL3SvvJ/gV2bHcMTluyqZow0mw=" />
             <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
         </item>
 
