@@ -6,6 +6,19 @@
         <language>en</language>
 
         <item>
+            <title>Version 2.2.0</title>
+            <description>
+            Added support for recurring tasks and hidden tasks. Fixed bugs related to reloading files.
+            </description>
+            <sparkle:releaseNotesLink>
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.2.0.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Wednesday, 6 Apr 2016 22:00 -0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.2.0/TodoTxtMac.app.zip" sparkle:version="2020" sparkle:shortVersionString="2.2.0" length="2755271" type="application/octet-stream" sparkle:dsaSignature="MCwCFExuYdxtv0HqfBVrhKflerigldFWAhRDt0g2+CJxR0hYu33iD3MQwC/7Rg==" />
+            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+        </item>
+
+        <item>
             <title>Version 2.1.1</title>
             <description>
             Vast improvements to autocompletion of projects and contexts. Fixed an intermittent problem in which Enter or "U" would not edit a task but would instead make the selection jump to another task.
