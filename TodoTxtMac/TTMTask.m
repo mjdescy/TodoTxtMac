@@ -747,7 +747,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
         if (_dueDateText == nil) {
             numberOfDaysThresholdDateIsBeforeDueDate = [TTMDateUtility daysBetweenDate:self.thresholdDate andEndDate:[TTMDateUtility today]];
         } else if (_dueDateText != nil && _thresholdDateText != nil) {
-            numberOfDaysThresholdDateIsBeforeDueDate = [TTMDateUtility daysBetweenDate:self.thresholdDate andEndDate:self.thresholdDate];
+            numberOfDaysThresholdDateIsBeforeDueDate = [TTMDateUtility daysBetweenDate:self.thresholdDate andEndDate:self.dueDate];
         }
         if (numberOfDaysThresholdDateIsBeforeDueDate < 0) {
             numberOfDaysThresholdDateIsBeforeDueDate = 0;
