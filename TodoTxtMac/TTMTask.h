@@ -59,7 +59,8 @@
 typedef enum : NSUInteger {
     Overdue,
     DueToday,
-    NotDue
+    NotDue,
+    NoDueDate
 } TTMDueState;
 
 /*! Defines the threshold date-related state of a task */
@@ -100,6 +101,9 @@ typedef enum : NSUInteger {
 @property (nonatomic, readonly) BOOL isCompleted;
 @property (nonatomic, readonly) BOOL isPrioritized;
 @property (nonatomic, readonly) BOOL isBlank;
+@property (nonatomic, readonly) BOOL isRecurring;
+@property (nonatomic, readonly) NSString *recurrencePattern;
+@property (nonatomic, readonly) BOOL isHidden;
 
 #pragma mark - Init Methods
 
@@ -358,5 +362,9 @@ typedef enum : NSUInteger {
  * @abstract Removes the due date from the task's raw text.
  */
 - (void)removeDueDate;
+
+- (TTMTask*)newRecurringTask;
+
+- (void)removeCreationDate;
 
 @end

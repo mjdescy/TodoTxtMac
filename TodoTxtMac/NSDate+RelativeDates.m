@@ -44,34 +44,46 @@
  * THE SOFTWARE.
  */
 
-#import "TTMAppDelegate.h"
-#import "TTMFilterPredicates.h"
-#import "TTMAppController.h"
+#import "NSDate+RelativeDates.h"
 
-@implementation TTMAppDelegate
+@implementation NSDate (RelativeDates)
 
-- (void)applicationDidFinishLaunching:(NSNotification *)notification {
-    [self.appController initializeUserDefaults:self];
-    
-    // Open file from command line argument. Does nothing if there is no command line argument.
-    [self.appController openTodoFileFromCommandLineArgument];
-    
-    // Open default todo file, if one is selected and the option is enabled.
-    [self.appController openDefaultTodoFile];
+- (NSCalendar*)currentCalendar {
+    return [NSCalendar currentCalendar];
 }
 
-- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
-    // Suppress creating an Untitled document on launch if either:
-    // 1. there is a command line argument to open a todo file, or
-    // 2. the open default todo.txt file on startup user preference is selected.
-    // Without this method override, opening a todo file using the command line argument
-    // or the default todo file user preference also opens an Untitled document every time.
-    return ([self.appController commandLineArgumentTodoFile] == NULL &&
-            ![[NSUserDefaults standardUserDefaults] boolForKey:@"openDefaultTodoFileOnStartup"]);
+- (NSDate*)advanceDateByWeekdays:(NSInteger)numberOfWeekdays {
+    NSDate *relativeDate = self;
+    NSInteger weekdaysLeft = numberOfWeekdays;
+    
+    while (weekdaysLeft > 0) {
+        NSDate *newDate = [relativeDate advanceDateByNumberOfCalendarUnits:1 calendarUnit:NSCalendarUnitDay];
+        if (newDate == nil) {
+            return relativeDate;
+        }
+        relativeDate = newDate;
+        if ([relativeDate isWeekday]) {
+            weekdaysLeft -= 1;
+        }
+    }
+    return relativeDate;
 }
 
-- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"closingLastWindowClosesApplication"];
+- (NSDate*)advanceDateByNumberOfCalendarUnits:(NSInteger)numberOfCalendarUnits
+                                 calendarUnit:(NSCalendarUnit)calendarUnit {
+    return [[self currentCalendar] dateByAddingUnit:calendarUnit
+                                              value:numberOfCalendarUnits
+                                             toDate:self
+                                            options:NSCalendarMatchFirst];
+}
+
+- (BOOL)isWeekendDay {
+    long weekday = [[self currentCalendar] component:NSCalendarUnitWeekday fromDate:self];
+    return (weekday == 1 || weekday == 7);
+}
+
+- (BOOL)isWeekday {
+    return ![self isWeekendDay];
 }
 
 @end

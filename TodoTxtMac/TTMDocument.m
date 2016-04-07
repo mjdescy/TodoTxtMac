@@ -134,8 +134,6 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     return self.customFieldEditor;
 }
 
-
-
 #pragma mark - File Loading and Saving Methods
 
 + (BOOL)autosavesInPlace {
@@ -202,27 +200,20 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     // retain selected items, because selection is lost when the file/arrayController is reloaded
     NSArray *taskListSelectedItemsList = [self getTaskListSelections];
     
-    // Save the current filter number.
-    NSUInteger filterNumber = self.activeFilterPredicateNumber;
-    
-    // Remove the current filter.
-    NSPredicate *tempPredicate = self.searchFieldPredicate;
-    self.searchFieldPredicate = nil;
-    [self removeTaskListFilter];
-    
     // Reload the file.
     NSError *error;
     [self readFromURL:[self fileURL] ofType:@"TTMDocument" error:&error];
 
-    // Refresh the task list.
-    [self refreshTaskListWithSave:NO];
-    
-    // Re-apply the filter active before the file was reloaded.
-    self.searchFieldPredicate = tempPredicate;
-    [self changeActiveFilterPredicateToPreset:filterNumber];
-    
     // re-set selected items
     [self setTaskListSelections:taskListSelectedItemsList];
+    
+    [self updateTaskListMetadata];
+
+    // this section helps suppress messages about the file being modified outside the application
+    [self updateChangeCount:NSChangeDone];
+    [self autosaveWithImplicitCancellability:NO completionHandler:^(NSError *errorOrNil){
+        [self updateChangeCount:NSChangeCleared];
+    }];
 }
 
 - (NSArray*)getTaskListSelections {
@@ -338,10 +329,8 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 }
 
 - (void)removeAllTasks {
-    if ([[self.arrayController arrangedObjects] count] > 0) {
-        NSRange range = NSMakeRange(0, [[self.arrayController arrangedObjects] count]);
-        [self.arrayController
-         removeObjectsAtArrangedObjectIndexes:[NSIndexSet indexSetWithIndexesInRange:range]];
+    for (TTMTask *task in self.taskList) {
+        [self.arrayController removeObject:task];
     }
 }
 
@@ -357,7 +346,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
                             [self.taskList count] :
                             [[self.arrayController arrangedObjects] count];
     for (NSString *rawTextString in rawTextStrings) {
-        if ([rawTextString length] > 0) {
+        if (rawTextString.length > 0) {
             TTMTask *newTask;
             if (removeAllTasksFirst) {
                 newTask = [[TTMTask alloc]
@@ -409,7 +398,10 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     
     // Optionally move focus to the task list depending on the user setting.
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"moveToTaskListAfterTaskCreation"]) {
-        [self tabFromTextFieldToTaskList];
+        if ([self.arrayController.selectedObjects containsObject:newTask]) {
+            [self tabFromTextFieldToTaskList];
+            [self.tableView scrollRowToVisible:self.tableView.selectedRow];
+        }
     }
 }
 
@@ -454,6 +446,17 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         removeAllTasksFirst:NO undoActionName:NSLocalizedString(@"Paste", @"Undo Paste")];
     [self reapplyActiveFilterPredicate];
     [self refreshTaskListWithSave:YES];
+}
+
+- (IBAction)copyTaskToNewTask:(id)sender {
+    // cancel if multiple rows are selected
+    if ([[self.arrayController selectedObjects] count] != 1) {
+        return;
+    }
+    
+    TTMTask *task = [[self.arrayController selectedObjects] objectAtIndex:0];
+    [self.textField setStringValue:task.rawText];
+    [self moveFocusToNewTaskTextField:self];
 }
 
 #pragma mark - Update Task Methods
@@ -513,30 +516,85 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     NSArray *newTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
     
+    NSMutableArray *newTaskStrings = [[NSMutableArray alloc] init];
+    BOOL taskWasCompleted = NO;
+    BOOL recurringTasksWereCreated = NO;
+    BOOL prependDate = [[NSUserDefaults standardUserDefaults] boolForKey:@"prependDateOnNewTasks"];
+    
+    for (TTMTask *task in newTasks) {
+        // if task is being marked complete...
+        if (task.isCompleted) {
+            taskWasCompleted = YES;
+        }
+        if (task.isCompleted && task.isRecurring) {
+            TTMTask *newTaskBase = [task copy];
+            [newTaskBase markIncomplete];
+            TTMTask *newTask = [newTaskBase newRecurringTask];
+            if (newTask != nil) {
+                recurringTasksWereCreated = YES;
+                if (prependDate) {
+                    [newTask removeCreationDate];
+                }
+                [newTaskStrings addObject:newTask.rawText];
+            }
+        }
+    }
+    
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks
                                                             withTasks:self.originalTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Edit Task", @"Undo Edit Task")];
     self.originalTasks = nil;
-    [self refreshTaskListWithSave:YES];
+    
+    if (taskWasCompleted && [[NSUserDefaults standardUserDefaults] integerForKey:@"archiveTasksUponCompletion"]) {
+        [self archiveCompletedTasks:self];
+    } else {
+        [self refreshTaskListWithSave:YES];
+    }
+    
+    if (recurringTasksWereCreated) {
+        [self addTasksFromArray:newTaskStrings removeAllTasksFirst:NO undoActionName:NSLocalizedString(@"Add Recurring Task", @"")];
+    }
 }
 
 - (IBAction)toggleTaskCompletion:(id)sender {
     NSArray *oldTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
     NSMutableArray *newTasks = [[NSMutableArray alloc] init];
-
+    NSMutableArray *newTaskStrings = [[NSMutableArray alloc] init];
+    
+    BOOL recurringTasksWereCreated = NO;
+    BOOL prependDate = [[NSUserDefaults standardUserDefaults] boolForKey:@"prependDateOnNewTasks"];
+    
     for (TTMTask *task in [self.arrayController selectedObjects]) {
+        // if task is being marked complete...
+        if (!task.isCompleted) {
+            if (task.isRecurring) {
+                TTMTask *newTask = [task newRecurringTask];
+                if (newTask != nil) {
+                    if (prependDate) {
+                        [newTask removeCreationDate];
+                    }
+                    [newTaskStrings addObject:newTask.rawText];
+                    recurringTasksWereCreated = YES;
+                }
+            }
+        }
+        
         [task toggleCompletionStatus];
         [newTasks addObject:[task copy]];
     }
     
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Toggle Completion", @"Undo Toggle Completion")];
-    
+
     if ([[NSUserDefaults standardUserDefaults] integerForKey:@"archiveTasksUponCompletion"]) {
         [self archiveCompletedTasks:self];
     } else {
         [self refreshTaskListWithSave:YES];
+    }
+
+    if (recurringTasksWereCreated) {
+        [self addTasksFromArray:newTaskStrings removeAllTasksFirst:NO undoActionName:NSLocalizedString(@"Add Recurring Tasks", @"")];
     }
 }
 
@@ -1256,6 +1314,14 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
             [menuItem setTitle:@"Show Status Bar"];
         }
     }
+    // Toggle copy task to new task menu item.
+    if (menuItem.tag == COPYTASKTONEWTASKMENUTAG) {
+        NSInteger selectedCount = [[self.arrayController selectedObjects] count];
+        BOOL enabled = (selectedCount == 1);
+        [menuItem setEnabled:enabled];
+        return enabled;
+    }
+    
     return [super validateMenuItem:menuItem];
 }
 

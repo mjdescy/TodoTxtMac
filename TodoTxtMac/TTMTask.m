@@ -48,6 +48,7 @@
 #import "RegExCategories.h"
 #import "TTMDateUtility.h"
 #import "NSMutableAttributableString+ColorRegExMatches.h"
+#import "NSDate+RelativeDates.h"
 
 @implementation TTMTask
 
@@ -69,6 +70,9 @@ static NSString * const FullThresholdDatePatternBeginning = @"^t:((\\d{4})-(\\d{
 static NSString * const ProjectPattern = @"(?<=^|[ ])(\\+[^[ ]]+)";
 static NSString * const ContextPattern = @"(?<=^|[ ])(\\@[^[ ]]+)";
 static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
+static NSString * const RecurrencePattern = @"(?<=(^|[ ])rec:)((\\+?)\\d+[dDwWmMyYbB])";
+static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
+
 
 #pragma mark - Init Methods
 
@@ -154,6 +158,9 @@ static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
         _dueState = NotDue;
         _hasContexts = NO;
         _hasProjects = NO;
+        _isRecurring = NO;
+        _recurrencePattern = nil;
+        _isHidden = NO;
         return;
     }
     
@@ -242,6 +249,15 @@ static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
     
     // threshold state (no threshold date, before, on, after threshold date)
     _thresholdState = [self getThresholdState];
+    
+    // recurrence
+    _isRecurring = [_rawText isMatch:RX(RecurrencePattern)];
+    if (_isRecurring) {
+        _recurrencePattern = [rawText firstMatch:RX(RecurrencePattern)];
+    }
+    
+    // is hidden
+    _isHidden = [_rawText isMatch:RX(HiddenPattern)];
 }
 
 - (NSString*)rawText {
@@ -408,9 +424,12 @@ static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
 #pragma mark - Due/Not Due Method
 
 - (TTMDueState)getDueState {
-    // completed tasks and those with no due dates are automatically not due
-    if (nil == self.dueDate || self.isCompleted || [self.dueDateText isEqual:[NSNull null]])
-        return NotDue;
+    // tasks with no due dates
+    if (nil == _dueDateText ||
+        ([_dueDate isEqualToDate:[TTMDateUtility convertStringToDate:@"9999-12-31"]] &&
+        [_dueDateText isEqualToString:@""])) {
+        return NoDueDate;        
+    }
     
     // If there is a due date, compare it to today's date to determine
     // if the task is overdue, not due, or due today.
@@ -710,6 +729,115 @@ static NSString * const TagPattern = @"(?<=^|[ ])([:graph:]+:[:graph:]+)";
 
 - (NSUInteger)hash {
     return [self.rawText hash] ^ [@(self.taskId) hash];
+}
+
+#pragma mark - Recurrence Methods
+
+- (TTMTask*)newRecurringTask {
+    if (!self.isRecurring) {
+        return nil;
+    }
+    
+    TTMTask *newTask = [self copy];
+    
+    [newTask advanceDueDateBasedOnReccurencePattern:[TTMDateUtility today]];
+    
+    if (_thresholdDateText != nil) {
+        NSInteger numberOfDaysThresholdDateIsBeforeDueDate = 0;
+        if (_dueDateText == nil) {
+            numberOfDaysThresholdDateIsBeforeDueDate = [TTMDateUtility daysBetweenDate:self.thresholdDate andEndDate:[TTMDateUtility today]];
+        } else if (_dueDateText != nil && _thresholdDateText != nil) {
+            numberOfDaysThresholdDateIsBeforeDueDate = [TTMDateUtility daysBetweenDate:self.thresholdDate andEndDate:self.thresholdDate];
+        }
+        if (numberOfDaysThresholdDateIsBeforeDueDate < 0) {
+            numberOfDaysThresholdDateIsBeforeDueDate = 0;
+        }
+        [newTask setThresholdDateBasedDaysBetweenThresholdDateAndDueDate:numberOfDaysThresholdDateIsBeforeDueDate];
+    }
+
+    return newTask;
+}
+
+- (void)advanceDueDateBasedOnReccurencePattern:(NSDate*)completionDate {
+    NSDate *oldDueDate;
+    if (_dueDateText == nil || ![self recurrencePatternIsStrict]) {
+        oldDueDate = completionDate;
+    } else {
+        oldDueDate = self.dueDate;
+    }
+    NSDate *newDueDate = [self relativeDateBasedOnRecurrencePattern:oldDueDate];
+    [self setDueDate:newDueDate];
+}
+
+- (void)setThresholdDateBasedDaysBetweenThresholdDateAndDueDate:(NSInteger)daysBetweenThresholdAndDueDates {
+    NSInteger dateAdjustment = (daysBetweenThresholdAndDueDates > 0) ? -1 * daysBetweenThresholdAndDueDates : 0;
+    NSDate* newThresholdDate = [self.dueDate advanceDateByNumberOfCalendarUnits:dateAdjustment calendarUnit:NSCalendarUnitDay];
+    [self setThresholdDate:newThresholdDate];
+}
+
+- (BOOL)recurrencePatternIsStrict {
+    return [self.recurrencePattern hasPrefix:@"+"];
+}
+
+- (NSCalendarUnit)calendarUnitFromRecurrencePattern {
+    if (!self.recurrencePattern) {
+        return NSCalendarUnitEra; // not a real return value
+    }
+    
+    NSString *lastChar = [[self.recurrencePattern uppercaseString] substringFromIndex:self.recurrencePattern.length - 1];
+    if ([lastChar isEqualToString:@"D"]) {
+        return NSCalendarUnitDay;
+    }
+    if ([lastChar isEqualToString:@"W"]) {
+        return NSCalendarUnitWeekOfYear;
+    }
+    if ([lastChar isEqualToString:@"M"]) {
+        return NSCalendarUnitMonth;
+    }
+    if ([lastChar isEqualToString:@"Y"]) {
+        return NSCalendarUnitYear;
+    }
+    if ([lastChar isEqualToString:@"B"]) {
+        return NSCalendarUnitWeekday;
+    }
+    
+    return NSCalendarUnitEra; // not a real return value
+}
+
+- (NSUInteger)numberOfCalendarUnitsFromRecurrencePattern {
+    NSUInteger rangeStart = [self recurrencePatternIsStrict] ? 1 : 0;
+    NSUInteger rangeEnd = self.recurrencePattern.length - 1;
+    NSRange rng = NSMakeRange(rangeStart, rangeEnd);
+    return [[self.recurrencePattern substringWithRange:rng] integerValue];
+}
+
+- (NSDate*)relativeDateBasedOnRecurrencePattern:(NSDate*)date {
+    NSCalendarUnit calendarUnit = [self calendarUnitFromRecurrencePattern];
+    if (calendarUnit == NSCalendarUnitEra) {
+        return nil;
+    }
+    
+    NSInteger numberOfCalendarUnits = [self numberOfCalendarUnitsFromRecurrencePattern];
+    if (calendarUnit == NSCalendarUnitWeekday) {
+        return [date advanceDateByWeekdays:numberOfCalendarUnits];
+    } else {
+        return [date advanceDateByNumberOfCalendarUnits:numberOfCalendarUnits calendarUnit:calendarUnit];
+    }
+}
+
+- (void)removeCreationDate {
+    // Blank and tasks without a threshold date do not get updated.
+    if (self.isBlank || !self.creationDate) {
+        return;
+    }
+    
+    NSString *newRawText;
+    if (!self.isCompleted) {
+        newRawText = [self.rawText substringFromIndex:11];
+    } else {
+        newRawText = [self.rawText replace:RX(CreationDatePatternCompleted) with:@""];
+    }
+    self.rawText = newRawText;
 }
 
 @end

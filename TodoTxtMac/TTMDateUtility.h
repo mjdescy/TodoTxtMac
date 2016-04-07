@@ -130,4 +130,6 @@
  */
 + (NSString*)dateStringFromNaturalLanguageString:(NSString*)string;
 
++ (NSInteger)daysBetweenDate:(NSDate*)startDate andEndDate:(NSDate*)endDate;
+
 @end

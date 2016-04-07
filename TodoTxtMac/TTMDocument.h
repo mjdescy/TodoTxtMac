@@ -55,6 +55,7 @@
 #define SORTMENUTAG   4000
 #define FILTERMENUTAG 5000
 #define STATUSBARMENUITEMTAG 6000
+#define COPYTASKTONEWTASKMENUTAG 7000
 
 typedef enum : NSUInteger {
     TTMSortOrderInFile,
@@ -247,6 +248,12 @@ typedef enum : NSUInteger {
  * addNewTasksFromDragAndDrop:.
  */
 - (void)addNewTasksFromPasteBoard:(NSPasteboard*)pasteboard;
+
+/*!
+ * @method copyTaskToNewTask:
+ * @abstract Copies selected task to new tast text edit box.
+ */
+- (IBAction)copyTaskToNewTask:(id)sender;
 
 #pragma mark - Update Task Methods
 

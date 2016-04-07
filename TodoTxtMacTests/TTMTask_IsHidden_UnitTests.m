@@ -1,6 +1,6 @@
 /**
  * @author Michael Descy
- * @copyright 2014-2015 Michael Descy
+ * @copyright 2014-2016 Michael Descy
  * @discussion Dual-licensed under the GNU General Public License and the MIT License
  *
  *
@@ -44,34 +44,58 @@
  * THE SOFTWARE.
  */
 
-#import "TTMAppDelegate.h"
-#import "TTMFilterPredicates.h"
-#import "TTMAppController.h"
+#import <Cocoa/Cocoa.h>
+#import <XCTest/XCTest.h>
+#import "TTMTask.h"
 
-@implementation TTMAppDelegate
+@interface TTMTask_IsHidden_UnitTests : XCTestCase
 
-- (void)applicationDidFinishLaunching:(NSNotification *)notification {
-    [self.appController initializeUserDefaults:self];
-    
-    // Open file from command line argument. Does nothing if there is no command line argument.
-    [self.appController openTodoFileFromCommandLineArgument];
-    
-    // Open default todo file, if one is selected and the option is enabled.
-    [self.appController openDefaultTodoFile];
+@property NSString *rawText;
+@property NSUInteger taskId;
+
+@end
+
+@implementation TTMTask_IsHidden_UnitTests
+
+- (void)setUp {
+    [super setUp];
+    self.taskId = 10;
 }
 
-- (BOOL)applicationShouldOpenUntitledFile:(NSApplication *)sender {
-    // Suppress creating an Untitled document on launch if either:
-    // 1. there is a command line argument to open a todo file, or
-    // 2. the open default todo.txt file on startup user preference is selected.
-    // Without this method override, opening a todo file using the command line argument
-    // or the default todo file user preference also opens an Untitled document every time.
-    return ([self.appController commandLineArgumentTodoFile] == NULL &&
-            ![[NSUserDefaults standardUserDefaults] boolForKey:@"openDefaultTodoFileOnStartup"]);
+- (void)tearDown {
+    [super tearDown];
 }
 
-- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"closingLastWindowClosesApplication"];
+- (void)test_IsHidden_WhenHidden_ShouldBeTrue_Case1 {
+    NSString *rawText = @"h:1 x 2020-01-31 pick up groceries due:2020-01-31";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertTrue(task.isHidden);
+}
+
+- (void)test_IsHidden_WhenHidden_ShouldBeTrue_Case2 {
+    NSString *rawText = @"x 2020-01-31 h:1 pick up groceries due:2020-01-31";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertTrue(task.isHidden);
+}
+
+- (void)test_IsHidden_WhenHidden_ShouldBeTrue_Case3 {
+    NSString *rawText = @"h:1 x 2020-01-31 pick up groceries due:2020-01-31 h:1";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertTrue(task.isHidden);
+}
+
+- (void)test_IsHidden_WhenHidden_ShouldBeFalse_Case1 {
+    NSString *rawText = @"x 2020-01-31 pick up groceries due:2020-01-31";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertFalse(task.isHidden);
+}
+
+- (void)test_IsHidden_WhenHidden_ShouldBeFalse_Case2 {
+    NSString *rawText = @"h:1x 2020-01-31 pick up groceries due:2020-01-31";
+    TTMTask *task = [[TTMTask alloc] initWithRawText:rawText withTaskId:self.taskId];
+    XCTAssertFalse(task.isHidden);
 }
 
 @end
+
+
