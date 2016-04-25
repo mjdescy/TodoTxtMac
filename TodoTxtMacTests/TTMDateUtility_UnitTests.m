@@ -64,8 +64,28 @@
     [super tearDown];
 }
 
-- (void)testDateConversions {
+- (void)testDateConversions_WithNormalDate {
     NSDate *firstDate = [TTMDateUtility convertStringToDate:@"2014-01-01"];
+    NSLog(@"firstDate: %@", firstDate);
+    NSString *firstDateString = [TTMDateUtility convertDateToString:firstDate];
+    NSLog(@"firstDateString: %@", firstDateString);
+    NSDate *secondDate = [TTMDateUtility convertStringToDate:firstDateString];
+    NSLog(@"secondDate: %@", secondDate);
+    XCTAssertEqualObjects(firstDate, secondDate);
+}
+
+- (void)testDateConversions_WithHighDate {
+    NSDate *firstDate = [TTMDateUtility convertStringToDate:@"9999-12-31"];
+    NSLog(@"firstDate: %@", firstDate);
+    NSString *firstDateString = [TTMDateUtility convertDateToString:firstDate];
+    NSLog(@"firstDateString: %@", firstDateString);
+    NSDate *secondDate = [TTMDateUtility convertStringToDate:firstDateString];
+    NSLog(@"secondDate: %@", secondDate);
+    XCTAssertEqualObjects(firstDate, secondDate);
+}
+
+- (void)testDateConversions_WithLowDate {
+    NSDate *firstDate = [TTMDateUtility convertStringToDate:@"1900-01-01"];
     NSLog(@"firstDate: %@", firstDate);
     NSString *firstDateString = [TTMDateUtility convertDateToString:firstDate];
     NSLog(@"firstDateString: %@", firstDateString);

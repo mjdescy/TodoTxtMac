@@ -59,18 +59,26 @@
     NSString *dateTimeString = [dateString stringByAppendingString:@" 00:00:00"];
     
     // Convert dateString to NSDate.
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *dateFormatter = [self dateFormatter];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     return [dateFormatter dateFromString:dateTimeString];
+}
+
++ (NSDateFormatter*)dateFormatter {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    [dateFormatter setCalendar:gregorian];
+    [dateFormatter setLocale:[NSLocale systemLocale]];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    return dateFormatter;
 }
 
 + (NSString*)convertDateToString:(NSDate*)date {
     if (!date) {
         return nil;
     }
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        return [dateFormatter stringFromDate:date];
+    NSDateFormatter *dateFormatter = [self dateFormatter];
+    return [dateFormatter stringFromDate:date];
 }
 
 + (NSDate*)today {
@@ -175,8 +183,7 @@
         return nil;
     }
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setLocale:[NSLocale currentLocale]];
+    NSDateFormatter *dateFormatter = [self dateFormatter];
     [dateFormatter setDateFormat:dateFormat];
     
     NSDate *todaysDate = [self today];
