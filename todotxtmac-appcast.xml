@@ -6,6 +6,19 @@
         <language>en</language>
 
         <item>
+            <title>Version 2.2.2</title>
+            <description>
+            Fixed bug related to locales
+            </description>
+            <sparkle:releaseNotesLink>
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.2.2.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Sunday, 24 Apr 2016 20:39 -0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.2.2/TodoTxtMac.app.zip" sparkle:version="2022" sparkle:shortVersionString="2.2.2" length="2755701" type="application/octet-stream" sparkle:dsaSignature="MC0CFCDT8i6+cL3UN72I3bCp8pB02g8iAhUAkN2yxRFUvs3+lOw1QyM35WXNRMg=" />
+            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+        </item>
+
+        <item>
             <title>Version 2.2.1</title>
             <description>
             Fixed bug related to strict recurring tasks
