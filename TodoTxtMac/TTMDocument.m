@@ -76,14 +76,14 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [self.undoManager setLevelsOfUndo:[[NSUserDefaults standardUserDefaults]
                                            integerForKey:@"levelsOfUndo"]];
         [[self undoManager] enableUndoRegistration];
+
+        _lastInternalModificationDate = nil;
     }
+
     return self;
 }
 
 - (void)awakeFromNib {
-    // Enable autosaving.
-    [[NSDocumentController sharedDocumentController] setAutosavingDelay:1.0];
-    
     // Set custom field editor.
     
     // Set arrayController sort type.
@@ -136,10 +136,6 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 
 #pragma mark - File Loading and Saving Methods
 
-+ (BOOL)autosavesInPlace {
-    return YES;
-}
-
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
     // Prepare file contents to save.
     NSMutableString *fileData = [[NSMutableString alloc] init];
@@ -186,11 +182,21 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 
     // Refresh the arrayController and tableView
     [self addTasksFromArray:rawTextStrings removeAllTasksFirst:YES undoActionName:@""];
-    
-    // Clear the document modified flag.
-    [self updateChangeCount:NSChangeCleared];
-    
+
+    [self updateLastInternalModificationDate];
+
     return YES;
+}
+
+- (void)updateLastInternalModificationDate {
+        NSFileCoordinator *fileCoordinator = [[NSFileCoordinator alloc] initWithFilePresenter:self];
+        NSError *outError;
+        [fileCoordinator coordinateReadingItemAtURL:self.fileURL options:0 error:&outError byAccessor:^(NSURL *fileURL) {
+            NSError *error;
+            NSDate *fileDate;
+            [fileURL getResourceValue:&fileDate forKey:NSURLContentModificationDateKey error:&error];
+            self.lastInternalModificationDate = fileDate;
+        }];
 }
 
 - (IBAction)reloadFile:(id)sender {
@@ -202,18 +208,12 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     
     // Reload the file.
     NSError *error;
-    [self readFromURL:[self fileURL] ofType:@"TTMDocument" error:&error];
+    [self revertToContentsOfURL:self.fileURL ofType:@"NSString" error:&error];
 
     // re-set selected items
     [self setTaskListSelections:taskListSelectedItemsList];
     
     [self updateTaskListMetadata];
-
-    // this section helps suppress messages about the file being modified outside the application
-    [self updateChangeCount:NSChangeDone];
-    [self autosaveWithImplicitCancellability:NO completionHandler:^(NSError *errorOrNil){
-        [self updateChangeCount:NSChangeCleared];
-    }];
 }
 
 - (NSArray*)getTaskListSelections {
@@ -244,6 +244,27 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         }
     }
     [self.arrayController setSelectedObjects:itemsToSelect];
+}
+
+- (void)presentedItemDidChange {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self performSynchronousFileAccessUsingBlock:^{
+            NSFileCoordinator *fileCoordinator = [[NSFileCoordinator alloc] initWithFilePresenter:self];
+            NSError *outError;
+            [fileCoordinator coordinateReadingItemAtURL:self.fileURL options:0 error:&outError byAccessor:^(NSURL *fileURL) {
+                NSError *error;
+                NSDate *fileDate;
+                [fileURL getResourceValue:&fileDate forKey:NSURLContentModificationDateKey error:&error];
+                if (![self.lastInternalModificationDate isEqualToDate:fileDate]) {
+                    [self reloadFile:self];
+                }
+            }];
+        }];
+    });
+}
+
++ (BOOL)autosavesInPlace {
+    return YES;
 }
 
 #pragma mark - Undo/Redo Methods
@@ -467,8 +488,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 
     // Optionally save the file.
     if (saveToFile) {
-        [self saveDocument:self];
+        [self saveToFile];
     }
+
     // Re-sort the table.
     [self.arrayController rearrangeObjects];
     // Reload table.
@@ -479,6 +501,16 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     
     // Update the lists of projects and contexts.
     [self updateTaskListMetadata];
+}
+
+- (void)saveToFile {
+    [self autosaveWithImplicitCancellability:YES completionHandler:^(NSError * _Nullable errorOrNil) {
+        [self updateLastInternalModificationDate];
+    }];
+}
+
+- (BOOL)canAsynchronouslyWriteToURL:(NSURL *)url ofType:(NSString *)typeName forSaveOperation:(NSSaveOperationType)saveOperation {
+    return YES;
 }
 
 - (IBAction)visualRefreshOnly:(id)sender {
@@ -750,6 +782,8 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         
         [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
         [self.undoManager setActionName:NSLocalizedString(@"Set Priority", @"Undo Set Priority")];
+
+        [self refreshTaskListWithSave:YES];
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
@@ -764,7 +798,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [task increasePriority];
         [newTasks addObject:[task copy]];
     }
-    
+
+    [self refreshTaskListWithSave:YES];
+
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Increase Priority", @"Undo Increase Priority")];
 }
@@ -778,7 +814,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [task decreasePriority];
         [newTasks addObject:[task copy]];
     }
-    
+
+    [self refreshTaskListWithSave:YES];
+
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Decrease Priority", @"Undo Decrease Priority")];
 }
@@ -792,7 +830,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [task removePriority];
         [newTasks addObject:[task copy]];
     }
-    
+
+    [self refreshTaskListWithSave:YES];
+
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Remove Priority", @"Undo Remove Priority")];
 }
@@ -821,7 +861,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
                 [task setDueDate:[input dateValue]];
                 [newTasks addObject:[task copy]];
             }
-            
+
+            [self refreshTaskListWithSave:YES];
+
             [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
             [self.undoManager setActionName:NSLocalizedString(@"Set Due Date", @"Undo Set Due Date")];
         }
@@ -839,7 +881,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [task incrementDueDate:1];
         [newTasks addObject:[task copy]];
     }
-    
+
+    [self refreshTaskListWithSave:YES];
+
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Increase Due Date", @"Undo Increase Due Date")];
 }
@@ -853,7 +897,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [task decrementDueDate:1];
         [newTasks addObject:[task copy]];
     }
-    
+
+    [self refreshTaskListWithSave:YES];
+
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Decrease Due Date", @"Undo Decrease Due Date")];
 }
@@ -867,7 +913,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [task removeDueDate];
         [newTasks addObject:[task copy]];
     }
-    
+
+    [self refreshTaskListWithSave:YES];
+
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Remove Due Date", @"Undo Remove Due Date")];
 }
@@ -895,7 +943,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
                 [task postponeTask:[input integerValue]];
                 [newTasks addObject:[task copy]];
             }
-            
+
+            [self refreshTaskListWithSave:YES];
+
             [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
             [self.undoManager setActionName:NSLocalizedString(@"Postpone", @"Undo Postpone")];
         }
@@ -928,7 +978,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
                 [task setThresholdDate:[input dateValue]];
                 [newTasks addObject:[task copy]];
             }
-            
+
+            [self refreshTaskListWithSave:YES];
+
             [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
             [self.undoManager setActionName:NSLocalizedString(@"Set Threshold Date", @"Undo Set Threshold Date")];
         }
@@ -947,7 +999,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [task incrementThresholdDate:1];
         [newTasks addObject:[task copy]];
     }
-    
+
+    [self refreshTaskListWithSave:YES];
+
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Increase Threshold Date", @"Undo Increase Threshold Date")];
 }
@@ -961,7 +1015,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [task decrementThresholdDate:1];
         [newTasks addObject:[task copy]];
     }
-    
+
+    [self refreshTaskListWithSave:YES];
+
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Decrease Threshold Date", @"Undo Decrease Threshold Date")];
 }
@@ -975,7 +1031,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
         [task removeThresholdDate];
         [newTasks addObject:[task copy]];
     }
-    
+
+    [self refreshTaskListWithSave:YES];
+
     [[self.undoManager prepareWithInvocationTarget:self] replaceTasks:newTasks withTasks:oldTasks];
     [self.undoManager setActionName:NSLocalizedString(@"Remove Threshold Date", @"Undo Remove Threshold Date")];
 }
