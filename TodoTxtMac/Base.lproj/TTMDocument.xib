@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
@@ -66,6 +66,7 @@
                                             </tableColumns>
                                             <connections>
                                                 <outlet property="delegate" destination="EHv-Hj-tOM" id="uvv-h2-wBm"/>
+                                                <outlet property="menu" destination="oa5-ZA-h8N" id="3EN-Hs-f7b"/>
                                                 <outlet property="parentDocument" destination="-2" id="rdR-3Y-03G"/>
                                             </connections>
                                         </tableView>
@@ -179,5 +180,160 @@
                 <outlet property="arrayController" destination="z03-iY-Esn" id="bZW-B4-fSs"/>
             </connections>
         </customObject>
+        <menu id="oa5-ZA-h8N">
+            <items>
+                <menuItem title="Add New Task" keyEquivalent="n" id="DaS-lw-tom">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="moveFocusToNewTaskTextField:" target="-1" id="P8g-Sf-ymP"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Update" keyEquivalent="u" id="b76-Yn-FZw">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="updateSelectedTask:" target="-1" id="b1F-HN-zIR"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Append Text" keyEquivalent="t" id="JCe-h2-3R5">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="appendText:" target="-1" id="70n-av-wTX"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Prepend Text" keyEquivalent="r" id="XdX-J7-z0X">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="prependText:" target="-1" id="E4e-Qe-cDu"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Delete" hidden="YES" keyEquivalent="d" id="c4f-YX-vjt">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="deleteSelectedTasks:" target="-1" id="c2H-zi-BHD"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Delete" id="I9O-Bd-cNZ">
+                    <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="deleteSelectedTasks:" target="-1" id="yvS-0a-hYS"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="xGk-rN-DCC"/>
+                <menuItem title="Toggle Completion" keyEquivalent="x" id="N2B-it-TGO">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="toggleTaskCompletion:" target="-1" id="EJy-Uz-slU"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="ezm-BQ-bR2"/>
+                <menuItem title="Set Priority" keyEquivalent="i" id="dnL-GF-ydk">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="setPriority:" target="-1" id="ruw-d8-hfs"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Increase Priority" keyEquivalent="" id="7aA-PZ-bXA">
+                    <connections>
+                        <action selector="increasePriority:" target="-1" id="7de-cW-CqL"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Decrease Priority" keyEquivalent="" id="bcL-Nb-Dox">
+                    <connections>
+                        <action selector="decreasePriority:" target="-1" id="BIK-5W-D4O"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Remove Priority" keyEquivalent="" id="cCl-gJ-Ezx">
+                    <connections>
+                        <action selector="removePriority:" target="-1" id="lk4-kv-MSF"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Remove Priority" hidden="YES" keyEquivalent="" id="gZs-7t-faP">
+                    <connections>
+                        <action selector="removePriority:" target="-1" id="Y0W-ql-vLx"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="8H5-zH-hDj"/>
+                <menuItem title="Set Due Date" keyEquivalent="s" id="bAk-TR-UnI">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="setDueDate:" target="-1" id="Uon-ah-Duc"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Postpone" keyEquivalent="p" id="WnK-Q7-CZy">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="postpone:" target="-1" id="g12-14-v1p"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Increase Due Date By 1 Day" keyEquivalent="" id="fw1-ni-PD5">
+                    <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                    <connections>
+                        <action selector="increaseDueDateByOneDay:" target="-1" id="Kbh-Fs-EEa"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Decrease Due Date By 1 Day" keyEquivalent="" id="QXa-wL-6lD">
+                    <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                    <connections>
+                        <action selector="decreaseDueDateByOneDay:" target="-1" id="bJn-ip-371"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Remove Due Date" keyEquivalent="" id="yDV-Ow-fu4">
+                    <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                    <connections>
+                        <action selector="removeDueDate:" target="-1" id="R6v-Z2-D81"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Remove Due Date" hidden="YES" keyEquivalent="" id="YED-n9-vGT">
+                    <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                    <connections>
+                        <action selector="removeDueDate:" target="-1" id="4g7-AY-8O7"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Update Selected Task" hidden="YES" id="hdk-6A-k2B">
+                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="updateSelectedTask:" target="-1" id="aG9-LP-3Li"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="FyL-Gq-jSo"/>
+                <menuItem title="Set Threshold Date" keyEquivalent="s" id="fGM-0b-agh">
+                    <modifierMask key="keyEquivalentModifierMask" option="YES"/>
+                    <connections>
+                        <action selector="setThresholdDate:" target="-1" id="IeD-mD-KUm"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Increase Threshold Date By 1 Day" keyEquivalent="" id="eSY-Jn-eRV">
+                    <modifierMask key="keyEquivalentModifierMask" shift="YES" option="YES" command="YES"/>
+                    <connections>
+                        <action selector="increaseThresholdDateByOneDay:" target="-1" id="oCb-9W-q5v"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Decrease Treshold Date By 1 Day" keyEquivalent="" id="OTg-xM-h4t">
+                    <modifierMask key="keyEquivalentModifierMask" shift="YES" option="YES" command="YES"/>
+                    <connections>
+                        <action selector="decreaseThresholdDateByOneDay:" target="-1" id="TNd-8N-PiX"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Remove Threshold Date" keyEquivalent="" id="fG9-Xa-uEt">
+                    <modifierMask key="keyEquivalentModifierMask" shift="YES" option="YES" command="YES"/>
+                    <connections>
+                        <action selector="removeThresholdDate:" target="-1" id="T6i-Nh-orO"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Remove Threshold Date" hidden="YES" keyEquivalent="" id="alZ-Ry-3E5">
+                    <modifierMask key="keyEquivalentModifierMask" shift="YES" option="YES" command="YES"/>
+                    <connections>
+                        <action selector="removeThresholdDate:" target="-1" id="tJc-eP-Twk"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="206.5" y="704.5"/>
+        </menu>
     </objects>
 </document>
