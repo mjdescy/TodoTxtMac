@@ -1376,10 +1376,14 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     if (menuItem.tag == COPYTASKTONEWTASKMENUTAG) {
         NSInteger selectedCount = [[self.arrayController selectedObjects] count];
         BOOL enabled = (selectedCount == 1);
-        [menuItem setEnabled:enabled];
         return enabled;
     }
-    
+    // Toggle task menu items.
+    if ([menuItem.parentItem tag] == TASKMENUTAG) {
+        BOOL enabled = (self.tableView.editedRow == -1);
+        return enabled;
+    }
+
     return [super validateMenuItem:menuItem];
 }
 

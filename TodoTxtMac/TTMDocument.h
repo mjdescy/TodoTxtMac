@@ -52,6 +52,7 @@
 @class TTMTableView;
 @class TTMTableViewDelegate;
 
+#define TASKMENUTAG   3000
 #define SORTMENUTAG   4000
 #define FILTERMENUTAG 5000
 #define STATUSBARMENUITEMTAG 6000
