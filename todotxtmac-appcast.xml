@@ -6,6 +6,19 @@
         <language>en</language>
 
         <item>
+            <title>Version 2.3.0</title>
+            <description>
+            Automatically reloads files. Added context menu to task list.
+            </description>
+            <sparkle:releaseNotesLink>
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.3.0.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Sunday, 29 Jul 2016 23:00 -0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.3.0/TodoTxtMac.app.zip" sparkle:version="2025" sparkle:shortVersionString="2.3.0" length="2894031" type="application/octet-stream" sparkle:dsaSignature="MCwCFDAtDjUjMfyimv/Ip7W7dC4Tqp7XAhQnDWhPVPIKqbQCi9E7qakB/RJTYg==" />
+            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+        </item>
+
+        <item>
             <title>Version 2.2.2</title>
             <description>
             Fixed bug related to locales
