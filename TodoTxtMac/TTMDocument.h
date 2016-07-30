@@ -52,6 +52,7 @@
 @class TTMTableView;
 @class TTMTableViewDelegate;
 
+#define TASKMENUTAG   3000
 #define SORTMENUTAG   4000
 #define FILTERMENUTAG 5000
 #define STATUSBARMENUITEMTAG 6000
@@ -112,6 +113,9 @@ typedef enum : NSUInteger {
 
 // Task objects for undo/redo of task edits
 @property (nonatomic, copy) NSArray *originalTasks;
+
+@property (nonatomic, retain) NSDate *lastInternalModificationDate;
+
 
 #pragma mark - File Loading and Saving Methods
 
