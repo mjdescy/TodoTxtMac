@@ -60,7 +60,9 @@ static NSString * const CompletedPattern = @"^x[ ]((\\d{4})-(\\d{2})-(\\d{2}))[ 
 static NSString * const CompletionDatePattern = @"(?<=^x[ ])((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
 static NSString * const PriorityTextPattern = @"^(\\([A-Z]\\)[ ])";
 static NSString * const CreationDatePatternIncomplete = @"(?<=^|\\([A-Z]\\)[ ])((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const CreationDatePatternIncompletePlusTrailingSpace = @"(?<=^|\\([A-Z]\\)[ ])((\\d{4})-(\\d{2})-(\\d{2}))([ ]|$)";
 static NSString * const CreationDatePatternCompleted = @"(?<=^x[ ]((\\d{4})-(\\d{2})-(\\d{2}))[ ])((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const CreationDatePatternCompletedPlusTrailingSpace = @"(?<=^x[ ]((\\d{4})-(\\d{2})-(\\d{2}))[ ])((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
 static NSString * const DueDatePattern = @"(?<=(^|[ ])due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
 static NSString * const FullDueDatePatternMiddleOrEnd = @"(([ ])due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
 static NSString * const FullDueDatePatternBeginning = @"^due:((\\d{4})-(\\d{2})-(\\d{2}))[ ]?|$";
@@ -833,9 +835,9 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     
     NSString *newRawText;
     if (!self.isCompleted) {
-        newRawText = [self.rawText substringFromIndex:11];
+        newRawText = [self.rawText replace:RX(CreationDatePatternIncompletePlusTrailingSpace) with:@""];
     } else {
-        newRawText = [self.rawText replace:RX(CreationDatePatternCompleted) with:@""];
+        newRawText = [self.rawText replace:RX(CreationDatePatternCompletedPlusTrailingSpace) with:@""];
     }
     self.rawText = newRawText;
 }
