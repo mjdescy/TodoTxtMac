@@ -70,25 +70,54 @@
             // the one with focus at the time this method is executed
             // will not be cleared. This is only really necessary to
             // call on the predicate editor with focus.
-            [self.filter1PredicateEditor reloadCriteria];
-            [self.filter2PredicateEditor reloadCriteria];
-            [self.filter3PredicateEditor reloadCriteria];
-            [self.filter4PredicateEditor reloadCriteria];
-            [self.filter5PredicateEditor reloadCriteria];
-            [self.filter6PredicateEditor reloadCriteria];
-            [self.filter7PredicateEditor reloadCriteria];
-            [self.filter8PredicateEditor reloadCriteria];
-            [self.filter9PredicateEditor reloadCriteria];
+            [self reloadAllPredicateEditors];
         }
     }];
 }
 
+- (void)reloadAllPredicateEditors {
+    [self.filter1PredicateEditor reloadCriteria];
+    [self.filter2PredicateEditor reloadCriteria];
+    [self.filter3PredicateEditor reloadCriteria];
+    [self.filter4PredicateEditor reloadCriteria];
+    [self.filter5PredicateEditor reloadCriteria];
+    [self.filter6PredicateEditor reloadCriteria];
+    [self.filter7PredicateEditor reloadCriteria];
+    [self.filter8PredicateEditor reloadCriteria];
+    [self.filter9PredicateEditor reloadCriteria];
+}
+
 #pragma mark - Window Delegate Methods
 
-- (BOOL)windowShouldClose:(NSWindow *)window {
-    // We do this to catch the case where the user enters a value into one of the text fields but
-    // closes the window without hitting enter or tab.
-    return [window makeFirstResponder:nil];
+- (void)keyDown:(NSEvent *)theEvent {
+    NSUInteger flags = [theEvent modifierFlags];
+    NSString *passedChar = [theEvent charactersIgnoringModifiers];
+
+    if ((flags & NSCommandKeyMask) &&
+        (flags & NSShiftKeyMask) &&
+        ([passedChar isEqualToString:@"{"])) {
+        [self.tabView selectPreviousTabViewItem:self];
+        return;
+    }
+
+    if ((flags & NSCommandKeyMask) &&
+        (flags & NSShiftKeyMask) &&
+        ([passedChar isEqualToString:@"}"])) {
+        [self.tabView selectNextTabViewItem:self];
+        return;
+    }
+
+    [super keyDown:theEvent];
 }
- 
+
+- (void)windowDidResignKey:(NSNotification *)notification {
+    [self forceFilterPredicateEditsToBeApplied];
+}
+
+- (void)forceFilterPredicateEditsToBeApplied {
+    if ([self.window.firstResponder isKindOfClass:[NSTextView class]]) {
+        [self.window.firstResponder insertNewline:self];
+    }
+}
+
 @end

@@ -46,7 +46,11 @@
 
 #import <Foundation/Foundation.h>
 
+@class TTMAppController;
+
 @interface TTMFiltersController : NSWindowController <NSWindowDelegate>
+
+@property (nonatomic, retain) IBOutlet NSTabView *tabView;
 
 @property (nonatomic, retain) IBOutlet NSPredicateEditor *filter1PredicateEditor;
 @property (nonatomic, retain) IBOutlet NSPredicateEditor *filter2PredicateEditor;

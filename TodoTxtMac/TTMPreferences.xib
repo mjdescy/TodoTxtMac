@@ -817,7 +817,7 @@
                                                                                                     <rect key="frame" x="0.0" y="41" width="256" height="33"/>
                                                                                                     <subviews>
                                                                                                         <button toolTip="Tags are &quot;key:value&quot; pairs." translatesAutoresizingMaskIntoConstraints="NO" id="H2T-43-uze">
-                                                                                                            <rect key="frame" x="-2" y="8" width="127" height="18"/>
+                                                                                                            <rect key="frame" x="-2" y="7" width="127" height="18"/>
                                                                                                             <buttonCell key="cell" type="check" title="Tags" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="oCR-Hh-sAn">
                                                                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                                                 <font key="font" metaFont="system"/>
@@ -983,7 +983,7 @@
                                                                                                     <rect key="frame" x="0.0" y="82" width="256" height="33"/>
                                                                                                     <subviews>
                                                                                                         <button toolTip="Threshold dates must be in the format &quot;t:YYYY-MM-DD&quot;." translatesAutoresizingMaskIntoConstraints="NO" id="Dvn-44-EkF">
-                                                                                                            <rect key="frame" x="-2" y="8" width="127" height="18"/>
+                                                                                                            <rect key="frame" x="-2" y="7" width="127" height="18"/>
                                                                                                             <buttonCell key="cell" type="check" title="Threshold dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="8Ot-rG-fIl">
                                                                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                                                 <font key="font" metaFont="system"/>
@@ -1026,7 +1026,7 @@
                                                                                                     <rect key="frame" x="0.0" y="41" width="256" height="33"/>
                                                                                                     <subviews>
                                                                                                         <button toolTip="Threshold dates must be in the format &quot;t:YYYY-MM-DD&quot;." translatesAutoresizingMaskIntoConstraints="NO" id="DCH-Hu-Ffj">
-                                                                                                            <rect key="frame" x="-2" y="8" width="127" height="18"/>
+                                                                                                            <rect key="frame" x="-2" y="7" width="127" height="18"/>
                                                                                                             <buttonCell key="cell" type="check" title="Creation dates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="yMp-g6-Vnj">
                                                                                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                                                                 <font key="font" metaFont="system"/>
