@@ -46,6 +46,7 @@
 
 #import "TTMFiltersController.h"
 #import "TTMFilterPredicates.h"
+#import "TTMAppController.h"
 
 @implementation TTMFiltersController
 
@@ -83,6 +84,10 @@
     }];
 }
 
+- (IBAction)refreshTaskListFilters:(id)sender {
+    [self.appController visualRefreshAll:self];
+}
+
 #pragma mark - Window Delegate Methods
 
 - (BOOL)windowShouldClose:(NSWindow *)window {
@@ -90,5 +95,36 @@
     // closes the window without hitting enter or tab.
     return [window makeFirstResponder:nil];
 }
- 
+
+- (void)windowWillClose:(NSNotification *)notification {
+    [self refreshTaskListFilters:self];
+}
+
+- (void)keyDown:(NSEvent *)theEvent {
+    NSUInteger flags = [theEvent modifierFlags];
+    NSString *passedChar = [theEvent charactersIgnoringModifiers];
+
+    if ((flags & NSCommandKeyMask) &&
+        (flags & NSShiftKeyMask) &&
+        ([passedChar isEqualToString:@"{"])) {
+        [self.tabView selectPreviousTabViewItem:self];
+        return;
+    }
+
+    if ((flags & NSCommandKeyMask) &&
+        (flags & NSShiftKeyMask) &&
+        ([passedChar isEqualToString:@"}"])) {
+        [self.tabView selectNextTabViewItem:self];
+        return;
+    }
+
+    [super keyDown:theEvent];
+}
+
+#pragma mark - NSTabViewDelegate Delegate Methods
+
+- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
+    [self refreshTaskListFilters:self];
+}
+
 @end

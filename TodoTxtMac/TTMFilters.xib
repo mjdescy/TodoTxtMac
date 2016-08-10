@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TTMFiltersController">
             <connections>
+                <outlet property="appController" destination="btd-hr-xBM" id="Kwx-U8-bkO"/>
                 <outlet property="filter1PredicateEditor" destination="kyY-lA-F0K" id="b2T-Mm-XvS"/>
                 <outlet property="filter2PredicateEditor" destination="Ymr-Te-Jsu" id="GBd-RX-7pM"/>
                 <outlet property="filter3PredicateEditor" destination="6q7-hn-dBp" id="Nqb-rK-hpg"/>
@@ -17,6 +18,7 @@
                 <outlet property="filter7PredicateEditor" destination="abs-37-qFl" id="fj0-JR-Rfd"/>
                 <outlet property="filter8PredicateEditor" destination="m5a-mt-V4E" id="gPm-Qt-bVw"/>
                 <outlet property="filter9PredicateEditor" destination="XsA-Sd-hjN" id="jJf-J4-emJ"/>
+                <outlet property="tabView" destination="qgL-I9-GFI" id="l0a-Rd-nwu"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="2Wz-Uh-Jdi"/>
             </connections>
         </customObject>
@@ -26,7 +28,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="573" height="386"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="573" height="386"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -531,6 +533,7 @@
                                                                     </predicateEditorRowTemplate>
                                                                 </rowTemplates>
                                                                 <connections>
+                                                                    <action selector="refreshTaskListFilters:" target="-2" id="XCy-xA-giF"/>
                                                                     <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate1" id="nNL-eP-zci">
                                                                         <dictionary key="options">
                                                                             <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
@@ -546,7 +549,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="tcy-Zc-P6i">
-                                                        <rect key="frame" x="476" y="1" width="16" height="256"/>
+                                                        <rect key="frame" x="477" y="1" width="15" height="256"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
@@ -561,13 +564,13 @@
                                     </tabViewItem>
                                     <tabViewItem label="2" identifier="2" id="PCm-V3-9tb">
                                         <view key="view" id="J97-zb-W9K">
-                                            <rect key="frame" x="10" y="33" width="527" height="280"/>
+                                            <rect key="frame" x="10" y="33" width="527" height="278"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gV7-vJ-B61">
-                                                    <rect key="frame" x="17" y="17" width="493" height="260"/>
+                                                    <rect key="frame" x="17" y="17" width="493" height="258"/>
                                                     <clipView key="contentView" id="6so-Zw-0Bg">
-                                                        <rect key="frame" x="1" y="1" width="491" height="258"/>
+                                                        <rect key="frame" x="1" y="1" width="476" height="256"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="Ymr-Te-Jsu">
@@ -1049,6 +1052,7 @@
                                                                     </predicateEditorRowTemplate>
                                                                 </rowTemplates>
                                                                 <connections>
+                                                                    <action selector="refreshTaskListFilters:" target="-2" id="uh5-Xj-2kQ"/>
                                                                     <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate2" id="xSl-H6-No6">
                                                                         <dictionary key="options">
                                                                             <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
@@ -1064,7 +1068,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="vAx-J9-pQC">
-                                                        <rect key="frame" x="476" y="1" width="16" height="258"/>
+                                                        <rect key="frame" x="477" y="1" width="15" height="256"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
@@ -1079,13 +1083,13 @@
                                     </tabViewItem>
                                     <tabViewItem label="3" identifier="3" id="R1s-iN-eeA">
                                         <view key="view" id="RwD-XB-Zgj">
-                                            <rect key="frame" x="10" y="33" width="527" height="280"/>
+                                            <rect key="frame" x="10" y="33" width="527" height="278"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rl5-k4-2Qu">
-                                                    <rect key="frame" x="17" y="17" width="493" height="260"/>
+                                                    <rect key="frame" x="17" y="17" width="493" height="258"/>
                                                     <clipView key="contentView" id="heN-Oz-PCI">
-                                                        <rect key="frame" x="1" y="1" width="491" height="258"/>
+                                                        <rect key="frame" x="1" y="1" width="476" height="256"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="6q7-hn-dBp">
@@ -1567,6 +1571,7 @@
                                                                     </predicateEditorRowTemplate>
                                                                 </rowTemplates>
                                                                 <connections>
+                                                                    <action selector="refreshTaskListFilters:" target="-2" id="P5d-MF-WGV"/>
                                                                     <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate3" id="mxZ-7U-OEE">
                                                                         <dictionary key="options">
                                                                             <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
@@ -1582,7 +1587,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="ues-cY-hv0">
-                                                        <rect key="frame" x="476" y="1" width="16" height="258"/>
+                                                        <rect key="frame" x="477" y="1" width="15" height="256"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
@@ -1597,13 +1602,13 @@
                                     </tabViewItem>
                                     <tabViewItem label="4" identifier="4" id="zei-mw-Cwn">
                                         <view key="view" id="oUE-Dl-Rpo">
-                                            <rect key="frame" x="10" y="33" width="527" height="280"/>
+                                            <rect key="frame" x="10" y="33" width="527" height="278"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ahb-tN-8y0">
-                                                    <rect key="frame" x="17" y="17" width="493" height="260"/>
+                                                    <rect key="frame" x="17" y="17" width="493" height="258"/>
                                                     <clipView key="contentView" id="OMr-xw-FM3">
-                                                        <rect key="frame" x="1" y="1" width="491" height="258"/>
+                                                        <rect key="frame" x="1" y="1" width="476" height="256"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <predicateEditor verticalHuggingPriority="750" nestingMode="compound" rowHeight="25" id="dqt-SY-XL3">
@@ -2085,6 +2090,7 @@
                                                                     </predicateEditorRowTemplate>
                                                                 </rowTemplates>
                                                                 <connections>
+                                                                    <action selector="refreshTaskListFilters:" target="-2" id="Sib-1U-PvT"/>
                                                                     <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate4" id="dcI-bd-T3G">
                                                                         <dictionary key="options">
                                                                             <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
@@ -2100,7 +2106,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Dn2-oy-WkD">
-                                                        <rect key="frame" x="476" y="1" width="16" height="258"/>
+                                                        <rect key="frame" x="477" y="1" width="15" height="256"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
@@ -2603,6 +2609,7 @@
                                                                     </predicateEditorRowTemplate>
                                                                 </rowTemplates>
                                                                 <connections>
+                                                                    <action selector="refreshTaskListFilters:" target="-2" id="alE-yv-4uj"/>
                                                                     <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate5" id="Q1e-in-vhO">
                                                                         <dictionary key="options">
                                                                             <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
@@ -2618,7 +2625,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="Xch-za-6Nr">
-                                                        <rect key="frame" x="476" y="1" width="16" height="258"/>
+                                                        <rect key="frame" x="477" y="1" width="15" height="258"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
@@ -3121,6 +3128,7 @@
                                                                     </predicateEditorRowTemplate>
                                                                 </rowTemplates>
                                                                 <connections>
+                                                                    <action selector="refreshTaskListFilters:" target="-2" id="aBu-8Y-Td6"/>
                                                                     <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate6" id="Lk0-wU-BwF">
                                                                         <dictionary key="options">
                                                                             <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
@@ -3136,7 +3144,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="2bq-D6-2te">
-                                                        <rect key="frame" x="476" y="1" width="16" height="258"/>
+                                                        <rect key="frame" x="477" y="1" width="15" height="258"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
@@ -3639,6 +3647,7 @@
                                                                     </predicateEditorRowTemplate>
                                                                 </rowTemplates>
                                                                 <connections>
+                                                                    <action selector="refreshTaskListFilters:" target="-2" id="8mZ-rZ-i7m"/>
                                                                     <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate7" id="zOI-8I-1Pk">
                                                                         <dictionary key="options">
                                                                             <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
@@ -3654,7 +3663,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="JkQ-8M-KaS">
-                                                        <rect key="frame" x="476" y="1" width="16" height="258"/>
+                                                        <rect key="frame" x="477" y="1" width="15" height="258"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
@@ -4157,6 +4166,7 @@
                                                                     </predicateEditorRowTemplate>
                                                                 </rowTemplates>
                                                                 <connections>
+                                                                    <action selector="refreshTaskListFilters:" target="-2" id="ACz-HP-9Rb"/>
                                                                     <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate8" id="ydF-u1-heh">
                                                                         <dictionary key="options">
                                                                             <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
@@ -4172,7 +4182,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="h5H-Ye-21u">
-                                                        <rect key="frame" x="476" y="1" width="16" height="258"/>
+                                                        <rect key="frame" x="477" y="1" width="15" height="258"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
@@ -4675,6 +4685,7 @@
                                                                     </predicateEditorRowTemplate>
                                                                 </rowTemplates>
                                                                 <connections>
+                                                                    <action selector="refreshTaskListFilters:" target="-2" id="Qvy-55-CLZ"/>
                                                                     <binding destination="VIO-0n-UUv" name="value" keyPath="values.filterPredicate9" id="yYm-0Y-a5Q">
                                                                         <dictionary key="options">
                                                                             <string key="NSValueTransformerName">NSKeyedUnarchiveFromData</string>
@@ -4690,7 +4701,7 @@
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="uW2-e6-tfL">
-                                                        <rect key="frame" x="476" y="1" width="16" height="256"/>
+                                                        <rect key="frame" x="477" y="1" width="15" height="256"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                 </scrollView>
@@ -4704,14 +4715,17 @@
                                         </view>
                                     </tabViewItem>
                                 </tabViewItems>
+                                <connections>
+                                    <outlet property="delegate" destination="-2" id="8Jp-o7-Z07"/>
+                                </connections>
                             </tabView>
                             <stackView orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vFl-WV-0PG" userLabel="Button Row Stack View">
                                 <rect key="frame" x="0.0" y="0.0" width="533" height="30"/>
                                 <beginningViews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="K5U-Nz-fQB">
-                                        <rect key="frame" x="-6" y="-2" width="74" height="32"/>
+                                        <rect key="frame" x="-6" y="-2" width="75" height="32"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="62" id="YaC-SX-HfI"/>
+                                            <constraint firstAttribute="width" constant="63" id="YaC-SX-HfI"/>
                                         </constraints>
                                         <buttonCell key="cell" type="push" title="Close" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="fp0-Cf-XSV">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -4788,5 +4802,6 @@
             <point key="canvasLocation" x="232.5" y="376"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="VIO-0n-UUv"/>
+        <customObject id="btd-hr-xBM" customClass="TTMAppController"/>
     </objects>
 </document>
