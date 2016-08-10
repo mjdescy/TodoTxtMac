@@ -48,9 +48,8 @@
 
 @class TTMAppController;
 
-@interface TTMFiltersController : NSWindowController <NSWindowDelegate, NSTabViewDelegate>
+@interface TTMFiltersController : NSWindowController <NSWindowDelegate>
 
-@property (nonatomic, retain) IBOutlet TTMAppController *appController;
 @property (nonatomic, retain) IBOutlet NSTabView *tabView;
 
 @property (nonatomic, retain) IBOutlet NSPredicateEditor *filter1PredicateEditor;
@@ -68,12 +67,5 @@
  * @abstract This method allows the user to clear/reset all filters.
  */
 - (IBAction)resetAllFilters:(id)sender;
-
-/*!
- * @method refreshTaskListFilters:
- * @abstract This method will cause a refresh of the filters for all open task lists.
- */
-- (IBAction)refreshTaskListFilters:(id)sender;
-
 
 @end

@@ -110,6 +110,44 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
                                             forKeyPath:@"levelsOfUndo"
                                                options:NSKeyValueObservingOptionNew
                                                context:nil];
+
+    // Observe NSUserDefaults to update filter-related preferences
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:@"filterPredicate1"
+                                               options:NSKeyValueObservingOptionNew
+                                               context:nil];
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:@"filterPredicate2"
+                                               options:NSKeyValueObservingOptionNew
+                                               context:nil];
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:@"filterPredicate3"
+                                               options:NSKeyValueObservingOptionNew
+                                               context:nil];
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:@"filterPredicate4"
+                                               options:NSKeyValueObservingOptionNew
+                                               context:nil];
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:@"filterPredicate5"
+                                               options:NSKeyValueObservingOptionNew
+                                               context:nil];
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:@"filterPredicate6"
+                                               options:NSKeyValueObservingOptionNew
+                                               context:nil];
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:@"filterPredicate7"
+                                               options:NSKeyValueObservingOptionNew
+                                               context:nil];
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:@"filterPredicate8"
+                                               options:NSKeyValueObservingOptionNew
+                                               context:nil];
+    [[NSUserDefaults standardUserDefaults] addObserver:self
+                                            forKeyPath:@"filterPredicate9"
+                                               options:NSKeyValueObservingOptionNew
+                                               context:nil];
 }
 
 - (NSString *)windowNibName {
@@ -1442,14 +1480,60 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"selection"]) {
         [self updateStatusBarText];
+        return;
     }
     
     if ([keyPath isEqualToString:@"searchFieldPredicate"]) {
         [self reapplyActiveFilterPredicate];
+        return;
     }
     
     if ([keyPath isEqualToString:@"levelsOfUndo"]) {
         [self.undoManager setLevelsOfUndo:[[NSUserDefaults standardUserDefaults] integerForKey:@"levelsOfUndo"]];
+        return;
+    }
+
+    if ([keyPath isEqualToString:@"filterPredicate1"]) {
+        [self visualRefreshIfFilterChangedAtPreset:1];
+        return;
+    }
+    if ([keyPath isEqualToString:@"filterPredicate2"]) {
+        [self visualRefreshIfFilterChangedAtPreset:2];
+        return;
+    }
+    if ([keyPath isEqualToString:@"filterPredicate3"]) {
+        [self visualRefreshIfFilterChangedAtPreset:3];
+        return;
+    }
+    if ([keyPath isEqualToString:@"filterPredicate4"]) {
+        [self visualRefreshIfFilterChangedAtPreset:4];
+        return;
+    }
+    if ([keyPath isEqualToString:@"filterPredicate5"]) {
+        [self visualRefreshIfFilterChangedAtPreset:5];
+        return;
+    }
+    if ([keyPath isEqualToString:@"filterPredicate6"]) {
+        [self visualRefreshIfFilterChangedAtPreset:6];
+        return;
+    }
+    if ([keyPath isEqualToString:@"filterPredicate7"]) {
+        [self visualRefreshIfFilterChangedAtPreset:7];
+        return;
+    }
+    if ([keyPath isEqualToString:@"filterPredicate8"]) {
+        [self visualRefreshIfFilterChangedAtPreset:8];
+        return;
+    }
+    if ([keyPath isEqualToString:@"filterPredicate9"]) {
+        [self visualRefreshIfFilterChangedAtPreset:9];
+        
+    }
+}
+
+- (void)visualRefreshIfFilterChangedAtPreset:(int)presentNumber {
+    if (self.activeFilterPredicateNumber == presentNumber) {
+        [self visualRefreshOnly:self];
     }
 }
 

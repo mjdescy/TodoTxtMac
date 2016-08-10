@@ -46,7 +46,6 @@
 
 #import "TTMFiltersController.h"
 #import "TTMFilterPredicates.h"
-#import "TTMAppController.h"
 
 @implementation TTMFiltersController
 
@@ -71,34 +70,24 @@
             // the one with focus at the time this method is executed
             // will not be cleared. This is only really necessary to
             // call on the predicate editor with focus.
-            [self.filter1PredicateEditor reloadCriteria];
-            [self.filter2PredicateEditor reloadCriteria];
-            [self.filter3PredicateEditor reloadCriteria];
-            [self.filter4PredicateEditor reloadCriteria];
-            [self.filter5PredicateEditor reloadCriteria];
-            [self.filter6PredicateEditor reloadCriteria];
-            [self.filter7PredicateEditor reloadCriteria];
-            [self.filter8PredicateEditor reloadCriteria];
-            [self.filter9PredicateEditor reloadCriteria];
+            [self reloadAllPredicateEditors];
         }
     }];
 }
 
-- (IBAction)refreshTaskListFilters:(id)sender {
-    [self.appController visualRefreshAll:self];
+- (void)reloadAllPredicateEditors {
+    [self.filter1PredicateEditor reloadCriteria];
+    [self.filter2PredicateEditor reloadCriteria];
+    [self.filter3PredicateEditor reloadCriteria];
+    [self.filter4PredicateEditor reloadCriteria];
+    [self.filter5PredicateEditor reloadCriteria];
+    [self.filter6PredicateEditor reloadCriteria];
+    [self.filter7PredicateEditor reloadCriteria];
+    [self.filter8PredicateEditor reloadCriteria];
+    [self.filter9PredicateEditor reloadCriteria];
 }
 
 #pragma mark - Window Delegate Methods
-
-- (BOOL)windowShouldClose:(NSWindow *)window {
-    // We do this to catch the case where the user enters a value into one of the text fields but
-    // closes the window without hitting enter or tab.
-    return [window makeFirstResponder:nil];
-}
-
-- (void)windowWillClose:(NSNotification *)notification {
-    [self refreshTaskListFilters:self];
-}
 
 - (void)keyDown:(NSEvent *)theEvent {
     NSUInteger flags = [theEvent modifierFlags];
@@ -121,10 +110,14 @@
     [super keyDown:theEvent];
 }
 
-#pragma mark - NSTabViewDelegate Delegate Methods
+- (void)windowDidResignKey:(NSNotification *)notification {
+    [self forceFilterPredicateEditsToBeApplied];
+}
 
-- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem {
-    [self refreshTaskListFilters:self];
+- (void)forceFilterPredicateEditsToBeApplied {
+    if ([self.window.firstResponder isKindOfClass:[NSTextView class]]) {
+        [self.window.firstResponder insertNewline:self];
+    }
 }
 
 @end
