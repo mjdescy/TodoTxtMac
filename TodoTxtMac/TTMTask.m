@@ -102,10 +102,11 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     
     if (!prependedDate ||
         [rawText isMatch:RX(CreationDatePatternIncomplete)] ||
-        [rawText isMatch:RX(CreationDatePatternCompleted)]
+        [rawText isMatch:RX(CreationDatePatternCompleted)] ||
+        [rawText isMatch:RX(CompletedPattern)]
         ) {
 
-        // if no prepended date is passed, or if there is already a creation date, prepend nothing
+        // if no prepended date is passed, or if there is already a creation date, or the task is already completed, prepend nothing
         newRawText = rawText;
     
     } else if ([rawText isMatch:RX(PriorityTextPattern)]) {
