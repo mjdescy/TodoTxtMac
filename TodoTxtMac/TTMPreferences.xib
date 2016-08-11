@@ -20,32 +20,32 @@
         <window title="Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="TTMPreferences" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="630" height="468"/>
+            <rect key="contentRect" x="196" y="240" width="630" height="448"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="630" height="468"/>
+                <rect key="frame" x="0.0" y="0.0" width="630" height="448"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <tabView verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="y76-Kz-NYB">
-                        <rect key="frame" x="3" y="0.0" width="624" height="464"/>
+                        <rect key="frame" x="3" y="0.0" width="624" height="444"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Files" identifier="0" id="L8o-bt-LMa" userLabel="Files">
                                 <view key="view" id="kDW-tT-Mxi">
-                                    <rect key="frame" x="10" y="33" width="604" height="418"/>
+                                    <rect key="frame" x="10" y="33" width="604" height="420"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ky-Vz-equ">
-                                            <rect key="frame" x="10" y="10" width="584" height="398"/>
+                                            <rect key="frame" x="10" y="10" width="584" height="400"/>
                                             <subviews>
                                                 <box title="Default todo.txt file (optional)" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="fTt-8Z-Eaa" userLabel="Default todo.txt file Box">
-                                                    <rect key="frame" x="7" y="201" width="570" height="197"/>
+                                                    <rect key="frame" x="7" y="202" width="570" height="198"/>
                                                     <view key="contentView" id="rip-cf-LYb">
-                                                        <rect key="frame" x="1" y="1" width="568" height="181"/>
+                                                        <rect key="frame" x="1" y="1" width="568" height="182"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xxd-gI-kIv">
-                                                                <rect key="frame" x="10" y="130" width="548" height="41"/>
+                                                                <rect key="frame" x="10" y="131" width="548" height="41"/>
                                                                 <subviews>
                                                                     <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QEV-IA-Nkb" userLabel="Default File Stack View">
                                                                         <rect key="frame" x="0.0" y="22" width="548" height="19"/>
@@ -140,13 +140,13 @@
                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </box>
                                                 <box title="Archive file (done.txt)" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="BF2-7M-dnr" userLabel="Archive file (done.txt) Box">
-                                                    <rect key="frame" x="7" y="-4" width="570" height="197"/>
+                                                    <rect key="frame" x="7" y="-4" width="570" height="198"/>
                                                     <view key="contentView" id="WrR-WC-GsK">
-                                                        <rect key="frame" x="1" y="1" width="568" height="181"/>
+                                                        <rect key="frame" x="1" y="1" width="568" height="182"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfr-8a-zUH">
-                                                                <rect key="frame" x="10" y="130" width="548" height="41"/>
+                                                                <rect key="frame" x="10" y="131" width="548" height="41"/>
                                                                 <subviews>
                                                                     <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3oP-vL-K4R" userLabel="Archive File Stack View">
                                                                         <rect key="frame" x="0.0" y="22" width="548" height="19"/>
@@ -242,6 +242,7 @@
                                                 </box>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="height" constant="400" id="92h-kS-r74"/>
                                                 <constraint firstItem="fTt-8Z-Eaa" firstAttribute="leading" secondItem="6Ky-Vz-equ" secondAttribute="leading" constant="10" id="Lx3-WE-AIY"/>
                                                 <constraint firstItem="BF2-7M-dnr" firstAttribute="leading" secondItem="6Ky-Vz-equ" secondAttribute="leading" constant="10" id="UTF-Ev-hDL"/>
                                                 <constraint firstAttribute="trailing" secondItem="BF2-7M-dnr" secondAttribute="trailing" constant="10" id="UZC-iM-fsL"/>
@@ -267,20 +268,20 @@
                             </tabViewItem>
                             <tabViewItem label="Behavior" identifier="6" id="QYf-9f-Vd3" userLabel="Behavior">
                                 <view key="view" id="ADq-m3-TeV">
-                                    <rect key="frame" x="10" y="33" width="604" height="398"/>
+                                    <rect key="frame" x="10" y="33" width="604" height="420"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fillProportionally" orientation="vertical" alignment="leading" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uWq-47-nKi">
-                                            <rect key="frame" x="10" y="10" width="584" height="378"/>
+                                            <rect key="frame" x="10" y="10" width="584" height="400"/>
                                             <subviews>
-                                                <box title="Application behaviors" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="yed-2J-abW" userLabel="Application Behaviors Box">
-                                                    <rect key="frame" x="7" y="220" width="570" height="158"/>
+                                                <box verticalCompressionResistancePriority="756" title="Application behaviors" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="yed-2J-abW" userLabel="Application Behaviors Box">
+                                                    <rect key="frame" x="7" y="220" width="570" height="180"/>
                                                     <view key="contentView" id="9wR-vg-DnJ">
-                                                        <rect key="frame" x="1" y="1" width="568" height="142"/>
+                                                        <rect key="frame" x="1" y="1" width="568" height="164"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="shz-AI-b3R">
-                                                                <rect key="frame" x="10" y="-12" width="548" height="144"/>
+                                                                <rect key="frame" x="10" y="10" width="548" height="144"/>
                                                                 <subviews>
                                                                     <button verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="jj2-Ob-EWZ">
                                                                         <rect key="frame" x="-2" y="128" width="246" height="18"/>
@@ -369,6 +370,9 @@
                                                             <constraint firstAttribute="trailing" secondItem="shz-AI-b3R" secondAttribute="trailing" constant="10" id="wtG-Rc-LaL"/>
                                                         </constraints>
                                                     </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="176" id="PQQ-Nb-bWe"/>
+                                                    </constraints>
                                                     <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                                                     <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </box>
@@ -1216,20 +1220,20 @@
                             </tabViewItem>
                             <tabViewItem label="Status Bar" identifier="3" id="C0X-lJ-CYs">
                                 <view key="view" id="Xxm-Vu-L8l">
-                                    <rect key="frame" x="10" y="33" width="604" height="398"/>
+                                    <rect key="frame" x="10" y="33" width="604" height="420"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <box autoresizesSubviews="NO" title="Customize status bar" borderType="line" translatesAutoresizingMaskIntoConstraints="NO" id="uP8-O5-g7a" userLabel="Customize status bar Box">
-                                            <rect key="frame" x="7" y="164" width="590" height="224"/>
+                                            <rect key="frame" x="7" y="186" width="590" height="224"/>
                                             <view key="contentView" id="8uo-5X-lZk">
                                                 <rect key="frame" x="1" y="1" width="588" height="208"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="go8-tq-Ugi">
-                                                        <rect key="frame" x="10" y="38" width="568" height="160"/>
+                                                        <rect key="frame" x="10" y="-202" width="568" height="400"/>
                                                         <subviews>
                                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="1w7-1m-yNC">
-                                                                <rect key="frame" x="-2" y="144" width="267" height="18"/>
+                                                                <rect key="frame" x="-2" y="384" width="267" height="18"/>
                                                                 <buttonCell key="cell" type="check" title="Show status bar on next opened window" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="5Dj-4D-p9M">
                                                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                     <font key="font" metaFont="system"/>
@@ -1239,7 +1243,7 @@
                                                                 </connections>
                                                             </button>
                                                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VHN-SC-V7M">
-                                                                <rect key="frame" x="0.0" y="33" width="568" height="105"/>
+                                                                <rect key="frame" x="0.0" y="273" width="568" height="105"/>
                                                                 <subviews>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zXM-Pf-HPd">
                                                                         <rect key="frame" x="-2" y="88" width="47" height="17"/>
@@ -1284,10 +1288,10 @@
                                                                 </customSpacing>
                                                             </stackView>
                                                             <stackView distribution="fill" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="etk-f5-czz">
-                                                                <rect key="frame" x="0.0" y="0.0" width="568" height="25"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="568" height="265"/>
                                                                 <subviews>
                                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="VHD-8m-S6e">
-                                                                        <rect key="frame" x="-2" y="3" width="33" height="17"/>
+                                                                        <rect key="frame" x="-2" y="243" width="33" height="17"/>
                                                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Tags" id="Bau-Dg-GwY">
                                                                             <font key="font" metaFont="system"/>
                                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1295,7 +1299,7 @@
                                                                         </textFieldCell>
                                                                     </textField>
                                                                     <popUpButton horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="agZ-dD-T4T">
-                                                                        <rect key="frame" x="35" y="-3" width="295" height="26"/>
+                                                                        <rect key="frame" x="35" y="237" width="295" height="26"/>
                                                                         <popUpButtonCell key="cell" type="push" title="Available Tags" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="iPq-ql-2e0" id="1lf-Rh-gST">
                                                                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                                             <font key="font" metaFont="menu"/>
@@ -1313,7 +1317,7 @@
                                                                         </connections>
                                                                     </popUpButton>
                                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JAg-G4-FBv">
-                                                                        <rect key="frame" x="329" y="-7" width="101" height="32"/>
+                                                                        <rect key="frame" x="329" y="233" width="101" height="32"/>
                                                                         <buttonCell key="cell" type="push" title="Insert Tag" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="TQZ-9N-nTD">
                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                             <font key="font" metaFont="system"/>
@@ -1323,7 +1327,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uhO-1z-q0Z">
-                                                                        <rect key="frame" x="426" y="-7" width="148" height="32"/>
+                                                                        <rect key="frame" x="426" y="233" width="148" height="32"/>
                                                                         <buttonCell key="cell" type="push" title="Reset to default..." bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ngM-XH-2Xx">
                                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                                             <font key="font" metaFont="system"/>
@@ -1352,6 +1356,7 @@
                                                             <constraint firstItem="etk-f5-czz" firstAttribute="leading" secondItem="go8-tq-Ugi" secondAttribute="leading" id="BNX-3u-YCx"/>
                                                             <constraint firstAttribute="trailing" secondItem="etk-f5-czz" secondAttribute="trailing" id="D4e-v4-8a7"/>
                                                             <constraint firstAttribute="trailing" secondItem="VHN-SC-V7M" secondAttribute="trailing" id="H2q-pb-4eZ"/>
+                                                            <constraint firstAttribute="height" constant="400" id="zS3-VR-Tz4"/>
                                                         </constraints>
                                                         <visibilityPriorities>
                                                             <integer value="1000"/>
