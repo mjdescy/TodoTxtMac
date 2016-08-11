@@ -98,7 +98,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self.tableView registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
 
     [self setTaskListFont];
-    
+
+    [self setTableWidthToWidthOfContents];
+
     // Observe array controller selection to update "selected tasks" count in status bar
     [self.arrayController addObserver:self forKeyPath:@"selection" options:NSKeyValueObservingOptionNew context:nil];
     
@@ -533,7 +535,8 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self.arrayController rearrangeObjects];
     // Reload table.
     [self.tableView reloadData];
-    
+    [self setTableWidthToWidthOfContents];
+
     // re-set selected items
     [self setTaskListSelections:taskListSelectedItemsList];
     
@@ -555,6 +558,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self setTaskListFont];
     [self reapplyActiveFilterPredicate];
     [self.tableView reloadData];
+    [self setTableWidthToWidthOfContents];
     [self updateTaskListMetadata];
 }
 
@@ -1559,6 +1563,30 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 
 - (IBAction)toggleStatusBarVisability:(id)sender {
     [self setStatusBarVisable:!self.statusBarVisable];
+}
+
+// MARK - Column resizing methods
+
+- (void)setTableWidthToWidthOfContents {
+    CGFloat currentWidth = self.tableView.tableColumns.lastObject.width;
+    CGFloat tableContentWidth = [self tableViewContentWidth];
+    [self.tableView.tableColumns.lastObject setMinWidth:tableContentWidth];
+    if (currentWidth > tableContentWidth) {
+        [self.tableView.tableColumns.lastObject setWidth:tableContentWidth];
+    }
+}
+
+- (CGFloat)tableViewContentWidth {
+    NSTableView * tableView = self.tableView;
+    NSRect rect = NSMakeRect(0,0, INFINITY, tableView.rowHeight);
+    NSInteger columnIndex = 0;
+    CGFloat maxSize = 0;
+    for (NSInteger i = 0; i < tableView.numberOfRows; i++) {
+        NSCell *cell = [tableView preparedCellAtColumn:columnIndex row:i];
+        NSSize size = [cell cellSizeForBounds:rect];
+        maxSize = MAX(maxSize, size.width);
+    }
+    return maxSize;
 }
 
 @end
