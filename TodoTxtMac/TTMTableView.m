@@ -177,6 +177,15 @@
 
 #pragma mark - Respond to Changes Methods
 
+- (void)editColumn:(NSInteger)column row:(NSInteger)row withEvent:(NSEvent *)theEvent select:(BOOL)select {
+    [self.tableColumns.lastObject setMinWidth:0];
+    [self.tableColumns.lastObject setMaxWidth:self.parentDocument.windowForSheet.frame.size.width];
+    [self.tableColumns.lastObject setWidth:self.parentDocument.windowForSheet.frame.size.width];
+
+
+    [super editColumn:column row:row withEvent:theEvent select:select];
+}
+
 - (void)textDidBeginEditing:(NSNotification*)notification {
     [self.parentDocument initializeUpdateSelectedTask];
     [super textDidBeginEditing:notification];
@@ -190,6 +199,7 @@
     // Handle no change.
     if (self.selectedRawText == nil ||
         [self.selectedRawText isEqualToString:newValue]) {
+        [self.parentDocument setTableWidthToWidthOfContents];
         return;
     }
     

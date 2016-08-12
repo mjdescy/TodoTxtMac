@@ -70,6 +70,7 @@
 		00D102B61991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D102B51991ABBE00D30237 /* TTMTasklistMetadata.m */; };
 		00D531271CACA285007EF487 /* TTMTask_IsHidden_UnitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D531261CACA285007EF487 /* TTMTask_IsHidden_UnitTests.m */; };
 		00D5312A1CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00D531291CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.m */; };
+		00DA4A1D1D5BBEB600CFF2B1 /* TTMPredicateEditorTextRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00DA4A1C1D5BBEB600CFF2B1 /* TTMPredicateEditorTextRowTemplate.m */; };
 		00EAAB9718E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9618E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m */; };
 		00EAAB9A18E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9918E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.m */; };
 		00EAAB9D18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00EAAB9C18E1CF92009CBE8C /* TTMPredicateEditorCompletedRowTemplate.m */; };
@@ -191,6 +192,8 @@
 		00D531261CACA285007EF487 /* TTMTask_IsHidden_UnitTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMTask_IsHidden_UnitTests.m; sourceTree = "<group>"; };
 		00D531281CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorHiddenRowTemplate.h; sourceTree = "<group>"; };
 		00D531291CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPredicateEditorHiddenRowTemplate.m; sourceTree = "<group>"; };
+		00DA4A1B1D5BBEB600CFF2B1 /* TTMPredicateEditorTextRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorTextRowTemplate.h; sourceTree = "<group>"; };
+		00DA4A1C1D5BBEB600CFF2B1 /* TTMPredicateEditorTextRowTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPredicateEditorTextRowTemplate.m; sourceTree = "<group>"; };
 		00EAAB9518E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorDateRowTemplate.h; sourceTree = "<group>"; };
 		00EAAB9618E0C168009CBE8C /* TTMPredicateEditorDateRowTemplate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTMPredicateEditorDateRowTemplate.m; sourceTree = "<group>"; };
 		00EAAB9818E1CF79009CBE8C /* TTMPredicateEditorDueRowTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTMPredicateEditorDueRowTemplate.h; sourceTree = "<group>"; };
@@ -261,6 +264,8 @@
 				007B835E1A5A415300A4D5F7 /* TTMPredicateEditorThresholdRowTemplate.m */,
 				00D531281CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.h */,
 				00D531291CACC3C7007EF487 /* TTMPredicateEditorHiddenRowTemplate.m */,
+				00DA4A1B1D5BBEB600CFF2B1 /* TTMPredicateEditorTextRowTemplate.h */,
+				00DA4A1C1D5BBEB600CFF2B1 /* TTMPredicateEditorTextRowTemplate.m */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -586,6 +591,7 @@
 				00930EB118B537C10064D41B /* TTMDateUtility.m in Sources */,
 				00FA1D2818F1EF340066A437 /* FontNameTransformer.m in Sources */,
 				00D102B61991ABBE00D30237 /* TTMTasklistMetadata.m in Sources */,
+				00DA4A1D1D5BBEB600CFF2B1 /* TTMPredicateEditorTextRowTemplate.m in Sources */,
 				0086C98518B54F1A00A427AA /* TTMTableViewDelegate.m in Sources */,
 				007B835F1A5A415300A4D5F7 /* TTMPredicateEditorThresholdRowTemplate.m in Sources */,
 				00B4CBAF18B43E8400313DAA /* TTMDocument.m in Sources */,

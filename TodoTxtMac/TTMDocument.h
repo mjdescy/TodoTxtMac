@@ -550,4 +550,6 @@ typedef enum : NSUInteger {
  */
 - (IBAction)toggleStatusBarVisability:(id)sender;
 
+- (void)setTableWidthToWidthOfContents;
+
 @end

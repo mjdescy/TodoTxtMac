@@ -60,7 +60,9 @@ static NSString * const CompletedPattern = @"^x[ ]((\\d{4})-(\\d{2})-(\\d{2}))[ 
 static NSString * const CompletionDatePattern = @"(?<=^x[ ])((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
 static NSString * const PriorityTextPattern = @"^(\\([A-Z]\\)[ ])";
 static NSString * const CreationDatePatternIncomplete = @"(?<=^|\\([A-Z]\\)[ ])((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const CreationDatePatternIncompletePlusTrailingSpace = @"(?<=^|\\([A-Z]\\)[ ])((\\d{4})-(\\d{2})-(\\d{2}))([ ]|$)";
 static NSString * const CreationDatePatternCompleted = @"(?<=^x[ ]((\\d{4})-(\\d{2})-(\\d{2}))[ ])((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
+static NSString * const CreationDatePatternCompletedPlusTrailingSpace = @"(?<=^x[ ]((\\d{4})-(\\d{2})-(\\d{2}))[ ])((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
 static NSString * const DueDatePattern = @"(?<=(^|[ ])due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
 static NSString * const FullDueDatePatternMiddleOrEnd = @"(([ ])due:)((\\d{4})-(\\d{2})-(\\d{2}))(?=[ ]|$)";
 static NSString * const FullDueDatePatternBeginning = @"^due:((\\d{4})-(\\d{2})-(\\d{2}))[ ]?|$";
@@ -100,10 +102,11 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     
     if (!prependedDate ||
         [rawText isMatch:RX(CreationDatePatternIncomplete)] ||
-        [rawText isMatch:RX(CreationDatePatternCompleted)]
+        [rawText isMatch:RX(CreationDatePatternCompleted)] ||
+        [rawText isMatch:RX(CompletedPattern)]
         ) {
 
-        // if no prepended date is passed, or if there is already a creation date, prepend nothing
+        // if no prepended date is passed, or if there is already a creation date, or the task is already completed, prepend nothing
         newRawText = rawText;
     
     } else if ([rawText isMatch:RX(PriorityTextPattern)]) {
@@ -833,9 +836,9 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     
     NSString *newRawText;
     if (!self.isCompleted) {
-        newRawText = [self.rawText substringFromIndex:11];
+        newRawText = [self.rawText replace:RX(CreationDatePatternIncompletePlusTrailingSpace) with:@""];
     } else {
-        newRawText = [self.rawText replace:RX(CreationDatePatternCompleted) with:@""];
+        newRawText = [self.rawText replace:RX(CreationDatePatternCompletedPlusTrailingSpace) with:@""];
     }
     self.rawText = newRawText;
 }

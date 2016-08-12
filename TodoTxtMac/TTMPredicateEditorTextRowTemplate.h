@@ -1,6 +1,6 @@
 /**
  * @author Michael Descy
- * @copyright 2014-2015 Michael Descy
+ * @copyright 2014-2016 Michael Descy
  * @discussion Dual-licensed under the GNU General Public License and the MIT License
  *
  *
@@ -44,28 +44,8 @@
  * THE SOFTWARE.
  */
 
-#import <Foundation/Foundation.h>
+#import <Cocoa/Cocoa.h>
 
-@class TTMAppController;
-
-@interface TTMFiltersController : NSWindowController <NSWindowDelegate>
-
-@property (nonatomic, retain) IBOutlet NSTabView *tabView;
-
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter1PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter2PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter3PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter4PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter5PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter6PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter7PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter8PredicateEditor;
-@property (nonatomic, retain) IBOutlet NSPredicateEditor *filter9PredicateEditor;
-
-/*!
- * @method resetAllFilters:
- * @abstract This method allows the user to clear/reset all filters.
- */
-- (IBAction)resetAllFilters:(id)sender;
+@interface TTMPredicateEditorTextRowTemplate : NSPredicateEditorRowTemplate
 
 @end
