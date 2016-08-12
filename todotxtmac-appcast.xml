@@ -6,6 +6,19 @@
         <language>en</language>
 
         <item>
+            <title>Version 2.3.1</title>
+            <description>
+            Improvements to filters and windowing features. Bug fixes.
+            </description>
+            <sparkle:releaseNotesLink>
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.3.1.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Friday, 12 Aug 2016 10:58 -0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.3.1/TodoTxtMac.app.zip" sparkle:version="2028" sparkle:shortVersionString="2.3.1" length="2620349" type="application/octet-stream" sparkle:dsaSignature="MCwCFDf9Ca45wnx40yxlfX0atS9cZ6bBAhRk2f0URrjNtGZ39nNjQSmbdlvzNA==" />
+            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+        </item>
+
+        <item>
             <title>Version 2.3.0</title>
             <description>
             Automatically reloads files. Added context menu to task list.

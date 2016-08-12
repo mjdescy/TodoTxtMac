@@ -250,10 +250,12 @@ $ open /Applications/TodoTxtMac.app --args -todo-file ~/Documents/todo.txt
 <h2>
 <a name="is-this-application-dropbox-enabled" class="anchor" href="#is-this-application-dropbox-enabled"><span class="octicon octicon-link"></span></a>Is this application Dropbox-enabled?</h2>
 
-<p>No. Unlike the official Todo.txt iOS application, this application does not call Dropbox's API. You can sync your file outside of TodoTxtMac via Dropbox or other services. You can easily reload you todo.txt file with a keyboard shortcut (".") to load any changes made outside TodoTxtMac.</p>
+<p>No. Unlike the official Todo.txt iOS application, this application does not call Dropbox's API. You can sync your file outside of TodoTxtMac via Dropbox or other services. TodoTxtMac will automatically reload your file if it detects changes init, from Dropbox or other sync providers. Also, you can easily reload you todo.txt file on demand with a keyboard shortcut (".").</p>
 
 <h2>
 <a name="todotxtmac-says-my-todotxt-file-cannot-be-autosaved-the-file-has-been-changed-by-another-application" class="anchor" href="#todotxtmac-says-my-todotxt-file-cannot-be-autosaved-the-file-has-been-changed-by-another-application"><span class="octicon octicon-link"></span></a>TodoTxtMac says my todo.txt file cannot be autosaved. The file has been changed by another application.</h2>
+
+<p><strong>Note: The section below applies to versions prior to 2.3.0. TodoTxtMac now will automatically reload your file when it changes on disk.</strong></p>
 
 <p>Your todo.txt file can get modified outside of TodoTxtMac, especially if you are syncing the file via Dropbox or a similar service. TodoTxtMac uses Cocoa's default document object model to handle the file interactions. This means that the application will warn you of file changes that came from outside the application when you try to make changes to the file, not at the moment the file was changed. To avoid file conflicts, try the following strategies:</p>
 
@@ -284,7 +286,7 @@ $ open /Applications/TodoTxtMac.app --args -todo-file ~/Documents/todo.txt
 
 <p>Thanks to Josh Wright &lt;<a href="https://github.com/BendyTree" class="user-mention">@BendyTree</a>&gt; for his <a href="https://github.com/bendytree/Objective-C-RegEx-Categories">RegExCategories</a> library.</p>
 
-<p>Thanks to Sam Daitzman &lt;<a href="https://github.com/sdaitzman" class="user-mention">@sdaitzman</a> for the application icon.</p>
+<p>Thanks to Sam Daitzman &lt;<a href="https://github.com/sdaitzman" class="user-mention">@sdaitzman</a>&gt; for the application icon.</p>
 
 <p>Thanks to Andy Matuschak and the other contributors for the <a href="http://sparkle.andymatuschak.org/">Sparkle framework</a>.</p>
 
