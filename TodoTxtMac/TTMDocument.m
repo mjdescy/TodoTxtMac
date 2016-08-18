@@ -669,6 +669,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 
     if (recurringTasksWereCreated) {
         [self addTasksFromArray:newTaskStrings removeAllTasksFirst:NO undoActionName:NSLocalizedString(@"Add Recurring Tasks", @"")];
+        [self reapplyActiveFilterPredicate];
     }
 }
 
