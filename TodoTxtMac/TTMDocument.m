@@ -725,6 +725,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
+    [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
 - (IBAction)prependText:(id)sender {
@@ -757,6 +758,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
+    [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
 - (IBAction)replaceText:(id)sender {
@@ -789,6 +791,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
+    [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
 #pragma mark - Priority Methods
@@ -832,6 +835,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
+    [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
 - (IBAction)increasePriority:(id)sender {
@@ -915,6 +919,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
+    [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
 - (IBAction)increaseDueDateByOneDay:(id)sender {
@@ -997,6 +1002,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
+    [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
 #pragma mark - Threshold Date Methods
@@ -1032,6 +1038,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
+    [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
 
