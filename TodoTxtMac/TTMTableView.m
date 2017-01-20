@@ -182,7 +182,6 @@
     [self.tableColumns.lastObject setMaxWidth:self.parentDocument.windowForSheet.frame.size.width];
     [self.tableColumns.lastObject setWidth:self.parentDocument.windowForSheet.frame.size.width];
 
-
     [super editColumn:column row:row withEvent:theEvent select:select];
 }
 
@@ -244,5 +243,10 @@
     return [layoutManager defaultLineHeightForFont:font];
 }
 
+#pragma mark - isEditing property
+
+- (bool)isEditing {
+    return (self.editedRow != -1);
+}
 
 @end
