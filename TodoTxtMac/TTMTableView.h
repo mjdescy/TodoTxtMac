@@ -75,4 +75,12 @@
  */
 - (CGFloat)defaultLineHeightForFont:(NSFont*)font;
 
+#pragma mark - isEditing property
+
+/*!
+ * @method isEditing
+ * @return Returns true if the table is being edited.
+ */
+- (bool)isEditing;
+
 @end

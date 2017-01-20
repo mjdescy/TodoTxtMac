@@ -297,7 +297,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
                 NSError *error;
                 NSDate *fileDate;
                 [fileURL getResourceValue:&fileDate forKey:NSURLContentModificationDateKey error:&error];
-                if (![self.lastInternalModificationDate isEqualToDate:fileDate]) {
+                if (![self.lastInternalModificationDate isEqualToDate:fileDate] && !self.tableView.isEditing) {
                     [self reloadFile:self];
                 }
             }];
