@@ -171,6 +171,8 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     [self.customFieldEditor setFieldEditor:YES];
     self.customFieldEditor.projectsArray = self.tasklistMetadata.projectsArray;
     self.customFieldEditor.contextsArray = self.tasklistMetadata.contextsArray;
+    self.customFieldEditor.drawsBackground = YES;
+    self.customFieldEditor.backgroundColor = [NSColor whiteColor];
     return self.customFieldEditor;
 }
 
@@ -295,7 +297,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
                 NSError *error;
                 NSDate *fileDate;
                 [fileURL getResourceValue:&fileDate forKey:NSURLContentModificationDateKey error:&error];
-                if (![self.lastInternalModificationDate isEqualToDate:fileDate]) {
+                if (![self.lastInternalModificationDate isEqualToDate:fileDate] && !self.tableView.isEditing) {
                     [self reloadFile:self];
                 }
             }];
@@ -723,6 +725,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
+    [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
 - (IBAction)prependText:(id)sender {
@@ -755,6 +758,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
+    [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
 - (IBAction)replaceText:(id)sender {
@@ -787,6 +791,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
+    [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
 #pragma mark - Priority Methods
@@ -830,6 +835,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
+    [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
 - (IBAction)increasePriority:(id)sender {
@@ -913,6 +919,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
+    [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
 - (IBAction)increaseDueDateByOneDay:(id)sender {
@@ -995,6 +1002,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
+    [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
 #pragma mark - Threshold Date Methods
@@ -1030,6 +1038,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     };
     
     [alert beginSheetModalForWindow:self.windowForSheet completionHandler: completionHandler];
+    [[alert.accessoryView window] makeFirstResponder:alert.accessoryView];
 }
 
 
