@@ -6,6 +6,19 @@
         <language>en</language>
 
         <item>
+            <title>Version 2.4.0</title>
+            <description>
+            Made changes to fix macOS Sierra compatibility issues.
+            </description>
+            <sparkle:releaseNotesLink>
+            https://mjdescy.github.io/TodoTxtMac/release-notes/release-notes-v2.4.0.html
+            </sparkle:releaseNotesLink>
+            <pubDate>Friday, 20 Jan 2017 16:45 -0500</pubDate>
+            <enclosure url="https://github.com/mjdescy/TodoTxtMac/releases/download/2.4.0/TodoTxtMac.app.zip" sparkle:version="2032" sparkle:shortVersionString="2.4.0" length="2768001" type="application/octet-stream" sparkle:dsaSignature="MC0CFGje8FmLco01ZWNykV1syRnFpodzAhUAvO/X0B58/M+MXyGeHrrIs2ParO4=" />
+            <sparkle:minimumSystemVersion>10.11</sparkle:minimumSystemVersion>
+        </item>
+
+        <item>
             <title>Version 2.3.2</title>
             <description>
             Improvements to filters and windowing features. Bug fixes.
