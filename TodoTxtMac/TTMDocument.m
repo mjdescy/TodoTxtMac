@@ -1432,7 +1432,9 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     }
     // Toggle task menu items.
     if ([menuItem.parentItem tag] == TASKMENUTAG) {
-        BOOL enabled = (self.tableView.editedRow == -1);
+        BOOL enabled = (self.tableView.editedRow == -1)
+            && (self.windowForSheet.firstResponder != self.textField)
+            && (self.windowForSheet.firstResponder != self.customFieldEditor);
         return enabled;
     }
 
