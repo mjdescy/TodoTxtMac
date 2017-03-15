@@ -79,6 +79,13 @@
 		[dueTodayItem setRepresentedObject:[NSExpression expressionForConstantValue:@(DueToday)]];
 		[dueTodayItem setEnabled:YES];
 		[dueTodayItem setTag:(long)DueToday];
+        
+        NSMenuItem *dueSoonItem = [[NSMenuItem alloc] initWithTitle:@"due soon"
+                                                              action:nil
+                                                       keyEquivalent:@""];
+        [dueSoonItem setRepresentedObject:[NSExpression expressionForConstantValue:@(DueSoon)]];
+        [dueSoonItem setEnabled:YES];
+        [dueSoonItem setTag:(long)DueSoon];
 
 		NSMenuItem *overdueItem = [[NSMenuItem alloc] initWithTitle:@"overdue"
                                                               action:nil
@@ -103,6 +110,7 @@
         
         NSMenu *dueStateMenu = [[NSMenu alloc] initWithTitle:@"Due State"];
 		[dueStateMenu addItem:dueTodayItem];
+        [dueStateMenu addItem:dueSoonItem];
 		[dueStateMenu addItem:overdueItem];
         [dueStateMenu addItem:notDueItem];
         [dueStateMenu addItem:noDueDateItem];

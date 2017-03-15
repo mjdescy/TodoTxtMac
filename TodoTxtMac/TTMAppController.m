@@ -89,6 +89,7 @@ static NSDictionary *defaultValues() {
                 @NO, @"useCustomColorForThresholdDates",
                 @NO, @"useCustomColorForCreationDates",
                 [NSArchiver archivedDataWithRootObject:[NSColor redColor]], @"dueTodayColor",
+                [NSArchiver archivedDataWithRootObject:[NSColor orangeColor]], @"dueSoonColor",
                 [NSArchiver archivedDataWithRootObject:[NSColor purpleColor]], @"overdueColor",
                 [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"projectColor",
                 [NSArchiver archivedDataWithRootObject:[NSColor darkGrayColor]], @"contextColor",
@@ -106,6 +107,7 @@ static NSDictionary *defaultValues() {
                 @NO, @"hideFutureTasks",
                 @NO, @"closingLastWindowClosesApplication",
                 @NO, @"hideHiddenTasks",
+                @2, @"dueSoonDays",
                 nil];
     }
     return dict;

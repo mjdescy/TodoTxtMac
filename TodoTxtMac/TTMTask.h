@@ -59,6 +59,7 @@
 typedef enum : NSUInteger {
     Overdue,
     DueToday,
+    DueSoon,
     NotDue,
     NoDueDate
 } TTMDueState;
@@ -174,6 +175,7 @@ typedef enum : NSUInteger {
       useHighlightColorsInTaskList:(BOOL)useHighlightColorsInTaskList
                     completedColor:(NSColor*)completedColor
                      dueTodayColor:(NSColor*)dueTodayColor
+                      dueSoonColor:(NSColor*)dueSoonColor
                       overdueColor:(NSColor*)overdueColor
                       projectColor:(NSColor*)projectColor
                       contextColor:(NSColor*)contextColor

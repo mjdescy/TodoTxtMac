@@ -73,6 +73,10 @@
                                    boolForKey:@"useCustomColorForDueTodayTasks"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"dueTodayColor"] :
             [NSColor redColor];
+        NSColor *dueSoonColor = ([[NSUserDefaults standardUserDefaults]
+                                   boolForKey:@"useCustomColorForDueSoonTasks"]) ?
+            [[NSUserDefaults standardUserDefaults] colorForKey:@"dueSoonColor"] :
+            [NSColor orangeColor];
         NSColor *overdueColor = ([[NSUserDefaults standardUserDefaults]
                                   boolForKey:@"useCustomColorForOverdueTasks"]) ?
             [[NSUserDefaults standardUserDefaults] colorForKey:@"overdueColor"] :
@@ -107,6 +111,7 @@
                       useHighlightColorsInTaskList:useHighlightColorsInTaskList
                                     completedColor:completedColor
                                      dueTodayColor:dueTodayColor
+                                      dueSoonColor:dueSoonColor
                                       overdueColor:overdueColor
                                       projectColor:projectColor
                                       contextColor:contextColor
