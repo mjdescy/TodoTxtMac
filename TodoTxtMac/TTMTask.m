@@ -272,7 +272,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
       useHighlightColorsInTaskList:(BOOL)useHighlightColorsInTaskList
                     completedColor:(NSColor*)completedColor
                      dueTodayColor:(NSColor*)dueTodayColor
-                     dueSoonColor:(NSColor*)dueSoonColor
+                      dueSoonColor:(NSColor*)dueSoonColor
                       overdueColor:(NSColor*)overdueColor
                       projectColor:(NSColor*)projectColor
                       contextColor:(NSColor*)contextColor
