@@ -52,33 +52,33 @@
 #pragma mark - Class Property Getters
 
 - (NSPopUpButton*)keypathPopUp {
-	if(!_keypathPopUp) {
-		NSMenu *keypathMenu = [[NSMenu alloc]
+    if(!_keypathPopUp) {
+        NSMenu *keypathMenu = [[NSMenu alloc]
                                initWithTitle:@"due state menu"];
         
-		NSMenuItem *menuItem = [[NSMenuItem alloc]
+        NSMenuItem *menuItem = [[NSMenuItem alloc]
                                 initWithTitle:@"due state"
                                 action:nil
                                 keyEquivalent:@""];
-		[menuItem setRepresentedObject:[NSExpression expressionForKeyPath:@"dueState"]];
-		[menuItem setEnabled:YES];
+        [menuItem setRepresentedObject:[NSExpression expressionForKeyPath:@"dueState"]];
+        [menuItem setEnabled:YES];
         
-		[keypathMenu addItem:menuItem];
+        [keypathMenu addItem:menuItem];
         
-		_keypathPopUp = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO];
-		[_keypathPopUp setMenu:keypathMenu];
-	}
-	return _keypathPopUp;
+        _keypathPopUp = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO];
+        [_keypathPopUp setMenu:keypathMenu];
+    }
+    return _keypathPopUp;
 }
 
 - (NSPopUpButton*)dueStatePopUp {
-	if (!_dueStatePopUp) {
-		NSMenuItem *dueTodayItem = [[NSMenuItem alloc] initWithTitle:@"due today"
+    if (!_dueStatePopUp) {
+        NSMenuItem *dueTodayItem = [[NSMenuItem alloc] initWithTitle:@"due today"
                                                               action:nil
                                                        keyEquivalent:@""];
-		[dueTodayItem setRepresentedObject:[NSExpression expressionForConstantValue:@(DueToday)]];
-		[dueTodayItem setEnabled:YES];
-		[dueTodayItem setTag:(long)DueToday];
+        [dueTodayItem setRepresentedObject:[NSExpression expressionForConstantValue:@(DueToday)]];
+        [dueTodayItem setEnabled:YES];
+        [dueTodayItem setTag:(long)DueToday];
         
         NSMenuItem *dueSoonItem = [[NSMenuItem alloc] initWithTitle:@"due soon"
                                                               action:nil
@@ -86,20 +86,20 @@
         [dueSoonItem setRepresentedObject:[NSExpression expressionForConstantValue:@(DueSoon)]];
         [dueSoonItem setEnabled:YES];
         [dueSoonItem setTag:(long)DueSoon];
-
-		NSMenuItem *overdueItem = [[NSMenuItem alloc] initWithTitle:@"overdue"
-                                                              action:nil
-                                                       keyEquivalent:@""];
-		[overdueItem setRepresentedObject:[NSExpression expressionForConstantValue:@(Overdue)]];
-		[overdueItem setEnabled:YES];
-		[overdueItem setTag:(long)Overdue];
         
-		NSMenuItem *notDueItem = [[NSMenuItem alloc] initWithTitle:@"not due"
+        NSMenuItem *overdueItem = [[NSMenuItem alloc] initWithTitle:@"overdue"
                                                               action:nil
                                                        keyEquivalent:@""];
-		[notDueItem setRepresentedObject:[NSExpression expressionForConstantValue:@(NotDue)]];
-		[notDueItem setEnabled:YES];
-		[notDueItem setTag:(long)NotDue];
+        [overdueItem setRepresentedObject:[NSExpression expressionForConstantValue:@(Overdue)]];
+        [overdueItem setEnabled:YES];
+        [overdueItem setTag:(long)Overdue];
+        
+        NSMenuItem *notDueItem = [[NSMenuItem alloc] initWithTitle:@"not due"
+                                                              action:nil
+                                                       keyEquivalent:@""];
+        [notDueItem setRepresentedObject:[NSExpression expressionForConstantValue:@(NotDue)]];
+        [notDueItem setEnabled:YES];
+        [notDueItem setTag:(long)NotDue];
 
         NSMenuItem *noDueDateItem = [[NSMenuItem alloc] initWithTitle:@"no due date"
                                                             action:nil
@@ -109,16 +109,16 @@
         [noDueDateItem setTag:(long)NoDueDate];
         
         NSMenu *dueStateMenu = [[NSMenu alloc] initWithTitle:@"Due State"];
-		[dueStateMenu addItem:dueTodayItem];
+        [dueStateMenu addItem:dueTodayItem];
         [dueStateMenu addItem:dueSoonItem];
-		[dueStateMenu addItem:overdueItem];
+        [dueStateMenu addItem:overdueItem];
         [dueStateMenu addItem:notDueItem];
         [dueStateMenu addItem:noDueDateItem];
         
-		_dueStatePopUp = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO];
-		[_dueStatePopUp setMenu:dueStateMenu];
-	}
-	return _dueStatePopUp;
+        _dueStatePopUp = [[NSPopUpButton alloc] initWithFrame:NSZeroRect pullsDown:NO];
+        [_dueStatePopUp setMenu:dueStateMenu];
+    }
+    return _dueStatePopUp;
 }
 
 #pragma mark - NSPredicateEditorRowTemplate Method Overrides
@@ -140,14 +140,14 @@
 - (NSPredicate*)predicateWithSubpredicates:(NSArray*)subpredicates {
     NSPredicate *p = [super predicateWithSubpredicates:subpredicates];
     NSComparisonPredicate *comparison = (NSComparisonPredicate*)p;
-	NSPredicate *newPredicate =
+    NSPredicate *newPredicate =
         [NSComparisonPredicate
          predicateWithLeftExpression:[[self.keypathPopUp selectedItem] representedObject]
          rightExpression:[[self.dueStatePopUp selectedItem] representedObject]
          modifier:[comparison comparisonPredicateModifier]
          type:[comparison predicateOperatorType]
          options:[comparison options]];
-	return newPredicate;
+    return newPredicate;
 }
 
 @end
