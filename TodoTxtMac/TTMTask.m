@@ -272,6 +272,7 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
       useHighlightColorsInTaskList:(BOOL)useHighlightColorsInTaskList
                     completedColor:(NSColor*)completedColor
                      dueTodayColor:(NSColor*)dueTodayColor
+                      dueSoonColor:(NSColor*)dueSoonColor
                       overdueColor:(NSColor*)overdueColor
                       projectColor:(NSColor*)projectColor
                       contextColor:(NSColor*)contextColor
@@ -314,6 +315,11 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
     // Color due texts.
     if (self.dueState == DueToday) {
         [as applyColorToFullStringRange:dueTodayColor];
+    }
+    
+    // Color due soon texts.
+    if (self.dueState == DueSoon) {
+        [as applyColorToFullStringRange:dueSoonColor];
     }
     
     // Color overdue texts.
@@ -441,10 +447,14 @@ static NSString * const HiddenPattern = @"(?<=^|[ ])(h:1)(?=[ ]|$)";
                                                           fromDate:todaysDate
                                                             toDate:self.dueDate
                                                            options:0] day];
+    NSInteger dueSoonDays = [[NSUserDefaults standardUserDefaults] integerForKey:@"dueSoonDays"];
+    
     if (interval < 0) {
         return Overdue;
-    } else if (interval > 0) {
+    } else if (interval > dueSoonDays) {
         return NotDue;
+    } else if (interval > 0) {
+        return DueSoon;
     } else {
         return DueToday;
     }
