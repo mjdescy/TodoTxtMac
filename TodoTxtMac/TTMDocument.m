@@ -591,7 +591,12 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
 - (void)finalizeUpdateSelectedTask:(NSString*)rawText {
     NSArray *newTasks = [[NSArray alloc] initWithArray:[self.arrayController selectedObjects]
                                              copyItems:YES];
-    
+    BOOL originalTaskWasIncomplete = TRUE;
+    if (self.originalTasks.count > 0) {
+        TTMTask *originalTask = self.originalTasks[0];
+        originalTaskWasIncomplete = !originalTask.isCompleted;
+    }
+
     NSMutableArray *newTaskStrings = [[NSMutableArray alloc] init];
     BOOL taskWasCompleted = NO;
     BOOL recurringTasksWereCreated = NO;
@@ -599,10 +604,10 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     
     for (TTMTask *task in newTasks) {
         // if task is being marked complete...
-        if (task.isCompleted) {
+        if (task.isCompleted && originalTaskWasIncomplete) {
             taskWasCompleted = YES;
         }
-        if (task.isCompleted && task.isRecurring) {
+        if (taskWasCompleted && task.isRecurring) {
             TTMTask *newTaskBase = [task copy];
             [newTaskBase markIncomplete];
             TTMTask *newTask = [newTaskBase newRecurringTask];
