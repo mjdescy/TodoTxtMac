@@ -107,6 +107,12 @@
  * addresses (with "@").
  */
 - (void)keyUp:(NSEvent*)event {
+    // This conditional fixes a bug in which diacritical marks created with option+letter were not applied to the next letter typed.
+    if ([event modifierFlags] & NSAlternateKeyMask) {
+        [super keyUp:event];
+        return;
+    }
+
     // Start the completion timer if the range for user completion starts with "@" or "+".
     NSString *partialRange = [[self string] substringWithRange:self.rangeForUserCompletion];
     if ([partialRange hasPrefix:@"@"] || [partialRange hasPrefix:@"+"]) {
