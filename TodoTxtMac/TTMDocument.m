@@ -172,7 +172,7 @@ static NSString * const RelativeDueDatePattern = @"(?<=due:)\\S*";
     self.customFieldEditor.projectsArray = self.tasklistMetadata.projectsArray;
     self.customFieldEditor.contextsArray = self.tasklistMetadata.contextsArray;
     self.customFieldEditor.drawsBackground = YES;
-    self.customFieldEditor.backgroundColor = [NSColor whiteColor];
+    self.customFieldEditor.backgroundColor = NSColor.textBackgroundColor;
     return self.customFieldEditor;
 }
 
