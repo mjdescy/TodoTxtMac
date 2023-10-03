@@ -129,6 +129,7 @@ static NSDictionary *defaultValuesExcludingFilters() {
 
 // Constants for command-line argument names
 NSString *const TodoFileArgument = @"todo-file";
+NSString *const DoneFileArgument = @"done-file";
 
 - (id)init {
     self = [super init];
@@ -195,9 +196,22 @@ NSString *const TodoFileArgument = @"todo-file";
     [self openDocumentFromFilePath:fileToOpenOnLaunch];
 }
 
+- (void)openDoneFileFromCommandLineArgument {
+    NSString *fileToOpenOnLaunch = [self commandLineArgumentDoneFile];
+    if (!fileToOpenOnLaunch) {
+        return;
+    }
+    [self openDocumentFromFilePath:fileToOpenOnLaunch];
+}
+
 - (NSString*)commandLineArgumentTodoFile {
     NSUserDefaults *args = [NSUserDefaults standardUserDefaults];
     return [args stringForKey:TodoFileArgument];
+}
+
+- (NSString*)commandLineArgumentDoneFile {
+    NSUserDefaults *args = [NSUserDefaults standardUserDefaults];
+    return [args stringForKey:DoneFileArgument];
 }
 
 - (void)openDocumentFromFilePath:(NSString*)filePath {

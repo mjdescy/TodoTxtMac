@@ -53,9 +53,12 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {
     [self.appController initializeUserDefaults:self];
     
-    // Open file from command line argument. Does nothing if there is no command line argument.
+    // Open todo file from command line argument. Does nothing if there is no command line argument.
     [self.appController openTodoFileFromCommandLineArgument];
     
+    // Open done file from command line argument. Does nothing if there is no command line argument.
+    [self.appController openDoneFileFromCommandLineArgument];
+
     // Open default todo file, if one is selected and the option is enabled.
     [self.appController openDefaultTodoFile];
 }
@@ -67,6 +70,7 @@
     // Without this method override, opening a todo file using the command line argument
     // or the default todo file user preference also opens an Untitled document every time.
     return ([self.appController commandLineArgumentTodoFile] == NULL &&
+            [self.appController commandLineArgumentDoneFile] == NULL &&
             ![[NSUserDefaults standardUserDefaults] boolForKey:@"openDefaultTodoFileOnStartup"]);
 }
 
