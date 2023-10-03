@@ -95,6 +95,21 @@ extern NSString *const TodoFileArgument;
 - (NSString*)commandLineArgumentTodoFile;
 
 /*!
+ * @method openDoneFileFromCommandLineArgument:
+ * @abstract This method opens a done.txt file based on the command line argument.
+ * The name of the argument is defined in the DoneFileArgument constant.
+ * If there is no command line argument, this method does nothing.
+ */
+- (void)openDoneFileFromCommandLineArgument;
+
+/*!
+ * @method commandLineArgumentDoneFile:
+ * @abstract This method returns the value of the done-file command line argument.
+ * If there is no command-line argument, it returns null.
+ */
+- (NSString*)commandLineArgumentDoneFile;
+
+/*!
  * @method openDocumentFromFilePath:
  * @abstract This method opens a todo.txt file (TTMDocument) based on a file path.
  */
